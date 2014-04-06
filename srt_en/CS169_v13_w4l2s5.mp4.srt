@@ -1,0 +1,765 @@
+1
+00:00:00,000 --> 00:00:04,000
+So far, I just assumed the existence of a table in order to do a 
+
+2
+00:00:04,004 --> 00:00:06,004
+simple example. I didn't say anything about where that table 
+
+3
+00:00:06,006 --> 00:00:09,006
+came from, why it has the columns it has. The next thing we're 
+
+4
+00:00:09,009 --> 00:00:13,009
+going to talk about is how do you get that to happen. Our 
+
+5
+00:00:13,013 --> 00:00:15,013
+discussion of database is going to be around migrations which is 
+
+6
+00:00:15,015 --> 00:00:18,015
+something that in other programming frameworks is maybe not as 
+
+7
+00:00:18,018 --> 00:00:21,018
+popular. I think Rails has put this on the map in a way that 
+
+8
+00:00:21,021 --> 00:00:24,021
+made it accessible to a lot of programmers. The problem we’ re 
+
+9
+00:00:24,024 --> 00:00:26,024
+trying to solve here is that once your appropriate is actually 
+
+10
+00:00:26,026 --> 00:00:29,026
+up and running, if it’ s an app that anybody cares about, the 
+
+11
+00:00:29,029 --> 00:00:32,029
+people who use it, they think of their data in that app as being 
+
+12
+00:00:32,032 --> 00:00:34,032
+pretty important. You don’ t want to mess it up when you’ re 
+
+13
+00:00:34,034 --> 00:00:37,034
+experimenting or developing a new feature that might require a 
+
+14
+00:00:37,037 --> 00:00:40,037
+change to the database schema. When you do change the database 
+
+15
+00:00:40,040 --> 00:00:43,040
+schema, you want to track those changes. Obviously, you’ d be a 
+
+16
+00:00:43,043 --> 00:00:46,043
+fool if you’ re developing your code files with no version 
+
+17
+00:00:46,046 --> 00:00:50,046
+control, no ability to roll back to an earlier version of your 
+
+18
+00:00:50,050 --> 00:00:53,050
+code. Why wouldn’ t we think the same thing as true about the 
+
+19
+00:00:53,053 --> 00:00:56,053
+database schema? The answer to managing both of these things is 
+
+20
+00:00:56,056 --> 00:01:00,056
+automation as evidenced by the friendly dancing robot. In 
+
+21
+00:01:00,000 --> 00:01:02,060
+general, if you can automate something, it means that you can do 
+
+22
+00:01:02,062 --> 00:01:04,062
+it consistently. We’ re going to come back to this theme again 
+
+23
+00:01:04,064 --> 00:01:08,064
+and again and again. Almost every successful thing that you do 
+
+24
+00:01:08,068 --> 00:01:11,068
+in software engineering, at some point relies on automation to 
+
+25
+00:01:11,071 --> 00:01:13,071
+take some of the stupid mistakes out of it. In fact, when we 
+
+26
+00:01:13,073 --> 00:01:18,073
+talk later about deployment, I came back from a conference 
+
+27
+00:01:18,078 --> 00:01:21,078
+literally 15 minutes before class today. There was a really, 
+
+28
+00:01:21,081 --> 00:01:24,081
+really great talk from somebody who runs the back ends of one of 
+
+29
+00:01:24,084 --> 00:01:28,084
+these games servers. He actually used the phrase deployment 
+
+30
+00:01:28,088 --> 00:01:32,088
+should be a non- event. Releases should be an non- event. 
+
+31
+00:01:32,092 --> 00:01:34,092
+Database schema changes, a little bit harder but we’ re going to 
+
+32
+00:01:34,094 --> 00:01:38,094
+try to make them a non- event by automating them. The way Rails 
+
+33
+00:01:38,098 --> 00:01:40,098
+addresses this is there actually isn’ t just one database; 
+
+34
+00:01:40,100 --> 00:01:42,100
+there’ s multiple ones. The one you use depends on the 
+
+35
+00:01:42,102 --> 00:01:46,102
+environment. What’ s an environment? Development, that’ s your 
+
+36
+00:01:46,106 --> 00:01:49,106
+environment of when you’ re pounding a code on your laptop. 
+
+37
+00:01:49,109 --> 00:01:51,109
+Production, that’ s the golden environment that you must not 
+
+38
+00:01:51,111 --> 00:01:55,111
+touch because if you break it, people will be mad. Test is an 
+
+39
+00:01:55,115 --> 00:01:57,115
+environment that only exist for the purpose of running automated 
+
+40
+00:01:57,117 --> 00:02:00,117
+tests. Don’ t confuse this with an environment where you get to 
+
+41
+00:02:00,000 --> 00:02:03,120
+do your own manual poking and testing; that’ s development. The 
+
+42
+00:02:03,123 --> 00:02:05,123
+testing environment exists and is managed entirely by the 
+
+43
+00:02:05,125 --> 00:02:08,125
+testing tools. By the way, you can define more environments 
+
+44
+00:02:08,128 --> 00:02:11,128
+beyond these three. For example, a lot of companies define a 
+
+45
+00:02:11,131 --> 00:02:14,131
+staging environment which is service that are in the productions 
+
+46
+00:02:14,134 --> 00:02:18,134
+environment but they’ re not visible to real users. If it’ s 
+
+47
+00:02:18,138 --> 00:02:21,138
+live in every way, except that it’ s not live because the end 
+
+48
+00:02:21,141 --> 00:02:24,141
+users can’ t see but it’ s the closest thing there is to really 
+
+49
+00:02:24,144 --> 00:02:27,144
+running on a system with all of the same conditions in place as 
+
+50
+00:02:27,147 --> 00:02:30,147
+if it were a live deployment. How do we make changes to the 
+
+51
+00:02:30,150 --> 00:02:33,150
+database? One problem is as soon as you say we have multiple 
+
+52
+00:02:33,153 --> 00:02:37,153
+databases then we got to make sure they stay in sync. Any schema 
+
+53
+00:02:37,157 --> 00:02:39,157
+changes, any structure changes that I make in development 
+
+54
+00:02:39,159 --> 00:02:42,159
+eventually have to make it to production and maybe also have to 
+
+55
+00:02:42,162 --> 00:02:45,162
+be tested in a staging server and my testing tools have to know 
+
+56
+00:02:45,165 --> 00:02:48,165
+about them. We do this with migrations. A migration really is 
+
+57
+00:02:48,168 --> 00:02:51,168
+just a script describing the changes you’ re going to make. 
+
+58
+00:02:51,171 --> 00:02:54,171
+Rather than using your favorite sequel database gooey to add 
+
+59
+00:02:54,174 --> 00:02:57,174
+columns and move columns around, we will write code the 
+
+60
+00:02:57,177 --> 00:03:00,177
+describing changes we want to make. We can version that code 
+
+61
+00:03:00,000 --> 00:03:03,180
+because it’ s actually ruby. Once we’ ve satisfied ourselves 
+
+62
+00:03:03,183 --> 00:03:06,183
+that the changes are legit, all we have to do to apply the same 
+
+63
+00:03:06,186 --> 00:03:08,186
+changes to the production environment is run the same script 
+
+64
+00:03:08,188 --> 00:03:12,188
+over there. That’ s the basic idea. Why would you do this? First 
+
+65
+00:03:12,192 --> 00:03:14,192
+of all, you can identify each migration. You know at what point 
+
+66
+00:03:14,194 --> 00:03:17,194
+in time each schema change was made. Unlike code, you can 
+
+67
+00:03:17,197 --> 00:03:20,197
+annotate why that migration was done. Why do we have to add this 
+
+68
+00:03:20,200 --> 00:03:23,200
+column? Why do we choose to delete that column? Some migrations 
+
+69
+00:03:23,203 --> 00:03:26,203
+can be created to be reversible which means, here’ s a set of 
+
+70
+00:03:26,206 --> 00:03:29,206
+changes I want to make but actually all of these changes are 
+
+71
+00:03:29,209 --> 00:03:32,209
+undoable. One thing that you can as in development if you apply 
+
+72
+00:03:32,212 --> 00:03:34,212
+your migration, it turns out to be a mess, you can say, “ Oh, 
+
+73
+00:03:34,214 --> 00:03:38,214
+undo all of that.” You’ re doing it in a principled manner not 
+
+74
+00:03:38,218 --> 00:03:40,218
+in a sort of manual way where you have to remember what are the 
+
+75
+00:03:40,220 --> 00:03:43,220
+eight things I clicked on in trying to make this change? You can 
+
+76
+00:03:43,223 --> 00:03:46,223
+manage them with version control and because you can automate 
+
+77
+00:03:46,226 --> 00:03:48,226
+them, it’ s reliable. You can repeat it. You can run the 
+
+78
+00:03:48,228 --> 00:03:50,228
+migration multiple times on multiple machines and it will have 
+
+79
+00:03:50,230 --> 00:03:53,230
+the same effect. The theme here that we’ re seeing with the 
+
+80
+00:03:53,233 --> 00:03:56,233
+happy dancing robot is don’ t do it, automate it. If you’ re 
+
+81
+00:03:56,236 --> 00:03:59,236
+thinking about doing it, stop and start thinking about what kind 
+
+82
+00:03:59,239 --> 00:04:02,239
+of a tool might I be able to use to automate the task I’ m about 
+
+83
+00:04:02,242 --> 00:04:05,242
+to do so that I can do it repeatedly and track each time I do a 
+
+84
+00:04:05,245 --> 00:04:08,245
+change, why I did that change and what it is. Let’ s take a look 
+
+85
+00:04:08,248 --> 00:04:13,248
+at migration. Remember we said that the idea of generating code 
+
+86
+00:04:13,253 --> 00:04:15,253
+is pervasive throughout Rails. Here’ s another kind of code 
+
+87
+00:04:15,255 --> 00:04:19,255
+generator. This kind doesn’ t write new code at runtime. This 
+
+88
+00:04:19,259 --> 00:04:22,259
+kind generates code in files that become part of your 
+
+89
+00:04:22,262 --> 00:04:26,262
+development environment. What happens when we issue the command 
+
+90
+00:04:26,266 --> 00:04:29,266
+rails generate migration and we give the migration a symbolic 
+
+91
+00:04:29,269 --> 00:04:31,269
+name that hopefully represents what it wants to do. We’ re going 
+
+92
+00:04:31,271 --> 00:04:34,271
+to create a migration that creates the movies table that I used 
+
+93
+00:04:34,274 --> 00:04:36,274
+as an example, a really simple version of it. Let’ s see what 
+
+94
+00:04:36,276 --> 00:04:47,276
+that code would look like. When you say rails generate 
+
+95
+00:04:47,287 --> 00:04:51,287
+migration, what you get is basically empty methods up and down. 
+
+96
+00:04:51,291 --> 00:04:55,291
+You’ ve got to fill in what goes into those methods. What are we 
+
+97
+00:04:55,295 --> 00:04:59,295
+doing in this method? We’ re going to create a table called 
+
+98
+00:04:59,299 --> 00:05:02,299
+Movies. In that table, we’ re going to have a string for the 
+
+99
+00:05:02,302 --> 00:05:05,302
+movie title, a string for the rating, a longer text field for 
+
+100
+00:05:05,305 --> 00:05:08,305
+the description, a date time field for when it was released, et 
+
+101
+00:05:08,308 --> 00:05:12,308
+cetera, et cetera and timestamps as we’ ll soon see is a field 
+
+102
+00:05:12,312 --> 00:05:15,312
+that if you add it Rails will automatically manage it for you to 
+
+103
+00:05:15,315 --> 00:05:20,315
+indicate when was the last time each record was updated or when 
+
+104
+00:05:20,320 --> 00:05:24,320
+that record was added. This is the up migration. The up 
+
+105
+00:05:24,324 --> 00:05:27,324
+migration is I’ m making a change to go from version end to 
+
+106
+00:05:27,327 --> 00:05:30,327
+version end plus one of my database schema. Right now, for us 
+
+107
+00:05:30,330 --> 00:05:32,330
+version end is there’ s nothing on the database. Couldn’ t be 
+
+108
+00:05:32,332 --> 00:05:34,332
+simpler, right? At the end of this migration, there’ ll be a 
+
+109
+00:05:34,334 --> 00:05:38,334
+table that has these columns of these associated types. What 
+
+110
+00:05:38,338 --> 00:05:42,338
+would be the opposite? How would we reverse that migration? 
+
+111
+00:05:42,342 --> 00:05:45,342
+Since the migration is consistent of creating a table, dropping 
+
+112
+00:05:45,345 --> 00:05:47,345
+the table, meaning deleting the entire table would be the 
+
+113
+00:05:47,347 --> 00:05:51,347
+opposite. That’ s nuclear. You’ ll drop table. Sequel gives you 
+
+114
+00:05:51,351 --> 00:05:53,351
+enough rope to hang yourself and this will become a drop table 
+
+115
+00:05:53,353 --> 00:05:57,353
+and sequel. The table will be incinerated. Of course, you backed 
+
+116
+00:05:57,357 --> 00:05:59,357
+up your apps and you back up your databases nightly as we’ ll 
+
+117
+00:05:59,359 --> 00:06:02,359
+talk about later in the class. If that happens, you’ re still 
+
+118
+00:06:02,362 --> 00:06:08,362
+not totally host. Now, this is what the code looks like. I’ ve 
+
+119
+00:06:08,368 --> 00:06:10,368
+created the migration. I’ ve filled in my up and down method 
+
+120
+00:06:10,370 --> 00:06:12,370
+saying how am I going to change the database, how I would undo 
+
+121
+00:06:12,372 --> 00:06:15,372
+that change? We haven’ t actually done anything yet. We have to 
+
+122
+00:06:15,375 --> 00:06:21,375
+run this code in order for the database to be updated. We’ ve 
+
+123
+00:06:21,381 --> 00:06:23,381
+just created the migration but what we say is we haven’ t 
+
+124
+00:06:23,383 --> 00:06:27,383
+applied the migration yet. We’ re on our development box. We say 
+
+125
+00:06:27,387 --> 00:06:30,387
+rake db: migrate. That will run the script and ideally, in an 
+
+126
+00:06:30,390 --> 00:06:33,390
+error- free way make those changes to the database. We showed a 
+
+127
+00:06:33,393 --> 00:06:36,393
+really simple migration but as the course goes on, we’ re going 
+
+128
+00:06:36,396 --> 00:06:38,396
+to show a much more complicated migrations involving adding new 
+
+129
+00:06:38,398 --> 00:06:41,398
+columns, creating columns based on the values of existing 
+
+130
+00:06:41,401 --> 00:06:44,401
+columns and many, many other things. Remember, we’ re still in 
+
+131
+00:06:44,404 --> 00:06:47,404
+our development environment. We’ ve tested our code. We know 
+
+132
+00:06:47,407 --> 00:06:49,407
+that yes, the migration works, does what it’ s supposed to do. 
+
+133
+00:06:49,409 --> 00:06:52,409
+Now, what do we do? We got to push it to production. No problem. 
+
+134
+00:06:52,412 --> 00:06:54,412
+You just run the same command but you run it against your remote 
+
+135
+00:06:54,414 --> 00:06:57,414
+heroku instance. That’ s it. You’ ve debugged the process by 
+
+136
+00:06:57,417 --> 00:06:59,417
+which it’ s done and then you push a button and automation takes 
+
+137
+00:06:59,419 --> 00:07:03,419
+over. A nice thing about the way Rails manages migrations is 
+
+138
+00:07:03,423 --> 00:07:06,423
+that when a migration runs successfully, it also records in a 
+
+139
+00:07:06,426 --> 00:07:09,426
+special database table which migrations have already been 
+
+140
+00:07:09,429 --> 00:07:12,429
+applied. In fact, you can run rake db: migrate over and over 
+
+141
+00:07:12,432 --> 00:07:15,432
+again and its item potent. Running it many times is the same as 
+
+142
+00:07:15,435 --> 00:07:20,435
+running it once. When you run it, it actually means apply all 
+
+143
+00:07:20,440 --> 00:07:22,440
+pending migrations of this copy of the database hasn’ t seen 
+
+144
+00:07:22,442 --> 00:07:26,442
+yet. The database itself knows which ones that already has seen. 
+
+145
+00:07:26,446 --> 00:07:29,446
+It’ s a really nice way of not having to keep track of, “ Oh, I 
+
+146
+00:07:29,449 --> 00:07:31,449
+have a staging environment and I have production. Did I already 
+
+147
+00:07:31,451 --> 00:07:33,451
+applied the migration in staging? I’ m not really sure.” It 
+
+148
+00:07:33,453 --> 00:07:36,453
+doesn’ t matter. Just run rake db: migrate and if you had 
+
+149
+00:07:36,456 --> 00:07:41,456
+already applied it before then it will do nothing. Save times. 
+
+150
+00:07:41,461 --> 00:07:44,461
+We’ re starting to develop a cookbook of how you do various 
+
+151
+00:07:44,464 --> 00:07:47,464
+things in a Rails SaaS app and the first one is how do you add a 
+
+152
+00:07:47,467 --> 00:07:50,467
+new model? To add functionality to your app, you have to add 
+
+153
+00:07:50,470 --> 00:07:52,470
+models, views and or controllers and models are the thing that 
+
+154
+00:07:52,472 --> 00:07:56,472
+we’ re discussing first. When you want to add a new model or if 
+
+155
+00:07:56,476 --> 00:07:58,476
+you want to change or add attributes to a model that you already 
+
+156
+00:07:58,478 --> 00:08:02,478
+have meaning that it already has a corresponding database table 
+
+157
+00:08:02,482 --> 00:08:04,482
+but you want to make some changes to it. Either way, you first 
+
+158
+00:08:04,484 --> 00:08:08,484
+create a migration that describes the changes you want to make. 
+
+159
+00:08:08,488 --> 00:08:11,488
+Give it a semi meaning full name if you can. Apply the migration 
+
+160
+00:08:11,491 --> 00:08:14,491
+with rake db: migrate. Make sure that all is well, all of your 
+
+161
+00:08:14,494 --> 00:08:19,494
+test passed and so forth. If it’ s a new model, meaning you 
+
+162
+00:08:19,499 --> 00:08:21,499
+haven’ t used this type of model before, you also need to create 
+
+163
+00:08:21,501 --> 00:08:24,501
+a folder that contains the actual code for the model. We showed 
+
+164
+00:08:24,504 --> 00:08:27,504
+a really simple example. What is the simplest active record 
+
+165
+00:08:27,507 --> 00:08:29,507
+model you can have? It’ s one that inherits everything from 
+
+166
+00:08:29,509 --> 00:08:32,509
+active record and it has not logic of its own. Now, if your app 
+
+167
+00:08:32,512 --> 00:08:34,512
+contains models like that, you probably shouldn’ t be using 
+
+168
+00:08:34,514 --> 00:08:38,514
+Rails. It’ s too heavyweight for what you want to do. Generally 
+
+169
+00:08:38,518 --> 00:08:40,518
+speaking, you should at least have somewhere in your models 
+
+170
+00:08:40,520 --> 00:08:44,520
+directory a model that are B file whose name is the singular 
+
+171
+00:08:44,524 --> 00:08:47,524
+version of the database table. There’ s the correspondence. The 
+
+172
+00:08:47,527 --> 00:08:50,527
+singular name is used for the class uppercase. Singular name is 
+
+173
+00:08:50,530 --> 00:08:53,530
+used for the filename lowercase and then the pluralized version 
+
+174
+00:08:53,533 --> 00:08:57,533
+lowercase is used for the database table. One thing that people 
+
+175
+00:08:57,537 --> 00:08:59,537
+often forget to do and they’ re very confused when they just 
+
+176
+00:08:59,539 --> 00:09:02,539
+successfully applied a migration and now they try to rerun their 
+
+177
+00:09:02,542 --> 00:09:05,542
+test and the test starts failing all of a sudden. Remember I 
+
+178
+00:09:05,545 --> 00:09:08,545
+said there are actually at least three environments that come 
+
+179
+00:09:08,548 --> 00:09:11,548
+standard. One of them is the test environment. Testing gets its 
+
+180
+00:09:11,551 --> 00:09:13,551
+own copy of the database that is totally separate from 
+
+181
+00:09:13,553 --> 00:09:17,553
+development, totally separate from production. The reason for 
+
+182
+00:09:17,557 --> 00:09:20,557
+that is by their nature, test can be destructive. You need a 
+
+183
+00:09:20,560 --> 00:09:22,560
+database where the test cannot have to worry about screwing up 
+
+184
+00:09:22,562 --> 00:09:26,562
+important data. You have to separately make sure whenever you 
+
+185
+00:09:26,566 --> 00:09:29,566
+change the schema. DB test prepare is essentially the equivalent 
+
+186
+00:09:29,569 --> 00:09:32,569
+of saying, “ Hey, test environment. I’ ve applied new migrations 
+
+187
+00:09:32,572 --> 00:09:36,572
+to my database so just clone the schema that I have and make 
+
+188
+00:09:36,576 --> 00:09:37,576
+sure that all the tests see that new schema and the test 
+
+189
+00:09:37,577 --> 00:09:41,577
+database too.” Again, it’ s a piece of automation that lets you 
+
+190
+00:09:41,581 --> 00:09:43,581
+not have to worry about doing this manually and actually keep 
+
+191
+00:09:43,583 --> 00:09:45,583
+everything in line. 
+
+

@@ -1,0 +1,186 @@
+1
+00:00:00,000 --> 00:00:04,000
+If I define ... here, I've got three savings accounts that I've
+
+2
+00:00:04,004 --> 00:00:08,004
+initialized with three different balances. Suppose I try to put 
+
+3
+00:00:08,008 --> 00:00:10,008
+those three savings accounts in an array and I try to call a 
+
+4
+00:00:10,010 --> 00:00:15,010
+sort on that array. What happens in this case? Does it work 
+
+5
+00:00:15,015 --> 00:00:17,015
+because the account balances are numbers and we know how to 
+
+6
+00:00:17,017 --> 00:00:20,017
+compare them? Does it not work, but if we added a comparison 
+
+7
+00:00:20,020 --> 00:00:24,020
+method or if we passed a comparison method to the sort method 
+
+8
+00:00:24,024 --> 00:00:28,024
+then it would work? Do we say it doesn't work but it would work 
+
+9
+00:00:28,028 --> 00:00:31,028
+if we defined a spaceship operator for savings accounts, or it 
+
+10
+00:00:31,031 --> 00:00:34,031
+doesn't work because since this isn't a basic, it would be tight 
+
+11
+00:00:34,034 --> 00:00:37,034
+and there's no built in way to compare it to the operator? 
+
+12
+00:00:37,037 --> 00:00:39,037
+Initial vote. I already see some cards even before I finished 
+
+13
+00:00:39,039 --> 00:00:44,039
+reading the question. Alright, overwhelming votes for red. You 
+
+14
+00:00:44,044 --> 00:00:49,044
+guys are on fire today. Let's go through the answers here.
+" It 
+
+15
+00:00:49,049 --> 00:00:52,049
+works because the account balances get compared." Well, that's 
+
+16
+00:00:52,052 --> 00:00:54,052
+certainly what we would like to be the case, but comparing 
+
+17
+00:00:54,054 --> 00:00:58,054
+accounts isn't the same as comparing integers, so that's not it. 
+
+18
+00:00:58,058 --> 00:01:01,058
+If we pass a comparison method to sort, that's not the Ruby way, 
+
+19
+00:01:01,061 --> 00:01:04,061
+right? The Ruby way is sort makes some assumptions about the 
+
+20
+00:01:04,064 --> 00:01:06,064
+thing you're trying to sort, in particular that the thing knows 
+
+21
+00:01:06,066 --> 00:01:10,066
+how to compare itself to other instances of that thing. The 
+
+22
+00:01:10,070 --> 00:01:12,070
+correct answer is: If we define the spaceship operator for 
+
+23
+00:01:12,072 --> 00:01:15,072
+savings accounts ... and by the way, how would we define it? An 
+
+24
+00:01:15,075 --> 00:01:23,075
+easy way would just be to say, as in this example: Here's a way 
+
+25
+00:01:23,083 --> 00:01:29,083
+to define comparisons on bank accounts. Here it is. It's coming 
+
+26
+00:01:29,089 --> 00:01:33,089
+now. We have two minutes left, yes. Here's the way you define 
+
+27
+00:01:33,093 --> 00:01:36,093
+comparison on bank accounts. I'm lazy, so I'm just going to 
+
+28
+00:01:36,096 --> 00:01:40,096
+define spaceship and then I'm going to include [ comp- pra- bowl 
+
+29
+00:01:40,100 --> 00:01:43,100
+00:01:40] to get the other ones for free. In case you don't 
+
+30
+00:01:43,103 --> 00:01:48,103
+believe me, I will copy and paste that code. I already had the 
+
+31
+00:01:48,108 --> 00:01:52,108
+class account defined, so now ... remember I had these accounts 
+
+32
+00:01:52,112 --> 00:02:03,112
+with high balances? I can say ... okay? Speaker 2:	[ Inaudible 
+
+33
+00:02:03,123 --> 00:02:08,123
+00:02:03]. Speaker 1: True in so many ways. ( Laughing) What's 
+
+34
+00:02:08,128 --> 00:02:12,128
+the message here? Ruby provides a lot of useful functionality to 
+
+35
+00:02:12,132 --> 00:02:16,132
+already do the work you need to do. Your job ... it's already 
+
+36
+00:02:16,136 --> 00:02:19,136
+varies in ... you need to do the least amount of new work 
+
+37
+00:02:19,139 --> 00:02:22,139
+possible to get the functionality you need. When you have 
+
+38
+00:02:22,142 --> 00:02:25,142
+behaviors you want to reuse, you can put them into a module. 
+
+39
+00:02:25,145 --> 00:02:28,145
+That module can be mixed into many classes as long as you make 
+
+40
+00:02:28,148 --> 00:02:30,148
+clear what does the module expect from the classes that you're 
+
+41
+00:02:30,150 --> 00:02:34,150
+mixing it into. If you want to reuse implementation, then you'd 
+
+42
+00:02:34,154 --> 00:02:37,154
+use the traditional thing. Classes have ancestors, they have 
+
+43
+00:02:37,157 --> 00:02:41,157
+sub- classes. As we'll see, contrary to what you might think 
+
+44
+00:02:41,161 --> 00:02:43,161
+coming from the JAVA world, remarkably often, what you want is 
+
+45
+00:02:43,163 --> 00:02:46,163
+the first one. You don't want to reuse implementation; you want 
+
+46
+00:02:46,166 --> 00:02:48,166
+to define behaviors and reuse them. 
+
+

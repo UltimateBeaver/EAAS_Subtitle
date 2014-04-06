@@ -1,0 +1,389 @@
+1
+00:00:00,000 --> 00:00:05,000
+Now we get to wrap up. Fallacies, pitfalls, perspectives ... 
+
+2
+00:00:05,005 --> 00:00:09,005
+We've spent some time looking at the machinery, lines of code, 
+
+3
+00:00:09,009 --> 00:00:11,009
+and I think the thing about this class that works well. We make 
+
+4
+00:00:11,011 --> 00:00:14,011
+you go frequently between looking at details and lines of code 
+
+5
+00:00:14,014 --> 00:00:16,014
+and then also try to back up a little bit and look at the big 
+
+6
+00:00:16,016 --> 00:00:20,016
+picture. Let me just start with a couple of pitfalls, fat 
+
+7
+00:00:20,020 --> 00:00:23,020
+controllers and fat views. When I say fat controllers, I'm not 
+
+8
+00:00:23,023 --> 00:00:25,023
+talking about human beings in a particular occupation. I'm 
+
+9
+00:00:25,025 --> 00:00:29,025
+talking about controllers whose methods start getting really, 
+
+10
+00:00:29,029 --> 00:00:31,029
+really long. In a simple example that I showed, the controller 
+
+11
+00:00:31,031 --> 00:00:34,031
+method was like four lines. In practice that'll be a little 
+
+12
+00:00:34,034 --> 00:00:37,034
+longer than that, but they shouldn't be a lot longer. The reason 
+
+13
+00:00:37,037 --> 00:00:40,037
+that it gets that way is because when you start thinking about I 
+
+14
+00:00:40,040 --> 00:00:43,040
+want to code the following new action in my map. What's the 
+
+15
+00:00:43,043 --> 00:00:46,043
+first place in your app that's a point of contact with the user? 
+
+16
+00:00:46,046 --> 00:00:49,046
+It's the controller right? That's how model view controller 
+
+17
+00:00:49,049 --> 00:00:53,049
+works. The first code you write that can touch what the user is 
+
+18
+00:00:53,053 --> 00:00:56,053
+doing is code that goes into the controller. That's where you 
+
+19
+00:00:56,056 --> 00:01:00,056
+start coding inevitably that's where you keep coding. It's just 
+
+20
+00:01:00,000 --> 00:01:01,060
+one more thing, it's just a couple of more lines, and pretty 
+
+21
+00:01:01,061 --> 00:01:04,061
+soon you've got like a page long controller method. You realize 
+
+22
+00:01:04,064 --> 00:01:06,064
+that the controller is doing work that really belongs somewhere 
+
+23
+00:01:06,066 --> 00:01:09,066
+else usually in the model. If it is interesting work, the model 
+
+24
+00:01:09,069 --> 00:01:12,069
+should do it. It's a huge temptation that you should avoid to 
+
+25
+00:01:12,072 --> 00:01:15,072
+start, just throwing code into your controller methods because 
+
+26
+00:01:15,075 --> 00:01:18,075
+that's the first place you happen to look when you're writing 
+
+27
+00:01:18,078 --> 00:01:23,078
+new app code. Fav use is a similar problem and Hamel does some 
+
+28
+00:01:23,083 --> 00:01:26,083
+social engineering to try to make it really awkward to put code 
+
+29
+00:01:26,086 --> 00:01:30,086
+into your views. People managed to circumvent it nonetheless. It 
+
+30
+00:01:30,090 --> 00:01:33,090
+starts innocently enough it's like, " Well I have a collection 
+
+31
+00:01:33,093 --> 00:01:35,093
+of items so I just need a simple for- loop to loop over the 
+
+32
+00:01:35,095 --> 00:01:39,095
+collection and print out one table rope or item. Okay, well 
+
+33
+00:01:39,099 --> 00:01:41,099
+that's kind of reasonable. Oh but it's not sort of the way I 
+
+34
+00:01:41,101 --> 00:01:44,101
+want, so I'll just add a couple of lines to sort it before I 
+
+35
+00:01:44,104 --> 00:01:46,104
+display the table. What if the user is not logged in and they 
+
+36
+00:01:46,106 --> 00:01:49,106
+shouldn't see some of the choices?" Again you're on the slippery 
+
+37
+00:01:49,109 --> 00:01:51,109
+slope, the decisions that really ought to be made somewhere 
+
+38
+00:01:51,111 --> 00:01:55,111
+else. The view is just for presenting stuff and if you need some 
+
+39
+00:01:55,115 --> 00:01:58,115
+code to prettify what the view is trying to present, that's what 
+
+40
+00:01:58,118 --> 00:01:59,118
+helpers are for. You can put help methods in the first stuff 
+
+41
+00:01:59,119 --> 00:02:04,119
+like that. I mentioned that it's really easy because of this 
+
+42
+00:02:04,124 --> 00:02:07,124
+philosophy that you're really deciding a restful service first. 
+
+43
+00:02:07,127 --> 00:02:10,127
+The user facing service second that it's actually quite easy to 
+
+44
+00:02:10,130 --> 00:02:12,130
+use the same controller code to match both purposing. I'm going 
+
+45
+00:02:12,132 --> 00:02:16,132
+to show an example of how to do that. Typically if you're being 
+
+46
+00:02:16,136 --> 00:02:19,136
+called as a service in a service- oriented architecture. The 
+
+47
+00:02:19,139 --> 00:02:22,139
+color will probably expect that you will deliver results to them 
+
+48
+00:02:22,142 --> 00:02:27,142
+in XML or JSON. XML, we sort of have seen by Osmosis. JSON we'll 
+
+49
+00:02:27,147 --> 00:02:30,147
+talk about more when we talk about JavaScript further down the 
+
+50
+00:02:30,150 --> 00:02:33,150
+line. Basically what I'm going to show you is a trivial 
+
+51
+00:02:33,153 --> 00:02:36,153
+controller change. Let's see re- purpose it to either way. We're 
+
+52
+00:02:36,156 --> 00:02:45,156
+going to look at, here's a version of the create action that 
+
+53
+00:02:45,165 --> 00:02:48,165
+will work correctly either in a service- oriented architecture 
+
+54
+00:02:48,168 --> 00:02:51,168
+or in a human face the one that we just built. What did I change 
+
+55
+00:02:51,171 --> 00:02:56,171
+here? This first two lines are the same, update attribute. This 
+
+56
+00:02:56,176 --> 00:02:59,176
+is all neither ... What's changed here is what we do in a 
+
+57
+00:02:59,179 --> 00:03:02,179
+rendering step. What I've done is I've put the render step 
+
+58
+00:03:02,182 --> 00:03:06,182
+inside of this block with this method respond to. Respond to 
+
+59
+00:03:06,186 --> 00:03:11,186
+yields to a block something that Ruby calls a collector or the 
+
+60
+00:03:11,191 --> 00:03:14,191
+Rails calls a collector. Basically a collector is responsible 
+
+61
+00:03:14,194 --> 00:03:18,194
+for figuring out what format the client probably wanted and what 
+
+62
+00:03:18,198 --> 00:03:21,198
+it should do for that format. In our example here, we're going 
+
+63
+00:03:21,201 --> 00:03:24,201
+to worry about two formats. If the client wants HTML, that was a 
+
+64
+00:03:24,204 --> 00:03:27,204
+user phasing request. That means we have to generate something 
+
+65
+00:03:27,207 --> 00:03:30,207
+that is a reasonable HTML page to present to a human being. On 
+
+66
+00:03:30,210 --> 00:03:33,210
+the other hand, if the client wants XML that means that we were 
+
+67
+00:03:33,213 --> 00:03:36,213
+called as a service and a service- oriented architecture. What 
+
+68
+00:03:36,216 --> 00:03:39,216
+we need to generate is an XML representation of the result of 
+
+69
+00:03:39,219 --> 00:03:44,219
+this operation. The respond to is baked in the Rails. There's 
+
+70
+00:03:44,224 --> 00:03:47,224
+logic in the routing sub- system that already allows you to with 
+
+71
+00:03:47,227 --> 00:03:50,227
+one line changing your routes file say these action should be 
+
+72
+00:03:50,230 --> 00:03:53,230
+valid in service- oriented architecture mode. They should be 
+
+73
+00:03:53,233 --> 00:03:57,233
+callable as the client wants an XML version of the same action. 
+
+74
+00:03:57,237 --> 00:03:59,237
+That's how this part works. You don't have to worry about this, 
+
+75
+00:03:59,239 --> 00:04:02,239
+this is going to be setup for you. All you have to do is provide 
+
+76
+00:04:02,242 --> 00:04:05,242
+a block that says what's the right thing to do in each case. In 
+
+77
+00:04:05,245 --> 00:04:08,245
+the HTML case, this is the same thing we had before. We're just 
+
+78
+00:04:08,248 --> 00:04:13,248
+going to do a redirect back to a different action. In the XML 
+
+79
+00:04:13,253 --> 00:04:19,253
+case, we're going to render ... Render colon XML means deliver 
+
+80
+00:04:19,259 --> 00:04:23,259
+the output in such a way that the client on the other end will 
+
+81
+00:04:23,263 --> 00:04:26,263
+see it as an XML encoded document. What's the thing that we're 
+
+82
+00:04:26,266 --> 00:04:30,266
+going to render? Conveniently, Rails defines a default or I 
+
+83
+00:04:30,270 --> 00:04:33,270
+should say active record, defines a default to XML method for 
+
+84
+00:04:33,273 --> 00:04:37,273
+you. The simplest thing it does is if your model contains basic 
+
+85
+00:04:37,277 --> 00:04:39,277
+types like strings and ends as it attributes, it will correctly 
+
+86
+00:04:39,279 --> 00:04:42,279
+XMLify that. You're free to override it so that you can do 
+
+87
+00:04:42,282 --> 00:04:45,282
+custom fields or whatever you want. For the most part this will 
+
+88
+00:04:45,285 --> 00:04:48,285
+just work. If I added a third line here for JSON it will work 
+
+89
+00:04:48,288 --> 00:04:52,288
+the same way. Again the message here is what's the controller 
+
+90
+00:04:52,292 --> 00:04:55,292
+doing. It's the first point of contact from the outside world. 
+
+91
+00:04:55,295 --> 00:04:58,295
+It can figure out what kind of entities making the request. The 
+
+92
+00:04:58,298 --> 00:05:00,298
+model is where the real work happens but once the work has been 
+
+93
+00:05:00,000 --> 00:05:03,300
+done, the controller can also decide what's the most appropriate 
+
+94
+00:05:03,303 --> 00:05:06,303
+way to present it. If you want it to do like your custom special 
+
+95
+00:05:06,306 --> 00:05:08,306
+stall sheets for a mobile app or something like that, this is 
+
+96
+00:05:08,308 --> 00:05:10,308
+another place that you could have that logic, completely 
+
+97
+00:05:10,310 --> 00:05:12,310
+orthogonal and very cool. 
+
+

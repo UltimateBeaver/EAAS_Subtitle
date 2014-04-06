@@ -1,0 +1,77 @@
+1
+00:00:00,000 --> 00:00:04,000
+So let's see about DBB and User Stories here. So which of these 
+
+2
+00:00:04,004 --> 00:00:08,004
+questions is false? BDD is designed to help with validation, 
+
+3
+00:00:08,008 --> 00:00:11,008
+build the right things in addition to verification, BDD should 
+
+4
+00:00:11,011 --> 00:00:15,011
+test app implementation. User Stories and BDD play the same role 
+
+5
+00:00:15,015 --> 00:00:19,015
+as design requirements and plan on document methods. And this is 
+
+6
+00:00:19,019 --> 00:00:22,019
+a valid User Story, search TMDB featured name and I want to 
+
+7
+00:00:22,022 --> 00:00:26,022
+search TMDB as a movie fan so that I can easily find 
+
+8
+00:00:26,026 --> 00:00:36,026
+information. So which of these things is false? Ready, set, 
+
+9
+00:00:36,036 --> 00:00:41,036
+vote. The first couple of rows are voting. Yes, there's some 
+
+10
+00:00:41,041 --> 00:00:44,041
+differences here, so talk this over and then ... talk it over 
+
+11
+00:00:44,044 --> 00:00:53,044
+and we'll do it again. All right. Let's vote again, let's vote 
+
+12
+00:00:53,053 --> 00:00:57,053
+again. Ready, set, cards up. Voting as pairs. Okay. It converged 
+
+13
+00:00:57,057 --> 00:01:00,057
+to green. Good. So BDD is designed to help with validation, 
+
+14
+00:01:00,000 --> 00:01:03,060
+that's correct. User Stories play the same role as design 
+
+15
+00:01:03,063 --> 00:01:08,063
+requirements plan [ inaudible 00:01:04] correct. The blue on 
+
+16
+00:01:08,068 --> 00:01:11,068
+which some people voted for the first time around it's just in a 
+
+17
+00:01:11,071 --> 00:01:13,071
+little bit different order but it's got all 3 terms, so it's 
+
+18
+00:01:13,073 --> 00:01:16,073
+okay. But BDD doesn't test the implementation, it tests the 
+
+19
+00:01:16,076 --> 00:01:20,076
+behavior, Behavior Driven Design. Okay. Good. So with that ... 
+
+

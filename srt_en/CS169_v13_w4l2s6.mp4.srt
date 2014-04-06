@@ -1,0 +1,237 @@
+1
+00:00:00,000 --> 00:00:03,000
+Based on that, here’ s a question about migrations. Even though 
+
+2
+00:00:03,003 --> 00:00:06,003
+you’ ve technically not seen them until five minutes ago but 
+
+3
+00:00:06,006 --> 00:00:09,006
+based on what you’ ve seen about Rails, based on what you know 
+
+4
+00:00:09,009 --> 00:00:13,009
+about Ruby and yield and how that stuff works, this is a snippet 
+
+5
+00:00:13,013 --> 00:00:16,013
+of the up method that I just showed you in the example. The 
+
+6
+00:00:16,016 --> 00:00:19,016
+question is when it has create table and something is yielded 
+
+7
+00:00:19,019 --> 00:00:23,019
+back to this due block, what is probably the type of thing that 
+
+8
+00:00:23,023 --> 00:00:26,023
+is yielded back? What would be a reasonable assumption of what 
+
+9
+00:00:26,026 --> 00:00:29,026
+kind of a thing T is in this example? Is it an object that 
+
+10
+00:00:29,029 --> 00:00:32,029
+represents the database? An object representing an instance of 
+
+11
+00:00:32,032 --> 00:00:36,032
+the model? An object representing a database table or given the 
+
+12
+00:00:36,036 --> 00:00:40,036
+information we have, it could be anything and it’ s not fair to 
+
+13
+00:00:40,040 --> 00:00:43,040
+ask the question. What does everybody else say? What does 
+
+14
+00:00:43,043 --> 00:00:48,043
+everybody else say? We have red and green appear to be the most 
+
+15
+00:00:48,048 --> 00:00:52,048
+popular options among those who are voting. Those who are not 
+
+16
+00:00:52,052 --> 00:00:56,052
+voting, you must be thinking about something else. Talk it over 
+
+17
+00:00:56,056 --> 00:00:59,056
+for a little bit and let’ s see if we can converge between red 
+
+18
+00:00:59,059 --> 00:01:06,059
+and green. Shall we try a revote? Revote says, I think red has 
+
+19
+00:01:06,066 --> 00:01:13,066
+won the America’ s Cup of this question. Although there are 
+
+20
+00:01:13,073 --> 00:01:16,073
+still people holding up for green. Let’ s go through the answers 
+
+21
+00:01:16,076 --> 00:01:21,076
+here. What kind of thing might TB …? When you’ re looking at 
+
+22
+00:01:21,081 --> 00:01:24,081
+code and you’ re not familiar with the code apriori, it is a 
+
+23
+00:01:24,084 --> 00:01:28,084
+good skill for software engineers to have to try to infer intent 
+
+24
+00:01:28,088 --> 00:01:30,088
+from the code that the program will route. If the program will 
+
+25
+00:01:30,090 --> 00:01:33,090
+route their code well according to some of the habits that we’ 
+
+26
+00:01:33,093 --> 00:01:36,093
+re going to try to teach you all, then in some cases, you should 
+
+27
+00:01:36,096 --> 00:01:38,096
+be able to use things about the code like method names and the 
+
+28
+00:01:38,098 --> 00:01:42,098
+context in which things are used to make some inferences even if 
+
+29
+00:01:42,102 --> 00:01:46,102
+you haven’ t seen it before. If we apply that in this example, 
+
+30
+00:01:46,106 --> 00:01:49,106
+there’ s a couple of things we could say here. Could T possibly 
+
+31
+00:01:49,109 --> 00:01:52,109
+be an object representing the database? What are we doing with 
+
+32
+00:01:52,112 --> 00:01:55,112
+T? There’ s a method on it called datetime. There are methods 
+
+33
+00:01:55,115 --> 00:01:59,115
+that you saw in my original code snippet like string and text 
+
+34
+00:01:59,119 --> 00:02:02,119
+and integer. Does it really make sense to talk about calling 
+
+35
+00:02:02,122 --> 00:02:05,122
+methods like that an entire database? I would be skeptical 
+
+36
+00:02:05,125 --> 00:02:09,125
+because a database consists of a collection of tables. This 
+
+37
+00:02:09,129 --> 00:02:12,129
+could apply to anyone of them. Could it be an object 
+
+38
+00:02:12,132 --> 00:02:15,132
+representing an instance of a model? We’ re talking about the 
+
+39
+00:02:15,135 --> 00:02:18,135
+attributes of models in general. We’ re saying that movies in 
+
+40
+00:02:18,138 --> 00:02:21,138
+general have a release date, have a string, have a something. 
+
+41
+00:02:21,141 --> 00:02:24,141
+These are statements that are about the class as a whole; they’ 
+
+42
+00:02:24,144 --> 00:02:27,144
+re not a statement about a particular instance of that class. It 
+
+43
+00:02:27,147 --> 00:02:30,147
+seems less likely that it represents an instance of a model. 
+
+44
+00:02:30,150 --> 00:02:33,150
+What about the hypothesis that it could represent a table? Let’ 
+
+45
+00:02:33,153 --> 00:02:37,153
+s see. It’ s an argument to the create table call. It’ s talking 
+
+46
+00:02:37,157 --> 00:02:40,157
+about the kinds of things tables care about. Tables care about 
+
+47
+00:02:40,160 --> 00:02:43,160
+attributes that have names and types like an attribute named 
+
+48
+00:02:43,163 --> 00:02:47,163
+release date whose type is datetime. That in my opinion would be 
+
+49
+00:02:47,167 --> 00:02:49,167
+the most reasonable assumption and it is in fact the correct 
+
+50
+00:02:49,169 --> 00:02:52,169
+one. What actually is being yielded here is an object that 
+
+51
+00:02:52,172 --> 00:02:55,172
+essentially represents the table that is going to be created and 
+
+52
+00:02:55,175 --> 00:02:58,175
+is allowing you to set up things about that table. In one sense, 
+
+53
+00:02:58,178 --> 00:03:00,178
+you could say this, “ It wasn’ t a fair question because you 
+
+54
+00:03:00,000 --> 00:03:02,180
+weren’ t allowed to look at the documentation and so forth. It’ 
+
+55
+00:03:02,182 --> 00:03:05,182
+s also I think an opportunity to take a look at somebody tried 
+
+56
+00:03:05,185 --> 00:03:08,185
+to write code and name methods and use them in a way that would 
+
+57
+00:03:08,188 --> 00:03:11,188
+give you some clue as to what they’ re trying to do even if you’ 
+
+58
+00:03:11,191 --> 00:03:13,191
+re not familiar with that part of Rails. That’ s where we are 
+
+59
+00:03:13,193 --> 00:03:14,193
+with that. 
+
+

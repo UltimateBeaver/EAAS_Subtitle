@@ -1,0 +1,705 @@
+1
+00:00:00,000 --> 00:00:02,000
+Let us start talking about debugging. I reordered some of the 
+
+2
+00:00:02,002 --> 00:00:06,002
+segments because in view of the fact that we have more homeworks 
+
+3
+00:00:06,006 --> 00:00:08,006
+then we’ ve had before in this class, and it is a really fast- 
+
+4
+00:00:08,008 --> 00:00:11,008
+paced introduction to Ruby and Rails. We know that, and we’ re 
+
+5
+00:00:11,011 --> 00:00:16,011
+asking quite a bit of you guys to step up to the plate. Let me 
+
+6
+00:00:16,016 --> 00:00:18,016
+just give some words about debugging, and none of what I’ m 
+
+7
+00:00:18,018 --> 00:00:21,018
+going to say about debugging is specific to this course. This is 
+
+8
+00:00:21,021 --> 00:00:25,021
+all information that I hope will serve you well anytime you move 
+
+9
+00:00:25,025 --> 00:00:28,025
+to a new language or a new system. Compared to debugging command 
+
+10
+00:00:28,028 --> 00:00:31,028
+line programs or other kinds of programs you may have written, 
+
+11
+00:00:31,031 --> 00:00:33,031
+SaaS can be a little bit trickier because for one thing you’ re 
+
+12
+00:00:33,033 --> 00:00:35,033
+probably used to being able to print up some stuff and see it in 
+
+13
+00:00:35,035 --> 00:00:39,035
+the terminal. There is no terminal in the SaaS world. It’ s 
+
+14
+00:00:39,039 --> 00:00:41,039
+running on a server somewhere so the idea that you can have 
+
+15
+00:00:41,041 --> 00:00:44,041
+stuff printed out to the terminal doesn’ t work too well. Also, 
+
+16
+00:00:44,044 --> 00:00:46,044
+remember that there’ s a lot moving parts in these applications. 
+
+17
+00:00:46,046 --> 00:00:49,046
+We start with a URI coming from a browser. There’ s a routing 
+
+18
+00:00:49,049 --> 00:00:51,049
+subsystem. The controller has to get invoked. The model does 
+
+19
+00:00:51,051 --> 00:00:54,051
+stuff so there’ s sort of all these places where things have to 
+
+20
+00:00:54,054 --> 00:00:57,054
+happen, and sometimes an error can occur early in the flow but 
+
+21
+00:00:57,057 --> 00:01:01,057
+not become manifest, not show symptoms until later in the flow. 
+
+22
+00:01:01,061 --> 00:01:04,061
+Sometimes if it’ s an error that only arises under a certain 
+
+23
+00:01:04,064 --> 00:01:07,064
+difficult conditions, it might be hard to reproduce. That’ s 
+
+24
+00:01:07,067 --> 00:01:09,067
+another thing that’ s tricky. We’ ve got external users. You 
+
+25
+00:01:09,069 --> 00:01:12,069
+can’ t control what the inputs are. There’ s a couple of 
+
+26
+00:01:12,072 --> 00:01:14,072
+different things that I’ m going to talk about and how you can 
+
+27
+00:01:14,074 --> 00:01:17,074
+approach debugging. One thing is something you probably all have 
+
+28
+00:01:17,077 --> 00:01:19,077
+done in many other languages, which is printing stuff to the 
+
+29
+00:01:19,079 --> 00:01:22,079
+terminal. Some people call that printf debugging, and in 
+
+30
+00:01:22,082 --> 00:01:24,082
+development mode, that’ s fine. You can certainly do that, and 
+
+31
+00:01:24,084 --> 00:01:27,084
+I’ ll show you a couple of different ways. There’ s log- in. 
+
+32
+00:01:27,087 --> 00:01:30,087
+Even though there’ s no interactive terminal in the production 
+
+33
+00:01:30,090 --> 00:01:33,090
+server, there are certainly log files where you can write stuff. 
+
+34
+00:01:33,093 --> 00:01:36,093
+A colleague of mine that said that log files are actually more 
+
+35
+00:01:36,096 --> 00:01:39,096
+important in some cases then the code and the comments because 
+
+36
+00:01:39,099 --> 00:01:42,099
+the log file, when you write a message of the log file, you’ re 
+
+37
+00:01:42,102 --> 00:01:45,102
+expressing your intent as a programmer of what was supposed to 
+
+38
+00:01:45,105 --> 00:01:47,105
+happen in the app. It doesn’ t mean it actually happened, but 
+
+39
+00:01:47,107 --> 00:01:49,107
+you wrote to the log file that you thought this what’ s supposed 
+
+40
+00:01:49,109 --> 00:01:52,109
+to happen so that can be very valuable. When it’ s time to 
+
+41
+00:01:52,112 --> 00:01:54,112
+really bring out the big guns, Ruby has an interactive 
+
+42
+00:01:54,114 --> 00:01:57,114
+debugging. We’ re going to demonstrate a little bit later on. 
+
+43
+00:01:57,117 --> 00:02:01,117
+However, all debugging has the following four letter acronym in 
+
+44
+00:02:01,121 --> 00:02:05,121
+common. It [ WEEVS 00:02:00] RASP. It could also be SPAR or PARS 
+
+45
+00:02:05,125 --> 00:02:07,125
+or whatever you want, but it’ s the same four things. When you 
+
+46
+00:02:07,127 --> 00:02:11,127
+run into a problem, first of all calm down. Debugging is a fact 
+
+47
+00:02:11,131 --> 00:02:14,131
+of life. You’ re always going to do it, and we were very big on 
+
+48
+00:02:14,134 --> 00:02:16,134
+test- driven development and stuff like that, but I would be an 
+
+49
+00:02:16,136 --> 00:02:18,136
+idiot to say that that’ s going to guarantee you’ ll never 
+
+50
+00:02:18,138 --> 00:02:21,138
+experience bugs during the running of your code. This is just … 
+
+51
+00:02:21,141 --> 00:02:24,141
+we’ re programmers. It’ s a fact of life. First, read the error 
+
+52
+00:02:24,144 --> 00:02:28,144
+message. Let me say that again because it bears repeating. 
+
+53
+00:02:28,148 --> 00:02:31,148
+Really read the error message. Some of the error messages may 
+
+54
+00:02:31,151 --> 00:02:34,151
+look like a lot of spew, but in the scheme of things it’ s not 
+
+55
+00:02:34,154 --> 00:02:36,154
+that many lines of spew, and there’ s valuable information in 
+
+56
+00:02:36,156 --> 00:02:39,156
+there, like usually the file and the line number of where 
+
+57
+00:02:39,159 --> 00:02:42,159
+something went wrong; the backtrace, which is a list of all the 
+
+58
+00:02:42,162 --> 00:02:45,162
+functions that called you all the way up to the top level where 
+
+59
+00:02:45,165 --> 00:02:48,165
+Rails first got invoked. Understanding at least where you should 
+
+60
+00:02:48,168 --> 00:02:50,168
+start looking for the symptom is one thing you can find in 
+
+61
+00:02:50,170 --> 00:02:54,170
+there. Ask a colleague. You’ re surrounded by colleagues in the 
+
+62
+00:02:54,174 --> 00:02:57,174
+class. You’ ve also got the staff of the course, but when you 
+
+63
+00:02:57,177 --> 00:03:00,177
+ask a question, try to ask the most informed question you can. A 
+
+64
+00:03:00,000 --> 00:03:03,180
+bad example of a question is, help, my code doesn’ t work. A 
+
+65
+00:03:03,183 --> 00:03:05,183
+good example of a question, is, look, I got this far. I expected 
+
+66
+00:03:05,185 --> 00:03:07,185
+this variable to have this value, but it seems to have this 
+
+67
+00:03:07,187 --> 00:03:11,187
+other value or it has nils of value, and this is the 
+
+68
+00:03:11,191 --> 00:03:14,191
+circumstances. The more information that you give, the more like 
+
+69
+00:03:14,194 --> 00:03:16,194
+that somebody could say, oh, yeah, I know what that is. Here’ s 
+
+70
+00:03:16,196 --> 00:03:18,196
+what you might’ ve done wrong. If that doesn’ t work, you can 
+
+71
+00:03:18,198 --> 00:03:21,198
+ask more colleagues the internet. You can use StackOverflow, 
+
+72
+00:03:21,201 --> 00:03:23,201
+which is one of my favorites, but there are other sites as well, 
+
+73
+00:03:23,203 --> 00:03:26,203
+and this is especially true if the error involves a particular 
+
+74
+00:03:26,206 --> 00:03:29,206
+version of a library or something like that. Sometimes the bugs 
+
+75
+00:03:29,209 --> 00:03:31,209
+don’ t manifest the same way on different versions, but somebody 
+
+76
+00:03:31,211 --> 00:03:34,211
+out there’ s probably had the same bug you had. For the more 
+
+77
+00:03:34,214 --> 00:03:36,214
+obscure ones where it’ s not just a bug in your logic, but there 
+
+78
+00:03:36,216 --> 00:03:39,216
+might actually be an issue with the framework, things like 
+
+79
+00:03:39,219 --> 00:03:42,219
+StackOverflow are a great resource. If you can’ t find the 
+
+80
+00:03:42,222 --> 00:03:45,222
+answer already on StackOverflow, you can post there. There’ s 
+
+81
+00:03:45,225 --> 00:03:49,225
+also the course forms, [ Piasa 00:03:46] and so forth, but 
+
+82
+00:03:49,229 --> 00:03:50,229
+remember everybody who reads those is as busy as you are. They’ 
+
+83
+00:03:50,230 --> 00:03:53,230
+re also trying to debug and get their code to work. To help them 
+
+84
+00:03:53,233 --> 00:03:56,233
+help you, give them the most complete information you can but 
+
+85
+00:03:56,236 --> 00:04:00,236
+also concise. Don’ t confuse complete information with copy and 
+
+86
+00:04:00,000 --> 00:04:02,240
+paste the entire transcript of the error message. That takes a 
+
+87
+00:04:02,242 --> 00:04:05,242
+long time for them to read. You do the work of reading, and it’ 
+
+88
+00:04:05,245 --> 00:04:08,245
+s your error message. Once you’ ve narrowed it down to a smaller 
+
+89
+00:04:08,248 --> 00:04:11,248
+set of circumstances, maybe you could even reproduce the bug in 
+
+90
+00:04:11,251 --> 00:04:14,251
+a controlled manner with less code, that’ s what you post. Those 
+
+91
+00:04:14,254 --> 00:04:18,254
+questions tend to get answered within minutes on StackOverflow. 
+
+92
+00:04:18,258 --> 00:04:20,258
+How do you read these error messages? They are long, but you can 
+
+93
+00:04:20,260 --> 00:04:22,260
+parse them. You know, you’ re all very smart. The backtrace 
+
+94
+00:04:22,262 --> 00:04:25,262
+shows you where you came from, so not only where the error 
+
+95
+00:04:25,265 --> 00:04:27,265
+occurred but who called that method and who called that method 
+
+96
+00:04:27,267 --> 00:04:31,267
+and so on all the way up to the top. A very common message, 
+
+97
+00:04:31,271 --> 00:04:34,271
+especially in Ruby, is you’ ll see undefined method, something, 
+
+98
+00:04:34,274 --> 00:04:38,274
+for nil, and 99% of the time here’ s what’ s happening in this 
+
+99
+00:04:38,278 --> 00:04:40,278
+message, and I’ m using this as a specific example because it is 
+
+100
+00:04:40,280 --> 00:04:43,280
+so common. Often it means that you did some sort of a call where 
+
+101
+00:04:43,283 --> 00:04:46,283
+you assigned a variable, but you didn’ t bother to check for an 
+
+102
+00:04:46,286 --> 00:04:49,286
+error condition, and a lot of Ruby methods when an error of some 
+
+103
+00:04:49,289 --> 00:04:52,289
+kind occurs, instead of raising exception, they’ ll return nil 
+
+104
+00:04:52,292 --> 00:04:55,292
+instead of returning the object that you expected. For example, 
+
+105
+00:04:55,295 --> 00:04:58,295
+we’ re going to show later how you talk to the data base in a 
+
+106
+00:04:58,298 --> 00:05:01,298
+Rails app, and you might do a find on the data base expecting to 
+
+107
+00:05:01,301 --> 00:05:04,301
+pull out, let’ s say, a movie from the movie’ s table, and if it 
+
+108
+00:05:04,304 --> 00:05:07,304
+turns out that that movie’ s not there for whatever reason, M 
+
+109
+00:05:07,307 --> 00:05:10,307
+will come back nil. When you try to dereference something on it, 
+
+110
+00:05:10,310 --> 00:05:14,310
+well, this is syntactically legal. You’ re trying to call a 
+
+111
+00:05:14,314 --> 00:05:17,314
+method on the object, but if M is nil, nil is an object that 
+
+112
+00:05:17,317 --> 00:05:19,317
+doesn’ t know how to do that many things. It is not a very 
+
+113
+00:05:19,319 --> 00:05:23,319
+talented object; hence, the somewhat initially confusing method, 
+
+114
+00:05:23,323 --> 00:05:26,323
+undefined method foo for nil. When you think about it, it 
+
+115
+00:05:26,326 --> 00:05:29,326
+actually does make sense. The value of M is nil, and you tried 
+
+116
+00:05:29,329 --> 00:05:34,329
+to call the method title on nil, and that doesn’ t work. Other 
+
+117
+00:05:34,334 --> 00:05:36,334
+things that you can do, instrumentation, which is a fancy word 
+
+118
+00:05:36,336 --> 00:05:41,336
+for printing the values of stuff as you collect the data during 
+
+119
+00:05:41,341 --> 00:05:43,341
+the time your program is running. As we’ ll see, you can put 
+
+120
+00:05:43,343 --> 00:05:45,343
+limited amounts of code in your views. I know I’ ve told you, 
+
+121
+00:05:45,345 --> 00:05:48,345
+you shouldn’ t do it, but sometimes when you’ re debugging you 
+
+122
+00:05:48,348 --> 00:05:51,348
+got to break some eggs, etc. There’ s a couple of methods like 
+
+123
+00:05:51,351 --> 00:05:54,351
+debug, which prints out, I should say generates, a string 
+
+124
+00:05:54,354 --> 00:05:58,354
+representation of an object that’ s nicely pretty printed, and 
+
+125
+00:05:58,358 --> 00:06:00,358
+you can just stick that right into your view. Your view will 
+
+126
+00:06:00,000 --> 00:06:03,360
+look terrible, but given that there’ s no terminal to print to, 
+
+127
+00:06:03,363 --> 00:06:06,363
+this is a good thing to be able to see on the screen. A slightly 
+
+128
+00:06:06,366 --> 00:06:08,366
+lighter- weight version is inspect. Inspect is a method that is 
+
+129
+00:06:08,368 --> 00:06:12,368
+defined on objects. Every Ruby object responds to it, although 
+
+130
+00:06:12,372 --> 00:06:15,372
+the default thing that it prints out to describe itself is not 
+
+131
+00:06:15,375 --> 00:06:18,375
+necessarily that useful. That’ s why most interesting classes 
+
+132
+00:06:18,378 --> 00:06:21,378
+override inspect and print out something more useful about 
+
+133
+00:06:21,381 --> 00:06:23,381
+themselves. They try to print a program or useful representation 
+
+134
+00:06:23,383 --> 00:06:27,383
+of what the object is. You could also write stuff to the log. I 
+
+135
+00:06:27,387 --> 00:06:30,387
+am a big fan of logging. Space is cheap. Write log files. There’ 
+
+136
+00:06:30,390 --> 00:06:33,390
+s a logger method that returns the logger object. All controller 
+
+137
+00:06:33,393 --> 00:06:36,393
+methods can have access to it, and there’ s different warning 
+
+138
+00:06:36,396 --> 00:06:39,396
+levels like debug and warn in error, just as you’ ve probably 
+
+139
+00:06:39,399 --> 00:06:43,399
+seen in other logging systems. Remember, if you try to just use 
+
+140
+00:06:43,403 --> 00:06:46,403
+printf or its various equivalents, they nowhere to go. In a 
+
+141
+00:06:46,406 --> 00:06:50,406
+production server, there just going to sort of disappear. When 
+
+142
+00:06:50,410 --> 00:06:52,410
+it comes time to search and using the internet to answer 
+
+143
+00:06:52,412 --> 00:06:55,412
+questions, you’ d be surprised how far you can get by using the 
+
+144
+00:06:55,415 --> 00:06:58,415
+Google, seriously. Suppose your question is how do I format a 
+
+145
+00:06:58,418 --> 00:07:00,418
+date in Ruby? Well, let’ s pick out the elements of that 
+
+146
+00:07:00,000 --> 00:07:02,420
+sentence, shall we, the subject, the verb, and the direct 
+
+147
+00:07:02,422 --> 00:07:05,422
+object; format, date, Ruby. Search for those three things in 
+
+148
+00:07:05,425 --> 00:07:08,425
+Google. I guarantee you’ ll find some results. How do I add 
+
+149
+00:07:08,428 --> 00:07:11,428
+Rails routes beyond the standard CRUD ones that get defined for 
+
+150
+00:07:11,431 --> 00:07:14,431
+you? Again, look at the key words in your question, type those 
+
+151
+00:07:14,434 --> 00:07:17,434
+key words into Google, and rely on the wisdom of the world to 
+
+152
+00:07:17,437 --> 00:07:20,437
+see if you get an initial step. A lot of error messages have 
+
+153
+00:07:20,440 --> 00:07:23,440
+been reported by people other than you, amazingly enough. Read 
+
+154
+00:07:23,443 --> 00:07:25,443
+the documentation. We used to have an abbreviation for this, 
+
+155
+00:07:25,445 --> 00:07:28,445
+RTFM, but since no one reads anymore, the abbreviation has lost, 
+
+156
+00:07:28,448 --> 00:07:32,448
+perhaps, some of its currency. Nonetheless, there’ s complete 
+
+157
+00:07:32,452 --> 00:07:35,452
+searchable, nicely formatted online documentation for both Rails 
+
+158
+00:07:35,455 --> 00:07:39,455
+and the Ruby libraries, both of which are extensive. Read the 
+
+159
+00:07:39,459 --> 00:07:42,459
+source. Rails is source code. Rails is actually just a Ruby 
+
+160
+00:07:42,462 --> 00:07:45,462
+library that’ s part of your app, so if you’ re really curious 
+
+161
+00:07:45,465 --> 00:07:48,465
+you can actually traceback into Rails. The error occurred 
+
+162
+00:07:48,468 --> 00:07:51,468
+somewhere when Rails was trying to do this thing. What is that 
+
+163
+00:07:51,471 --> 00:07:53,471
+part of Rails actually doing? You can go read the documentation 
+
+164
+00:07:53,473 --> 00:07:57,473
+and find out. Of course, StackOverflow, my personal favorite. 
+
+165
+00:07:57,477 --> 00:08:00,477
+Use Rails console. So we’ ve been using irb for simple examples, 
+
+166
+00:08:00,000 --> 00:08:03,480
+but what you really want is you want a Ruby command line 
+
+167
+00:08:03,483 --> 00:08:06,483
+interpreter that actually has the entire environment of your 
+
+168
+00:08:06,486 --> 00:08:08,486
+application loaded into it. It knows what database tables you 
+
+169
+00:08:08,488 --> 00:08:14,488
+have and so forth. Rails console more or less does that. In some 
+
+170
+00:08:14,494 --> 00:08:16,494
+cases, if you need to inspect the state of the program at a 
+
+171
+00:08:16,496 --> 00:08:19,496
+particular point in time, like what happens when I get to this 
+
+172
+00:08:19,499 --> 00:08:21,499
+point in my controller method? In those cases, even Rails 
+
+173
+00:08:21,501 --> 00:08:24,501
+console is a little bit awkward to use so a little bit later I’ 
+
+174
+00:08:24,504 --> 00:08:27,504
+ll show you a demo, a real interactive debugger that you can use 
+
+175
+00:08:27,507 --> 00:08:31,507
+in cases like that. That’ s kind of bringing out the big gun. 
+
+176
+00:08:31,511 --> 00:08:32,511
+You don’ t need to do that too often. 
+
+

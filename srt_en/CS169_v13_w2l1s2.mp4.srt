@@ -1,0 +1,49 @@
+1
+00:00:00,000 --> 00:00:09,000
+Okay. That let's do a peer questions to see if you communicate
+
+2
+00:00:09,009 --> 00:00:14,009
+thing well. Which statement is false about Waterfall, Spiral, 
+
+3
+00:00:14,014 --> 00:00:16,014
+and Rational Unified Process Lifecycles? All rely on careful 
+
+4
+00:00:16,016 --> 00:00:20,016
+planning, and measure progress against the plan. All reply on 
+
+5
+00:00:20,020 --> 00:00:23,020
+thorough documentation. All reply on a manager to be in charge 
+
+6
+00:00:23,023 --> 00:00:28,023
+of the project. All use iteration and prototypes. All right. See 
+
+7
+00:00:28,028 --> 00:00:31,028
+how many people can get this, and how many people haven't lost 
+
+8
+00:00:31,031 --> 00:00:38,031
+their card. Okay. Ready, set ... Okay. Vote. All right. As I 
+
+9
+00:00:38,038 --> 00:00:43,038
+suspected, that's pretty straightforward. Yes. The right answer 
+
+10
+00:00:43,043 --> 00:00:48,043
+is the fourth one. The incorrect answer is the fourth one. All 
+
+11
+00:00:48,048 --> 00:00:51,048
+use iteration and prototypes. That waterfall doesn't use 
+
+12
+00:00:51,051 --> 00:00:55,051
+iteration prototypes, but the others do. All right. 
+
+

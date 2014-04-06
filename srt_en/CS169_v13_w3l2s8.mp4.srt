@@ -1,0 +1,244 @@
+00:00:00,000 --> 00:00:03,000
+What happens if you embed code that tries to directly act as the 
+
+2
+00:00:03,003 --> 00:00:07,003
+model? So I mentioned active record give you the ability to 
+
+3
+00:00:07,007 --> 00:00:10,007
+essentially do operations on the model without explicitly naming 
+
+4
+00:00:10,010 --> 00:00:13,010
+the database. The database machinery is hidden inside the active 
+
+5
+00:00:13,013 --> 00:00:16,013
+record module that comes with Rails. So a question for you to 
+
+6
+00:00:16,016 --> 00:00:20,016
+think about this, if you try to do that in the view what would 
+
+7
+00:00:20,020 --> 00:00:24,020
+happen? Would it work, but be bad form and you would be naughty, 
+
+8
+00:00:24,024 --> 00:00:27,024
+would it work when you are developing against the toy database, 
+
+9
+00:00:27,027 --> 00:00:30,027
+but it would not work in production necessarily, will it not 
+
+10
+00:00:30,030 --> 00:00:33,030
+work because views cannot communicate directly with the models 
+
+11
+00:00:33,033 --> 00:00:36,033
+in MVC, it has to go through a controller or does it vary 
+
+12
+00:00:36,036 --> 00:00:39,036
+depending on what it is specifically that your app is trying to 
+
+13
+00:00:39,039 --> 00:00:43,039
+do when it manipulates the model directly from the view. So, 
+
+14
+00:00:43,043 --> 00:00:49,043
+think for a moment and I will drink for a moment. … Initial vote 
+
+15
+00:00:49,049 --> 00:00:55,049
+says preference for orange but also a representation for blue 
+
+16
+00:00:55,055 --> 00:00:58,055
+and green. So, choices one, three and four are all represented. 
+
+17
+00:00:58,058 --> 00:01:01,058
+I do not see any support for green, so talk it over for a little 
+
+18
+00:01:01,061 --> 00:01:07,061
+bit … Okay, I submit that it is time to vote again. So let’ s do 
+
+19
+00:01:07,067 --> 00:01:16,067
+that. … Orange has received a lot more support. Just to prove 
+
+20
+00:01:16,076 --> 00:01:18,076
+that I am not staging it that want to go through a totally 
+
+21
+00:01:18,078 --> 00:01:23,078
+different random order two, three, four, one. It will work when 
+
+22
+00:01:23,083 --> 00:01:27,083
+developing against a toy database but not in production. No, not 
+
+23
+00:01:27,087 --> 00:01:29,087
+necessarily. There are a lot of things that you can do to be 
+
+24
+00:01:29,089 --> 00:01:33,089
+cruel to your production database and some of them have nothing 
+
+25
+00:01:33,093 --> 00:01:35,093
+to do with this. So, it is really not a matter of distinguishing 
+
+26
+00:01:35,095 --> 00:01:39,095
+between the toy versus the real database in this case. Another 
+
+27
+00:01:39,099 --> 00:01:41,099
+way to put that is, this is always a bad idea whether it is 
+
+28
+00:01:41,101 --> 00:01:44,101
+development or production. It will not work because views cannot 
+
+29
+00:01:44,104 --> 00:01:47,104
+communicate directly with the models. Remember that whenever you 
+
+30
+00:01:47,107 --> 00:01:49,107
+make architectural choices, it is very rare that the framework 
+
+31
+00:01:49,109 --> 00:01:52,109
+you are using will be so draconian that there is absolutely no 
+
+32
+00:01:52,112 --> 00:01:56,112
+way to escape your architectural choices. You can always 
+
+33
+00:01:56,116 --> 00:02:01,116
+exercise bad habits. So a model view controller says that in a 
+
+34
+00:02:01,121 --> 00:02:05,121
+properly architected MVC app, it should be the case that views 
+
+35
+00:02:05,125 --> 00:02:07,125
+do not communicate directly with models, but there is no 
+
+36
+00:02:07,127 --> 00:02:11,127
+machinery that will explicitly stop you from trying to do that. 
+
+37
+00:02:11,131 --> 00:02:14,131
+It is the enough rope to hang yourself philosophy. Behavior 
+
+38
+00:02:14,134 --> 00:02:16,134
+varies depending on the app. No, it does not vary depending on 
+
+39
+00:02:16,136 --> 00:02:19,136
+the app. It is just always a bad idea. This will work, you can 
+
+40
+00:02:19,139 --> 00:02:23,139
+do this and in fact you can argue that many PHP apps do exactly 
+
+41
+00:02:23,143 --> 00:02:26,143
+this. But it is bad form. It violates the guidelines and it 
+
+42
+00:02:26,146 --> 00:02:29,146
+ought to be making you wonder why it is that you find yourself 
+
+43
+00:02:29,149 --> 00:02:32,149
+putting code like that in the view. What is it that the view is 
+
+44
+00:02:32,152 --> 00:02:34,152
+viewing that is so important that it needs to the talk to the 
+
+45
+00:02:34,154 --> 00:02:36,154
+model directly? If it is that important, why is not that code 
+
+46
+00:02:36,156 --> 00:02:39,156
+already part of the model? So those are the kind of things that 
+
+47
+00:02:39,159 --> 00:02:41,159
+should be asking yourself. Another guideline that we are going 
+
+48
+00:02:41,161 --> 00:02:43,161
+to come across that is very similar is if you are writing a 
+
+49
+00:02:43,163 --> 00:02:47,163
+controller action, what do controller actions do? They handle 
+
+50
+00:02:47,167 --> 00:02:50,167
+what’ s coming in from the user. They tell the model, “ Hey, 
+
+51
+00:02:50,170 --> 00:02:52,170
+here’ s what I need,” and then they make that data available, 
+
+52
+00:02:52,172 --> 00:02:55,172
+usually by rendering that data through some kind of a view. That 
+
+53
+00:02:55,175 --> 00:02:58,175
+is all they do. That is not a complicated job description. So if 
+
+54
+00:02:58,178 --> 00:03:00,178
+you writing control methods, and there are more than like five 
+
+55
+00:03:00,000 --> 00:03:03,180
+or ten lines long, there is a problem right. There is a real 
+
+56
+00:03:03,183 --> 00:03:07,183
+tendency for code to creep into places where it does not belong. 
+
+57
+00:03:07,187 --> 00:03:09,187
+The province of computing interesting things and dealing with 
+
+58
+00:03:09,189 --> 00:03:12,189
+data is the province of the model. So if you find yourself doing 
+
+59
+00:03:12,192 --> 00:03:15,192
+stuff like that in controllers or in views, that should be a 
+
+60
+00:03:15,195 --> 00:03:18,195
+sort of a self check for you to ask why did not I put this in 
+
+61
+00:03:18,198 --> 00:03:21,198
+the model before, why is it in there now? 
+
+

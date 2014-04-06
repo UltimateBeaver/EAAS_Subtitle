@@ -1,0 +1,129 @@
+1
+00:00:00,000 --> 00:00:03,000
+Vote. I want to leave for a minute for the fun thing that didn't 
+
+2
+00:00:03,003 --> 00:00:08,003
+work last time. Okay, you have a minute to talk it over because 
+
+3
+00:00:08,008 --> 00:00:13,008
+that still leaves us two minutes for the fun thing. Revise vote. 
+
+4
+00:00:13,013 --> 00:00:18,013
+Revise vote. We need to leave time for video game. Revise vote. 
+
+5
+00:00:18,018 --> 00:00:22,018
+Revise vote. Wow, surprising amount of disagreement. Let's go 
+
+6
+00:00:22,022 --> 00:00:25,022
+through these. Formal methods, they're expensive but worthwhile 
+
+7
+00:00:25,025 --> 00:00:28,025
+to verify important applications. Well, I hate to tell you if 
+
+8
+00:00:28,028 --> 00:00:30,028
+you think of something like Google Search as being pretty 
+
+9
+00:00:30,030 --> 00:00:32,030
+important, I'm pretty sure Google Search is not formally 
+
+10
+00:00:32,032 --> 00:00:36,032
+verified. Formal methods are great when you can use them but at 
+
+11
+00:00:36,036 --> 00:00:39,036
+the moment people haven't really gotten a handle on how to use 
+
+12
+00:00:39,039 --> 00:00:42,039
+them for very large systems. There are some systems that even if 
+
+13
+00:00:42,042 --> 00:00:44,042
+you'd like them to be formally verified, they're really not. 
+
+14
+00:00:44,044 --> 00:00:46,044
+Same is true of the space shuttle software, by the way. It is 
+
+15
+00:00:46,046 --> 00:00:49,046
+meticulously done according to a P& D strategy but it's not 
+
+16
+00:00:49,049 --> 00:00:52,049
+formally verified. Although you'd like to feel warm and fuzzy 
+
+17
+00:00:52,052 --> 00:00:56,052
+about the top statement being true, it really isn't. P& D 
+
+18
+00:00:56,056 --> 00:00:58,056
+developers tend to code before they write tests. That's 
+
+19
+00:00:58,058 --> 00:01:01,058
+generally true unless the P& D project specifically has adopted 
+
+20
+00:01:01,061 --> 00:01:04,061
+test- driven development. That sometimes happens but it is not 
+
+21
+00:01:04,064 --> 00:01:08,064
+the norm in P& D projects. Agile developers tend to perform 
+
+22
+00:01:08,068 --> 00:01:10,068
+module integration system and acceptance tests themselves. 
+
+23
+00:01:10,070 --> 00:01:14,070
+That's true. It is also true that in most P& D organizations 
+
+24
+00:01:14,074 --> 00:01:16,074
+there are separate teams that take over part of those testing 
+
+25
+00:01:16,076 --> 00:01:19,076
+functions. Sandwich integration tries to sort of get the best of 
+
+26
+00:01:19,079 --> 00:01:22,079
+both worlds by reducing the number of stubs and try to get some 
+
+27
+00:01:22,082 --> 00:01:26,082
+general functionality early. That's also true. In this case, 
+
+28
+00:01:26,086 --> 00:01:28,086
+number one was the false statement: formal methods are 
+
+29
+00:01:28,088 --> 00:01:31,088
+expensive. That part is true but worthwhile for important 
+
+30
+00:01:31,091 --> 00:01:34,091
+applications. There are some big applications that are important 
+
+31
+00:01:34,094 --> 00:01:37,094
+and unfortunately we still can't use formal methods on them 
+
+32
+00:01:37,097 --> 00:01:39,097
+because they're too big. 
+
+

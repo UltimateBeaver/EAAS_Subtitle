@@ -1,0 +1,257 @@
+1
+00:00:00,000 --> 00:00:05,000
+We talked about User Stories and how much work the hour but how 
+
+2
+00:00:05,005 --> 00:00:08,005
+do you know whether you've got a good one or a bad one? Like is 
+
+3
+00:00:08,008 --> 00:00:13,008
+it too big or is it too hard, and is actually useful as it have 
+
+4
+00:00:13,013 --> 00:00:18,013
+business value. Another acronym that we came up with as part of 
+
+5
+00:00:18,018 --> 00:00:23,018
+this is SMART. A good User Story is specific, Measurable, 
+
+6
+00:00:23,023 --> 00:00:27,023
+Achievable in a single iteration, Relevant and we'll talk about 
+
+7
+00:00:27,027 --> 00:00:30,027
+what the Five Why's are and Timeboxed you know when to give up 
+
+8
+00:00:30,030 --> 00:00:37,030
+so let's go over those, what make a SMART User Story. Specific 
+
+9
+00:00:37,037 --> 00:00:40,037
+and measurable are kind of related that each scenario is 
+
+10
+00:00:40,040 --> 00:00:45,040
+testable. It implies known that for every good input, you what 
+
+11
+00:00:45,045 --> 00:00:48,045
+the results going to be, so you can tell whether it does it or 
+
+12
+00:00:48,048 --> 00:00:52,048
+not. The anti- example here is the User Interface should be 
+
+13
+00:00:52,052 --> 00:00:54,052
+friendly. All right. Let's see how are we going to test and 
+
+14
+00:00:54,054 --> 00:00:58,054
+measure that ... who knows, that is not something he measure so 
+
+15
+00:00:58,058 --> 00:01:03,058
+it's got to be something like, response time has to be 90% of 
+
+16
+00:01:03,063 --> 00:01:06,063
+the time in less than three seconds. In typical, we'll do this [ 
+
+17
+00:01:06,066 --> 00:01:11,066
+inaudible 00:01:08] format of of given some specific conditions 
+
+18
+00:01:11,071 --> 00:01:15,071
+when I do X then what's the consequences of that? That will be 
+
+19
+00:01:15,075 --> 00:01:17,075
+when it has that format, it tends to be more specific and more 
+
+20
+00:01:17,077 --> 00:01:22,077
+measurable. How about achievable? Achievable in this case 
+
+21
+00:01:22,082 --> 00:01:25,082
+means [ inaudible 00:01:23] is completing it in the single 
+
+22
+00:01:25,085 --> 00:01:28,085
+iteration because if you can't do it in one [ inaudible 
+
+23
+00:01:28,088 --> 00:01:31,088
+00:01:28] and go do a subset of the stories but you're always 
+
+24
+00:01:31,091 --> 00:01:34,091
+aiming have, remember the agile premises, the prototype is 
+
+25
+00:01:34,094 --> 00:01:37,094
+always working at the end of iteration so you can show them to 
+
+26
+00:01:37,097 --> 00:01:40,097
+the customer. If you're getting less than one story for 
+
+27
+00:01:40,100 --> 00:01:42,100
+iteration, you got to get better at making your estimates to 
+
+28
+00:01:42,102 --> 00:01:48,102
+points to be able to do that so you break it down. Relevant part 
+
+29
+00:01:48,108 --> 00:01:51,108
+of SMART is it has business values, so for those of us who 
+
+30
+00:01:51,111 --> 00:01:54,111
+aren't business majors, what are we talking about here, it makes 
+
+31
+00:01:54,114 --> 00:01:57,114
+an economic difference to companies, that was one interesting 
+
+32
+00:01:57,117 --> 00:02:00,117
+feature. What does it do to help the company be successful? 
+
+33
+00:02:00,000 --> 00:02:04,120
+Protect revenue, increase revenue, manage your expenses, 
+
+34
+00:02:04,124 --> 00:02:09,124
+increase the visibility the brand, making the product standout 
+
+35
+00:02:09,129 --> 00:02:13,129
+from the competition and generally, finding more customers. 
+
+36
+00:02:13,133 --> 00:02:17,133
+Here's an example, the talks on this web page, talks about 
+
+37
+00:02:17,137 --> 00:02:20,137
+deciding whether the thing has business value or what, but we 
+
+38
+00:02:20,140 --> 00:02:26,140
+found this thing ... trick, the five Why's is to find relevance 
+
+39
+00:02:26,146 --> 00:02:29,146
+is works pretty well and basically, this is a very easy thing to 
+
+40
+00:02:29,149 --> 00:02:34,149
+implement. it's like your three- year- old nephew can implement 
+
+41
+00:02:34,154 --> 00:02:38,154
+this for you so let’ s start off with that box office manager. 
+
+42
+00:02:38,158 --> 00:02:41,158
+It’ s a box office manager so they induce patron to buy a 
+
+43
+00:02:41,161 --> 00:02:45,161
+ticket. I want to show her Facebook friends. Why? Okay, that’ s 
+
+44
+00:02:45,165 --> 00:02:52,165
+the first Why. I think more people will go and enjoy the show 
+
+45
+00:02:52,172 --> 00:02:56,172
+more if we do this so why is that important. Okay, I think we’ 
+
+46
+00:02:56,176 --> 00:03:00,176
+ll sold more tickets. Why is it important to sell more tickets? 
+
+47
+00:03:00,000 --> 00:03:03,180
+Because the theater makes more money. Why is it important to [ 
+
+48
+00:03:03,183 --> 00:03:06,183
+Frantino 00:03:03] make money and we want to make more money so 
+
+49
+00:03:06,186 --> 00:03:08,186
+we don’ t go out of business. Why is it matter if we go out of 
+
+50
+00:03:08,188 --> 00:03:12,188
+business? Then, you won’ t have a job, so it kind of surprising 
+
+51
+00:03:12,192 --> 00:03:16,192
+but this simple mechanism asking why a bunch of times kind of 
+
+52
+00:03:16,196 --> 00:03:19,196
+forces you to drop down in exactly what the issue is that you’ 
+
+53
+00:03:19,199 --> 00:03:24,199
+re talking about. Okay It’ s really helping us to the bottom 
+
+54
+00:03:24,204 --> 00:03:27,204
+line so, yes, it’ s a good one. If you ask a bunch of Why’ s and 
+
+55
+00:03:27,207 --> 00:03:31,207
+it stays vague then maybe this doesn’ t have a lot of relevance. 
+
+56
+00:03:31,211 --> 00:03:34,211
+The last part of SMART is Timeboxed. What we’ re worried about 
+
+57
+00:03:34,214 --> 00:03:37,214
+in software is, given the statistics, is that you’ re going to 
+
+58
+00:03:37,217 --> 00:03:39,217
+exceed the time budget. You’ re going to put something together 
+
+59
+00:03:39,219 --> 00:03:43,219
+and it takes a lot longer than you think so what we want to do 
+
+60
+00:03:43,223 --> 00:03:49,223
+is break it up in a smaller pieces so you avoid overestimating … 
+
+61
+00:03:49,229 --> 00:03:52,229
+not … Avoid underestimating. I guess on it, yeah, you’ re 
+
+62
+00:03:52,232 --> 00:03:54,232
+avoiding underestimating the length of the project that can take 
+
+63
+00:03:54,234 --> 00:03:58,234
+longer than you want. As we said, Tracker helps you with 
+
+64
+00:03:58,238 --> 00:04:00,238
+calculating net velocity. 
+
+

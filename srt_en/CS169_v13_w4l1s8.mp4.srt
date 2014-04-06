@@ -1,0 +1,89 @@
+1
+00:00:00,000 --> 00:00:05,000
+Okay, let’ s try another cards again, so which of these stories 
+
+2
+00:00:05,005 --> 00:00:10,005
+is … Which of these features is least smart? User can search for 
+
+3
+00:00:10,010 --> 00:00:13,010
+a movie by title. Rotten Potatoes should have good response 
+
+4
+00:00:13,013 --> 00:00:17,013
+time. When adding a movie, 99% of the Add Movie pages should 
+
+5
+00:00:17,017 --> 00:00:20,017
+appear within three seconds, and as a customer, I want to see 
+
+6
+00:00:20,020 --> 00:00:23,020
+the top ten movies sold, listed by price, so that I can buy the 
+
+7
+00:00:23,023 --> 00:00:27,023
+cheapest ones first. We’ re trying for SMART User Stories, which 
+
+8
+00:00:27,027 --> 00:00:32,027
+one of these is dumbest, I guess? Okay. Ready, set, vote. Let’ s 
+
+9
+00:00:32,032 --> 00:00:38,032
+see what we got. A lot of you aren’ t voting. All right. I think 
+
+10
+00:00:38,038 --> 00:00:44,038
+that’ s kind of overwhelmingly green. Which of these letter they 
+
+11
+00:00:44,044 --> 00:00:48,044
+violating here? Search for a movie by title, that’ s not very … 
+
+12
+00:00:48,048 --> 00:00:56,048
+That’ s okay. The worst one is Rotten Potatoes good response 
+
+13
+00:00:56,056 --> 00:00:58,056
+time. It has the word “ good” in there so that’ s, you know, 
+
+14
+00:00:58,058 --> 00:01:01,058
+good is in the eye of the beholder. Certainly, three and four 
+
+15
+00:01:01,061 --> 00:01:05,061
+are pretty specific, right. 99% of the movies in less than three 
+
+16
+00:01:05,065 --> 00:01:09,065
+seconds, that’ s very specific and measurable and again, if the 
+
+17
+00:01:09,069 --> 00:01:13,069
+customer, it lays out who the stakeholders are. Top ten specific 
+
+18
+00:01:13,073 --> 00:01:18,073
+and measurable as well. Hopefully all of these are achievable 
+
+19
+00:01:18,078 --> 00:01:23,078
+and you Timeboxed them and can you figure out their business 
+
+20
+00:01:23,083 --> 00:01:27,083
+value by asking to Five Why’ s you can do that. User search for 
+
+21
+00:01:27,087 --> 00:01:32,087
+a movie title is a little vague but it’ s not as vague as the 
+
+22
+00:01:32,092 --> 00:01:35,092
+Rotten Potatoes having a good response time. Okay. 
+
+

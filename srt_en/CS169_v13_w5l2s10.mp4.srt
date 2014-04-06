@@ -1,0 +1,193 @@
+1
+00:00:00,000 --> 00:00:08,000
+Let's do initial vote. Initial vote sold majority for red with 
+
+2
+00:00:08,008 --> 00:00:11,008
+some yellow and orange. Take about 30 seconds, there's enough 
+
+3
+00:00:11,011 --> 00:00:19,011
+descent. Okay, let's do the second vote. Red has gained a few 
+
+4
+00:00:19,019 --> 00:00:23,019
+concretes but not unanimous. Before we discuss the answer let's 
+
+5
+00:00:23,023 --> 00:00:28,023
+look back in what's going in the code here. Remember I said, my 
+
+6
+00:00:28,028 --> 00:00:31,028
+claim is that this test could be easily made the pass. We're 
+
+7
+00:00:31,031 --> 00:00:33,031
+going to do that in just a moment. What we're actually doing in 
+
+8
+00:00:33,033 --> 00:00:37,033
+this test is by setting up this expectation what we're saying is 
+
+9
+00:00:37,037 --> 00:00:40,037
+all we really care about is that as a result, by the end of this 
+
+10
+00:00:40,040 --> 00:00:43,040
+test case. By the time we reach the word end and the execution 
+
+11
+00:00:43,043 --> 00:00:46,043
+here, as a result of whatever we did in this test case. At some 
+
+12
+00:00:46,046 --> 00:00:51,046
+point somebody should have tried to call the find in TMDB class 
+
+13
+00:00:51,051 --> 00:00:54,051
+method of movie and should have tried to pass with the argument 
+
+14
+00:00:54,054 --> 00:00:57,054
+hardware. Now if you've been sort of putting the pieces together 
+
+15
+00:00:57,057 --> 00:01:00,057
+about the discussion we had about method missing and meta- 
+
+16
+00:01:00,000 --> 00:01:03,060
+programming and so forth. You might realize that there's a very 
+
+17
+00:01:03,063 --> 00:01:06,063
+natural way to implement this in Ruby right? We basically can 
+
+18
+00:01:06,066 --> 00:01:09,066
+say, " Oh if you're expecting that some method or rather is 
+
+19
+00:01:09,069 --> 00:01:12,069
+going to get called, I know what we can do." We could just open 
+
+20
+00:01:12,072 --> 00:01:15,072
+up the class that is supposed to define that method. Redefine 
+
+21
+00:01:15,075 --> 00:01:18,075
+that method ourselves so that we can watch whether anybody ever 
+
+22
+00:01:18,078 --> 00:01:21,078
+calls it. Let your test case run, and then when your test case 
+
+23
+00:01:21,081 --> 00:01:24,081
+is over we can actually list that anybody actually try to call 
+
+24
+00:01:24,084 --> 00:01:29,084
+it or not. With that background in mind, it provides us stand- 
+
+25
+00:01:29,089 --> 00:01:32,089
+in for a real method that doesn't exist. Clearly it's doing 
+
+26
+00:01:32,092 --> 00:01:35,092
+that, so the first choice is true. It would override the real 
+
+27
+00:01:35,095 --> 00:01:38,095
+method, even if it did exist. This is also a true, and it's 
+
+28
+00:01:38,098 --> 00:01:41,098
+extremely important. We're going to come back to another soft 
+
+29
+00:01:41,101 --> 00:01:45,101
+check question that hammers on why that is. It can be issued 
+
+30
+00:01:45,105 --> 00:01:47,105
+either before or after the code that should make the call. 
+
+31
+00:01:47,107 --> 00:01:50,107
+That's the one we had fall down. If we want to be able to spy on 
+
+32
+00:01:50,110 --> 00:01:53,110
+a method, we have to indicate our desire to do that before 
+
+33
+00:01:53,113 --> 00:01:56,113
+someone actually tries to call it. If we didn't do that, 
+
+34
+00:01:56,116 --> 00:01:58,116
+there'll be no way to sort of after the fact to ask who called 
+
+35
+00:01:58,118 --> 00:02:02,118
+what method. If redefine the method so that we can spy on it, 
+
+36
+00:02:02,122 --> 00:02:04,122
+then we actually have the ability to check whether the method 
+
+37
+00:02:04,124 --> 00:02:08,124
+called correctly. It absolutely exploits open classes because 
+
+38
+00:02:08,128 --> 00:02:10,128
+the way they were doing this we're essentially redefine, 
+
+39
+00:02:10,130 --> 00:02:13,130
+surgically redefining that method in place. There's a really 
+
+40
+00:02:13,133 --> 00:02:16,133
+good elaboration in the book, I think it's a good elaboration. 
+
+41
+00:02:16,136 --> 00:02:19,136
+That's probably because I wrote it, but it's about how you would 
+
+42
+00:02:19,139 --> 00:02:22,139
+do this in languages that are statically complied or languages 
+
+43
+00:02:22,142 --> 00:02:24,142
+where you have to re- link whenever you want to override the 
+
+44
+00:02:24,144 --> 00:02:26,144
+definition with particular method in a particular class. The 
+
+45
+00:02:26,146 --> 00:02:29,146
+bottom line, that the TLDR version is dynamic languages with 
+
+46
+00:02:29,149 --> 00:02:33,149
+open classes are your friend for this. Does everybody understand 
+
+47
+00:02:33,153 --> 00:02:37,153
+why the only false statement is the third statement, the red 
+
+48
+00:02:37,157 --> 00:02:40,157
+statement? Okay, this gets better. 
+
+

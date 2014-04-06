@@ -1,0 +1,637 @@
+1
+00:00:00,000 --> 00:00:03,000
+Okay. Now that we understand where we're going, and yes, we are 
+
+2
+00:00:03,003 --> 00:00:05,003
+going to have to implement a controller method that is the first 
+
+3
+00:00:05,005 --> 00:00:09,005
+place that external user input touches our code. So yeah, that's 
+
+4
+00:00:09,009 --> 00:00:11,009
+we're going to code next, and this gives us an opportunity to 
+
+5
+00:00:11,011 --> 00:00:15,011
+sort of do the cycle that so far has been provided for you in 
+
+6
+00:00:15,015 --> 00:00:18,015
+the homeworks which is the Red, Green, Refactor cycle. So here's 
+
+7
+00:00:18,018 --> 00:00:20,018
+the basic approach, we're going to think about one thing the 
+
+8
+00:00:20,020 --> 00:00:23,020
+code should do. In fact, in the last little segment there, we 
+
+9
+00:00:23,023 --> 00:00:26,023
+just came up with three things the code should do. We're going 
+
+10
+00:00:26,026 --> 00:00:29,026
+to capture that thought in a test, which fails because we have 
+
+11
+00:00:29,029 --> 00:00:31,029
+no code, and then we're going to write the simplest thing we can 
+
+12
+00:00:31,031 --> 00:00:34,031
+think of in the code that makes that test pass. Before 
+
+13
+00:00:34,034 --> 00:00:37,034
+continuing on to the next behavior, we'll just see whether 
+
+14
+00:00:37,037 --> 00:00:40,037
+there's any opportunity to sort of clean up or refactor or 
+
+15
+00:00:40,040 --> 00:00:42,040
+beautify the code that we are already wrote. Then we're going to 
+
+16
+00:00:42,042 --> 00:00:46,042
+have a lot to say about refactoring later on in the course, but 
+
+17
+00:00:46,046 --> 00:00:48,046
+it's kind of like it's always refactoring time. Right? You 
+
+18
+00:00:48,048 --> 00:00:51,048
+should never miss an opportunity to do a little bit of code 
+
+19
+00:00:51,051 --> 00:00:54,051
+cleanup. The cycle's called Red, Green, Refactor because you go 
+
+20
+00:00:54,054 --> 00:00:57,054
+from Red, which if failing; to Green, which is passing; to 
+
+21
+00:00:57,057 --> 00:01:00,057
+Refactoring, which is still passing but with an improved code 
+
+22
+00:01:00,000 --> 00:01:03,060
+structure and you keep doing that sort of until the code passes 
+
+23
+00:01:03,063 --> 00:01:05,063
+all the test that you have thought of. So you're goal is to 
+
+24
+00:01:05,065 --> 00:01:08,065
+always have working code. Whenever you write a new test, it's 
+
+25
+00:01:08,068 --> 00:01:11,068
+going to fail. That's like unstable situation that you want to 
+
+26
+00:01:11,071 --> 00:01:14,071
+get away from. You want to get back to green. So that's why the 
+
+27
+00:01:14,074 --> 00:01:17,074
+simplest possible code that makes sense it pass, that's that 
+
+28
+00:01:17,077 --> 00:01:20,077
+path of least resistance. Right? You have a separate opportunity 
+
+29
+00:01:20,080 --> 00:01:23,080
+to beautify or refactor the code, but the most important thing 
+
+30
+00:01:23,083 --> 00:01:27,083
+is ... don't get too far away from stuff that works. If it's not 
+
+31
+00:01:27,087 --> 00:01:32,087
+broke, don't fix it. The question is ... if we're going to start 
+
+32
+00:01:32,092 --> 00:01:34,092
+doing unit level testing, we have to test things in isolation, 
+
+33
+00:01:34,094 --> 00:01:37,094
+right? We said that there's this spectrum of testing from 
+
+34
+00:01:37,097 --> 00:01:40,097
+testing one method or one class at a time all the way up to the 
+
+35
+00:01:40,100 --> 00:01:43,100
+integration test, which exercise big chunks of the app many code 
+
+36
+00:01:43,103 --> 00:01:46,103
+paths. So the basic question we're going to look at next is, how 
+
+37
+00:01:46,106 --> 00:01:49,106
+do you test something in isolation? Given that sort of any non- 
+
+38
+00:01:49,109 --> 00:01:52,109
+trivial piece of code has dependencies on other things that 
+
+39
+00:01:52,112 --> 00:01:59,112
+would affect how you would test it. So the powerful tool that 
+
+40
+00:01:59,119 --> 00:02:01,119
+we're going to use here is the code you wish you have. Maybe 
+
+41
+00:02:01,121 --> 00:02:04,121
+it's the code we wish we have, I don't know. But we already 
+
+42
+00:02:04,124 --> 00:02:06,124
+said, " What should the controller method do that receives the 
+
+43
+00:02:06,126 --> 00:02:08,126
+search form [ molds 00:02:06]?" Let's just start with our own 
+
+44
+00:02:08,128 --> 00:02:10,128
+answer to that question was it should call a method that will 
+
+45
+00:02:10,130 --> 00:02:13,130
+search TMDb for the specified movie for the specified movie. 
+
+46
+00:02:13,133 --> 00:02:15,133
+Now, we have no clue under the sun of what that method is going 
+
+47
+00:02:15,135 --> 00:02:18,135
+to look like. In fact, all we really know about that method 
+
+48
+00:02:18,138 --> 00:02:20,138
+based on the last self- check question is that that method is 
+
+49
+00:02:20,140 --> 00:02:23,140
+actually going to live in the model. So really, the only thing 
+
+50
+00:02:23,143 --> 00:02:26,143
+controller has to do ... is kind of pass the buck to the model, 
+
+51
+00:02:26,146 --> 00:02:29,146
+right? We have to make sure that whatever user data comes from 
+
+52
+00:02:29,149 --> 00:02:31,149
+the app, that what's going to arrive in the controller, so 
+
+53
+00:02:31,151 --> 00:02:35,151
+somehow that data has to successfully get to whatever method in 
+
+54
+00:02:35,155 --> 00:02:37,155
+the model is going to do the actual work. Right? I think we're 
+
+55
+00:02:37,157 --> 00:02:41,157
+in agreement about that after the last question. The question is 
+
+56
+00:02:41,161 --> 00:02:44,161
+how do we test this controller method if we've already admitted 
+
+57
+00:02:44,164 --> 00:02:47,164
+to ourselves that it depends on this other code in the model, 
+
+58
+00:02:47,167 --> 00:02:50,167
+which we haven't even thought about yet. So this is where the 
+
+59
+00:02:50,170 --> 00:02:53,170
+powerful idea of the code we wish we had comes in. Let's 
+
+60
+00:02:53,173 --> 00:02:56,173
+remember we have to add a route to config/ routes. rb. That's 
+
+61
+00:02:56,176 --> 00:02:59,176
+not a problem, we can do a simple route that just posts a form 
+
+62
+00:02:59,179 --> 00:03:02,179
+to the search_ tmdb [ inaudible 00:03:00], not a problem there. 
+
+63
+00:03:02,182 --> 00:03:04,182
+We already know that because of convention over configuration 
+
+64
+00:03:04,184 --> 00:03:07,184
+rails will map that and it will look for an action called 
+
+65
+00:03:07,187 --> 00:03:10,187
+search_ tmdb in our movies controller, that's while I'm good. 
+
+66
+00:03:10,190 --> 00:03:13,190
+Again, we get that kind of for free. Well, the view has to have 
+
+67
+00:03:13,193 --> 00:03:15,193
+something to render, so for now, we'll just create an empty 
+
+68
+00:03:15,195 --> 00:03:18,195
+view. That's perfectly legal. Not useful, but it will allow our 
+
+69
+00:03:18,198 --> 00:03:21,198
+test to pass. So, we just create an empty Haml file that has the 
+
+70
+00:03:21,201 --> 00:03:23,201
+correct name and is in the correct place. Right? This is just 
+
+71
+00:03:23,203 --> 00:03:26,203
+all scaffolding, so that the world doesn't blow up when we start 
+
+72
+00:03:26,206 --> 00:03:29,206
+doing our test. And now, we're going to get to the actual. We're 
+
+73
+00:03:29,209 --> 00:03:32,209
+going to look at that " hardwired" fake method that Dave used in 
+
+74
+00:03:32,212 --> 00:03:34,212
+his example and we're going to replace it with an empty method. 
+
+75
+00:03:34,214 --> 00:03:38,214
+Okay? So now, we're pulling out the safety net. The method is 
+
+76
+00:03:38,218 --> 00:03:44,218
+now officially going to have to fail. Since I just said ... we'd 
+
+77
+00:03:44,224 --> 00:03:47,224
+agreed that the controller has to hand off some data to the 
+
+78
+00:03:47,227 --> 00:03:49,227
+model and the model is going to have a method that does the 
+
+79
+00:03:49,229 --> 00:03:52,229
+actual work, but what method is that? I mean, we haven't written 
+
+80
+00:03:52,232 --> 00:03:55,232
+that method yet. So, how could we possibly test the controller 
+
+81
+00:03:55,235 --> 00:03:58,235
+action if the thing that it's supposed to call doesn't exist 
+
+82
+00:03:58,238 --> 00:04:03,238
+yet. This is the magic part. Okay? So, the way we resolve this 
+
+83
+00:04:03,243 --> 00:04:07,243
+is we'll say, " No problem. Let's develop an idea for the code 
+
+84
+00:04:07,247 --> 00:04:11,247
+we wish we had." In other words, we know that code doesn't exist 
+
+85
+00:04:11,251 --> 00:04:15,251
+but suppose it did exist. How would we like it to work? We will 
+
+86
+00:04:15,255 --> 00:04:18,255
+use a seam, a seam is a really important concept. It's basically 
+
+87
+00:04:18,258 --> 00:04:21,258
+a place where we can change the behavior of our app without 
+
+88
+00:04:21,261 --> 00:04:23,261
+changing source code. When we come back to this and talk and 
+
+89
+00:04:23,263 --> 00:04:26,263
+separately about it. But we're going to insert a seam that 
+
+90
+00:04:26,266 --> 00:04:29,266
+allows us to test the code we wish we had even though that code 
+
+91
+00:04:29,269 --> 00:04:31,269
+isn't there yet. So, here's the code that I would say we wish we 
+
+92
+00:04:31,271 --> 00:04:35,271
+had. We know that it's going to be a class [ method 00:04:34] of 
+
+93
+00:04:35,275 --> 00:04:36,275
+movie, so I postulate that it be nice if we had a method called 
+
+94
+00:04:36,276 --> 00:04:40,276
+find_ in_ tmdb that it's a class method of movie and that it can 
+
+95
+00:04:40,280 --> 00:04:42,280
+take some arguments representing the mood that it's going to try 
+
+96
+00:04:42,282 --> 00:04:45,282
+to look up in the TMDB database. So, here is our game plan, 
+
+97
+00:04:45,285 --> 00:04:48,285
+we're going to simulate in our test what happened when the user 
+
+98
+00:04:48,288 --> 00:04:51,288
+post that search form. We're going to check that when the 
+
+99
+00:04:51,291 --> 00:04:56,291
+controller action gets invoked, it tries to call find_ in_ tmdb 
+
+100
+00:04:56,296 --> 00:04:58,296
+and that it correctly includes the data that it had pulled out 
+
+101
+00:04:58,298 --> 00:05:00,298
+of the submitted form. Now, these are useful things to test. 
+
+102
+00:05:00,000 --> 00:05:04,300
+Right? We are not testing the find_ in_ tmdb function itself. 
+
+103
+00:05:04,304 --> 00:05:07,304
+We're not testing that it can talk to the external database. The 
+
+104
+00:05:07,307 --> 00:05:09,307
+only thing we're testing is that controller is doing it's job 
+
+105
+00:05:09,309 --> 00:05:13,309
+which is separate from the model doing its job. Okay? So, of 
+
+106
+00:05:13,313 --> 00:05:16,313
+course, the test will fail because we just made the controller 
+
+107
+00:05:16,316 --> 00:05:19,316
+method be empty, and then we'll backfill the controller method 
+
+108
+00:05:19,319 --> 00:05:22,319
+so that it makes the test pass. We could do all of that without 
+
+109
+00:05:22,322 --> 00:05:25,322
+ever actually writing the model method. So, how would we do 
+
+110
+00:05:25,325 --> 00:05:31,325
+this? So, let's walk through, this is our ... controller spec, 
+
+111
+00:05:31,331 --> 00:05:34,331
+and as we've already seen, we have a describe block for the 
+
+112
+00:05:34,334 --> 00:05:37,334
+overall class whose behavior we're describing and then within 
+
+113
+00:05:37,337 --> 00:05:39,337
+that describe block, we can nest other describe blocks that are 
+
+114
+00:05:39,339 --> 00:05:43,339
+sort of testing different chunks of behavior within that class. 
+
+115
+00:05:43,343 --> 00:05:47,343
+Here's our test case that says the controller action should call 
+
+116
+00:05:47,347 --> 00:05:50,347
+the model method that performs the actual search, does the real 
+
+117
+00:05:50,350 --> 00:05:53,350
+work. We're saying ... first of all, we're going to set up this 
+
+118
+00:05:53,353 --> 00:05:57,353
+expectation. The movie class should receive the method call, 
+
+119
+00:05:57,357 --> 00:06:01,357
+find_ in_ tmdb with particular movie title. Right? So remember I 
+
+120
+00:06:01,361 --> 00:06:03,361
+said the game plan is we're going to simulate posting the form 
+
+121
+00:06:03,363 --> 00:06:06,363
+with some data, make sure the controller action can correctly 
+
+122
+00:06:06,366 --> 00:06:10,366
+get that data and hand it off. Well, here is our simulated post. 
+
+123
+00:06:10,370 --> 00:06:13,370
+Post is one of the methods that's included like the rails plug 
+
+124
+00:06:13,373 --> 00:06:16,373
+ins for our specs, so that there convenient ways to simulate 
+
+125
+00:06:16,376 --> 00:06:18,376
+things in the model of new controllers. So, post is a method 
+
+126
+00:06:18,378 --> 00:06:21,378
+that says take code ... what controller are we testing? It's the 
+
+127
+00:06:21,381 --> 00:06:26,381
+movies controller. So to that controller, post this action and 
+
+128
+00:06:26,386 --> 00:06:28,386
+it can lookup in the routes. rb what [ inaudible 00:06:28.] 
+
+129
+00:06:28,388 --> 00:06:32,388
+require to simulate that post and here's what's going to be 
+
+130
+00:06:32,392 --> 00:06:35,392
+passed in [ params 00:06:32]. So, this is the one place that we 
+
+131
+00:06:35,395 --> 00:06:37,395
+have to sort of synthesize something is we have to know what [ 
+
+132
+00:06:37,397 --> 00:06:41,397
+params 00:06:38] would look like when the user actually submits 
+
+133
+00:06:41,401 --> 00:06:44,401
+that form. There's many ways you can do that. I showed one 
+
+134
+00:06:44,404 --> 00:06:46,404
+example is you can put a debugger statement in your controller 
+
+135
+00:06:46,406 --> 00:06:49,406
+method and sort of take a look at the [ params 00:06:48.] object 
+
+136
+00:06:49,409 --> 00:06:51,409
+and see what the form actually looks like when it arrives. Any 
+
+137
+00:06:51,411 --> 00:06:54,411
+of those methods is good. Right? So, what are we doing here? Our 
+
+138
+00:06:54,414 --> 00:06:56,414
+two steps is we're setting up an expectation of something that 
+
+139
+00:06:56,416 --> 00:07:01,416
+should happen, and then, we're executing some code that should 
+
+140
+00:07:01,421 --> 00:07:07,421
+trigger that thing to happen. Right? So, why is this work? 
+
+141
+00:07:07,427 --> 00:07:10,427
+Here's a self- check [ inaudible 00:07:08] let's see how far we 
+
+142
+00:07:10,430 --> 00:07:13,430
+get without me sort of revealing all the details here of what's 
+
+143
+00:07:13,433 --> 00:07:18,433
+going on. Just to test your intuition about what that example is 
+
+144
+00:07:18,438 --> 00:07:22,438
+trying to show. So, should receive is one of our specs methods 
+
+145
+00:07:22,442 --> 00:07:25,442
+and see if you can use your intuition to answer the following. 
+
+146
+00:07:25,445 --> 00:07:28,445
+Which of these statements is false regarding should_ receive? 
+
+147
+00:07:28,448 --> 00:07:32,448
+One of the statement is should receive provide a stand- in for 
+
+148
+00:07:32,452 --> 00:07:35,452
+real method that doesn't exist yet, so that we can do our test? 
+
+149
+00:07:35,455 --> 00:07:38,455
+Another statement is ... even if we did have that real method, 
+
+150
+00:07:38,458 --> 00:07:42,458
+should receive would override it for the purpose of our test? A 
+
+151
+00:07:42,462 --> 00:07:46,462
+third possibility is should receive could be either issued 
+
+152
+00:07:46,466 --> 00:07:50,466
+before or after the code that should trigger the behavior that 
+
+153
+00:07:50,470 --> 00:07:54,470
+should receive [ sets up 00:07:51]. Or fourth, that it exploits 
+
+154
+00:07:54,474 --> 00:07:56,474
+Ruby's open classes and metaprogramming to create that should 
+
+155
+00:07:56,476 --> 00:08:00,476
+receive seam. To create the place where we're going to try to 
+
+156
+00:08:00,000 --> 00:08:03,480
+sort of change and spy on the behavior or our application 
+
+157
+00:08:03,483 --> 00:08:06,483
+without changing the application's actual source code. So, I 
+
+158
+00:08:06,486 --> 00:08:09,486
+guarantee that one of these four statements actually is false. 
+
+159
+00:08:09,489 --> 00:08:11,489
+It is not a trick question. 
+
+

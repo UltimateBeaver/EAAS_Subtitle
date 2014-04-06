@@ -1,0 +1,901 @@
+1
+00:00:00,000 --> 00:00:03,000
+Today we're going to start talking about the web as a client- 
+
+2
+00:00:03,003 --> 00:00:05,003
+server system and the architecture that underlies SaaS 
+
+3
+00:00:05,005 --> 00:00:09,005
+applications because the architectural choices that we make are 
+
+4
+00:00:09,009 --> 00:00:12,009
+actually common to any SaaS application. They predate a lot of 
+
+5
+00:00:12,012 --> 00:00:16,012
+the material that is specific to ruby and rails. One of the key 
+
+6
+00:00:16,016 --> 00:00:19,016
+lessons that we're going to talk about through the rest of the 
+
+7
+00:00:19,019 --> 00:00:21,019
+segment is whatever you do an architecture, you're making some 
+
+8
+00:00:21,021 --> 00:00:24,021
+choices about the way that components fit together in that 
+
+9
+00:00:24,024 --> 00:00:27,024
+architecture and we're making some choices around the fact that 
+
+10
+00:00:27,027 --> 00:00:29,027
+our architecture softwares a service that we're using open 
+
+11
+00:00:29,029 --> 00:00:33,029
+standards. In cases where we're making a choice, we'll also 
+
+12
+00:00:33,033 --> 00:00:37,033
+eliminate what's some other possible choices might be. In terms 
+
+13
+00:00:37,037 --> 00:00:40,037
+of this diagram that's reproduced from the book, we're going to 
+
+14
+00:00:40,040 --> 00:00:43,040
+start at this top level right up here where in the simplest 
+
+15
+00:00:43,043 --> 00:00:46,043
+possible manner, we think of a web browser, we think of a series 
+
+16
+00:00:46,046 --> 00:00:48,046
+of tubes in between and we think of a site where you want to end 
+
+17
+00:00:48,048 --> 00:00:53,048
+up and get some content. From 100,000 feet away using height as 
+
+18
+00:00:53,053 --> 00:00:55,053
+an analogy and as we go closer to the ground, we'll see more 
+
+19
+00:00:55,055 --> 00:00:58,055
+detail, you can think of the web as a client, server 
+
+20
+00:00:58,058 --> 00:01:01,058
+architecture which means that it's request and reply oriented. A 
+
+21
+00:01:01,061 --> 00:01:04,061
+client is a thing that asks questions, a server is a thing that 
+
+22
+00:01:04,064 --> 00:01:07,064
+gives answers. Fundamentally, each piece of software, the client 
+
+23
+00:01:07,067 --> 00:01:10,067
+and the server is specialized in some way for that role. Now, in 
+
+24
+00:01:10,070 --> 00:01:13,070
+our case, the client is a web browser like Chrome of Firefox or 
+
+25
+00:01:13,073 --> 00:01:17,073
+Safari or Internet Explorer. The website or the web server is 
+
+26
+00:01:17,077 --> 00:01:21,077
+the server part and in between, we have the internet which 
+
+27
+00:01:21,081 --> 00:01:24,081
+magically routes content from one end to the other which we're 
+
+28
+00:01:24,084 --> 00:01:26,084
+not going to go into a huge amount of detail about but we'll 
+
+29
+00:01:26,086 --> 00:01:30,086
+give you the basics. The simplest possible interaction, the web 
+
+30
+00:01:30,090 --> 00:01:32,090
+browser asks the server for something. That's the client asking 
+
+31
+00:01:32,092 --> 00:01:35,092
+a question of the server. The server response, the response 
+
+32
+00:01:35,095 --> 00:01:39,095
+comes back. How does this all happen? Well, there's a long 
+
+33
+00:01:39,099 --> 00:01:43,099
+history of a set of protocols going back to the 60 's called TCP 
+
+34
+00:01:43,103 --> 00:01:46,103
+IP for transmission controlled protocol and internet protocol. 
+
+35
+00:01:46,106 --> 00:01:49,106
+Starting with the second half of that, here is the one slide 
+
+36
+00:01:49,109 --> 00:01:53,109
+crash course on what you need to know. The internet protocol is 
+
+37
+00:01:53,113 --> 00:01:56,113
+a set of rules that computers agree to follow in order that they 
+
+38
+00:01:56,116 --> 00:01:59,116
+can all interact when we talk to each other. You probably have 
+
+39
+00:01:59,119 --> 00:02:02,119
+seen these internet protocol addresses, IP addresses. They're 
+
+40
+00:02:02,122 --> 00:02:06,122
+four integers separated by dots. They're often called four 
+
+41
+00:02:06,126 --> 00:02:10,126
+octets because each integer can be an eight bit number. There is 
+
+42
+00:02:10,130 --> 00:02:15,130
+a special address, 127.0. 0.1 which always means this computer, 
+
+43
+00:02:15,135 --> 00:02:19,135
+whichever computer I'm running on right now, as opposed to being 
+
+44
+00:02:19,139 --> 00:02:21,139
+a unique address of some machine somewhere else. In general, 
+
+45
+00:02:21,141 --> 00:02:25,141
+every machine in the universe has more or less a unique address 
+
+46
+00:02:25,145 --> 00:02:27,145
+although with routers and network address translation, that's a 
+
+47
+00:02:27,147 --> 00:02:30,147
+little more complicated than it once was. There is also a 
+
+48
+00:02:30,150 --> 00:02:34,150
+special name called local host that in the UNIX world and on any 
+
+49
+00:02:34,154 --> 00:02:38,154
+computers that's derive their ancestry from UNIX, the name local 
+
+50
+00:02:38,158 --> 00:02:41,158
+host means this machine that I'm running on right now and we're 
+
+51
+00:02:41,161 --> 00:02:44,161
+going to use this fact in doing a simple example in a moment to 
+
+52
+00:02:44,164 --> 00:02:48,164
+show how the internet works. Now, IP just says if you give me 
+
+53
+00:02:48,168 --> 00:02:51,168
+the address of a remote machine and a small bit of information, 
+
+54
+00:02:51,171 --> 00:02:54,171
+a packet which is really only a few hundred bytes of 
+
+55
+00:02:54,174 --> 00:02:57,174
+information, I will do my best to get it over to that other 
+
+56
+00:02:57,177 --> 00:02:59,177
+machine but there's no guarantee that it'll get there. 
+
+57
+00:02:59,179 --> 00:03:02,179
+Furthermore, if you send multiple packets, for example, you got 
+
+58
+00:03:02,182 --> 00:03:04,182
+too much information, you got to break it up, there's no 
+
+59
+00:03:04,184 --> 00:03:06,184
+guarantee that they'll arrive in order or that some of them will 
+
+60
+00:03:06,186 --> 00:03:09,186
+arrive at all or that they will arrive completely free from 
+
+61
+00:03:09,189 --> 00:03:13,189
+errors. On top of IP, there's an additional layer of protocol 
+
+62
+00:03:13,193 --> 00:03:16,193
+called transmission control protocol or TCP whose job it is to 
+
+63
+00:03:16,196 --> 00:03:19,196
+make sure that all the right things happen. TCP essentially 
+
+64
+00:03:19,199 --> 00:03:23,199
+monitors the IP packets and make sure that is there is a gap in 
+
+65
+00:03:23,203 --> 00:03:25,203
+the order in which they're delivered, that it re- request the 
+
+66
+00:03:25,205 --> 00:03:28,205
+packets that got lost. If there are errors in transmitting the 
+
+67
+00:03:28,208 --> 00:03:30,208
+packets, it re- request the corrupted packets to make sure that 
+
+68
+00:03:30,210 --> 00:03:32,210
+it gets them all correctly and it reassembles them in a proper 
+
+69
+00:03:32,212 --> 00:03:35,212
+order. The result being that as a programmer, you can have th 
+
+70
+00:03:35,215 --> 00:03:38,215
+luxury of the illusion that you're putting long strings of 
+
+71
+00:03:38,218 --> 00:03:41,218
+characters or bytes into a pipe and at the other end, they're 
+
+72
+00:03:41,221 --> 00:03:45,221
+coming out of the pipe in the same order, reliably and you can 
+
+73
+00:03:45,225 --> 00:03:47,225
+just think of it as printing strings pretty much. Now, one 
+
+74
+00:03:47,227 --> 00:03:50,227
+nuance is if we want to have multiple different programs on the 
+
+75
+00:03:50,230 --> 00:03:54,230
+same computer all using TCP, we need a way to identify which 
+
+76
+00:03:54,234 --> 00:03:58,234
+traffic streams are intended for which programs and the way TCP 
+
+77
+00:03:58,238 --> 00:04:01,238
+does that is by using port numbers. A port number is just a 16 
+
+78
+00:04:01,241 --> 00:04:04,241
+bit number that essentially identifies a particular program 
+
+79
+00:04:04,244 --> 00:04:07,244
+running on a certain machine and says this traffic is intended 
+
+80
+00:04:07,247 --> 00:04:10,247
+for that program to consume. As we'll see in the case of the 
+
+81
+00:04:10,250 --> 00:04:14,250
+World Wide Web, it's been decided by the powers that be that 
+
+82
+00:04:14,254 --> 00:04:17,254
+port number 80 is the standard port on which web servers should 
+
+83
+00:04:17,257 --> 00:04:20,257
+listen for traffic. In a moment, we're going to do a very simple 
+
+84
+00:04:20,260 --> 00:04:23,260
+demonstration of running our own very brain dead web server just 
+
+85
+00:04:23,263 --> 00:04:27,263
+so you can see how simple protocols really are. Of course, any 
+
+86
+00:04:27,267 --> 00:04:30,267
+protocol effort like this is a result of decades of work by a 
+
+87
+00:04:30,270 --> 00:04:34,270
+lot of people but I think the two gentleman who are giving 
+
+88
+00:04:34,274 --> 00:04:36,274
+credit for really making these ideas real and putting them into 
+
+89
+00:04:36,276 --> 00:04:40,276
+practice as TCP IP are Vint Cerf and Bob Kahn who shared the 
+
+90
+00:04:40,280 --> 00:04:44,280
+Turing Award in 2004 for their work on network protocols which 
+
+91
+00:04:44,284 --> 00:04:47,284
+ultimately led to the development of TCP IP which now powers 
+
+92
+00:04:47,287 --> 00:04:51,287
+billions of computers all over the world. How does this work? 
+
+93
+00:04:51,291 --> 00:04:55,291
+The beauty of TCP IP is I can pretend that I've got a pipe into 
+
+94
+00:04:55,295 --> 00:04:58,295
+which I'm going to put a string like get/ bears, at the other 
+
+95
+00:04:58,298 --> 00:05:01,298
+end of that pipe, there's somebody listening who is able to pull 
+
+96
+00:05:01,301 --> 00:05:05,301
+out that same string just how I put it in. The other side will 
+
+97
+00:05:05,305 --> 00:05:08,305
+come up with some reply to my question. For example, here is a 
+
+98
+00:05:08,308 --> 00:05:11,308
+line that says everything is fine and the content is coming your 
+
+99
+00:05:11,311 --> 00:05:15,311
+way and they send that response back to me and I pull it out. 
+
+100
+00:05:15,315 --> 00:05:18,315
+It's really, gives you the illusion of a reliable sequence of 
+
+101
+00:05:18,318 --> 00:05:21,318
+bytes that can go on either directions. It's a bi- directional 
+
+102
+00:05:21,321 --> 00:05:25,321
+or full duplex protocol. Now, I lied when I said that at the 
+
+103
+00:05:25,325 --> 00:05:28,325
+simplest possible level there's just a client and a server. In 
+
+104
+00:05:28,328 --> 00:05:31,328
+fact, there's a third piece of the web that very fundamental to 
+
+105
+00:05:31,331 --> 00:05:34,331
+how it works which is DNS, Domain Name System, and that's the 
+
+106
+00:05:34,334 --> 00:05:39,334
+service that allows us to use meaningful names like Google. com 
+
+107
+00:05:39,339 --> 00:05:42,339
+or Microsoft. com instead of trying to remember those addresses 
+
+108
+00:05:42,342 --> 00:05:46,342
+with four numbers separated by periods. The domain name server 
+
+109
+00:05:46,346 --> 00:05:49,346
+is actually a separate kind of service. The diagram I showed 
+
+110
+00:05:49,349 --> 00:05:51,349
+before, really should have look like this. What I want to talk 
+
+111
+00:05:51,351 --> 00:05:54,351
+to a web server really the first thing I do is I have to go look 
+
+112
+00:05:54,354 --> 00:05:58,354
+up the internet protocol or IP address of that server from a DNS 
+
+113
+00:05:58,358 --> 00:06:01,358
+server and DNS servers are usually configured by whoever your 
+
+114
+00:06:01,361 --> 00:06:05,361
+ISP is. Once I get that information back, now I have the IP 
+
+115
+00:06:05,365 --> 00:06:08,365
+address and I can do what I really wanted to do. The irony here 
+
+116
+00:06:08,368 --> 00:06:11,368
+is that even though DNS is a totally separate service, for all 
+
+117
+00:06:11,371 --> 00:06:14,371
+practical purposes, most of us would think the internet was down 
+
+118
+00:06:14,374 --> 00:06:17,374
+if DNS wasn't working because most web browsers and other 
+
+119
+00:06:17,377 --> 00:06:21,377
+programs no longer rely on being able to just remember the raw 
+
+120
+00:06:21,381 --> 00:06:24,381
+IP addresses, they rely on being able to do this mapping at 
+
+121
+00:06:24,384 --> 00:06:28,384
+runtime. Now that we know how to talk over TCP IP, what do we 
+
+122
+00:06:28,388 --> 00:06:31,388
+say? The way that we exchange content between browsers and web 
+
+123
+00:06:31,391 --> 00:06:34,391
+server is a very simple network protocol called hyper text 
+
+124
+00:06:34,394 --> 00:06:38,394
+transfer protocol or HTTP. It is ASCII- based, that means that 
+
+125
+00:06:38,398 --> 00:06:41,398
+everything that goes back and fourth asking for stuff and 
+
+126
+00:06:41,401 --> 00:06:44,401
+getting the status of whether that stuff can be returned or not, 
+
+127
+00:06:44,404 --> 00:06:46,404
+those are just plane old strings. They're easy to read, human 
+
+128
+00:06:46,406 --> 00:06:50,406
+beings can do site for the protocol. An HTTP request is very 
+
+129
+00:06:50,410 --> 00:06:53,410
+simple. There's a request method, get and post are the most 
+
+130
+00:06:53,413 --> 00:06:56,413
+common ones but there is three or four others that you'll come 
+
+131
+00:06:56,416 --> 00:06:59,416
+to meet during the rest of the course. There is a URI, you've 
+
+132
+00:06:59,419 --> 00:07:02,419
+seen this before. The URI names the thing that you would like to 
+
+133
+00:07:02,422 --> 00:07:07,422
+retrieve and the HTTP protocol version, a very important lesson 
+
+134
+00:07:07,427 --> 00:07:10,427
+from the networking literature is when you deploy a protocol 
+
+135
+00:07:10,430 --> 00:07:13,430
+that many millions of clients and servers are going to use, one 
+
+136
+00:07:13,433 --> 00:07:17,433
+thing you should put in the protocol itself is for each party, 
+
+137
+00:07:17,437 --> 00:07:19,437
+when it speaks, to identify what version of the protocol it's 
+
+138
+00:07:19,439 --> 00:07:22,439
+using. The reason to do this is that if you upgrade the protocol 
+
+139
+00:07:22,442 --> 00:07:25,442
+or add features in the future, you want to make sure that if 
+
+140
+00:07:25,445 --> 00:07:28,445
+somebody asks you for something using an old version of the 
+
+141
+00:07:28,448 --> 00:07:31,448
+protocol, you don't accidentally use these new features that the 
+
+142
+00:07:31,451 --> 00:07:35,451
+older clients maybe haven't been upgraded yet. There's also some 
+
+143
+00:07:35,455 --> 00:07:39,455
+protocol headers in HTTP. They give some extra information both 
+
+144
+00:07:39,459 --> 00:07:41,459
+for the client's point of view and from the service point of 
+
+145
+00:07:41,461 --> 00:07:47,461
+view that a company request or the company that reply. The most 
+
+146
+00:07:47,467 --> 00:07:50,467
+important HTTP request and the replies that we'll see is we'll 
+
+147
+00:07:50,470 --> 00:07:53,470
+get a status code back from the server of all as well. The 
+
+148
+00:07:53,473 --> 00:07:56,473
+resource has moved like redirect or there was some kind of a 
+
+149
+00:07:56,476 --> 00:07:59,476
+problem and I wasn't able to serve your request. Now, this is 
+
+150
+00:07:59,479 --> 00:08:02,479
+all much easier to see in demonstration form than it is to do on 
+
+151
+00:08:02,482 --> 00:08:08,482
+a slide so let's do a very simple demo. What I've got is I've 
+
+152
+00:08:08,488 --> 00:08:13,488
+got an instance of a Google Chrome browser here and I've got a 
+
+153
+00:08:13,493 --> 00:08:17,493
+terminal window where I'm going to run a program that is a 
+
+154
+00:08:17,497 --> 00:08:24,497
+standard part of the index called net cap NC and I'm going to 
+
+155
+00:08:24,504 --> 00:08:28,504
+say listen on port 8000. Remember, I said TCP uses port numbers 
+
+156
+00:08:28,508 --> 00:08:31,508
+to identify different programs that want to receive TCP traffic. 
+
+157
+00:08:31,511 --> 00:08:35,511
+I am now a program that is waiting for somebody to send me some 
+
+158
+00:08:35,515 --> 00:08:38,515
+traffic on port 8000. I'm going to go over to our web browser 
+
+159
+00:08:38,518 --> 00:08:42,518
+and create that traffic. Remember, I said local host is the 
+
+160
+00:08:42,522 --> 00:08:44,522
+magic name that means this machine that I'm running on right 
+
+161
+00:08:44,524 --> 00:08:49,524
+now, I'll make sure that we're using HTTP, and you can follow 
+
+162
+00:08:49,529 --> 00:08:52,529
+the host name with a colon and a port number. Remember, I said 
+
+163
+00:08:52,532 --> 00:08:55,532
+that port 80 is the default port for web traffic. If I didn't 
+
+164
+00:08:55,535 --> 00:08:58,535
+include a port number in the URI, 80 would be assumed but in 
+
+165
+00:08:58,538 --> 00:09:01,538
+this case, I want to make sure that I direct some traffic 
+
+166
+00:09:01,541 --> 00:09:04,541
+specifically to this terminal window that we're listening on. 
+
+167
+00:09:04,544 --> 00:09:08,544
+Let's see what happens if we try to visit this URL. You can see 
+
+168
+00:09:08,548 --> 00:09:11,548
+that the web browser has sent over a request. It's saying, I 
+
+169
+00:09:11,551 --> 00:09:14,551
+want to get the root resource because I didn't put anything 
+
+170
+00:09:14,554 --> 00:09:19,554
+after a slash or anything after the host name part of the URI. 
+
+171
+00:09:19,559 --> 00:09:22,559
+It's identifying the version of the protocol that it knows. I 
+
+172
+00:09:22,562 --> 00:09:26,562
+know protocol version 1.1 so that means that the server is in 
+
+173
+00:09:26,566 --> 00:09:29,566
+its best judgment is going to reply and only use features of the 
+
+174
+00:09:29,569 --> 00:09:32,569
+protocol available in 1.1 and earlier so it's not to confuse the 
+
+175
+00:09:32,572 --> 00:09:36,572
+client. The client gives us some more information about itself 
+
+176
+00:09:36,576 --> 00:09:39,576
+like what kind of a computer I am. I can see that I'm running a 
+
+177
+00:09:39,579 --> 00:09:43,579
+Mozilla browser on a Macintosh and so forth. Now, you can see 
+
+178
+00:09:43,583 --> 00:09:45,583
+our web browser is just sitting here. We've got the little 
+
+179
+00:09:45,585 --> 00:09:47,585
+spinning circle that indicates the browser is waiting for 
+
+180
+00:09:47,587 --> 00:09:50,587
+something to happen and that's because it's waiting for a reply. 
+
+181
+00:09:50,590 --> 00:10:05,590
+We're going to give it the simplest possible reply. Sure enough 
+
+182
+00:10:05,605 --> 00:10:07,605
+there's hello world. Now, you noticed it before anything 
+
+183
+00:10:07,607 --> 00:10:10,607
+appeared. I have to essentially quit out of the net cap program 
+
+184
+00:10:10,610 --> 00:10:13,610
+and close the connection because that's the easiest way to tell 
+
+185
+00:10:13,613 --> 00:10:15,613
+the browser I've finished saying everything I'm going to say. At 
+
+186
+00:10:15,615 --> 00:10:17,615
+that point, the browser pulls the string of characters out of 
+
+187
+00:10:17,617 --> 00:10:21,617
+the TCP pipe and displays it. Now, we broke a few rules here. 
+
+188
+00:10:21,621 --> 00:10:24,621
+Technically, what we should have done is we should have included 
+
+189
+00:10:24,624 --> 00:10:27,624
+some headers like this, telling the browser what's coming your 
+
+190
+00:10:27,627 --> 00:10:30,627
+way. In our case, we're just going to deliver some plain text 
+
+191
+00:10:30,630 --> 00:10:33,630
+and for historical reasons, browsers are very tolerant if you 
+
+192
+00:10:33,633 --> 00:10:35,633
+just return some plain text without any other identifying 
+
+193
+00:10:35,635 --> 00:10:38,635
+information. They tend to do the right thing. The big message 
+
+194
+00:10:38,638 --> 00:10:42,638
+here is you just seen in its simplest form what HTTP does. The 
+
+195
+00:10:42,642 --> 00:10:45,642
+client asked a question, there was a server on the other end 
+
+196
+00:10:45,645 --> 00:10:48,645
+waiting for questions to be asked and we supplied and answer to 
+
+197
+00:10:48,648 --> 00:10:50,648
+that question which then went back to the client, back to the 
+
+198
+00:10:50,650 --> 00:10:58,650
+web browser. Now, one issue that we haven't talked about yet is 
+
+199
+00:10:58,658 --> 00:11:01,658
+early on in the design of HTTP, a decision was made but the 
+
+200
+00:11:01,661 --> 00:11:04,661
+protocol would be stateless which specifically means that 
+
+201
+00:11:04,664 --> 00:11:09,664
+whenever I make a new HTTP request to any particular server, 
+
+202
+00:11:09,669 --> 00:11:12,669
+it's as if that server has never seen me before in its life. The 
+
+203
+00:11:12,672 --> 00:11:15,672
+corollary of that, if there's any information that has to be 
+
+204
+00:11:15,675 --> 00:11:18,675
+maintained across request then there has to be some separate 
+
+205
+00:11:18,678 --> 00:11:22,678
+mechanism for doing that. An easy example of this is even in 
+
+206
+00:11:22,682 --> 00:11:25,682
+early web apps, there's an notion of going through a flow of 
+
+207
+00:11:25,685 --> 00:11:27,685
+pages in the application. For example, you visit a product page, 
+
+208
+00:11:27,687 --> 00:11:30,687
+you add something in your shopping cart, you check out and 
+
+209
+00:11:30,690 --> 00:11:33,690
+somehow the server has to remember which step you're on. How can 
+
+210
+00:11:33,693 --> 00:11:36,693
+it do that if every request from you is independent and as if 
+
+211
+00:11:36,696 --> 00:11:40,696
+every request was like the first time. Cookies were invented to 
+
+212
+00:11:40,700 --> 00:11:43,700
+do this and essentially, the first time that you visit a site, 
+
+213
+00:11:43,703 --> 00:11:47,703
+the site has the option of sending back along with its response, 
+
+214
+00:11:47,707 --> 00:11:50,707
+a little piece of information called the cookie and most of the 
+
+215
+00:11:50,710 --> 00:11:53,710
+time, that's really just a name for some state that the server 
+
+216
+00:11:53,713 --> 00:11:56,713
+is going to maintain about you. The wen browser's job is to 
+
+217
+00:11:56,716 --> 00:11:59,716
+remember that cookie and anytime you make another visit back to 
+
+218
+00:11:59,719 --> 00:12:02,719
+that same server, make sure that that cookie value is supplied 
+
+219
+00:12:02,722 --> 00:12:05,722
+along with it. Cookies essentially provide a way of saying, " 
+
+220
+00:12:05,725 --> 00:12:08,725
+Hey, remember who I am? You served me this cookie value and now 
+
+221
+00:12:08,728 --> 00:12:10,728
+you can look me up." You can remember what I was doing last in 
+
+222
+00:12:10,730 --> 00:12:15,730
+your application. As you might expect, as a framework that's 
+
+223
+00:12:15,735 --> 00:12:18,735
+mature for doing SaaS applications, rails has pretty good 
+
+224
+00:12:18,738 --> 00:12:20,738
+facilities for handling cookies so that you're more or less 
+
+225
+00:12:20,740 --> 00:12:23,740
+don't have to worry about it. 
+
+

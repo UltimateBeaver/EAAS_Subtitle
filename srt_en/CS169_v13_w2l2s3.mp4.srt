@@ -1,0 +1,581 @@
+1
+00:00:00,000 --> 00:00:04,000
+Let's talk about actual object orientation in Ruby. I've kept 
+
+2
+00:00:04,004 --> 00:00:08,004
+saying this mantra, everything is an object, everything is a 
+
+3
+00:00:08,008 --> 00:00:12,008
+method call, Ruby's a dynamic language, so the question is, why 
+
+4
+00:00:12,012 --> 00:00:13,012
+should you actually care about this? How does it actually 
+
+5
+00:00:13,013 --> 00:00:17,013
+simplify object- oriented programming? Let's look at a simple 
+
+6
+00:00:17,017 --> 00:00:21,017
+example to walk through. I'm going to define a savings account 
+
+7
+00:00:21,021 --> 00:00:24,021
+and hypothetically I'm going to say it inherits from an existing 
+
+8
+00:00:24,024 --> 00:00:26,024
+class called account, although we don't have an existing class. 
+
+9
+00:00:26,026 --> 00:00:29,026
+I just wanted to show you the syntax for inheritance. Of course, 
+
+10
+00:00:29,029 --> 00:00:32,029
+I need a constructor, and in Ruby, the constructor for a class 
+
+11
+00:00:32,032 --> 00:00:36,032
+by default is called initialize. Why is it called initialize, 
+
+12
+00:00:36,036 --> 00:00:38,036
+but you call it with new? It's just the way the world is. Sorry, 
+
+13
+00:00:38,038 --> 00:00:42,038
+kids. What is this initializer going to do? It's going to take 
+
+14
+00:00:42,042 --> 00:00:45,042
+one argument which is the initial balance, and note that because 
+
+15
+00:00:45,045 --> 00:00:49,045
+of giving the argument an optional value or a default value in 
+
+16
+00:00:49,049 --> 00:00:53,049
+the function definition, I can actually call the new function 
+
+17
+00:00:53,053 --> 00:00:56,053
+with no arguments and balance will default to zero. So you can 
+
+18
+00:00:56,056 --> 00:01:00,056
+have optional arguments with default values in Ruby as well. 
+
+19
+00:01:00,000 --> 00:01:03,060
+When I call the constructor, it's going to take the balance that 
+
+20
+00:01:03,063 --> 00:01:07,063
+I passed in and assign it to an instance variable. Long ago, in 
+
+21
+00:01:07,067 --> 00:01:10,067
+a previous lecture, we said that instance variables begin with a 
+
+22
+00:01:10,070 --> 00:01:14,070
+single @ sign, so @ balance is an instance variable, not to be 
+
+23
+00:01:14,074 --> 00:01:17,074
+confused with just plain balance, no @ sign. That's just a plain 
+
+24
+00:01:17,077 --> 00:01:20,077
+old local variable that disappears once we're no longer in the 
+
+25
+00:01:20,080 --> 00:01:22,080
+scope of the function. So that's the only thing the constructor 
+
+26
+00:01:22,082 --> 00:01:26,082
+does. Now we have a local variable or instance variable in Java 
+
+27
+00:01:26,086 --> 00:01:30,086
+terminology to track the value of our account balance, but of 
+
+28
+00:01:30,090 --> 00:01:33,090
+course, we need to be able to get access to that. Unlike Java 
+
+29
+00:01:33,093 --> 00:01:35,093
+and some other languages, there's no notion of a public 
+
+30
+00:01:35,095 --> 00:01:39,095
+attribute. This instance variable, @ balance, is visible only 
+
+31
+00:01:39,099 --> 00:01:42,099
+from within this specific instance of the object. If somebody 
+
+32
+00:01:42,102 --> 00:01:46,102
+outside the object, and certainly outside of the class, wants to 
+
+33
+00:01:46,106 --> 00:01:50,106
+get access to that information, you have to define an accessor 
+
+34
+00:01:50,110 --> 00:01:54,110
+for it. So here's my simple accessor. Wow, I hope you got that. 
+
+35
+00:01:54,114 --> 00:01:58,114
+All it does is return ... and by the way, in Ruby functions, if 
+
+36
+00:01:58,118 --> 00:02:01,118
+there's no explicit return statement, the value of the last 
+
+37
+00:02:01,121 --> 00:02:04,121
+expression evaluated in the function is the return value. 
+
+38
+00:02:04,124 --> 00:02:07,124
+Everything has a return value and if you don't say return, what 
+
+39
+00:02:07,127 --> 00:02:10,127
+you get is the last expression evaluated. So there's my really 
+
+40
+00:02:10,130 --> 00:02:14,130
+simple accessor, or getter, if you prefer. I also need a way 
+
+41
+00:02:14,134 --> 00:02:17,134
+maybe to set the balance. Who knows? Maybe I'd like to launder 
+
+42
+00:02:17,137 --> 00:02:21,137
+money into my bank account. Here's another function, and yes, 
+
+43
+00:02:21,141 --> 00:02:25,141
+balance= is the name of a method. Remember I said everything is 
+
+44
+00:02:25,145 --> 00:02:29,145
+a method call? This is where we're starting to get serious. 
+
+45
+00:02:29,149 --> 00:02:32,149
+Balance= is a different method from balance. There's a special 
+
+46
+00:02:32,152 --> 00:02:36,152
+case in Ruby for methods that end in the equal sign and that's 
+
+47
+00:02:36,156 --> 00:02:39,156
+how you can define your own setters. So balance= will take a new 
+
+48
+00:02:39,159 --> 00:02:42,159
+amount and it'll just set the instance variable to that. Of 
+
+49
+00:02:42,162 --> 00:02:44,162
+course, real bank accounts are not quite this easy to add money 
+
+50
+00:02:44,164 --> 00:02:47,164
+to yourself, so we'll get more realistic in a moment. We can 
+
+51
+00:02:47,167 --> 00:02:50,167
+also deposit. That's easy enough, we just add the deposit amount 
+
+52
+00:02:50,170 --> 00:02:55,170
+on to the instance variable balance. We can also have class 
+
+53
+00:02:55,175 --> 00:02:58,175
+variables. Something like the name of the bank might be a 
+
+54
+00:02:58,178 --> 00:03:01,178
+variable that is independent of any particular instance and we 
+
+55
+00:03:01,181 --> 00:03:05,181
+get those with the double @@ sign. Again, class variables are 
+
+56
+00:03:05,185 --> 00:03:08,185
+accessible from within the class. If we wanted to have access to 
+
+57
+00:03:08,188 --> 00:03:11,188
+that variable from outside the class, we would have to design a 
+
+58
+00:03:11,191 --> 00:03:15,191
+specific getter for it, and here would be an example of that 
+
+59
+00:03:15,195 --> 00:03:18,195
+getter. Notice the difference in how we define it. We define 
+
+60
+00:03:18,198 --> 00:03:21,198
+self. bank_ name. The reason this works, and this is going to 
+
+61
+00:03:21,201 --> 00:03:24,201
+take a little bit of getting used to, is because once we've 
+
+62
+00:03:24,204 --> 00:03:28,204
+started this declaration class, inside of this declaration, the 
+
+63
+00:03:28,208 --> 00:03:32,208
+value of self is the new class being created. So, if we say def 
+
+64
+00:03:32,212 --> 00:03:35,212
+self. some method name, all we're really saying is we're really 
+
+65
+00:03:35,215 --> 00:03:38,215
+defining this method on the class itself as opposed to these 
+
+66
+00:03:38,218 --> 00:03:41,218
+methods which are being defined on an instance of the class. 
+
+67
+00:03:41,221 --> 00:03:45,221
+Right on? We'll just return the bank name. Notice that we're not 
+
+68
+00:03:45,225 --> 00:03:48,225
+providing a setter for the bank name class variable, so you 
+
+69
+00:03:48,228 --> 00:03:54,228
+can't set it. An alternative to saying self. bank_ name is we 
+
+70
+00:03:54,234 --> 00:03:58,234
+could also put the name of the class. bank_ name. Why is that? 
+
+71
+00:03:58,238 --> 00:04:01,238
+Because inside of a class definition, the value of self is 
+
+72
+00:04:01,241 --> 00:04:04,241
+exactly the new class that you're in the process of creating. 
+
+73
+00:04:04,244 --> 00:04:07,244
+That's the end of our class definition. In a moment, I'm going 
+
+74
+00:04:07,247 --> 00:04:10,247
+to fire up the Ruby interpreter so that we can actually try 
+
+75
+00:04:10,250 --> 00:04:14,250
+these examples live in real life, but before we do that, let's 
+
+76
+00:04:14,254 --> 00:04:17,254
+test your recollection here. Remember that I said, remember, 
+
+77
+00:04:17,257 --> 00:04:22,257
+everything is an object, everything is a method call, a. b ... 
+
+78
+00:04:22,262 --> 00:04:29,262
+okay. Which ones of these are a correct way of getting access to 
+
+79
+00:04:29,269 --> 00:04:34,269
+the balance of a bank account instance? Let's do a quick initial 
+
+80
+00:04:34,274 --> 00:04:39,274
+vote. Quick initial vote. You guys are quick. You guys are 
+
+81
+00:04:39,279 --> 00:04:44,279
+quick. A sea of blue is what I see. Let's discuss the answer. 
+
+82
+00:04:44,284 --> 00:04:47,284
+What's wrong with A? Volunteer from the audience. What is 
+
+83
+00:04:47,287 --> 00:04:54,287
+manifestly wrong with A? One possibility is you can't directly 
+
+84
+00:04:54,294 --> 00:04:58,294
+access @ balance and while that is true, there's an even more 
+
+85
+00:04:58,298 --> 00:05:00,298
+superficial reason why the first one's wrong. Sir? There's no 
+
+86
+00:05:00,000 --> 00:05:04,300
+method called @ balance. There's no method called @ balance. A. 
+
+87
+00:05:04,304 --> 00:05:08,304
+b always means call method b on object a. Method names don't 
+
+88
+00:05:08,308 --> 00:05:10,308
+ever begin with an @ sign, only instance variable names can 
+
+89
+00:05:10,310 --> 00:05:14,310
+begin with an @ sign. So on its face, a just doesn't work. It's 
+
+90
+00:05:14,314 --> 00:05:18,314
+not even syntactically legal. B and c are equivalent, except 
+
+91
+00:05:18,318 --> 00:05:21,318
+that one of them omits the optional parentheses around the 
+
+92
+00:05:21,321 --> 00:05:25,321
+method call to balance, and that's it. So, back into our 
+
+93
+00:05:25,325 --> 00:05:30,325
+discussion, I am now going to actually take some code and paste 
+
+94
+00:05:30,330 --> 00:05:37,330
+it into the Ruby interpreter. I also took the liberty of 
+
+95
+00:05:37,337 --> 00:05:40,337
+creating three accounts we can play with, my account with $ 
+
+96
+00:05:40,340 --> 00:05:44,340
+1,000, Dave's with $ 5,000, and Bill Gates with a lot more than 
+
+97
+00:05:44,344 --> 00:05:52,344
+either of us. So we'll come back to that. Now you know instance 
+
+98
+00:05:52,352 --> 00:05:55,352
+variables. You know that you have define explicit getters and 
+
+99
+00:05:55,355 --> 00:05:59,355
+setters on instance variables. On the other hand, the getters 
+
+100
+00:05:59,359 --> 00:06:02,359
+and setters that we defined are pretty darn trivial, and it 
+
+101
+00:06:02,362 --> 00:06:05,362
+would be nice ... this to me, as soon as you start seeing stuff 
+
+102
+00:06:05,365 --> 00:06:08,365
+like this where you've read this method and now you know what's 
+
+103
+00:06:08,368 --> 00:06:12,368
+coming, this is a sign that the language isn't supporting you. 
+
+104
+00:06:12,372 --> 00:06:16,372
+Might there be a more concise way? If these accessors and 
+
+105
+00:06:16,376 --> 00:06:18,376
+setters are such a common case, shouldn't there be a way to 
+
+106
+00:06:18,378 --> 00:06:23,378
+support them that is a little more elegant and indeed there is. 
+
+107
+00:06:23,383 --> 00:06:29,383
+Let me do that again. Old way. New way. I just made code 
+
+108
+00:06:29,389 --> 00:06:35,389
+disappear. What is this magic attr_ accessor thing? It's not 
+
+109
+00:06:35,395 --> 00:06:40,395
+part of the language. It is just a regular old method call, and 
+
+110
+00:06:40,400 --> 00:06:42,400
+in a moment, we're going to start talking more about 
+
+111
+00:06:42,402 --> 00:06:45,402
+metaprogramming, which is code that defines and writes and runs 
+
+112
+00:06:45,405 --> 00:06:49,405
+new code at runtime, and one thing I said when I began 
+
+113
+00:06:49,409 --> 00:06:52,409
+introducing Ruby is, I'm only going to talk about these 
+
+114
+00:06:52,412 --> 00:06:55,412
+highfalutin language features because I believe they help you 
+
+115
+00:06:55,415 --> 00:06:58,415
+write cleaner code that is easier to read and understand. This 
+
+116
+00:06:58,418 --> 00:07:02,418
+is an example. In fact, in the next homework assignment, one of 
+
+117
+00:07:02,422 --> 00:07:03,422
+the things you're going to do is you're going to essentially 
+
+118
+00:07:03,423 --> 00:07:08,423
+create your own more sophisticated version of attr_ accessor. 
+
+119
+00:07:08,428 --> 00:07:11,428
+But when you say attr_ accessor  : balance, what you're saying 
+
+120
+00:07:11,431 --> 00:07:15,431
+is please create for me these two methods, a default getter and 
+
+121
+00:07:15,435 --> 00:07:18,435
+a default setter, that just do the obvious thing. You can figure 
+
+122
+00:07:18,438 --> 00:07:21,438
+out how it does it. If you had to print out the text of those 
+
+123
+00:07:21,441 --> 00:07:25,441
+two methods based on attr_ accessor, you could do it. The 
+
+124
+00:07:25,445 --> 00:07:27,445
+difference is, in Ruby, pretty much if you can print it out at 
+
+125
+00:07:27,447 --> 00:07:30,447
+runtime, you can also execute it at runtime, and that's very 
+
+126
+00:07:30,450 --> 00:07:34,450
+cool. So, a quick review of Ruby's distinguishing features that 
+
+127
+00:07:34,454 --> 00:07:37,454
+we've seen. First of all, it is object- oriented in the extreme. 
+
+128
+00:07:37,457 --> 00:07:41,457
+Even the lowliest integers are objects. There's really no such 
+
+129
+00:07:41,461 --> 00:07:44,461
+things as attributes. There's instance variables, but you have 
+
+130
+00:07:44,464 --> 00:07:47,464
+to define explicit getters and setters because you have to get 
+
+131
+00:07:47,467 --> 00:07:52,467
+at them through methods. Everything is a method call. Usually 
+
+132
+00:07:52,472 --> 00:07:54,472
+the only thing you care about in a method call is whether the 
+
+133
+00:07:54,474 --> 00:07:56,474
+receiver responds to the method you're trying to send it, and 
+
+134
+00:07:56,476 --> 00:07:59,476
+we'll have a lot more to say about that in a moment when we 
+
+135
+00:07:59,479 --> 00:08:02,479
+shortly talk about duck typing. We've talked about the fact that 
+
+136
+00:08:02,482 --> 00:08:05,482
+objects can have different types, but the variables that refer 
+
+137
+00:08:05,485 --> 00:08:09,485
+to those objects are not typed. As we'll see, most of the 
+
+138
+00:08:09,489 --> 00:08:12,489
+expressions that we've seen are non- destructive, so we gave 
+
+139
+00:08:12,492 --> 00:08:14,492
+examples of like adding strings together, adding arrays 
+
+140
+00:08:14,494 --> 00:08:18,494
+together. We're going to see some functions that let you select 
+
+141
+00:08:18,498 --> 00:08:22,498
+and remove elements and rearrange arrays. In almost all cases, 
+
+142
+00:08:22,502 --> 00:08:24,502
+with a few exceptions that we'll identify, those functions don't 
+
+143
+00:08:24,504 --> 00:08:28,504
+modify the receiver. They return a new copy of an object. That's 
+
+144
+00:08:28,508 --> 00:08:32,508
+part of Ruby's heritage as being functionally flavored from the 
+
+145
+00:08:32,512 --> 00:08:34,512
+functional programming community. 
+
+

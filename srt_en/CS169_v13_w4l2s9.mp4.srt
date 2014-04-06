@@ -1,0 +1,629 @@
+1
+00:00:00,000 --> 00:00:03,000
+Moving on with our tour, we have a very quick introduction to 
+
+2
+00:00:03,003 --> 00:00:06,003
+models. Next we're going to get a quick introduction to 
+
+3
+00:00:06,006 --> 00:00:09,006
+controllers and views, the other two pieces of the MVC equation, 
+
+4
+00:00:09,009 --> 00:00:11,009
+and let's go back to our 'cookbook approach'. We already know 
+
+5
+00:00:11,011 --> 00:00:13,011
+how to add a new model, or change things about an existing 
+
+6
+00:00:13,013 --> 00:00:16,013
+model. Now we want to add a new action. A new thing that you can 
+
+7
+00:00:16,016 --> 00:00:20,016
+do to a model. To add a new action, remember, what do you need 
+
+8
+00:00:20,020 --> 00:00:21,020
+in a model view controller system? Well, in order for the 
+
+9
+00:00:21,021 --> 00:00:25,021
+controller to do its work, you've got to be able to get from a 
+
+10
+00:00:25,025 --> 00:00:28,025
+URI, to which method in the controller is going to actually 
+
+11
+00:00:28,028 --> 00:00:31,028
+handle that, and we saw that the routing subsystem is where that 
+
+12
+00:00:31,031 --> 00:00:35,031
+gets done, and there's a [ fall 00:00:32] called 'routed. rb' 
+
+13
+00:00:35,035 --> 00:00:37,035
+that you can set up, although the default setup essentially 
+
+14
+00:00:37,037 --> 00:00:39,037
+gives you the routes for all of the 'CRUD actions' on your 
+
+15
+00:00:39,039 --> 00:00:43,039
+models. You also need to add the actual code that does the thing 
+
+16
+00:00:43,043 --> 00:00:46,043
+you want to do. Remember that when we say, " Add controller 
+
+17
+00:00:46,046 --> 00:00:49,046
+code," most of the time, really where the action happens is in 
+
+18
+00:00:49,049 --> 00:00:51,049
+the model, right? The controller code is really just there to 
+
+19
+00:00:51,051 --> 00:00:55,051
+mediate between the views and what's in the model, so the code 
+
+20
+00:00:55,055 --> 00:00:58,055
+that you are adding in the controller tends to be pretty small. 
+
+21
+00:00:58,058 --> 00:01:00,058
+You've probably already added the code in the model that does 
+
+22
+00:01:00,000 --> 00:01:03,060
+the actual work. All you need to do now is basically connect 
+
+23
+00:01:03,063 --> 00:01:06,063
+that to the rest of you app. Make sure that there is something 
+
+24
+00:01:06,066 --> 00:01:09,066
+there for it to render. Remember, the 'http' is a request reply 
+
+25
+00:01:09,069 --> 00:01:12,069
+protocol. That means that whenever you do a request to the 
+
+26
+00:01:12,072 --> 00:01:15,072
+server something has got to come back. Usually that something is 
+
+27
+00:01:15,075 --> 00:01:18,075
+a view, so you've got to make sure that there is some view 
+
+28
+00:01:18,078 --> 00:01:21,078
+associated with the action. One possibility is that each view, 
+
+29
+00:01:21,081 --> 00:01:24,081
+or each action, has its own separate view associated with it, 
+
+30
+00:01:24,084 --> 00:01:27,084
+but as we'll see, another possibility is to essentially re- use 
+
+31
+00:01:27,087 --> 00:01:29,087
+the same view for different actions. As long as there is 
+
+32
+00:01:29,089 --> 00:01:33,089
+something to be rendered you're okay. We're going to use the 
+
+33
+00:01:33,093 --> 00:01:36,093
+'show action', and the view that goes along with it, as our 
+
+34
+00:01:36,096 --> 00:01:39,096
+walk- through example here. The book walks through the 'index 
+
+35
+00:01:39,099 --> 00:01:41,099
+action', which is a little bit different, so this way you get 
+
+36
+00:01:41,101 --> 00:01:45,101
+two different types. Remember, the responsibilities in model 
+
+37
+00:01:45,105 --> 00:01:47,105
+view controller. The model is where all the action happens. The 
+
+38
+00:01:47,107 --> 00:01:50,107
+model manipulates the data, talks to the database. The 
+
+39
+00:01:50,110 --> 00:01:52,110
+controller gets stuff out of the model and makes it available to 
+
+40
+00:01:52,112 --> 00:01:55,112
+the view. So what method are we going to write? We're going to 
+
+41
+00:01:55,115 --> 00:01:58,115
+write the method, or the 'controller action', I would guess, 
+
+42
+00:01:58,118 --> 00:02:01,118
+that given ... You want to see information about a particular 
+
+43
+00:02:01,121 --> 00:02:05,121
+movie, is going to get that information from the model, or from 
+
+44
+00:02:05,125 --> 00:02:08,125
+the database via the model I guess, and create a view that 
+
+45
+00:02:08,128 --> 00:02:11,128
+displays that information, kind of a detail view. The reason 
+
+46
+00:02:11,131 --> 00:02:15,131
+that we can expect to create a method that can consume the 
+
+47
+00:02:15,135 --> 00:02:18,135
+primary key ID of something is when we create the index, which 
+
+48
+00:02:18,138 --> 00:02:21,138
+is the listing of all movies, next to each one there is a link 
+
+49
+00:02:21,141 --> 00:02:23,141
+that takes you to the detail page for that movie, and those 
+
+50
+00:02:23,143 --> 00:02:26,143
+links are basically constructed so that their route already 
+
+51
+00:02:26,146 --> 00:02:29,146
+includes the ID of the movie. The end- user would never be 
+
+52
+00:02:29,149 --> 00:02:31,149
+expected to know this, but if the end- user is just picking 
+
+53
+00:02:31,151 --> 00:02:34,151
+something off of a list, and if we get to generate that list, we 
+
+54
+00:02:34,154 --> 00:02:37,154
+could just make sure that the links already all point to the 
+
+55
+00:02:37,157 --> 00:02:40,157
+right place. That's what the index example walk- through in the 
+
+56
+00:02:40,160 --> 00:02:43,160
+book sets up. It sets up a view where all of the links have the 
+
+57
+00:02:43,163 --> 00:02:46,163
+ID embedded n them. We're going to show where all this comes 
+
+58
+00:02:46,166 --> 00:02:49,166
+from, but remember, the overall template here is, when we set an 
+
+59
+00:02:49,169 --> 00:02:52,169
+instance variable like '@ movie' in a controller method, it's 
+
+60
+00:02:52,172 --> 00:02:55,172
+going to magically become available in the view. The view is 
+
+61
+00:02:55,175 --> 00:02:57,175
+going to display the data, maybe allow the user to do something 
+
+62
+00:02:57,177 --> 00:03:01,177
+with it. In this case it's going to be showing some description 
+
+63
+00:03:01,181 --> 00:03:05,181
+of the movie text and rating, and some other stuff, and we'll 
+
+64
+00:03:05,185 --> 00:03:08,185
+show the view in a moment. Then we'll see what other things we 
+
+65
+00:03:08,188 --> 00:03:11,188
+might want to put on that page, and how does the user get to 
+
+66
+00:03:11,191 --> 00:03:27,191
+that page to begin with? Let's go to 'Pastebin'. Okay. What's 
+
+67
+00:03:27,207 --> 00:03:30,207
+our view going to look like? Well we're going to assume that we 
+
+68
+00:03:30,210 --> 00:03:34,210
+can set up that '@ movie' variable so that in the view we can 
+
+69
+00:03:34,214 --> 00:03:38,214
+just have details about, we can use the '@ movie' variable and 
+
+70
+00:03:38,218 --> 00:03:40,218
+de- reference its title. We can de- reference its release date 
+
+71
+00:03:40,220 --> 00:03:43,220
+and pretty- print it in a nice way. We can de- reference its 
+
+72
+00:03:43,223 --> 00:03:47,223
+rating. This is Haml. How do we get to this point? How do we 
+
+73
+00:03:47,227 --> 00:03:49,227
+actually figure out the controller methods, the routes and so 
+
+74
+00:03:49,229 --> 00:03:53,229
+forth, that we need to use to do this? One of the nice things 
+
+75
+00:03:53,233 --> 00:03:56,233
+that Rails gives you is basically built- in helpers that will 
+
+76
+00:03:56,236 --> 00:03:59,236
+generate URLs that have the right thing in them. So we said when 
+
+77
+00:03:59,239 --> 00:04:02,239
+we generate that list of movies in the 'index view', that the 
+
+78
+00:04:02,242 --> 00:04:04,242
+links that could be generated automatically have the right 
+
+79
+00:04:04,244 --> 00:04:07,244
+information in them to include things like the primary key of 
+
+80
+00:04:07,247 --> 00:04:10,247
+the movie. This is a table that's actually reproduced from the 
+
+81
+00:04:10,250 --> 00:04:14,250
+book, and it shows that the default route- set that you get when 
+
+82
+00:04:14,254 --> 00:04:19,254
+you create a new app is that for each model you get routes that 
+
+83
+00:04:19,259 --> 00:04:23,259
+will allow you to generate RESTful URIs for the 'index action', 
+
+84
+00:04:23,263 --> 00:04:26,263
+which is list all of the instances you have, the 'CRUD actions', 
+
+85
+00:04:26,266 --> 00:04:30,266
+create re- update, delete, and actions called 'new' and 'edit', 
+
+86
+00:04:30,270 --> 00:04:32,270
+which are only necessary in a web browser, because they're sort 
+
+87
+00:04:32,272 --> 00:04:37,272
+of half of doing an operation. When you think about ... When you 
+
+88
+00:04:37,277 --> 00:04:39,277
+create a new movie, from your point of view as a human being, 
+
+89
+00:04:39,279 --> 00:04:41,279
+there's actually two steps involved, right? You have to get a 
+
+90
+00:04:41,281 --> 00:04:44,281
+blank form that you fill in, and then you submit the form, and 
+
+91
+00:04:44,284 --> 00:04:47,284
+the data in the form is what's used to create the movie. The 
+
+92
+00:04:47,287 --> 00:04:49,287
+reason that it looks like, even though we're only doing the 
+
+93
+00:04:49,289 --> 00:04:52,289
+'CRUD actions', that there is seven things here, well one of 
+
+94
+00:04:52,292 --> 00:04:55,292
+them is the 'index action', which is not really a 'CRUD action', 
+
+95
+00:04:55,295 --> 00:04:57,295
+but it lists all the elements of the collection, and the other 
+
+96
+00:04:57,297 --> 00:05:00,297
+two, 'new' and 'edit, are sort of the first half of an 
+
+97
+00:05:00,000 --> 00:05:03,300
+interaction that takes two steps to do. We're going to start 
+
+98
+00:05:03,303 --> 00:05:08,303
+from that index view that the book develops, and in the code 
+
+99
+00:05:08,308 --> 00:05:11,308
+that's in the view, you'll see things like, " Link to movie 
+
+100
+00:05:11,311 --> 00:05:14,311
+path," with a primary key in it. 'Movie path' is what's going to 
+
+101
+00:05:14,314 --> 00:05:18,314
+generate this URL helper, so give a 'movie path' an argument, 
+
+102
+00:05:18,318 --> 00:05:22,318
+it's going to turn it into a URL that looks like this, and then 
+
+103
+00:05:22,322 --> 00:05:28,322
+it encodes the ID of the movie we want to see. In the view 
+
+104
+00:05:28,328 --> 00:05:30,328
+that's going to end up looking like just a plain old link that 
+
+105
+00:05:30,330 --> 00:05:33,330
+you can click on. The URL is already constructed, and when it 
+
+106
+00:05:33,333 --> 00:05:37,333
+gets matched against the different routes, it's going to match 
+
+107
+00:05:37,337 --> 00:05:40,337
+the movies' ID route with the 'GET method'. That means that the 
+
+108
+00:05:40,340 --> 00:05:44,340
+ID is a stand- in, it's a wild card, for this part of the route, 
+
+109
+00:05:44,344 --> 00:05:46,344
+the digit ' 3 ',  so that's going to be available in the [ 
+
+110
+00:05:46,346 --> 00:05:49,346
+params 00:05:46] array that our 'controller action' sees. So 
+
+111
+00:05:49,349 --> 00:05:51,349
+we're starting the moving parts one by one. The first moving 
+
+112
+00:05:51,351 --> 00:05:55,351
+part is figure out, " What route does this URI match?," and if 
+
+113
+00:05:55,355 --> 00:05:57,355
+there's any wild cards embedded in that route, pull the wild 
+
+114
+00:05:57,357 --> 00:06:00,357
+card parameters out. Make them available as part of the [ params 
+
+115
+00:06:00,000 --> 00:06:05,360
+00:06:00] hash, and now we also know, from rake routes, what 
+
+116
+00:06:05,365 --> 00:06:08,365
+'controller action' that's going to call. How do we know that? 
+
+117
+00:06:08,368 --> 00:06:13,368
+Well, I'm going to look ... in my application here, which I'm 
+
+118
+00:06:13,373 --> 00:06:17,373
+going to temporarily stop. If I run 'rake routes', it will look 
+
+119
+00:06:17,377 --> 00:06:20,377
+into my routes file and show me all of the mappings that have 
+
+120
+00:06:20,380 --> 00:06:24,380
+already been set up for me. So this is saying that, for example, 
+
+121
+00:06:24,384 --> 00:06:29,384
+when I'm doing 'GET' of a single movie, when I 'GET' with a URL 
+
+122
+00:06:29,389 --> 00:06:34,389
+that matches 'movies/ ID', wit 'ID' as a wild card, that's going 
+
+123
+00:06:34,394 --> 00:06:38,394
+to try to call the 'show action' in the movies' controller. So 
+
+124
+00:06:38,398 --> 00:06:41,398
+that's where my code logically has to go in order to handle that 
+
+125
+00:06:41,401 --> 00:06:53,401
+request. Let's get the app started again. Ouch. Okay, so we've 
+
+126
+00:06:53,413 --> 00:06:57,413
+seen that. The URI matches. Wild cards get pulled out. We know 
+
+127
+00:06:57,417 --> 00:07:00,417
+which 'controller action' we're going to call, and in that 
+
+128
+00:07:00,000 --> 00:07:03,420
+'controller action', which in our case is really short, the one 
+
+129
+00:07:03,423 --> 00:07:06,423
+and only thing it needs to do is get information from the model, 
+
+130
+00:07:06,426 --> 00:07:09,426
+and it does that by calling 'movie. find'. We know the primary 
+
+131
+00:07:09,429 --> 00:07:12,429
+key of the movie the user wants to look at, so we can just look 
+
+132
+00:07:12,432 --> 00:07:14,432
+it up directly. We're going to assign that to the instance 
+
+133
+00:07:14,434 --> 00:07:17,434
+variable movie, and then that variable becomes available in the 
+
+134
+00:07:17,437 --> 00:07:20,437
+view. What is the view? Well, remember we said, " By convention 
+
+135
+00:07:20,440 --> 00:07:22,440
+over configuration, you don't have to worry about the names of 
+
+136
+00:07:22,442 --> 00:07:25,442
+things, as long as you follow some rules." The rule here is that 
+
+137
+00:07:25,445 --> 00:07:28,445
+when you finish executing a 'controller action', unless you say 
+
+138
+00:07:28,448 --> 00:07:31,448
+otherwise, Rails will look for a view that has the same name, 
+
+139
+00:07:31,451 --> 00:07:35,451
+but with HTML. erb or HTML. haml attached to it. In that case 
+
+140
+00:07:35,455 --> 00:07:39,455
+we'll look for 'show. html. haml' in the movies' subdirectory of 
+
+141
+00:07:39,459 --> 00:07:42,459
+views. We'll render it, and if there's any variables that are 
+
+142
+00:07:42,462 --> 00:07:44,462
+used in the view, like '@ movie', we'll substitute the values 
+
+143
+00:07:44,464 --> 00:07:46,464
+that the controller computed. That's basically the round trip 
+
+144
+00:07:46,466 --> 00:07:50,466
+through the app. We could also let the user return to the 'movie 
+
+145
+00:07:50,470 --> 00:07:55,470
+list'. We could, for example, what's the RESTful URI that names 
+
+146
+00:07:55,475 --> 00:07:57,475
+the collection? The list of all movies? Well, there's a helper 
+
+147
+00:07:57,477 --> 00:08:01,477
+called 'movies path' that will return a route that maps to the 
+
+148
+00:08:01,481 --> 00:08:05,481
+'index action', and 'rake routes' would show that. So 'movies 
+
+149
+00:08:05,485 --> 00:08:08,485
+path' with no arguments links to the 'index action', so we could 
+
+150
+00:08:08,488 --> 00:08:11,488
+put something in our view that says, " Here's some text to show, 
+
+151
+00:08:11,491 --> 00:08:13,491
+and here's the hyperlink." The URL will be generated by calling 
+
+152
+00:08:13,493 --> 00:08:16,493
+this method, and again, the reason that this is all segregated 
+
+153
+00:08:16,496 --> 00:08:19,496
+in the routing subsystem is if you change the names of routes, 
+
+154
+00:08:19,499 --> 00:08:21,499
+the way some of the routes work, you don't have to manually 
+
+155
+00:08:21,501 --> 00:08:24,501
+propagate those changes through all of your HTML templates, 
+
+156
+00:08:24,504 --> 00:08:26,504
+because you're generating the routes at run- time based on the 
+
+157
+00:08:26,506 --> 00:08:28,506
+information out of that file. 
+
+

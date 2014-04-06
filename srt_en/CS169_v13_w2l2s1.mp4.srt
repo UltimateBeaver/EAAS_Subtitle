@@ -1,0 +1,625 @@
+1
+00:00:00,000 --> 00:00:02,000
+We're going to launch right in today and talk about Ruby as a
+
+2
+00:00:02,002 --> 00:00:06,002
+modern object- oriented language. If you've come from the Java 
+
+3
+00:00:06,006 --> 00:00:09,006
+world, which many of you have, there's all these concepts that 
+
+4
+00:00:09,009 --> 00:00:11,009
+you have to assimilate when you do object- oriented programming. 
+
+5
+00:00:11,011 --> 00:00:13,011
+You have to learn about objects, you have to learn about the 
+
+6
+00:00:13,013 --> 00:00:16,013
+attributes of objects, and you talk about getters and setters on 
+
+7
+00:00:16,016 --> 00:00:19,016
+attributes. You talk about the methods that objects support. 
+
+8
+00:00:19,019 --> 00:00:23,019
+Maybe if you've done C++, you know about operator overloading. 
+
+9
+00:00:23,023 --> 00:00:25,023
+There's things like interfaces which allow you to add other 
+
+10
+00:00:25,025 --> 00:00:29,025
+behaviors to a class. Java also has these primitive types like 
+
+11
+00:00:29,029 --> 00:00:32,029
+integers. You have to box and unbox them in order to do certain 
+
+12
+00:00:32,032 --> 00:00:35,032
+things to them. At some point, you probably found yourself 
+
+13
+00:00:35,035 --> 00:00:38,035
+asking whether there isn't a smaller set of mechanisms that 
+
+14
+00:00:38,038 --> 00:00:41,038
+supports the things you're trying to do when you're using all 
+
+15
+00:00:41,041 --> 00:00:44,041
+these different mechanisms in a language like Java or C++. 
+
+16
+00:00:44,044 --> 00:00:47,044
+Ruby's dramatic simplification of how to deal with this is to 
+
+17
+00:00:47,047 --> 00:00:50,047
+say everything is an object, everything. The only way you get 
+
+18
+00:00:50,050 --> 00:00:53,050
+stuff done is by calling methods on objects. What does this mean 
+
+19
+00:00:53,053 --> 00:00:57,053
+concretely? First of all, even the lowly integer is a true 
+
+20
+00:00:57,057 --> 00:01:00,057
+object. That means that you can do things like call methods, 
+
+21
+00:01:00,000 --> 00:01:05,060
+like days, on actual integers; three days ago will tell you how 
+
+22
+00:01:05,065 --> 00:01:08,065
+many seconds it's been since three days ago. Now, in raw Ruby, 
+
+23
+00:01:08,068 --> 00:01:10,068
+this won't work. It will work in Rails. I'll get back to why 
+
+24
+00:01:10,070 --> 00:01:14,070
+that happens. To give you a sense, I can also say 50 dot 
+
+25
+00:01:14,074 --> 00:01:17,074
+methods. I’ m asking the integer 50, " What methods do you 
+
+26
+00:01:17,077 --> 00:01:21,077
+respond to? What things do you know how to do?" In fact I can, 
+
+27
+00:01:21,081 --> 00:01:25,081
+explicitly in Ruby, talk about responding to, I can ask an 
+
+28
+00:01:25,085 --> 00:01:28,085
+object directly, “ What methods do you respond to?” by using 
+
+29
+00:01:28,088 --> 00:01:32,088
+this built- in respond to method. See how good I am at drawing? 
+
+30
+00:01:32,092 --> 00:01:36,092
+I'm pretty good, huh? Yeah. In fact, all of these really can be 
+
+31
+00:01:36,096 --> 00:01:38,096
+thought of as syntactic sugar around a single construct which is 
+
+32
+00:01:38,098 --> 00:01:41,098
+the send method. It's a language primitive. That's the one that 
+
+33
+00:01:41,101 --> 00:01:44,101
+says, “ Take the following method call and send it to the 
+
+34
+00:01:44,104 --> 00:01:48,104
+object.” We say that the object is the receiver in that case. 
+
+35
+00:01:48,108 --> 00:01:50,108
+The only thing Ruby cares about is whether the object you're 
+
+36
+00:01:50,110 --> 00:01:54,110
+sending a message to knows how to respond to that message. For 
+
+37
+00:01:54,114 --> 00:01:58,114
+example, if I say one plus two, what I'm really doing is saying 
+
+38
+00:01:58,118 --> 00:02:02,118
+shorthand for sending to the receiver the object one, the plus 
+
+39
+00:02:02,122 --> 00:02:04,122
+message, with an additional argument of two. That's really 
+
+40
+00:02:04,124 --> 00:02:08,124
+what's going on internally at the language level. Plus is really 
+
+41
+00:02:08,128 --> 00:02:11,128
+just another method and it's another that takes one argument 
+
+42
+00:02:11,131 --> 00:02:14,131
+which is the thing to add to its receiver. Similarly, if I 
+
+43
+00:02:14,134 --> 00:02:17,134
+dereference an array with square brackets, really I'm sending 
+
+44
+00:02:17,137 --> 00:02:22,137
+the square bracket dereference method to the target array, and 
+
+45
+00:02:22,142 --> 00:02:24,142
+I'm passing another argument which is what the sub- script is 
+
+46
+00:02:24,144 --> 00:02:27,144
+that I want to get. We can do other examples like when we do 
+
+47
+00:02:27,147 --> 00:02:30,147
+array assignment, " What's going on here?" Believe it or not, 
+
+48
+00:02:30,150 --> 00:02:34,150
+this is a method call. There's a method call that means assign 
+
+49
+00:02:34,154 --> 00:02:37,154
+to an array and, this time, we need two arguments – which sub- 
+
+50
+00:02:37,157 --> 00:02:40,157
+script to assign and what the new value ought to be at that 
+
+51
+00:02:40,160 --> 00:02:42,160
+place. The important thing here is that there's actually a 
+
+52
+00:02:42,162 --> 00:02:46,162
+method to find on arrays, called bracket equals, and, when you 
+
+53
+00:02:46,166 --> 00:02:50,166
+say, my array sub three equals foo, it's really just a 
+
+54
+00:02:50,170 --> 00:02:53,170
+shorthand. Syntactic sugar for calling the bracket equals method 
+
+55
+00:02:53,173 --> 00:02:56,173
+with those two arguments. This is a dramatically simplifying 
+
+56
+00:02:56,176 --> 00:02:58,176
+thing that you … it takes a little bit of getting used to but 
+
+57
+00:02:58,178 --> 00:03:01,178
+bear with me, for just a bit , as I work through a few more 
+
+58
+00:03:01,181 --> 00:03:05,181
+examples. When I do a comparison, again, what am I doing? I'm 
+
+59
+00:03:05,185 --> 00:03:09,185
+sending the target a message of double equals with another 
+
+60
+00:03:09,189 --> 00:03:12,189
+argument of the thing to compare it to and, when I call up 
+
+61
+00:03:12,192 --> 00:03:16,192
+regular old function, I'm sending to self which is the implicit 
+
+62
+00:03:16,196 --> 00:03:19,196
+receiver. Right, if you don't see anything before the dot, it 
+
+63
+00:03:19,199 --> 00:03:21,199
+means whatever the value of self is, and we'll have a lot more 
+
+64
+00:03:21,201 --> 00:03:24,201
+to say about that when we talk about object orientation. We're 
+
+65
+00:03:24,204 --> 00:03:28,204
+sending self the name of a method , my func, and one argument 
+
+66
+00:03:28,208 --> 00:03:32,208
+that's expected by that method. The hope is that self has an 
+
+67
+00:03:32,212 --> 00:03:36,212
+instance method called my func, in this case, and that my func 
+
+68
+00:03:36,216 --> 00:03:41,216
+is prepared to accept an argument. That's what's going on there. 
+
+69
+00:03:41,221 --> 00:03:44,221
+Remember, when we do this, okay, save yourself a lot of grief. 
+
+70
+00:03:44,224 --> 00:03:48,224
+When you see the notation a dot b, it means we're calling the 
+
+71
+00:03:48,228 --> 00:03:51,228
+method b on the object a. Okay, what does it not mean? It does 
+
+72
+00:03:51,231 --> 00:03:55,231
+not mean that b is an instance variable of a. It doesn't mean 
+
+73
+00:03:55,235 --> 00:03:58,235
+that a is some kind of a data structure, and b is one of the 
+
+74
+00:03:58,238 --> 00:04:01,238
+fields of that data structure – it's nothing like that, right? 
+
+75
+00:04:01,241 --> 00:04:04,241
+Keeping this in mind will help you parse Ruby expressions that 
+
+76
+00:04:04,244 --> 00:04:06,244
+look a little confusing until you get more accustomed to the 
+
+77
+00:04:06,246 --> 00:04:09,246
+language, at which point it'll seem very natural. Understanding 
+
+78
+00:04:09,249 --> 00:04:13,249
+this distinction, keeping this one simple rule in my mind, will 
+
+79
+00:04:13,253 --> 00:04:17,253
+save you a lot of grief and confusion. When you say every 
+
+80
+00:04:17,257 --> 00:04:20,257
+operation is a method call, go a little more deeply into that. 
+
+81
+00:04:20,260 --> 00:04:25,260
+What does it mean? Here's three different uses of plus. Somebody 
+
+82
+00:04:25,265 --> 00:04:28,265
+unfamiliar with a modern extremely object- oriented language 
+
+83
+00:04:28,268 --> 00:04:31,268
+like Ruby might look at those three lines and say, " Wow, if 
+
+84
+00:04:31,271 --> 00:04:34,271
+those are all legal calls, it must be the case that Ruby has 
+
+85
+00:04:34,274 --> 00:04:37,274
+some pretty sophisticated type inference and type conversion in 
+
+86
+00:04:37,277 --> 00:04:41,277
+place so that plus knows what to do depending on what the types 
+
+87
+00:04:41,281 --> 00:04:43,281
+of its two arguments are." Now that you understand that 
+
+88
+00:04:43,283 --> 00:04:46,283
+everything is an object and plus is just a method, it should be 
+
+89
+00:04:46,286 --> 00:04:49,286
+clear that what's going on here is these are three different 
+
+90
+00:04:49,289 --> 00:04:52,289
+methods. These three uses of plus are three different methods. 
+
+91
+00:04:52,292 --> 00:04:56,292
+One of them is the class numeric definition of plus, another one 
+
+92
+00:04:56,296 --> 00:04:59,296
+is the array class's definition of plus, and another one is the 
+
+93
+00:04:59,299 --> 00:05:02,299
+string class's definition of plus. How does Ruby know which one 
+
+94
+00:05:02,302 --> 00:05:05,302
+to use? To take the third example here, when I say y equals 
+
+95
+00:05:05,305 --> 00:05:09,305
+quote hello plus quote world, what's the receiver of plus? The 
+
+96
+00:05:09,309 --> 00:05:13,309
+receiver is this first argument hello and it's a string. The 
+
+97
+00:05:13,313 --> 00:05:15,313
+string class is going to be the one where the plus method gets 
+
+98
+00:05:15,315 --> 00:05:18,315
+looked up, the plus method is going to get past a second 
+
+99
+00:05:18,318 --> 00:05:21,318
+argument, in this case world, and it had better know how to do 
+
+100
+00:05:21,321 --> 00:05:24,321
+something sensible with that argument. The answer to the 
+
+101
+00:05:24,324 --> 00:05:27,324
+question, " What if I say foo plus bar, and foo plus bar maybe 
+
+102
+00:05:27,327 --> 00:05:30,327
+are of different classes or of different types, what happens 
+
+103
+00:05:30,330 --> 00:05:34,330
+then?" In foo plus bar, foo is the receiver, plus gets sent to 
+
+104
+00:05:34,334 --> 00:05:37,334
+it, and it will get past the argument bar, and it has to decide 
+
+105
+00:05:37,337 --> 00:05:39,337
+whether it can do something sensible based on what kind of a 
+
+106
+00:05:39,339 --> 00:05:43,339
+thing bar is. One last thing before we get off of this quick 
+
+107
+00:05:43,343 --> 00:05:47,343
+intro topic. Poetry mode. I mentioned in a previous lecture that 
+
+108
+00:05:47,347 --> 00:05:51,347
+I'm a really big fan of the minimum number of marks on the page 
+
+109
+00:05:51,351 --> 00:05:54,351
+that make it easy and clear to write the code and for other 
+
+110
+00:05:54,354 --> 00:05:57,354
+people to read the code. One of the ways that Ruby supports this 
+
+111
+00:05:57,357 --> 00:06:00,357
+is through poetry mode. Here's an example of a legal Ruby 
+
+112
+00:06:00,000 --> 00:06:02,360
+statement that came from one of my apps using poetry mode. You 
+
+113
+00:06:02,362 --> 00:06:06,362
+can almost read it aloud and figure out what the code does. 
+
+114
+00:06:06,366 --> 00:06:10,366
+Redirect to login page and return unless logged in. Code does 
+
+115
+00:06:10,370 --> 00:06:13,370
+not get much more transparent than that. The reason this is 
+
+116
+00:06:13,373 --> 00:06:16,373
+legal is because when parentheses around function call arguments 
+
+117
+00:06:16,376 --> 00:06:19,376
+are optional, in other words when the parser would not be 
+
+118
+00:06:19,379 --> 00:06:22,379
+confused by omitting them, Ruby lets you omit them, and also 
+
+119
+00:06:22,382 --> 00:06:26,382
+because braces around hashes can often be omitted if the context 
+
+120
+00:06:26,386 --> 00:06:30,386
+is unambiguous. For example, if we rewrote this with fully 
+
+121
+00:06:30,390 --> 00:06:34,390
+parenthesized syntax, we could see that – redirect to login 
+
+122
+00:06:34,394 --> 00:06:37,394
+page, this redirect to is a method that expects one argument – 
+
+123
+00:06:37,397 --> 00:06:41,397
+and is a standard Boolean connector which you've seen before – 
+
+124
+00:06:41,401 --> 00:06:45,401
+return, in this case return isn't returning any explicit value 
+
+125
+00:06:45,405 --> 00:06:49,405
+so it's like a function call but there's no argument – and 
+
+126
+00:06:49,409 --> 00:06:51,409
+logged in happens to be another function; I didn't add the empty 
+
+127
+00:06:51,411 --> 00:06:55,411
+parens around it. Again, as you get used to the language, it'll 
+
+128
+00:06:55,415 --> 00:06:57,415
+become very natural and very clear to you when it's okay to 
+
+129
+00:06:57,417 --> 00:07:01,417
+leave stuff out. Here's another example. Dave alluded, in one of 
+
+130
+00:07:01,421 --> 00:07:04,421
+the earlier lectures, about the ability to write things like, a 
+
+131
+00:07:04,424 --> 00:07:06,424
+should be greater than or equal to seven when you're expressing 
+
+132
+00:07:06,426 --> 00:07:09,426
+test cases. How can that possibly work? Again, if we 
+
+133
+00:07:09,429 --> 00:07:13,429
+parenthesize defensively, should is really just a function that 
+
+134
+00:07:13,433 --> 00:07:16,433
+takes one argument. The argument that it takes is the 
+
+135
+00:07:16,436 --> 00:07:19,436
+expression " be greater than or equal to seven." In this case, I 
+
+136
+00:07:19,439 --> 00:07:22,439
+happen to know that b isn't a variable. It's actually another 
+
+137
+00:07:22,442 --> 00:07:27,442
+function call. It's a method call. In the poetry mode example, 
+
+138
+00:07:27,447 --> 00:07:31,447
+I've been able to omit both the empty parent around b, which 
+
+139
+00:07:31,451 --> 00:07:34,451
+tell us it's a function call with no arguments, and the parent 
+
+140
+00:07:34,454 --> 00:07:39,454
+around should which capture its argument. One last example, and 
+
+141
+00:07:39,459 --> 00:07:42,459
+this is an example of omitting braces when it's obvious from 
+
+142
+00:07:42,462 --> 00:07:46,462
+context that something is a hash. This is an example of a call 
+
+143
+00:07:46,466 --> 00:07:50,466
+that was very common in Rails applications saying to create a 
+
+144
+00:07:50,470 --> 00:07:54,470
+URL that links to a particular procedure in your program that 
+
+145
+00:07:54,474 --> 00:07:57,474
+handles some user interaction with the web app. What we've done 
+
+146
+00:07:57,477 --> 00:08:01,477
+here is there's actually two things we've omitted. This is a 
+
+147
+00:08:01,481 --> 00:08:04,481
+function of one argument and the argument is a hash. Because 
+
+148
+00:08:04,484 --> 00:08:07,484
+it's unambiguous in parsing, not only can we leave out the 
+
+149
+00:08:07,487 --> 00:08:10,487
+parens around the function argument, we can leave out the braces 
+
+150
+00:08:10,490 --> 00:08:13,490
+that normally would go around the hash literal. Now again, the 
+
+151
+00:08:13,493 --> 00:08:16,493
+first time you see this, it's a little confusing, you might not 
+
+152
+00:08:16,496 --> 00:08:18,496
+always realize when it's acceptable to do it and when it's not. 
+
+153
+00:08:18,498 --> 00:08:22,498
+When in doubt, you can always parenthesize defensively. In 
+
+154
+00:08:22,502 --> 00:08:25,502
+general, you'll very quickly get used to when this makes sense 
+
+155
+00:08:25,505 --> 00:08:27,505
+to do and you're going to find that it makes your code much more 
+
+156
+00:08:27,507 --> 00:08:28,507
+readable. 
+
+

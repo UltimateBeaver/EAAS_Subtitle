@@ -1,0 +1,200 @@
+00:00:00,000 --> 00:00:05,000
+Given that background, cards out, which is a not true statement 
+
+2
+00:00:05,005 --> 00:00:08,005
+about Model- View- Controller? In SaaS apps on the web, 
+
+3
+00:00:08,008 --> 00:00:12,008
+controller actions and view contents are transmitted using HTTP 
+
+4
+00:00:12,012 --> 00:00:16,012
+protocol. Model- View- Controller apps have both a client part, 
+
+5
+00:00:16,016 --> 00:00:18,016
+like the part that runs in your browser, and a cloud part, like 
+
+6
+00:00:18,018 --> 00:00:22,018
+the part that runs in Rails on an app server. Model- View- 
+
+7
+00:00:22,022 --> 00:00:25,022
+Controller is just of the several ways that you could structure 
+
+8
+00:00:25,025 --> 00:00:28,025
+these apps, and although we've been talking about client server, 
+
+9
+00:00:28,028 --> 00:00:31,028
+you could also use Model- View- Controller to structure peer- 
+
+10
+00:00:31,031 --> 00:00:36,031
+to- peer applications like File Sharing, stealing, whatever. 
+
+11
+00:00:36,036 --> 00:00:39,036
+Think about this for a moment, we'll do a vote. Let's do an 
+
+12
+00:00:39,039 --> 00:00:46,039
+initial vote. Initial vote, initial vote. There's not agreement. 
+
+13
+00:00:46,046 --> 00:00:48,046
+There's almost representation of every answer, so this is a good 
+
+14
+00:00:48,048 --> 00:00:53,048
+one to talk about for about 30 seconds. Which statement is not 
+
+15
+00:00:53,053 --> 00:00:59,053
+true? Shall we try voting again? Let's try second vote, second 
+
+16
+00:00:59,059 --> 00:01:04,059
+vote, second vote. This question is obviously very contentious. 
+
+17
+00:01:04,064 --> 00:01:07,064
+Let's go through these answers one a time and see which ones we 
+
+18
+00:01:07,067 --> 00:01:10,067
+can determine to be true or not true. Controller actions and 
+
+19
+00:01:10,070 --> 00:01:14,070
+view contents are transmitted using HTTP. What's a controller 
+
+20
+00:01:14,074 --> 00:01:17,074
+action? A controller action is just an HTTP request. That's the 
+
+21
+00:01:17,077 --> 00:01:20,077
+only way we have to communicate with an app. What are view 
+
+22
+00:01:20,080 --> 00:01:24,080
+contents? View contents are things like HTML pages. HTTP is 
+
+23
+00:01:24,084 --> 00:01:27,084
+indeed the one and only protocol that is used for web SaaS 
+
+24
+00:01:27,087 --> 00:01:32,087
+applications. Orange passes the test, orange is a true 
+
+25
+00:01:32,092 --> 00:01:35,092
+statement. All Model- View- Controller apps have both a client 
+
+26
+00:01:35,095 --> 00:01:40,095
+part and a cloud part. Who made that rule? They absolutely don't 
+
+27
+00:01:40,100 --> 00:01:42,100
+have to. You could write an app that runs entirely on your 
+
+28
+00:01:42,102 --> 00:01:44,102
+iPhone, but Model- View- Controller really is just talking about 
+
+29
+00:01:44,104 --> 00:01:47,104
+how you organize the functionality of the app, that there's a 
+
+30
+00:01:47,107 --> 00:01:52,107
+notion of the data or the app manipulates, there's a notion of 
+
+31
+00:01:52,112 --> 00:01:56,112
+some user interface and there is a mediation between the user 
+
+32
+00:01:56,116 --> 00:01:59,116
+and the data, and that's that controller part. You can apply 
+
+33
+00:01:59,119 --> 00:02:02,119
+that structure to an app that's got a client and cloud part. You 
+
+34
+00:02:02,122 --> 00:02:05,122
+can do it to an entirely cloud- based or an entirely client- 
+
+35
+00:02:05,125 --> 00:02:09,125
+based app. The green statement is not true. What about the 
+
+36
+00:02:09,129 --> 00:02:12,129
+remaining two statements? Just one of several possible ways, if 
+
+37
+00:02:12,132 --> 00:02:15,132
+you were not asleep during the last slide, you should realize 
+
+38
+00:02:15,135 --> 00:02:18,135
+that it is just one of several possible ways. I showed two other 
+
+39
+00:02:18,138 --> 00:02:22,138
+ways, three other ways. What about the last one, peer- to- peer 
+
+40
+00:02:22,142 --> 00:02:25,142
+apps versus client- server? Again, a peer- to- app as distinct 
+
+41
+00:02:25,145 --> 00:02:28,145
+from client- server, that just means that, unlike client- 
+
+42
+00:02:28,148 --> 00:02:31,148
+server, there aren't necessarily different pieces of software 
+
+43
+00:02:31,151 --> 00:02:33,151
+specialized for different roles. There's a single piece of 
+
+44
+00:02:33,153 --> 00:02:36,153
+software that both serves your files to other people and lets 
+
+45
+00:02:36,156 --> 00:02:40,156
+you steal … I mean, copy files from those other people. Again, 
+
+46
+00:02:40,160 --> 00:02:43,160
+if we're just talking about the way the data is organized, the 
+
+47
+00:02:43,163 --> 00:02:46,163
+way that users interact with it and the mediation between those 
+
+48
+00:02:46,166 --> 00:02:49,166
+two, you can apply that concept to any type of app. Indeed, 
+
+49
+00:02:49,169 --> 00:02:52,169
+client- server, as well as peer- to- peer apps, could be 
+
+50
+00:02:52,172 --> 00:02:54,172
+structured as Model- View- Controller. 
+
+

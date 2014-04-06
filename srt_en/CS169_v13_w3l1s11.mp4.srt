@@ -1,0 +1,540 @@
+00:00:00,000 --> 00:00:04,000
+We've talked about a simple protocol between clients and 
+
+2
+00:00:04,004 --> 00:00:09,004
+servers. We've talked about the idea that URIs and HTTP name the 
+
+3
+00:00:09,009 --> 00:00:12,009
+thing you want to get. The next logical thing to talk about is 
+
+4
+00:00:12,012 --> 00:00:15,012
+what is that you return to the browser? Everybody has sort of 
+
+5
+00:00:15,015 --> 00:00:20,015
+seen HTML through osmosis, I guess. Just to remind you where we 
+
+6
+00:00:20,020 --> 00:00:23,020
+are here, we are still in a second level, but now we are going 
+
+7
+00:00:23,023 --> 00:00:25,023
+to look at what happens on the client side. So far we've been 
+
+8
+00:00:25,025 --> 00:00:27,025
+looking mostly at the server side of this picture. The goal of 
+
+9
+00:00:27,027 --> 00:00:33,027
+HTML really is to get from this by adding this into something 
+
+10
+00:00:33,033 --> 00:00:38,033
+like this. Really simply HTML is a markup language. That means 
+
+11
+00:00:38,038 --> 00:00:40,038
+that believe it or not, despite what you may have seen on other 
+
+12
+00:00:40,040 --> 00:00:44,040
+websites, it's really supposed to describe the structure of text 
+
+13
+00:00:44,044 --> 00:00:46,044
+on a webpage, not the visual appearance of text. That's a 
+
+14
+00:00:46,046 --> 00:00:50,046
+different job. The Hypertext Markup Language actually has a 
+
+15
+00:00:50,050 --> 00:00:54,050
+fairly long and illustrious history, which we won't cover, 
+
+16
+00:00:54,054 --> 00:00:57,054
+except to tell you that it's a descendant of a markup language 
+
+17
+00:00:57,057 --> 00:01:00,057
+that IBM invented in the ‘ 60s for reading business documents, 
+
+18
+00:01:00,000 --> 00:01:03,060
+for making business documents that could be machine- readable. 
+
+19
+00:01:03,063 --> 00:01:06,063
+An HTML document is really a hierarchy of elements. That means 
+
+20
+00:01:06,066 --> 00:01:11,066
+that an element can contain other elements as its children. Some 
+
+21
+00:01:11,071 --> 00:01:13,071
+of these elements represent content that is sort of inline right 
+
+22
+00:01:13,073 --> 00:01:18,073
+on the page like text, headings, tables, paragraphs. Sometimes 
+
+23
+00:01:18,078 --> 00:01:21,078
+the tags represent embedded content, things that are separate 
+
+24
+00:01:21,081 --> 00:01:23,081
+from the page itself but can be loaded in conjunction with it 
+
+25
+00:01:23,083 --> 00:01:27,083
+like images or JavaScript code. Sometimes the tags represents 
+
+26
+00:01:27,087 --> 00:01:30,087
+forms, which provide a way for the user to give input and click 
+
+27
+00:01:30,090 --> 00:01:33,090
+on buttons and fill in text, which can then be supplied to the 
+
+28
+00:01:33,093 --> 00:01:37,093
+server in order to get it to do something. Elements in HTML are 
+
+29
+00:01:37,097 --> 00:01:40,097
+surrounded or delimited by tags. A tag appears in angle 
+
+30
+00:01:40,100 --> 00:01:45,100
+brackets, a closed tag has an angle bracket and a slash. Some of 
+
+31
+00:01:45,105 --> 00:01:48,105
+the tags have content. For example, here is a paragraph or P- 
+
+32
+00:01:48,108 --> 00:01:52,108
+tag whose content is the string " Hello World." Some have 
+
+33
+00:01:52,112 --> 00:01:55,112
+attributes. For example, here is an image tag that has an 
+
+34
+00:01:55,115 --> 00:01:57,115
+attribute source that tells the browser where the image is 
+
+35
+00:01:57,117 --> 00:02:02,117
+located. Some tags have both attributes as well as content. 
+
+36
+00:02:02,122 --> 00:02:05,122
+Because it's a hierarchy of elements, tags can usually include 
+
+37
+00:02:05,125 --> 00:02:09,125
+other tags as well. Now, of the various attributes the tags 
+
+38
+00:02:09,129 --> 00:02:11,129
+could have, two that we are going to focus on, because they are 
+
+39
+00:02:11,131 --> 00:02:14,131
+particularly useful when it comes to describing the structure of 
+
+40
+00:02:14,134 --> 00:02:18,134
+a page in a way that allows you to style it easily is the ID and 
+
+41
+00:02:18,138 --> 00:02:22,138
+Class attributes. The reason we care about them in part is 
+
+42
+00:02:22,142 --> 00:02:25,142
+because we do want to control the visual appearance of our 
+
+43
+00:02:25,145 --> 00:02:27,145
+webpages and we want to make them look nice. We want to do that 
+
+44
+00:02:27,147 --> 00:02:30,147
+in a way that respects the structure of the page. As we will 
+
+45
+00:02:30,150 --> 00:02:33,150
+see, there is many reasons to keep the structural and the visual 
+
+46
+00:02:33,153 --> 00:02:37,153
+concerns completely separate. Cascading Style Sheets or CSS 
+
+47
+00:02:37,157 --> 00:02:40,157
+helps us do that. The way we use Cascading Style Sheets is we 
+
+48
+00:02:40,160 --> 00:02:44,160
+will put identifying link element at the top of our page. In 
+
+49
+00:02:44,164 --> 00:02:46,164
+fact it goes inside the Head elements, one of the children of 
+
+50
+00:02:46,166 --> 00:02:50,166
+Head that says, " This is a style sheet and this is the URI that 
+
+51
+00:02:50,170 --> 00:02:54,170
+you download the style sheet from." The style sheet is just a 
+
+52
+00:02:54,174 --> 00:02:58,174
+URI accessible web resource like anything else. Among the most 
+
+53
+00:02:58,178 --> 00:03:01,178
+commonly used HTML elements when we are talking about CSS are 
+
+54
+00:03:01,181 --> 00:03:04,181
+the ID and Class elements because they give us a very compact 
+
+55
+00:03:04,184 --> 00:03:08,184
+way to quickly identify an element or group of elements to which 
+
+56
+00:03:08,188 --> 00:03:11,188
+we want to apply a common set of visual styles. In this simple 
+
+57
+00:03:11,191 --> 00:03:15,191
+example, I have a Div element, which is a way of identifying 
+
+58
+00:03:15,195 --> 00:03:18,195
+different parts of the document structurally, and I’ m giving it 
+
+59
+00:03:18,198 --> 00:03:22,198
+an ID of " right" and a Class of " content." The ID has to be 
+
+60
+00:03:22,202 --> 00:03:26,202
+unique within the page, so nowhere else on this page can I have 
+
+61
+00:03:26,206 --> 00:03:29,206
+any element of any kind that has the same ID " right" as this 
+
+62
+00:03:29,209 --> 00:03:32,209
+Div element. The Class could be attached to many elements. It 
+
+63
+00:03:32,212 --> 00:03:34,212
+can even be attached to elements of different types. It would be 
+
+64
+00:03:34,214 --> 00:03:37,214
+perfectly fine to have many other elements on this page that 
+
+65
+00:03:37,217 --> 00:03:42,217
+also share the content Class. How do we use these? Well, in 
+
+66
+00:03:42,222 --> 00:03:46,222
+general we use CSS Selectors as a way to identify what elements 
+
+67
+00:03:46,226 --> 00:03:49,226
+we want to apply some visual styling to. Here is a very simple 
+
+68
+00:03:49,229 --> 00:03:52,229
+example that we can use as the basis of showing how some 
+
+69
+00:03:52,232 --> 00:03:55,232
+Selectors work. The simplest way we can select an element is by 
+
+70
+00:03:55,235 --> 00:03:59,235
+the tag name. This Selector says any elements that have an H1 
+
+71
+00:03:59,239 --> 00:04:02,239
+tag, no matter what Class or ID they might have and that paints 
+
+72
+00:04:02,242 --> 00:04:04,242
+a pretty broad stroke. That's usually more general than you 
+
+73
+00:04:04,244 --> 00:04:09,244
+want. We can also restrict it to say only elements that have a 
+
+74
+00:04:09,249 --> 00:04:12,249
+certain class, so in this case class pageFrame that would only 
+
+75
+00:04:12,252 --> 00:04:17,252
+match this Div out here or we can match an element with a unique 
+
+76
+00:04:17,257 --> 00:04:21,257
+ID. Remember that we said the page head, in this case the ID has 
+
+77
+00:04:21,261 --> 00:04:24,261
+to be unique on the page. Only one element can have a page head 
+
+78
+00:04:24,264 --> 00:04:27,264
+ID and sure enough it's the same Div. Now, in this case I have 
+
+79
+00:04:27,267 --> 00:04:30,267
+written two different Selectors both of which could match this 
+
+80
+00:04:30,270 --> 00:04:33,270
+outer Div. In general, you need to be careful of not doing that 
+
+81
+00:04:33,273 --> 00:04:35,273
+in your CSS files because then you have to worry about 
+
+82
+00:04:35,275 --> 00:04:38,275
+complicated rules regarding which set of rules gets applied when 
+
+83
+00:04:38,278 --> 00:04:41,278
+multiple rules match. If you are using a good CSS editor 
+
+84
+00:04:41,281 --> 00:04:43,281
+program, they will usually warn you if you accidentally do 
+
+85
+00:04:43,283 --> 00:04:47,283
+something like this. We could also use the tag name combined 
+
+86
+00:04:47,287 --> 00:04:51,287
+with the Class, so this would match any Div elements that have 
+
+87
+00:04:51,291 --> 00:04:54,291
+an ID of page frame, or we could use the tag name and ID, but as 
+
+88
+00:04:54,294 --> 00:04:57,294
+you have no doubt already realized that's usually redundant, 
+
+89
+00:04:57,297 --> 00:05:03,297
+why? Because if an ID has to be unique on the page, then only 
+
+90
+00:05:03,303 --> 00:05:05,303
+one element can have this ID anyway, so why bother saying the 
+
+91
+00:05:05,305 --> 00:05:09,305
+element tag? The reason you would do that is really informative. 
+
+92
+00:05:09,309 --> 00:05:12,309
+For the designer who is looking at the CSS file wanting to make 
+
+93
+00:05:12,312 --> 00:05:15,312
+changes, this notation tells them specifically that the 
+
+94
+00:05:15,315 --> 00:05:18,315
+welcome … the element whose ID is welcome is usually an image 
+
+95
+00:05:18,318 --> 00:05:21,318
+element. That's useful because there are some styles that only 
+
+96
+00:05:21,321 --> 00:05:24,321
+make sense to apply to certain element types. The more 
+
+97
+00:05:24,324 --> 00:05:26,324
+interesting version of Selectors allows you to use descendent 
+
+98
+00:05:26,326 --> 00:05:30,326
+relationships. For example, I can say, I want to match any 
+
+99
+00:05:30,330 --> 00:05:34,330
+element that has the Cust Name Class, but only if it's inside of 
+
+100
+00:05:34,334 --> 00:05:38,334
+an element that matches Div. In our example, we have got a Div 
+
+101
+00:05:38,338 --> 00:05:41,338
+element out here, and inside one of its children actually does 
+
+102
+00:05:41,341 --> 00:05:47,341
+have the CSS class. In our case, this entire Span element is 
+
+103
+00:05:47,347 --> 00:05:52,347
+what will be matched by Div space Cust Name. If we don't specify 
+
+104
+00:05:52,352 --> 00:05:55,352
+any styling for an element, then whatever its parent element 
+
+105
+00:05:55,355 --> 00:05:59,355
+gets it inherits those attributes by default. Now, the Holy 
+
+106
+00:05:59,359 --> 00:06:02,359
+Grail, the goal of separating markup, structural markup like 
+
+107
+00:06:02,362 --> 00:06:06,362
+HTML from visual presentation with CSS is to really have 
+
+108
+00:06:06,366 --> 00:06:09,366
+complete separation of the two. One reason is that people with 
+
+109
+00:06:09,369 --> 00:06:13,369
+disabilities for example might be relying on reader software 
+
+110
+00:06:13,373 --> 00:06:16,373
+that tries to take an HTML page and read the contents to them 
+
+111
+00:06:16,376 --> 00:06:19,376
+and allow them to navigate. If you've mixed in styling 
+
+112
+00:06:19,379 --> 00:06:22,379
+information along with your HTML structural content, it can make 
+
+113
+00:06:22,382 --> 00:06:25,382
+life more difficult for the reader programs. You might be 
+
+114
+00:06:25,385 --> 00:06:27,385
+wondering how far you can actually go if you are trying to 
+
+115
+00:06:27,387 --> 00:06:31,387
+really and truly separate out the HTML markup from a CSS? Just 
+
+116
+00:06:31,391 --> 00:06:36,391
+to give you an example, here is a site called the CSS Zen 
+
+117
+00:06:36,396 --> 00:06:39,396
+Garden, and really it's just an illustration of the power of 
+
+118
+00:06:39,399 --> 00:06:43,399
+CSS. I am in the Safari browser here, which allows me to disable 
+
+119
+00:06:43,403 --> 00:06:46,403
+style sheet. What would this page look like if no CSS styles 
+
+120
+00:06:46,406 --> 00:06:52,406
+were applied? Well, it will look like this, pretty basic, but 
+
+121
+00:06:52,412 --> 00:06:54,412
+notice that the structure of the page is quite clear. We can 
+
+122
+00:06:54,414 --> 00:06:56,414
+immediately see where the headings are, major and minor 
+
+123
+00:06:56,416 --> 00:06:59,416
+headings. We can see things that are obviously intended to be 
+
+124
+00:06:59,419 --> 00:07:02,419
+lists of bulleted items. We can see the presentation order of 
+
+125
+00:07:02,422 --> 00:07:10,422
+things. If we turn styles back on, the remarkable thing is that 
+
+126
+00:07:10,430 --> 00:07:13,430
+we can choose a different set of styles. Let's click on one of 
+
+127
+00:07:13,433 --> 00:07:20,433
+these at the bottom. What's interesting here is that none of the 
+
+128
+00:07:20,440 --> 00:07:24,440
+HTML text has changed. In fact if I go back and disable styles 
+
+129
+00:07:24,444 --> 00:07:29,444
+one more time, you can see that it's the same exact HTML content 
+
+130
+00:07:29,449 --> 00:07:37,449
+that we had before, but the page looks totally different. This 
+
+131
+00:07:37,457 --> 00:07:40,457
+is sort of an extreme example, and in fact you can click through 
+
+132
+00:07:40,460 --> 00:07:45,460
+here and look at other styles like a robot named " Jimmy." The 
+
+133
+00:07:45,465 --> 00:07:48,465
+moral of the story is you could do a tremendous amount of visual 
+
+134
+00:07:48,468 --> 00:07:53,468
+styling just using CSS, so don't mix style information into your 
+
+135
+00:07:53,473 --> 00:07:54,473
+markup. 
+
+

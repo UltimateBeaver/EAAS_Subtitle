@@ -1,0 +1,401 @@
+1
+00:00:00,000 --> 00:00:04,000
+We are going to start talking about the architecture of SaaS 
+
+2
+00:00:04,004 --> 00:00:08,004
+applications in general and about some of the mechanisms in 
+
+3
+00:00:08,008 --> 00:00:13,008
+Rails specifically. We're going to start with a architectural 
+
+4
+00:00:13,013 --> 00:00:16,013
+pattern, a way of structuring software called Model View 
+
+5
+00:00:16,016 --> 00:00:20,016
+Controller. Since we're trying to motivate all of these material 
+
+6
+00:00:20,020 --> 00:00:24,020
+with a question of why would you care to learn about this stuff, 
+
+7
+00:00:24,024 --> 00:00:28,024
+the question for this segment is, we've been talking about 
+
+8
+00:00:28,028 --> 00:00:32,028
+frameworks and that fact that they allow you to capture some of 
+
+9
+00:00:32,032 --> 00:00:35,032
+the commonality and different kinds of apps. Specifically for 
+
+10
+00:00:35,035 --> 00:00:37,035
+this SaaS apps we're building in this course, the question is, 
+
+11
+00:00:37,037 --> 00:00:41,037
+what is the common application, if there is any, in these 
+
+12
+00:00:41,041 --> 00:00:44,041
+interactive and user- facing apps that we're building, that if 
+
+13
+00:00:44,044 --> 00:00:46,044
+we could capture them in a framework, would somehow simplify app 
+
+14
+00:00:46,046 --> 00:00:50,046
+development. That's what we're trying to capture here. In order 
+
+15
+00:00:50,050 --> 00:00:52,050
+to do that, we're going to go back to our diagram. We already 
+
+16
+00:00:52,052 --> 00:00:55,052
+started up here. We looked at the client's server nature of web 
+
+17
+00:00:55,055 --> 00:00:59,055
+apps. We also looked at the fact that there's three tiers on the 
+
+18
+00:00:59,059 --> 00:01:01,059
+server side of the web app. Now we're going to dive into one of 
+
+19
+00:01:01,061 --> 00:01:04,061
+those tiers into the app server, and we're going to see that 
+
+20
+00:01:04,064 --> 00:01:08,064
+Rails structures the app server as being structured according to 
+
+21
+00:01:08,068 --> 00:01:13,068
+design pattern called Model View and Controller. What is that? 
+
+22
+00:01:13,073 --> 00:01:15,073
+The idea is if you have an application that is manipulating some 
+
+23
+00:01:15,075 --> 00:01:18,075
+data and interacts with users, that you can separate the 
+
+24
+00:01:18,078 --> 00:01:20,078
+organization and storage of the data, we call that part the 
+
+25
+00:01:20,080 --> 00:01:23,080
+Model, from the user interface and the way the data is 
+
+26
+00:01:23,083 --> 00:01:27,083
+presented, and we call that part the View. What mediates the 
+
+27
+00:01:27,087 --> 00:01:30,087
+interaction between them is this intermediate thing called the 
+
+28
+00:01:30,090 --> 00:01:33,090
+Controller. When the user requests access to data, the 
+
+29
+00:01:33,093 --> 00:01:37,093
+Controller is where the logic lives that mediates that access, 
+
+30
+00:01:37,097 --> 00:01:40,097
+and when the Model wants to present that data that the user 
+
+31
+00:01:40,100 --> 00:01:42,100
+asked for, the Controller mediates getting the data from the 
+
+32
+00:01:42,102 --> 00:01:46,102
+Model and making it available for the user to see. In our case, 
+
+33
+00:01:46,106 --> 00:01:51,106
+what we're going to see is that the Model can read and update 
+
+34
+00:01:51,111 --> 00:01:54,111
+data that's maintained by the application. There's ... 
+
+35
+00:01:54,114 --> 00:01:58,114
+indirectly that data is provided to the View, but it all happens 
+
+36
+00:01:58,118 --> 00:02:01,118
+through the Controller, and the Controller also have the users 
+
+37
+00:02:01,121 --> 00:02:03,121
+who are looking at the View can interact with it. For example, 
+
+38
+00:02:03,123 --> 00:02:05,123
+in the case of the web, the View is a page you're viewing in a 
+
+39
+00:02:05,125 --> 00:02:07,125
+browser and there's affordances on that page, like clicking on 
+
+40
+00:02:07,127 --> 00:02:11,127
+things and submitting forms and stuff like that. Now if you 
+
+41
+00:02:11,131 --> 00:02:13,131
+think about this, it seems like this would be an obvious way 
+
+42
+00:02:13,133 --> 00:02:16,133
+that you would structure web applications, but in fact, other 
+
+43
+00:02:16,136 --> 00:02:18,136
+alternatives are possible and most web frame works don't 
+
+44
+00:02:18,138 --> 00:02:22,138
+necessarily follow this pattern. We'll come back to those in a 
+
+45
+00:02:22,142 --> 00:02:25,142
+minute, but very briefly, to show how Model View Controller apps 
+
+46
+00:02:25,145 --> 00:02:29,145
+work, each entity has a model, a controller and a set of views. 
+
+47
+00:02:29,149 --> 00:02:32,149
+For example, in our hypothetical Rotten Potatoes app, which 
+
+48
+00:02:32,152 --> 00:02:34,152
+we're going to be using to illustrate some of the things about 
+
+49
+00:02:34,154 --> 00:02:37,154
+how Rails works, there's a notion of movies, that's a kind of 
+
+50
+00:02:37,157 --> 00:02:41,157
+thing that the app manipulates. There is movie goers, we have 
+
+51
+00:02:41,161 --> 00:02:43,161
+information about people who watch movies. We might even have 
+
+52
+00:02:43,163 --> 00:02:46,163
+information about reviews that people write about movies. Each 
+
+53
+00:02:46,166 --> 00:02:49,166
+one of those types of entities has its own model, its own 
+
+54
+00:02:49,169 --> 00:02:52,169
+controller, and its own set views associated with it. Of course 
+
+55
+00:02:52,172 --> 00:02:55,172
+there might in inter- relationships between them, for example, 
+
+56
+00:02:55,175 --> 00:02:57,175
+it doesn't really make sense to talk about a review unless you 
+
+57
+00:02:57,177 --> 00:03:00,177
+connect it to the moviegoer who wrote it and to the movie that 
+
+58
+00:03:00,000 --> 00:03:02,180
+it's about. One of the things that you have to be able to do is 
+
+59
+00:03:02,182 --> 00:03:05,182
+make these association among different kinds of models and 
+
+60
+00:03:05,185 --> 00:03:08,185
+reflect those associations when you're trying to collect and 
+
+61
+00:03:08,188 --> 00:03:11,188
+present data. We'll show you how that gets done as well. When 
+
+62
+00:03:11,191 --> 00:03:14,191
+the user's interoperating or interacting with an app like Rotten 
+
+63
+00:03:14,194 --> 00:03:16,194
+Potatoes, they will send requests for different kinds of data, 
+
+64
+00:03:16,196 --> 00:03:19,196
+depending what the data is, the request will ultimately get 
+
+65
+00:03:19,199 --> 00:03:22,199
+handled by one of the several different controllers. What we're 
+
+66
+00:03:22,202 --> 00:03:25,202
+going to show in the next few segments is what machinery a 
+
+67
+00:03:25,205 --> 00:03:28,205
+framework like Rails gives you to help you create those 
+
+68
+00:03:28,208 --> 00:03:31,208
+mappings. I said if you don't do Mode View Controller, are there 
+
+69
+00:03:31,211 --> 00:03:34,211
+other ways to organize a web app? One possibility is you can do 
+
+70
+00:03:34,214 --> 00:03:38,214
+a page controller. Page controller means pretty much every page 
+
+71
+00:03:38,218 --> 00:03:40,218
+the user could view has a controller associated with it. If 
+
+72
+00:03:40,220 --> 00:03:43,220
+you've got an app that just does a few simple fixed actions, 
+
+73
+00:03:43,223 --> 00:03:47,223
+this might actually be an easier design. There's the front 
+
+74
+00:03:47,227 --> 00:03:50,227
+controller, which is actually the way that J2EE servlets work. 
+
+75
+00:03:50,230 --> 00:03:53,230
+There's basically one master dispatcher that everything comes 
+
+76
+00:03:53,233 --> 00:03:57,233
+through, and that gets ... there's logic that might talk to a 
+
+77
+00:03:57,237 --> 00:04:00,237
+bunch of different classes beyond that point, but really there's 
+
+78
+00:04:00,000 --> 00:04:03,240
+one central bottleneck that makes these decisions and that makes 
+
+79
+00:04:03,243 --> 00:04:06,243
+data available for presentation through views. If you've used 
+
+80
+00:04:06,246 --> 00:04:10,246
+PHP before, PHP is an example of a pure template view 
+
+81
+00:04:10,250 --> 00:04:14,250
+application, where there are different models. There's PHP code 
+
+82
+00:04:14,254 --> 00:04:17,254
+that manipulates data and talks to a database, but there's 
+
+83
+00:04:17,257 --> 00:04:20,257
+really just a collection of views that gets interspersed with 
+
+84
+00:04:20,260 --> 00:04:23,260
+that model data. The relationship is really between a bunch of 
+
+85
+00:04:23,263 --> 00:04:26,263
+models and a bunch of views as opposed to Model View Controller, 
+
+86
+00:04:26,266 --> 00:04:30,266
+where each entity has each type of ... each entity in the 
+
+87
+00:04:30,270 --> 00:04:33,270
+application has its own Model, has its own sets of Views, and 
+
+88
+00:04:33,273 --> 00:04:35,273
+has its own Controller that really just deals with that kind of 
+
+89
+00:04:35,275 --> 00:04:40,275
+thing. The message here is that their architecture is all about 
+
+90
+00:04:40,280 --> 00:04:44,280
+making choices, and Rails chooses to support SaaS applications 
+
+91
+00:04:44,284 --> 00:04:46,284
+with Model View Controller, because it turns out that's a really 
+
+92
+00:04:46,286 --> 00:04:49,286
+useful way to structure a large variety of SaaS applications, 
+
+93
+00:04:49,289 --> 00:04:52,289
+but it doesn't mean it's the only choice and other architectures 
+
+94
+00:04:52,292 --> 00:04:56,292
+might be a better fit for other apps. Anytime that we're making 
+
+95
+00:04:56,296 --> 00:04:58,296
+a choice in this course, we choose to use a particular 
+
+96
+00:04:58,298 --> 00:05:01,298
+framework, a particular set of tools. Almost always, that means 
+
+97
+00:05:01,301 --> 00:05:04,301
+that we're giving up on some other choice and although we're not 
+
+98
+00:05:04,304 --> 00:05:06,304
+going to cover all of the choices in detail, it's important for 
+
+99
+00:05:06,306 --> 00:05:09,306
+you to understand that choices that are being made and why these 
+
+100
+00:05:09,309 --> 00:05:10,309
+choices are being made the way they are. 
+
+

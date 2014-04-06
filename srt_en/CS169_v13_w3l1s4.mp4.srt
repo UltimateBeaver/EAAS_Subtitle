@@ -1,0 +1,101 @@
+1
+00:00:00,000 --> 00:00:03,000
+Which statements do you think are true regarding behavior- 
+
+2
+00:00:03,003 --> 00:00:05,003
+driven development and test- driven development: that 
+
+3
+00:00:05,005 --> 00:00:09,005
+requirements drive the implementation, that BDD and TDD are used 
+
+4
+00:00:09,009 --> 00:00:13,009
+only in Agile, or that they are designed to embrace and deal 
+
+5
+00:00:13,013 --> 00:00:19,013
+with change? Initial votes? Okay we have a majority opinion here 
+
+6
+00:00:19,019 --> 00:00:22,019
+for red, but there is by no means unanimous. Take about 30 
+
+7
+00:00:22,022 --> 00:00:29,022
+seconds. Let's vote again, and we have convergence on red. Red 
+
+8
+00:00:29,029 --> 00:00:33,029
+is correct. Certainly, requirements drive the implementation 
+
+9
+00:00:33,033 --> 00:00:35,033
+both from the features you wished you had and the code you 
+
+10
+00:00:35,035 --> 00:00:37,035
+wished you had. That's your starting point. In both cases, that 
+
+11
+00:00:37,037 --> 00:00:41,037
+is certainly true. They can be used only in Agile development. 
+
+12
+00:00:41,041 --> 00:00:43,041
+No, that's not true. That's where they came from, because it's a 
+
+13
+00:00:43,043 --> 00:00:46,043
+very convenient way to quickly iterate over new features, but 
+
+14
+00:00:46,046 --> 00:00:48,046
+there's nothing stopping you from first going to the customer, 
+
+15
+00:00:48,048 --> 00:00:52,048
+getting a whole volume of features, going off for six months 
+
+16
+00:00:52,052 --> 00:00:54,052
+implementing those features, coming back and having the customer 
+
+17
+00:00:54,054 --> 00:00:57,054
+tell you they changed their mind. You're free to do that. B is 
+
+18
+00:00:57,057 --> 00:01:00,057
+not correct. You can use these outside of Agile, but they fit 
+
+19
+00:01:00,000 --> 00:01:03,060
+very well with Agile. That's where they came from. Lastly c, 
+
+20
+00:01:03,063 --> 00:01:06,063
+that they embrace and deal with change. They certainly do, 
+
+21
+00:01:06,066 --> 00:01:08,066
+because if you're actually doing a feature at a time or if 
+
+22
+00:01:08,068 --> 00:01:11,068
+you're doing one set of functionality at a time, that gives you 
+
+23
+00:01:11,071 --> 00:01:14,071
+small increments to make progress so you don't take a big risk 
+
+24
+00:01:14,074 --> 00:01:17,074
+in building a lot of code that may or may not be what the 
+
+25
+00:01:17,077 --> 00:01:19,077
+customer actually turns out to want. 
+
+

@@ -1,0 +1,93 @@
+1
+00:00:00,000 --> 00:00:05,000
+Okay, false about Lo- Fi UI. Like 3x5 cards, sketches and 
+
+2
+00:00:05,005 --> 00:00:10,005
+storyboards are more likely to involve all stakeholders versus 
+
+3
+00:00:10,010 --> 00:00:14,010
+just coding it. The purpose of Lo- Fi UI is to debug the UI 
+
+4
+00:00:14,014 --> 00:00:18,014
+before you program it. SaaS apps usually have user interfaces 
+
+5
+00:00:18,018 --> 00:00:21,018
+associated with user stories. While it takes more time than 
+
+6
+00:00:21,021 --> 00:00:24,021
+building a prototype in CSS Haml, the Lo- Fi UI are more likely 
+
+7
+00:00:24,024 --> 00:00:27,024
+to lead a UI that customers like. This is a really hard one 
+
+8
+00:00:27,027 --> 00:00:30,027
+here, okay? If you were listening. If you weren't on your 
+
+9
+00:00:30,030 --> 00:00:42,030
+phones. Okay, ready, set, vote. Wow, okay. This is false, right? 
+
+10
+00:00:42,042 --> 00:00:45,042
+Which one's false? You should talk about this. Which one of 
+
+11
+00:00:45,045 --> 00:00:53,045
+these is false about Lo- Fi UI. All right, let's vote as pairs. 
+
+12
+00:00:53,053 --> 00:00:56,053
+Ready, set, vote to see how this turns out. Okay, well that 
+
+13
+00:00:56,056 --> 00:00:59,056
+actually worked, it largely converged to blue here. Let's go 
+
+14
+00:00:59,059 --> 00:01:04,059
+over the answers. Instead of code, 3x5 cards and sketches and 
+
+15
+00:01:04,064 --> 00:01:07,064
+storyboards are more likely to involve everyone. That's 
+
+16
+00:01:07,067 --> 00:01:11,067
+important because you want to make ... that'll help us make it 
+
+17
+00:01:11,071 --> 00:01:15,071
+something that the people, that the customer wants at the end. 
+
+18
+00:01:15,075 --> 00:01:18,075
+We want to debug it before we program it by throwing away sheets 
+
+19
+00:01:18,078 --> 00:01:20,078
+of paper or scratching up sheets of paper. That's going to be a 
+
+20
+00:01:20,080 --> 00:01:24,080
+lot less work. SaaS apps usually have user interfaces, stories 
+
+21
+00:01:24,084 --> 00:01:30,084
+and then ... maybe you guys can whip something up little pretty 
+
+22
+00:01:30,090 --> 00:01:33,090
+quickly, but probably we think it'll take you less time than 
+
+23
+00:01:33,093 --> 00:01:39,093
+doing it in Haml. So the false answer was number four. 
+
+

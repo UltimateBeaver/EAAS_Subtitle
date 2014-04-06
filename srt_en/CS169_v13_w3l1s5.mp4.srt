@@ -1,0 +1,508 @@
+00:00:00,000 --> 00:00:04,000
+Now that we know how testing works in a modern software 
+
+2
+00:00:04,004 --> 00:00:07,004
+development environment, we're going to take a look at the tool 
+
+3
+00:00:07,007 --> 00:00:09,007
+called RSpec that we're going to be using for most of our 
+
+4
+00:00:09,009 --> 00:00:12,009
+testing in this course. In introducing it, I'm going to 
+
+5
+00:00:12,012 --> 00:00:16,012
+introduce an acronym to help you remember some of the principles 
+
+6
+00:00:16,016 --> 00:00:20,016
+that go along with writing tests. Unit tests should be FIRST. 
+
+7
+00:00:20,020 --> 00:00:23,020
+You can remember by the acronym FIRST these desirable properties 
+
+8
+00:00:23,023 --> 00:00:25,023
+when you're writing unit tests. They should be fast. They should 
+
+9
+00:00:25,025 --> 00:00:29,025
+be independent. They should be repeatable. They should be self- 
+
+10
+00:00:29,029 --> 00:00:33,029
+checking, and they should be timely. Briefly, what does each one 
+
+11
+00:00:33,033 --> 00:00:37,033
+of these mean and why do we care about it? Fast just means that 
+
+12
+00:00:37,037 --> 00:00:40,037
+the test don't take very long to run. As we're going to see, a 
+
+13
+00:00:40,040 --> 00:00:43,040
+typical application even a simple one is going to have hundreds 
+
+14
+00:00:43,043 --> 00:00:46,043
+or thousands of test cases, so if the test took a long time to 
+
+15
+00:00:46,046 --> 00:00:49,046
+run, it would disrupt your flow as you're moving between running 
+
+16
+00:00:49,049 --> 00:00:53,049
+a test, writing a test, and writing the code. Independent means 
+
+17
+00:00:53,053 --> 00:00:56,053
+that you can run any subset of the test, and expect them to work 
+
+18
+00:00:56,056 --> 00:00:58,056
+in isolation. In other words, there is no dependencies on the 
+
+19
+00:00:58,058 --> 00:01:02,058
+order in which different tests run. Again this is because in a 
+
+20
+00:01:02,062 --> 00:01:05,062
+larger application even when the tests are running fast, it may 
+
+21
+00:01:05,065 --> 00:01:08,065
+be too costly to run the entire test suite every time you make a 
+
+22
+00:01:08,068 --> 00:01:11,068
+change. Having independent tests means that you can only run 
+
+23
+00:01:11,071 --> 00:01:14,071
+that subset of tests that might be affected by your most recent 
+
+24
+00:01:14,074 --> 00:01:17,074
+code changes. Repeatable means that the test will do the same 
+
+25
+00:01:17,077 --> 00:01:20,077
+thing every time you run them. Now, this might seem obvious, but 
+
+26
+00:01:20,080 --> 00:01:23,080
+when we do the self- check question for this lecture, we'll look 
+
+27
+00:01:23,083 --> 00:01:26,083
+at some scenarios where it's not so clear if you can make a test 
+
+28
+00:01:26,086 --> 00:01:28,086
+repeatable when they're trying to test a code that is inherently 
+
+29
+00:01:28,088 --> 00:01:33,088
+none- deterministic such as if you're flipping a coin. Self- 
+
+30
+00:01:33,093 --> 00:01:35,093
+checking means that no human being should have to examine the 
+
+31
+00:01:35,095 --> 00:01:38,095
+output of the test in order to figure out whether they passed or 
+
+32
+00:01:38,098 --> 00:01:41,098
+not, so the test should have enough information that after it's 
+
+33
+00:01:41,101 --> 00:01:44,101
+finished executing, it knows whether the right thing happened. 
+
+34
+00:01:44,104 --> 00:01:47,104
+We care about this for the same reason we care about any type of 
+
+35
+00:01:47,107 --> 00:01:50,107
+automation. When we automate our test suites being ran and the 
+
+36
+00:01:50,110 --> 00:01:54,110
+results being collected, it allows us to have a repeatable task 
+
+37
+00:01:54,114 --> 00:01:57,114
+that we can always have running in the background. In fact, 
+
+38
+00:01:57,117 --> 00:02:00,117
+that's what we're going to argue for in this lecture segment, so 
+
+39
+00:02:00,000 --> 00:02:02,120
+repeatable just means that the same thing happens every time you 
+
+40
+00:02:02,122 --> 00:02:06,122
+run them. Self- checking, they know whether they passed or not. 
+
+41
+00:02:06,126 --> 00:02:09,126
+Lastly, timely means that the test were written pretty close in 
+
+42
+00:02:09,129 --> 00:02:13,129
+time to the code that's going to be tested. We've said before 
+
+43
+00:02:13,133 --> 00:02:16,133
+that we're going to do Test- driven development or TDD. That 
+
+44
+00:02:16,136 --> 00:02:18,136
+means in most cases we're going to be writing the test before we 
+
+45
+00:02:18,138 --> 00:02:21,138
+write the code. Later on on the course, we're going to teach you 
+
+46
+00:02:21,141 --> 00:02:24,141
+how to do that, but for the time being, for the first couple of 
+
+47
+00:02:24,144 --> 00:02:27,144
+homeworks, we have provided the test cases for you. We're going 
+
+48
+00:02:27,147 --> 00:02:33,147
+to illustrate now how RSpec works to help us run those cases. 
+
+49
+00:02:33,153 --> 00:02:37,153
+RSpec is a domain- specific language for testing, and a domain- 
+
+50
+00:02:37,157 --> 00:02:40,157
+specific language or DSL means that it's specialized that doing 
+
+51
+00:02:40,160 --> 00:02:44,160
+some narrow set of tasks at the expense of generality or at the 
+
+52
+00:02:44,164 --> 00:02:46,164
+expense of other tasks. You've already seen some examples of 
+
+53
+00:02:46,166 --> 00:02:50,166
+this. For example, regular expressions are a DSL for expressing 
+
+54
+00:02:50,170 --> 00:02:53,170
+patterns that might match different kinds of strengths. If 
+
+55
+00:02:53,173 --> 00:02:55,173
+you're familiar with data- based programming, SQL, the 
+
+56
+00:02:55,175 --> 00:02:58,175
+Structured Query Language is a domain- specific language for 
+
+57
+00:02:58,178 --> 00:03:02,178
+making data- based queries. A difference with RSpec is that it's 
+
+58
+00:03:02,182 --> 00:03:06,182
+a domain- specific language embedded in Ruby. That is to say 
+
+59
+00:03:06,186 --> 00:03:09,186
+that every RSpec program is actually a valid Ruby code, and it 
+
+60
+00:03:09,189 --> 00:03:11,189
+takes advantage of Ruby features like a poetry mode to make it 
+
+61
+00:03:11,191 --> 00:03:17,191
+more readable. What does this look like? Looking at this first 
+
+62
+00:03:17,197 --> 00:03:21,197
+set of tests, we're describing a class called dessert, what 
+
+63
+00:03:21,201 --> 00:03:24,201
+you're going to be asked to create as part of the next homework. 
+
+64
+00:03:24,204 --> 00:03:26,204
+The first blog of tests is about a particular kind of dessert or 
+
+65
+00:03:26,206 --> 00:03:30,206
+a cake, so what we're saying is the subject of our test is a new 
+
+66
+00:03:30,210 --> 00:03:34,210
+dessert which we're specifying to be a cake with 400 calories. 
+
+67
+00:03:34,214 --> 00:03:38,214
+Once we've created that new object instance, these very simple 
+
+68
+00:03:38,218 --> 00:03:41,218
+tests consist of looking at various attributes, and make sure 
+
+69
+00:03:41,221 --> 00:03:44,221
+that their values are what we expect based on the constructor. 
+
+70
+00:03:44,224 --> 00:03:48,224
+We also have an apple which should be delicious and should be 
+
+71
+00:03:48,228 --> 00:03:51,228
+healthy. As we get farther into the class, we'll teach you how 
+
+72
+00:03:51,231 --> 00:03:54,231
+to interpret these specs in more detail, but for now, note that 
+
+73
+00:03:54,234 --> 00:03:58,234
+things like beetle issues and be healthy use method- missing to 
+
+74
+00:03:58,238 --> 00:04:01,238
+actually call method as delicious question mark and healthy 
+
+75
+00:04:01,241 --> 00:04:03,241
+question mark in your class. As you read the homework 
+
+76
+00:04:03,243 --> 00:04:05,243
+assignment, it will become clear that you're supposed to write 
+
+77
+00:04:05,245 --> 00:04:08,245
+these methods to give information as to whether the dessert is 
+
+78
+00:04:08,248 --> 00:04:13,248
+healthy or not. RSpec tests are called specs or examples. Each 
+
+79
+00:04:13,253 --> 00:04:17,253
+spec or example tests one behavior, and one way to run the test 
+
+80
+00:04:17,257 --> 00:04:20,257
+file is to run the RSpec command against the particular 
+
+81
+00:04:20,260 --> 00:04:24,260
+filename, like the file that we just saw. What you'll see is 
+
+82
+00:04:24,264 --> 00:04:26,264
+that you get error messages printed out in red for the test that 
+
+83
+00:04:26,266 --> 00:04:30,266
+fail. The test that passed will be shown in green. Test that 
+
+84
+00:04:30,270 --> 00:04:33,270
+have not yet been implemented or a so called pending test will 
+
+85
+00:04:33,273 --> 00:04:36,273
+be shown in yellow. Now, as I said, a large project could have 
+
+86
+00:04:36,276 --> 00:04:40,276
+thousands of test cases spread across hundreds of files, and 
+
+87
+00:04:40,280 --> 00:04:43,280
+running RSpec on each file or even on the whole suite might not 
+
+88
+00:04:43,283 --> 00:04:46,283
+be very efficient, so instead, we're going to prefer this other 
+
+89
+00:04:46,286 --> 00:04:49,286
+technique of using autotest, which is a nice tool that not only 
+
+90
+00:04:49,289 --> 00:04:52,289
+runs all of your RSpec tests but any time you make a change to 
+
+91
+00:04:52,292 --> 00:04:55,292
+the test code or a change to the app code, autotest will figure 
+
+92
+00:04:55,295 --> 00:04:58,295
+out which tests need to be re- run. It will automatically do 
+
+93
+00:04:58,298 --> 00:05:00,298
+that. It's running in the background all the time. Let's take a 
+
+94
+00:05:00,000 --> 00:05:04,300
+look at a demonstration of how that might work. I'm going to 
+
+95
+00:05:04,304 --> 00:05:19,304
+skip to the ... Okay, this is basically the contents of the 
+
+96
+00:05:19,319 --> 00:05:27,319
+directory that you guys are going to get for homework one. 
+
+97
+00:05:27,327 --> 00:05:30,327
+There's about five or six different files full of tests that 
+
+98
+00:05:30,330 --> 00:05:34,330
+we've created for you guys. I've got one of them up here. It's 
+
+99
+00:05:34,334 --> 00:05:38,334
+called " Fun with Strings spec". As you'll see, there's a 
+
+100
+00:05:38,338 --> 00:05:41,338
+convention that when I follow the name of a filename with 
+
+101
+00:05:41,341 --> 00:05:44,341
+underscore spec, it means this is specs that go with that class. 
+
+102
+00:05:44,344 --> 00:05:47,344
+I'm going to go into this directory, and I'm going to run 
+
+103
+00:05:47,347 --> 00:05:53,347
+autotest. If I scroll up through here, you'll see there's a lot 
+
+104
+00:05:53,353 --> 00:05:56,353
+of yellow messages, all of which are pending. It says, " No 
+
+105
+00:05:56,356 --> 00:05:58,356
+reason given. They're yellow, but I don't know why they're 
+
+106
+00:05:58,358 --> 00:06:00,358
+yellow." Well, the reason is that in the test files that we 
+
+107
+00:06:00,000 --> 00:06:05,360
+supplied to you guys initially, all of the blocks of tests are 
+
+108
+00:06:05,365 --> 00:06:09,365
+marked pending true, which means " don't even try to run these 
+
+109
+00:06:09,369 --> 00:06:13,369
+tests because the code is not there yet." Now, supposed I delete 
+
+110
+00:06:13,373 --> 00:06:17,373
+pending true for one segment of these tests, so you can see 
+
+111
+00:06:17,377 --> 00:06:19,377
+there's three different tests here. It should work for simple 
+
+112
+00:06:19,379 --> 00:06:22,379
+strings. It should be case- insensitive. It should ignore none- 
+
+113
+00:06:22,382 --> 00:06:24,382
+word characters. I'm now going to save this file, and without me 
+
+114
+00:06:24,384 --> 00:06:30,384
+doing anything, here we go, ready? Say file. Oh! It woke up. Now 
+
+115
+00:06:30,390 --> 00:06:33,390
+it says, " Three failing examples," and indeed the three 
+
+116
+00:06:33,393 --> 00:06:35,393
+examples that I just looked at at lines five, nine and 12, it's 
+
+117
+00:06:35,395 --> 00:06:38,395
+now trying to run them, and re- divider should be up [ inaudible 
+
+118
+00:06:38,398 --> 00:06:42,398
+00:06:38] in their own but it's not, so the meat of the homework 
+
+119
+00:06:42,402 --> 00:06:44,402
+assignment id to write the code that does this, but what you 
+
+120
+00:06:44,404 --> 00:06:48,404
+just saw is I changed something in the test file. Autotest 
+
+121
+00:06:48,408 --> 00:06:50,408
+immediately figured out what I changed, and tried to rerun only 
+
+122
+00:06:50,410 --> 00:06:55,410
+those tests. If I had been changing my code file, autotest would 
+
+123
+00:06:55,415 --> 00:06:58,415
+figure out which tests have used that code file in the past so 
+
+124
+00:06:58,418 --> 00:07:01,418
+that it could run the test against my updated code, so it just 
+
+125
+00:07:01,421 --> 00:07:03,421
+run autotest in the background, and as you modify the code in 
+
+126
+00:07:03,423 --> 00:07:06,423
+test files, you'll start to see these lines go green one at a 
+
+127
+00:07:06,426 --> 00:07:09,426
+time as you backfill the code necessary for the test to pass. 
+
+

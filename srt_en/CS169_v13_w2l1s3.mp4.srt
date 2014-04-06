@@ -1,0 +1,565 @@
+1
+00:00:00,000 --> 00:00:09,000
+Now, let's talk about Agile. One question is, what plan and 
+
+2
+00:00:09,009 --> 00:00:11,009
+document was embedded to try make a Software Engineering is 
+
+3
+00:00:11,011 --> 00:00:16,011
+dependable to Civil Engineering? How well does it work? There's 
+
+4
+00:00:16,016 --> 00:00:19,016
+a lot of [ inaudible00: 00:16], but how well does it work? It 
+
+5
+00:00:19,019 --> 00:00:23,019
+requires this extensive documentation, planning, and depends on 
+
+6
+00:00:23,023 --> 00:00:27,023
+this experienced manager, and he or she gets the credit or blame 
+
+7
+00:00:27,027 --> 00:00:30,027
+for the project. What's the alternative model? Can we build it 
+
+8
+00:00:30,030 --> 00:00:32,030
+without a strong program manager, without all this 
+
+9
+00:00:32,032 --> 00:00:36,032
+documentation? If we do, how do we avoid of just being hacking? 
+
+10
+00:00:36,036 --> 00:00:39,036
+Now, what happened before 1970, where people just get together 
+
+11
+00:00:39,039 --> 00:00:41,039
+and start coding? Would it be great if you could just start 
+
+12
+00:00:41,041 --> 00:00:44,041
+coding, and that's the best way to build it? I don't want to 
+
+13
+00:00:44,044 --> 00:00:46,044
+spend time planning. I want to start hacking right now. That was 
+
+14
+00:00:46,046 --> 00:00:49,046
+the best way. We already knew that was a bad way. Well, what's 
+
+15
+00:00:49,049 --> 00:00:52,049
+the alternative that's not documentation, programmer, managers 
+
+16
+00:00:52,052 --> 00:01:02,052
+strong that works? You remember from last time, these four 
+
+17
+00:01:02,062 --> 00:01:05,062
+projects of [ Emfemee 00:01:02] that we mentioned. Well, there's 
+
+18
+00:01:05,065 --> 00:01:09,065
+another 27 of them and collectively in this article from 2005, 
+
+19
+00:01:09,069 --> 00:01:14,069
+they lost 17 billion dollars, and they're using " Plan- and- 
+
+20
+00:01:14,074 --> 00:01:17,074
+Document". These aren't projects from the 1960s, right? People 
+
+21
+00:01:17,077 --> 00:01:20,077
+are using these projects, so there's things going wrong. In 
+
+22
+00:01:20,080 --> 00:01:24,080
+fact, I found three surveys that these pie charts represent of 
+
+23
+00:01:24,084 --> 00:01:27,084
+saying, " How much were on- time on a budget?" Let me go through 
+
+24
+00:01:27,087 --> 00:01:33,087
+them. This one in 1995 said, " One- sixth, basically, were on- 
+
+25
+00:01:33,093 --> 00:01:39,093
+time, and on- budget. Half of them were late or over budget. A 
+
+26
+00:01:39,099 --> 00:01:42,099
+third of them were just cancelled or abandoned. It just so bad 
+
+27
+00:01:42,102 --> 00:01:45,102
+like, the FBI focus." It's like we're just given up. How bad 
+
+28
+00:01:45,105 --> 00:01:48,105
+were their over budget? They are over budget by a factor of 
+
+29
+00:01:48,108 --> 00:01:52,108
+three. I over budget or late by factor three. I think it will 
+
+30
+00:01:52,112 --> 00:01:57,112
+take six months. No. 18 months. That was one survey. The second 
+
+31
+00:01:57,117 --> 00:02:02,117
+survey of projects was saying only one- eighth were on time and 
+
+32
+00:02:02,122 --> 00:02:05,122
+on budget, but that's actually an optimistic view. Because about 
+
+33
+00:02:05,125 --> 00:02:08,125
+half of these projects- they're about a thousand projects- half 
+
+34
+00:02:08,128 --> 00:02:11,128
+of them were simply some minor enhancements to legacy or just 
+
+35
+00:02:11,131 --> 00:02:15,131
+data conversion. About half of them were new development 
+
+36
+00:02:15,135 --> 00:02:19,135
+projects. Only three out of 500 new become a project, so we were 
+
+37
+00:02:19,139 --> 00:02:24,139
+probably thinking of we're on time and on budget, so that's 1%. 
+
+38
+00:02:24,144 --> 00:02:29,144
+In this last survey of very large project. This is 2004. People 
+
+39
+00:02:29,149 --> 00:02:31,149
+start using some processes that worked a little better, but 
+
+40
+00:02:31,151 --> 00:02:38,151
+still only 10% on time and on budget. 20% or at least 35% would, 
+
+41
+00:02:38,158 --> 00:02:41,158
+and the rest of these had major delays or cancelled. All right. 
+
+42
+00:02:41,161 --> 00:02:45,161
+That sounds like this stuff isn't working very well. One of my 
+
+43
+00:02:45,165 --> 00:02:48,165
+favorite quotes is Shimon Peres, which is not somebody has 
+
+44
+00:02:48,168 --> 00:02:52,168
+quoted everyday in computer science classes here. Is, " If a 
+
+45
+00:02:52,172 --> 00:02:58,172
+problem has no solution, it may not be a problem, but a fact, 
+
+46
+00:02:58,178 --> 00:03:01,178
+not to be solved, but to be coped with overtime." So, maybe this 
+
+47
+00:03:01,181 --> 00:03:05,181
+planning thing it leads the problems that ... or change is 
+
+48
+00:03:05,185 --> 00:03:08,185
+what's causing the problem. We have to cope with it. A dozen 
+
+49
+00:03:08,188 --> 00:03:12,188
+years ago, a group people frustrated by these development 
+
+50
+00:03:12,192 --> 00:03:14,192
+processes, got together, ad they went to a retreat, by the 
+
+51
+00:03:14,194 --> 00:03:17,194
+mountain, retreat, and came back with word- for- word, what's on 
+
+52
+00:03:17,197 --> 00:03:22,197
+the next slide, what they call the " Agile Manifesto." Here's 
+
+53
+00:03:22,202 --> 00:03:24,202
+what they wrote: " We are uncovering better ways of developing 
+
+54
+00:03:24,204 --> 00:03:27,204
+software by doing it and helping others to do it. Through this 
+
+55
+00:03:27,207 --> 00:03:31,207
+work we have come to value this group." Individuals and 
+
+56
+00:03:31,211 --> 00:03:35,211
+interactions over processes and tools. Working software over 
+
+57
+00:03:35,215 --> 00:03:39,215
+comprehensive documentation. That's a direct job at the plan of 
+
+58
+00:03:39,219 --> 00:03:43,219
+document processes. Customer collaboration over contract 
+
+59
+00:03:43,223 --> 00:03:46,223
+negotiations. So rather than you sit down there, you come up 
+
+60
+00:03:46,226 --> 00:03:49,226
+with the plan, you will the contract, and you make the contract. 
+
+61
+00:03:49,229 --> 00:03:53,229
+Let's work with the customer to make the customer happy., 
+
+62
+00:03:53,233 --> 00:03:57,233
+responding to change over following a plan. A big part of a, " 
+
+63
+00:03:57,237 --> 00:04:00,237
+Hey! To make this dependable as building a bridge, we have to 
+
+64
+00:04:00,000 --> 00:04:03,240
+have a plan and stick to it." " No, let's not ... Let's respond 
+
+65
+00:04:03,243 --> 00:04:06,243
+the change rather than stick to plan." That is, while there is 
+
+66
+00:04:06,246 --> 00:04:10,246
+value in the items on the right, we value the items on the left 
+
+67
+00:04:10,250 --> 00:04:13,250
+more. So this is a dozen years ago. They wrote this kind of [ 
+
+68
+00:04:13,253 --> 00:04:16,253
+inaudible 00:04:14] graffiti on the side of the plan and 
+
+69
+00:04:16,256 --> 00:04:18,256
+document building, and said, " We're going to do it 
+
+70
+00:04:18,258 --> 00:04:22,258
+differently." Okay. That was a proponent of this. He has a 
+
+71
+00:04:22,262 --> 00:04:25,262
+version of Agile which she calls, " Extreme Programming" or " 
+
+72
+00:04:25,265 --> 00:04:29,265
+XP." So what did he say? He said, basically if things are good, 
+
+73
+00:04:29,269 --> 00:04:35,269
+let's do it more extreme. If short iterations are good, then 
+
+74
+00:04:35,275 --> 00:04:38,275
+make them as short as possible, let's you do days or weeks, not 
+
+75
+00:04:38,278 --> 00:04:42,278
+months or years. If simplicity is good, then always do the 
+
+76
+00:04:42,282 --> 00:04:46,282
+simplest thing will work. Don't anticipate complexity. Just do 
+
+77
+00:04:46,286 --> 00:04:49,286
+the minimum thing you have to do to get that. If testing is 
+
+78
+00:04:49,289 --> 00:04:52,289
+good, let's test all the time. In fact, let's write the test 
+
+79
+00:04:52,292 --> 00:04:55,292
+before we write any code. You're not going to be able to write 
+
+80
+00:04:55,295 --> 00:05:00,295
+code without test. Finally, if code reviews are good, let's do 
+
+81
+00:05:00,000 --> 00:05:02,300
+code reviews all the time, by programming in pairs, and 
+
+82
+00:05:02,302 --> 00:05:07,302
+constantly looking over the shoulders. This was a big change 
+
+83
+00:05:07,307 --> 00:05:12,307
+from the methodology. In fact, Agile embraces change as a fact 
+
+84
+00:05:12,312 --> 00:05:15,312
+of life. It does continuous improvement versus these phases, 
+
+85
+00:05:15,315 --> 00:05:19,315
+like we saw on the Waterfall model. The basic idea is developers 
+
+86
+00:05:19,319 --> 00:05:23,319
+are continuously refining a working, but incomplete prototype, 
+
+87
+00:05:23,323 --> 00:05:27,323
+until the customers happy. You meet with the customer every week 
+
+88
+00:05:27,327 --> 00:05:31,327
+of two, so there's continual loop of working with the customer. 
+
+89
+00:05:31,331 --> 00:05:34,331
+Then, Agile emphasize what's called " Test- Driven Development." 
+
+90
+00:05:34,334 --> 00:05:37,334
+This is where you write the test before you write the code, and 
+
+91
+00:05:37,337 --> 00:05:41,337
+we'll talk about that. We do use our stories, and we'll talk 
+
+92
+00:05:41,341 --> 00:05:44,341
+about that in a couple of lectures. Basically, you cooperate in 
+
+93
+00:05:44,344 --> 00:05:48,344
+an informal manner with the customer to see how you're going to 
+
+94
+00:05:48,348 --> 00:05:50,348
+use the software. Velocity is the way we're going to measure 
+
+95
+00:05:50,350 --> 00:05:56,350
+progress. Predict performance by how you've done in the past. 
+
+96
+00:05:56,356 --> 00:06:02,356
+Here is the Agile flow chart that's from the book. The book is 
+
+97
+00:06:02,362 --> 00:06:05,362
+in two parts. Part one is about software as a service. Part two 
+
+98
+00:06:05,365 --> 00:06:09,365
+is all about Agile. We start off talking with the customer. 
+
+99
+00:06:09,369 --> 00:06:12,369
+Behavior- driven design, and use stories. That's getting at a 
+
+100
+00:06:12,372 --> 00:06:15,372
+high level of design, then the implementation, test- driven 
+
+101
+00:06:15,375 --> 00:06:18,375
+development. We measure progress with velocity. We deploy to 
+
+102
+00:06:18,378 --> 00:06:21,378
+the ... the customer takes a look at it, talk to the customer 
+
+103
+00:06:21,381 --> 00:06:25,381
+again. So you're going to go around this loop four times in this 
+
+104
+00:06:25,385 --> 00:06:29,385
+class for the projects. Now, what about Legacy? The number one 
+
+105
+00:06:29,389 --> 00:06:31,389
+requirement from those half dozen leading software companies. 
+
+106
+00:06:31,391 --> 00:06:35,391
+Well, we're going to do a Legacy assignment. It turns out that 
+
+107
+00:06:35,395 --> 00:06:39,395
+the same methodology works for Legacy, and then design patterns, 
+
+108
+00:06:39,399 --> 00:06:41,399
+architectures. Another important software gave me idea, and 
+
+109
+00:06:41,401 --> 00:06:46,401
+we'll cover that. That's what was going on is kind of the 
+
+110
+00:06:46,406 --> 00:06:49,406
+context about Agile what it is. What was the reaction, the 
+
+111
+00:06:49,409 --> 00:06:52,409
+Agile, when it came out a dozen year ago? It got a strong 
+
+112
+00:06:52,412 --> 00:06:56,412
+allergic reaction intelligence of the software engineering 
+
+113
+00:06:56,416 --> 00:07:00,416
+community. Here's one quote. This is what somebody publishing. 
+
+114
+00:07:00,000 --> 00:07:02,420
+What do they say behind close doors, I don't know, but this is 
+
+115
+00:07:02,422 --> 00:07:07,422
+what they wrote on papers, in magazines. " Agile is yet another 
+
+116
+00:07:07,427 --> 00:07:10,427
+attempt to undermine the discipline of software engineering. It 
+
+117
+00:07:10,430 --> 00:07:15,430
+is nothing more than attempt to legitimize hacker behavior." Not 
+
+118
+00:07:15,435 --> 00:07:17,435
+only that people write articles. People wrote whole books about 
+
+119
+00:07:17,437 --> 00:07:21,437
+it. There's a 400- page book that came in 2001 and 2002, that 
+
+120
+00:07:21,441 --> 00:07:28,441
+says Agile's a bad idea. 400 pages are giving the answer. It got 
+
+121
+00:07:28,448 --> 00:07:32,448
+people's attention. What about today? Today, it worked. It's an 
+
+122
+00:07:32,452 --> 00:07:35,452
+accepted practice. We looked at a survey of 66 software 
+
+123
+00:07:35,455 --> 00:07:39,455
+engineering projects, and most of them use Agile. Even though 
+
+124
+00:07:39,459 --> 00:07:43,459
+they were doing it in distributed environment. One of the text 
+
+125
+00:07:43,463 --> 00:07:46,463
+books to this area actually, and now only covers Agile early now 
+
+126
+00:07:46,466 --> 00:07:49,466
+came up with the set of questions that say, " When we should use 
+
+127
+00:07:49,469 --> 00:07:53,469
+Agile," whether it's a good idea or not. Basically, a yes means, 
+
+128
+00:07:53,473 --> 00:07:57,473
+use, plan, and document, and I know it's Agile. Do you have to 
+
+129
+00:07:57,477 --> 00:08:01,477
+do a specification? Are there no customers? Is it going to be 
+
+130
+00:08:01,481 --> 00:08:05,481
+really large? Is it going to be complicated real- time? Is it 
+
+131
+00:08:05,485 --> 00:08:08,485
+going to have along product lifeline? Are you using lousy tools? 
+
+132
+00:08:08,488 --> 00:08:13,488
+Somehow, if you use lousy tools ... You need good tools go for 
+
+133
+00:08:13,493 --> 00:08:16,493
+Agile development. Is the project team geographically 
+
+134
+00:08:16,496 --> 00:08:20,496
+distributed? Is it part of a culture that is document- oriented, 
+
+135
+00:08:20,500 --> 00:08:24,500
+maybe at a civil engineering from or something? Are the team bad 
+
+136
+00:08:24,504 --> 00:08:28,504
+programmers? If you have bad programmers, you blame and 
+
+137
+00:08:28,508 --> 00:08:32,508
+document. Is it subject to regulation? It has to follow the 
+
+138
+00:08:32,512 --> 00:08:35,512
+certain laws that apply. Basically, if you think about what 
+
+139
+00:08:35,515 --> 00:08:38,515
+we're teaching, the answer is almost always no. Virtually, none 
+
+140
+00:08:38,518 --> 00:08:42,518
+of these questions forwards the answer, " Yes," which is why 
+
+141
+00:08:42,522 --> 00:08:44,522
+we're going to emphasize Agile in this course. 
+
+

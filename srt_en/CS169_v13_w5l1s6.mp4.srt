@@ -1,0 +1,161 @@
+1
+00:00:00,000 --> 00:00:04,000
+I said an instance method in a controller method for how long as 
+
+2
+00:00:04,004 --> 00:00:12,004
+its value going to be retained? Read, think. Initial vote. I've 
+
+3
+00:00:12,012 --> 00:00:20,012
+ever surely decided you have long enough to think. Was I right? 
+
+4
+00:00:20,020 --> 00:00:25,020
+Take 30 seconds to discuss it. I was only partially right. All 
+
+5
+00:00:25,025 --> 00:00:33,025
+right, let's vote second time. Second vote, hold them up. Okay, 
+
+6
+00:00:33,033 --> 00:00:38,033
+wide convergence on red. Let's go through this one at a time. If 
+
+7
+00:00:38,038 --> 00:00:40,038
+I said an instance variable in a controller method, all right 
+
+8
+00:00:40,040 --> 00:00:42,040
+that's key phrase in there, instance variable to controller 
+
+9
+00:00:42,042 --> 00:00:45,042
+method. Your tip off here is the controller is really just the 
+
+10
+00:00:45,045 --> 00:00:49,045
+receiving end of an HTTP request. HTTP is stateless. You keep 
+
+11
+00:00:49,049 --> 00:00:52,049
+coming back to this over and over. Once the controller method 
+
+12
+00:00:52,052 --> 00:00:56,052
+has done its work ... What is the controller? The controller is 
+
+13
+00:00:56,056 --> 00:00:59,056
+an instance of object. It's an instance of the controller object 
+
+14
+00:00:59,059 --> 00:01:02,059
+that handles an incoming HTTP request. As soon as that 
+
+15
+00:01:02,062 --> 00:01:06,062
+controller object has finished doing its job, that instance of 
+
+16
+00:01:06,066 --> 00:01:08,066
+the controller evaporates along with all of the instance 
+
+17
+00:01:08,068 --> 00:01:12,068
+variables. Instance variables used ones, they're gone. Once 
+
+18
+00:01:12,072 --> 00:01:14,072
+you've consumed them to view, you can say goodbye to them 
+
+19
+00:01:14,074 --> 00:01:17,074
+forever. Now, there are special cases like the flash and the 
+
+20
+00:01:17,077 --> 00:01:21,077
+session. There's a reason to persist some information from one 
+
+21
+00:01:21,081 --> 00:01:23,081
+request to another, which is why those things have a separate 
+
+22
+00:01:23,083 --> 00:01:27,083
+obstruction like the flash and session. Only this request and 
+
+23
+00:01:27,087 --> 00:01:29,087
+the next request that will be to review put something into the 
+
+24
+00:01:29,089 --> 00:01:32,089
+flash. Which again looks like a hash, quacks like hash, but it 
+
+25
+00:01:32,092 --> 00:01:36,092
+persist one request after the current one. If you put it into 
+
+26
+00:01:36,096 --> 00:01:38,096
+the session it would indeed stick around for all subsequent 
+
+27
+00:01:38,098 --> 00:01:41,098
+requests. As long as you didn't make your session so bloated, 
+
+28
+00:01:41,101 --> 00:01:45,101
+that it doesn't fit in a cookie. Red is correct, and for the 
+
+29
+00:01:45,105 --> 00:01:48,105
+blue one, if you voted blue it say you're on 169 now and no more 
+
+30
+00:01:48,108 --> 00:01:50,108
+Java. In fact I'm not even sure the statement makes sense in 
+
+31
+00:01:50,110 --> 00:01:53,110
+Java. There's no declaration, there's no static and if there 
+
+32
+00:01:53,113 --> 00:01:55,113
+were, they'll be class variables and not instance variables. I 
+
+33
+00:01:55,115 --> 00:01:57,115
+just tried to see how many different key words I could put in 
+
+34
+00:01:57,117 --> 00:02:00,117
+there to make it not makes sense. Every time you hit your 
+
+35
+00:02:00,000 --> 00:02:04,120
+application with a new HTTP request, each incoming new request 
+
+36
+00:02:04,124 --> 00:02:07,124
+causes a new instance of the controller object to be created. 
+
+37
+00:02:07,127 --> 00:02:10,127
+Just as with any type of object, whenever an instance of an 
+
+38
+00:02:10,130 --> 00:02:13,130
+object is blown away, all of the instance variables associated 
+
+39
+00:02:13,133 --> 00:02:15,133
+with that instance are also blown away. That is exactly the 
+
+40
+00:02:15,135 --> 00:02:16,135
+explanation. 
+
+

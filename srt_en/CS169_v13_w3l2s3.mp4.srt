@@ -1,0 +1,525 @@
+1
+00:00:00,000 --> 00:00:04,000
+Next in our series of topics, once again, motivating the 
+
+2
+00:00:04,004 --> 00:00:07,004
+question of why would you care about databases and Active 
+
+3
+00:00:07,007 --> 00:00:10,007
+Record, which I'll describe next. Here's the question that this 
+
+4
+00:00:10,010 --> 00:00:13,010
+is trying to solve. So far, when we talked about object 
+
+5
+00:00:13,013 --> 00:00:15,013
+orientation and how classes are organized, we talked about 
+
+6
+00:00:15,015 --> 00:00:19,015
+classes, there's instances, and instances can have attributes. 
+
+7
+00:00:19,019 --> 00:00:22,019
+This is a record- oriented way of looking at the world. We have 
+
+8
+00:00:22,022 --> 00:00:26,022
+instances of things like bank accounts, and each instance has 
+
+9
+00:00:26,026 --> 00:00:29,026
+some attributes associated with it. In our web apps, we're going 
+
+10
+00:00:29,029 --> 00:00:31,029
+to have to be able to store that data somewhere, we're going to 
+
+11
+00:00:31,031 --> 00:00:34,031
+have to be able to retrieve it and search it. That means that we 
+
+12
+00:00:34,034 --> 00:00:37,034
+have to have some relationship between the way we store the data 
+
+13
+00:00:37,037 --> 00:00:39,037
+and the way that we manipulate it in our programming language. 
+
+14
+00:00:39,039 --> 00:00:42,039
+The different ways that people have tried to solve that problem, 
+
+15
+00:00:42,042 --> 00:00:45,042
+create that mapping, lead to different ways of thinking about 
+
+16
+00:00:45,045 --> 00:00:48,045
+how you should organize and store your data. Going back to our 
+
+17
+00:00:48,048 --> 00:00:53,048
+diagram, where are we today? We are still diving down into the 
+
+18
+00:00:53,053 --> 00:00:56,053
+structure of the applications here and we're going to look at 
+
+19
+00:00:56,056 --> 00:00:59,056
+how the model part of Model- View- Controller is handled in the 
+
+20
+00:00:59,059 --> 00:01:02,059
+Rails framework. Again, I'm going to present more than one way 
+
+21
+00:01:02,062 --> 00:01:05,062
+to do it besides the way that Rails does it, to send the message 
+
+22
+00:01:05,065 --> 00:01:07,065
+that just because Rails does it this way, doesn't mean that this 
+
+23
+00:01:07,067 --> 00:01:12,067
+is the appropriate way for all applications. Let's talk about 
+
+24
+00:01:12,072 --> 00:01:16,072
+objects in memory versus objects that you store. We've seen, 
+
+25
+00:01:16,076 --> 00:01:18,076
+when you create new classes and you create new instances of 
+
+26
+00:01:18,078 --> 00:01:21,078
+those classes in Ruby, obviously there's some in- memory 
+
+27
+00:01:21,081 --> 00:01:24,081
+representation of those objects and their attributes. The 
+
+28
+00:01:24,084 --> 00:01:28,084
+question here is, " How do you represent that object in storage 
+
+29
+00:01:28,088 --> 00:01:30,088
+in such a way that later on, you can essentially take that 
+
+30
+00:01:30,090 --> 00:01:33,090
+object back out and reconstitute it?" It's as if you need to 
+
+31
+00:01:33,093 --> 00:01:35,093
+store the object, kill the program that was manipulating the 
+
+32
+00:01:35,095 --> 00:01:39,095
+object and know that later on, you can restart the program, read 
+
+33
+00:01:39,099 --> 00:01:42,099
+the object back and not lose any information. Generally 
+
+34
+00:01:42,102 --> 00:01:45,102
+speaking, the process of doing that is called marshalling. It's 
+
+35
+00:01:45,105 --> 00:01:48,105
+also called serialization. There's a subtle nuance in 
+
+36
+00:01:48,108 --> 00:01:50,108
+distinction and meaning, but not one that we're going to worry 
+
+37
+00:01:50,110 --> 00:01:53,110
+about. The idea is that if I marshal an object, it means I'm 
+
+38
+00:01:53,113 --> 00:01:56,113
+converting it to a new format that makes it amenable to doing 
+
+39
+00:01:56,116 --> 00:01:59,116
+something. Usually, something is storing it or transmitting it 
+
+40
+00:01:59,119 --> 00:02:03,119
+someplace else. I'm doing it in such a way that later, I can un- 
+
+41
+00:02:03,123 --> 00:02:06,123
+marshal or deserialize and get back a representation in my 
+
+42
+00:02:06,126 --> 00:02:09,126
+language that is, in every functional way or every behavioral 
+
+43
+00:02:09,129 --> 00:02:13,129
+way, equivalent to the thing that I started with. In our case, 
+
+44
+00:02:13,133 --> 00:02:15,133
+we're talking, for example, about a movie with attributes like 
+
+45
+00:02:15,135 --> 00:02:18,135
+Name and Rating. How might we take the in- memory representation 
+
+46
+00:02:18,138 --> 00:02:22,138
+of that and store it some place? In particular, the operations 
+
+47
+00:02:22,142 --> 00:02:25,142
+we need to do, whenever we're talking about managing stored 
+
+48
+00:02:25,145 --> 00:02:28,145
+data, we can create a new copy of something. In our case, in the 
+
+49
+00:02:28,148 --> 00:02:31,148
+persistence here, we can read an existing copy of something we 
+
+50
+00:02:31,151 --> 00:02:35,151
+stored before, we can update. For example, we could change the 
+
+51
+00:02:35,155 --> 00:02:37,155
+name of the movie and want to keep that change permanent and of 
+
+52
+00:02:37,157 --> 00:02:39,157
+course, we can delete things from permanent storage. 
+
+53
+00:02:39,159 --> 00:02:43,159
+Collectively, these are the CRUD operations. The way that Rails 
+
+54
+00:02:43,163 --> 00:02:46,163
+organizes its models is according to another design pattern 
+
+55
+00:02:46,166 --> 00:02:49,166
+called Active Record, whose main conceit is that every model, 
+
+56
+00:02:49,169 --> 00:02:53,169
+every type of thing like a movie, knows how to CRUD itself using 
+
+57
+00:02:53,173 --> 00:02:56,173
+a set of common mechanisms that all the different model share. 
+
+58
+00:02:56,176 --> 00:03:00,176
+If you come from, for example, the PHP world, you're accustomed 
+
+59
+00:03:00,000 --> 00:03:03,180
+to there being an object that represents the connection to the 
+
+60
+00:03:03,183 --> 00:03:06,183
+database. You create queries and things like that, which you 
+
+61
+00:03:06,186 --> 00:03:09,186
+hand off to that object. The Active Record view of the world is 
+
+62
+00:03:09,189 --> 00:03:13,189
+quite different. The database doesn't ... isn't really visible 
+
+63
+00:03:13,193 --> 00:03:16,193
+to the programmer as an explicit obstraction. The obstraction 
+
+64
+00:03:16,196 --> 00:03:18,196
+is, here's a collection of operations you can do on this kind of 
+
+65
+00:03:18,198 --> 00:03:21,198
+object. It happens to be the case that the object is going to be 
+
+66
+00:03:21,201 --> 00:03:24,201
+stored in the database. We'll talk more about that separately, 
+
+67
+00:03:24,204 --> 00:03:26,204
+but the Active Record view of the world is there's a common set 
+
+68
+00:03:26,206 --> 00:03:30,206
+of machinery that allows any type of Active Record object to do 
+
+69
+00:03:30,210 --> 00:03:35,210
+these basic operations. In the case of Rails, I think many years 
+
+70
+00:03:35,215 --> 00:03:37,215
+ago, we all agreed that relational databases have won the battle 
+
+71
+00:03:37,217 --> 00:03:41,217
+for being the way that most web apps store their data. Roughly 
+
+72
+00:03:41,221 --> 00:03:45,221
+speaking in a relational database, each kind of model that we 
+
+73
+00:03:45,225 --> 00:03:48,225
+have is going to get its own table in that database. All the 
+
+74
+00:03:48,228 --> 00:03:50,228
+rows in the table have the same structure. That's part and 
+
+75
+00:03:50,230 --> 00:03:54,230
+parcel of what relational databases means. One row in the table 
+
+76
+00:03:54,234 --> 00:03:57,234
+is one instance of a particular model, of a class ... a 
+
+77
+00:03:57,237 --> 00:04:01,237
+particular model class. Since each row is one instance of a 
+
+78
+00:04:01,241 --> 00:04:04,241
+model, it stands to reason that the columns would be the 
+
+79
+00:04:04,244 --> 00:04:07,244
+attributes and each column stores the attribute value. Each row 
+
+80
+00:04:07,247 --> 00:04:11,247
+also has a unique primary key. By convention, in Rails, this is 
+
+81
+00:04:11,251 --> 00:04:16,251
+an integer and it's called ID. Don't let that confuse you. ID is 
+
+82
+00:04:16,256 --> 00:04:20,256
+not really a property of movie, the object in Ruby, but it is 
+
+83
+00:04:20,260 --> 00:04:22,260
+going to have to be a property of movie, the object that's 
+
+84
+00:04:22,262 --> 00:04:25,262
+stored in the database. This is one example of how obstructions 
+
+85
+00:04:25,265 --> 00:04:28,265
+aren't really perfect. We're saying that we want to make a 
+
+86
+00:04:28,268 --> 00:04:31,268
+mapping between objects and memory objects in the database, but 
+
+87
+00:04:31,271 --> 00:04:33,271
+in fact, they're not really going to be identical. There's going 
+
+88
+00:04:33,273 --> 00:04:37,273
+to be a few ways in which they differ. As we'll see, the reason 
+
+89
+00:04:37,277 --> 00:04:39,277
+for those differences is because the way a database wants to 
+
+90
+00:04:39,279 --> 00:04:42,279
+manipulate an object and the things that you have to represent 
+
+91
+00:04:42,282 --> 00:04:46,282
+to allow the database to do so, have some overlap, but not 
+
+92
+00:04:46,286 --> 00:04:48,286
+complete overlap, with how Ruby wants to manipulate an object 
+
+93
+00:04:48,288 --> 00:04:51,288
+and what kinds of things you might want to do an object in the 
+
+94
+00:04:51,291 --> 00:04:56,291
+Ruby world. Collectively, if you look at all of the tables in a 
+
+95
+00:04:56,296 --> 00:04:59,296
+particular database, what columns they have and so forth, what 
+
+96
+00:04:59,299 --> 00:05:01,299
+the types of those columns are, that is collectively called the 
+
+97
+00:05:01,301 --> 00:05:06,301
+schema for that application. What's an alternative? Suppose you 
+
+98
+00:05:06,306 --> 00:05:08,306
+didn't want to do Active Record, what else do people do and why 
+
+99
+00:05:08,308 --> 00:05:11,308
+might they do it? Data Mapper is a different way of thinking 
+
+100
+00:05:11,311 --> 00:05:14,311
+about data that says, " Every time you define a new kind of 
+
+101
+00:05:14,314 --> 00:05:17,314
+model, you also have to come up with a mapper for that model." 
+
+102
+00:05:17,317 --> 00:05:20,317
+The mapper is responsible for figuring out the specifics of how 
+
+103
+00:05:20,320 --> 00:05:23,320
+that type of model is going to be stored in that database. The 
+
+104
+00:05:23,323 --> 00:05:25,323
+reason you might want to do this is that it keeps the mapping 
+
+105
+00:05:25,325 --> 00:05:28,325
+strategy independent of a particular type of data storage. For 
+
+106
+00:05:28,328 --> 00:05:32,328
+example, as we'll see, Rails models, because they're based on 
+
+107
+00:05:32,332 --> 00:05:34,332
+Active Record, because they know they're going to be stored in a 
+
+108
+00:05:34,334 --> 00:05:37,334
+relational database, the Active Record machinery takes advantage 
+
+109
+00:05:37,337 --> 00:05:41,337
+of a lot of things about relational databases. If you've read 
+
+110
+00:05:41,341 --> 00:05:44,341
+about things like the NoSQL movement, people using things like 
+
+111
+00:05:44,344 --> 00:05:48,344
+MongoDB and SimpleDB and a lot of other databases, most of those 
+
+112
+00:05:48,348 --> 00:05:51,348
+are non- relational. They lack a lot of the features for data 
+
+113
+00:05:51,351 --> 00:05:55,351
+manipulation that relational databases have. In those cases, you 
+
+114
+00:05:55,355 --> 00:05:58,355
+can't really use Active Record because of its heavy reliance on 
+
+115
+00:05:58,358 --> 00:06:01,358
+the relational model. You could use something like DataMapper, 
+
+116
+00:06:01,361 --> 00:06:05,361
+but in fact, you don't get anything for free. If you use 
+
+117
+00:06:05,365 --> 00:06:07,365
+DataMapper, then a lot of the work that an Active Record has 
+
+118
+00:06:07,367 --> 00:06:10,367
+done for you, now you have to redo that work yourself and you 
+
+119
+00:06:10,370 --> 00:06:14,370
+have to reinvent it to fit what your database is able to handle. 
+
+120
+00:06:14,374 --> 00:06:16,374
+This will become a lot more clear when we start talking about 
+
+121
+00:06:16,376 --> 00:06:20,376
+more advanced concepts like Associations Between Models. Just as 
+
+122
+00:06:20,380 --> 00:06:23,380
+a data point, Google App Engine uses the DataMapper pattern. 
+
+123
+00:06:23,383 --> 00:06:25,383
+That's the way that they recommend you rate apps against their 
+
+124
+00:06:25,385 --> 00:06:28,385
+storage system, because one of the nice things about DataMapper 
+
+125
+00:06:28,388 --> 00:06:32,388
+is by leaving out some of the complex relational database stuff, 
+
+126
+00:06:32,392 --> 00:06:34,392
+it actually allows their storage system to reach much larger 
+
+127
+00:06:34,394 --> 00:06:37,394
+scale than most relational databases can reach. That's an 
+
+128
+00:06:37,397 --> 00:06:40,397
+example of an architectural trade off. When you get to a certain 
+
+129
+00:06:40,400 --> 00:06:43,400
+scale and using a relational database for some things just is 
+
+130
+00:06:43,403 --> 00:06:46,403
+not in the cards anymore, here's an alternative that you could 
+
+131
+00:06:46,406 --> 00:06:46,406
+use. 
+
+

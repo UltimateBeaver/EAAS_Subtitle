@@ -1,0 +1,185 @@
+1
+00:00:00,000 --> 00:00:04,000
+Okay. We're going to do a pure learning question here. Okay.
+
+2
+00:00:04,004 --> 00:00:08,004
+Ready. To test your regular expression chops. Here we go. This 
+
+3
+00:00:08,008 --> 00:00:10,008
+is actually a bunch of things at once, because you need to think 
+
+4
+00:00:10,010 --> 00:00:13,010
+about a race, you need to think about hashes, and you need to 
+
+5
+00:00:13,013 --> 00:00:18,013
+think about regular expressions. Which of these four expressions 
+
+6
+00:00:18,018 --> 00:00:22,018
+will evaluate to not nil? In other words, which one will result 
+
+7
+00:00:22,022 --> 00:00:26,022
+in a successful reg x match of some kind? I'll let you parse it 
+
+8
+00:00:26,026 --> 00:00:31,026
+for a bit. Okay. I think now we should take a vote. Your brain 
+
+9
+00:00:31,031 --> 00:00:32,031
+is going to get used to this. Don't worry. Okay. Ready 
+
+10
+00:00:32,032 --> 00:00:40,032
+everybody, let's vote. Vote. That means card up. Up. Up. Up. 
+
+11
+00:00:40,040 --> 00:00:43,040
+Hand above. If your hand is above your head, your card is up. 
+
+12
+00:00:43,043 --> 00:00:48,043
+That's much better. I se a rainbow of colors. As be fitting our 
+
+13
+00:00:48,048 --> 00:00:52,048
+great city. Talk it over. All right, it's time for the revote. 
+
+14
+00:00:52,052 --> 00:01:00,052
+Ready, recall vote. Okay. Let's go through these one at a time, 
+
+15
+00:01:00,000 --> 00:01:03,060
+shall we? There's till not far from universal agreement. Well, 
+
+16
+00:01:03,063 --> 00:01:05,063
+so what about ... Why could we rule out the first one right 
+
+17
+00:01:05,065 --> 00:01:13,065
+away? We can rule out the first one as a matter of syntax. The 
+
+18
+00:01:13,073 --> 00:01:16,073
+confusingly perhaps, although a braces is how you could setup a 
+
+19
+00:01:16,076 --> 00:01:19,076
+hash literal. It's not how do reference it. You do reference 
+
+20
+00:01:19,079 --> 00:01:22,079
+hash with the square brackets. So, syntactically, the first one 
+
+21
+00:01:22,082 --> 00:01:26,082
+just wont fly. Let's see what's going o in the second one here. 
+
+22
+00:01:26,086 --> 00:01:29,086
+In the second one, what we've got is hash col rx. We're going to 
+
+23
+00:01:29,089 --> 00:01:33,089
+d reference the hash key that is key by the symbol fox, and yes, 
+
+24
+00:01:33,093 --> 00:01:36,093
+indeed, we do have such a key. The value associated with that 
+
+25
+00:01:36,096 --> 00:01:40,096
+key is this regular expression which as you might know from 
+
+26
+00:01:40,100 --> 00:01:43,100
+regular expression review means the string that begins with 
+
+27
+00:01:43,103 --> 00:01:47,103
+lower case ARM, but we're trying to match it against upper case 
+
+28
+00:01:47,107 --> 00:01:52,107
+ARM, so no joy there. Close and open [ inaudible 00:01:50]. What 
+
+29
+00:01:52,112 --> 00:01:55,112
+about this one? Well, this is saying, we're going to dereference 
+
+30
+00:01:55,115 --> 00:01:59,115
+the hash entry that is pointed to by quote fox. Okay. While, we 
+
+31
+00:01:59,119 --> 00:02:01,119
+got that, what is the value of that? That is an array of two 
+
+32
+00:02:01,121 --> 00:02:05,121
+elements. Both elements are regular expressions. Here we're 
+
+33
+00:02:05,125 --> 00:02:08,125
+dereferencing element one, arrays are zero based, so that would 
+
+34
+00:02:08,128 --> 00:02:12,128
+be this element over here. We're going to try to match a regular 
+
+35
+00:02:12,132 --> 00:02:16,132
+expression that is AN the parenthesis group DO, with ignored 
+
+36
+00:02:16,136 --> 00:02:20,136
+case turned on. So we have a winner. Okay. We're trying to match 
+
+37
+00:02:20,140 --> 00:02:26,140
+AMDO with ignoring case against this string, so that one's going 
+
+38
+00:02:26,146 --> 00:02:29,146
+to work. So red is the correct answer for this one. Just quickly 
+
+39
+00:02:29,149 --> 00:02:33,149
+on the last one. Remember we said you can actually do the match 
+
+40
+00:02:33,153 --> 00:02:37,153
+on either sides? That part's okay, but what's going on here? 
+
+41
+00:02:37,157 --> 00:02:41,157
+We're trying to dereference hash with two arguments. What's that 
+
+42
+00:02:41,161 --> 00:02:44,161
+about? Hashes have a key, right? You dereference A particular 
+
+43
+00:02:44,164 --> 00:02:48,164
+hash key. At least in these cases, we're dereferencing a hash 
+
+44
+00:02:48,168 --> 00:02:51,168
+key, which happens to map to an array, and then we dereference 
+
+45
+00:02:51,171 --> 00:02:53,171
+and array element. Did I mention the questions were going to get 
+
+46
+00:02:53,173 --> 00:02:58,173
+harder? Okay. A lot of regular expression parsing. 
+
+

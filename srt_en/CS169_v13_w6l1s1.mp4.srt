@@ -1,0 +1,941 @@
+1
+00:00:00,000 --> 00:00:02,000
+TDD last time and we even got into a little bit of an example 
+
+2
+00:00:02,002 --> 00:00:06,002
+and real soon you're going to be writing your test cases. So 
+
+3
+00:00:06,006 --> 00:00:08,006
+we're going to get through most of the material today that is 
+
+4
+00:00:08,008 --> 00:00:11,008
+really about the part about writing test cases that most people 
+
+5
+00:00:11,011 --> 00:00:13,011
+don't learn when they first learn about testing, and because 
+
+6
+00:00:13,013 --> 00:00:16,013
+they don't learn about these things, they come to think of 
+
+7
+00:00:16,016 --> 00:00:19,016
+testing as this unpleasant, horrible thing to do, kind of a no- 
+
+8
+00:00:19,019 --> 00:00:22,019
+win situation. We're going to talk about mocks and stubs, which 
+
+9
+00:00:22,022 --> 00:00:25,022
+really when I really got comfortable with using them, sort of 
+
+10
+00:00:25,025 --> 00:00:27,025
+the scales fell from my eyes in terms of how to do effective 
+
+11
+00:00:27,027 --> 00:00:31,027
+testing. We're going to go back to the example that we've been 
+
+12
+00:00:31,031 --> 00:00:35,031
+working on so far, where we were talking about this Controller 
+
+13
+00:00:35,035 --> 00:00:38,035
+Method that was going to look up stuff in the remote database. 
+
+14
+00:00:38,038 --> 00:00:41,038
+This is for out Rotten Potatoes app, and we had gotten as far as 
+
+15
+00:00:41,041 --> 00:00:44,041
+looking at the two specs that said that it should call a method 
+
+16
+00:00:44,044 --> 00:00:47,044
+in the model that's going to do the actual work. We got as far 
+
+17
+00:00:47,047 --> 00:00:50,047
+as a spec that will make sure that we're choosing the right 
+
+18
+00:00:50,050 --> 00:00:53,050
+template to render when this is done, and the last ... remember 
+
+19
+00:00:53,053 --> 00:00:55,053
+we wrote down three things that this Controller Method had to 
+
+20
+00:00:55,055 --> 00:00:58,055
+do. The third thing, which we haven't done yet, is if it gets 
+
+21
+00:00:58,058 --> 00:01:00,058
+search results from the model method, it should make those 
+
+22
+00:01:00,000 --> 00:01:03,060
+results available to the template. Now as a preview, we already 
+
+23
+00:01:03,063 --> 00:01:07,063
+know that the way that we make stuff available to a template 
+
+24
+00:01:07,067 --> 00:01:09,067
+from within a Controller Method is that we set instance 
+
+25
+00:01:09,069 --> 00:01:11,069
+variables in the Controller Method and then those instance 
+
+26
+00:01:11,071 --> 00:01:15,071
+variables can be used in the view. In order to do this one, 
+
+27
+00:01:15,075 --> 00:01:17,075
+you're thinking, well, okay then what we really want to check, 
+
+28
+00:01:17,077 --> 00:01:20,077
+because you're a step ahead of me, is we want to make sure that 
+
+29
+00:01:20,080 --> 00:01:24,080
+assuming the model method returns the right thing, that we make 
+
+30
+00:01:24,084 --> 00:01:27,084
+that information that came from the model correctly available to 
+
+31
+00:01:27,087 --> 00:01:30,087
+the view and if you're thinking a step ahead of me, which I hope 
+
+32
+00:01:30,090 --> 00:01:32,090
+you are, that means we've got to make sure that the Controller 
+
+33
+00:01:32,092 --> 00:01:35,092
+Method is setting up instance variables, with values that can 
+
+34
+00:01:35,095 --> 00:01:38,095
+then be picked up by the view. Now notice I said, assuming the 
+
+35
+00:01:38,098 --> 00:01:40,098
+model method does the right thing. One of the things that we 
+
+36
+00:01:40,100 --> 00:01:42,100
+said last time and that I'm going to keep repeating over and 
+
+37
+00:01:42,102 --> 00:01:45,102
+over again because it's so important, is each test really is 
+
+38
+00:01:45,105 --> 00:01:48,105
+there to test one thing. We already know that we're going to 
+
+39
+00:01:48,108 --> 00:01:51,108
+have to do some tests for the model method separately, so for 
+
+40
+00:01:51,111 --> 00:01:54,111
+now we‘ re stubbing out the behavior of the model, and we're 
+
+41
+00:01:54,114 --> 00:01:56,114
+going to assume that it does the right thing. We're going to let 
+
+42
+00:01:56,116 --> 00:01:57,116
+it do the right thing in a controlled way because we want to 
+
+43
+00:01:57,117 --> 00:02:01,117
+focus on the Controller Method. So to test this idea that it 
+
+44
+00:02:01,121 --> 00:02:03,121
+makes the results available to the template, we're going to look 
+
+45
+00:02:03,123 --> 00:02:06,123
+at another addition to RSpec. Remember I said that RSpec is a 
+
+46
+00:02:06,126 --> 00:02:09,126
+basic testing framework but it also comes with some plug- ins, 
+
+47
+00:02:09,129 --> 00:02:11,129
+so that if you're specifically writing Rails apps, there are 
+
+48
+00:02:11,131 --> 00:02:14,131
+some kinds of things you'd like to be able to test and RSpec 
+
+49
+00:02:14,134 --> 00:02:16,134
+comes with additional macros or libraries that let you do that. 
+
+50
+00:02:16,136 --> 00:02:19,136
+We're going to look at one called assigns, which basically 
+
+51
+00:02:19,139 --> 00:02:22,139
+allows you to pass a symbol that names a controller instance 
+
+52
+00:02:22,142 --> 00:02:27,142
+variable and returns what that variable would be if the view 
+
+53
+00:02:27,147 --> 00:02:30,147
+tried to look at it. So basically assigns gives you the view's 
+
+54
+00:02:30,150 --> 00:02:34,150
+idea of what some value of an instance variable is. Now of 
+
+55
+00:02:34,154 --> 00:02:38,154
+course in our current code, we are doing such a simple test case 
+
+56
+00:02:38,158 --> 00:02:40,158
+that we didn't even set up the instance variables yet. Let's 
+
+57
+00:02:40,160 --> 00:02:46,160
+remind ourselves what this looked like. So this is the method 
+
+58
+00:02:46,166 --> 00:02:49,166
+that we've been using so far. Remember this does the simplest 
+
+59
+00:02:49,169 --> 00:02:51,169
+thing possible to make the specs pass that we've done up to this 
+
+60
+00:02:51,171 --> 00:02:54,171
+point. We haven't yet done the spec to check that the Controller 
+
+61
+00:02:54,174 --> 00:02:57,174
+Method is setting up an instance variable that the view can use. 
+
+62
+00:02:57,177 --> 00:02:59,177
+In fact it's not setting up any instance variables at all, so 
+
+63
+00:02:59,179 --> 00:03:07,179
+that's problematic. Again, let's go back to the idea of the code 
+
+64
+00:03:07,187 --> 00:03:10,187
+we wish we had. Well, first of all, what would the instance 
+
+65
+00:03:10,190 --> 00:03:13,190
+variable look like? We said assuming the model method does its 
+
+66
+00:03:13,193 --> 00:03:15,193
+job and returns the right thing, well what would the right thing 
+
+67
+00:03:15,195 --> 00:03:18,195
+be in terms of the happy path? Presumably it would be a list of 
+
+68
+00:03:18,198 --> 00:03:20,198
+something that looks like a list of movie objects, right? 
+
+69
+00:03:20,200 --> 00:03:23,200
+Because we already have a class to represent what movies are, so 
+
+70
+00:03:23,203 --> 00:03:31,203
+here's an example of what we might want the code to look like. 
+
+71
+00:03:31,211 --> 00:03:34,211
+So let's see what's going on here. I'm setting up some fake 
+
+72
+00:03:34,214 --> 00:03:39,214
+results and what's a mock? A mock is an object that pretends to 
+
+73
+00:03:39,219 --> 00:03:41,219
+be of this class. In other words if you ask it, " What are you?" 
+
+74
+00:03:41,221 --> 00:03:44,221
+It'll say " I'm a movie," but it doesn't actually have any 
+
+75
+00:03:44,224 --> 00:03:47,224
+behaviors. It's like a stupid stunt double that can only do a 
+
+76
+00:03:47,227 --> 00:03:49,227
+specific, small repertoire of tasks because it can't do what the 
+
+77
+00:03:49,229 --> 00:03:52,229
+real actor does. So, by the way, no diss on stunt doubles; they 
+
+78
+00:03:52,232 --> 00:03:56,232
+do amazing work, just saying. So what am I doing here? I'm 
+
+79
+00:03:56,236 --> 00:04:00,236
+basically creating the results that I think would come back from 
+
+80
+00:04:00,000 --> 00:04:04,240
+the movie method if it existed and now I'm going to stub the 
+
+81
+00:04:04,244 --> 00:04:09,244
+class method find_ in_ tmdb and return these fake results. So 
+
+82
+00:04:09,249 --> 00:04:11,249
+what am I doing? Again, I'm setting up conditions so that under 
+
+83
+00:04:11,251 --> 00:04:14,251
+the controlled environment of the test, this movie method, which 
+
+84
+00:04:14,254 --> 00:04:17,254
+we haven't yet written, can return a canned result that's 
+
+85
+00:04:17,257 --> 00:04:19,257
+consistent with it working properly because that isn't the thing 
+
+86
+00:04:19,259 --> 00:04:22,259
+that we're testing. We need that information to do the thing 
+
+87
+00:04:22,262 --> 00:04:25,262
+we're really testing, which is what we're looking for now, 
+
+88
+00:04:25,265 --> 00:04:27,265
+right? Now we're going to go ahead and post, to trigger the 
+
+89
+00:04:27,267 --> 00:04:30,267
+Controller Method, we already saw this in the previous test. So 
+
+90
+00:04:30,270 --> 00:04:33,270
+this is going to cause the controller action to run. Only now 
+
+91
+00:04:33,273 --> 00:04:37,273
+what we're looking at is to see if the view tried to dereference 
+
+92
+00:04:37,277 --> 00:04:41,277
+an instance variable called movies, we would like it to get the 
+
+93
+00:04:41,281 --> 00:04:44,281
+value that we set up as the movie stub. Think of the flow that's 
+
+94
+00:04:44,284 --> 00:04:47,284
+going on here. We're going to call the Controller Method, 
+
+95
+00:04:47,287 --> 00:04:48,287
+Controller Method is going to call the model method, which 
+
+96
+00:04:48,288 --> 00:04:51,288
+doesn't exist, but that's okay because we have stubbed it. 
+
+97
+00:04:51,291 --> 00:04:54,291
+What's the stub going to return? It's going to return these fake 
+
+98
+00:04:54,294 --> 00:04:57,294
+results. So we have completely faked out the behavior that's not 
+
+99
+00:04:57,297 --> 00:04:59,297
+essential to this test because what we really want to check is 
+
+100
+00:04:59,299 --> 00:05:02,299
+given this result comes back, can we make it available to the 
+
+101
+00:05:02,302 --> 00:05:06,302
+view. That's what assigns does. It gives us the view's idea of 
+
+102
+00:05:06,306 --> 00:05:10,306
+what the instance variable will be set to and that's how we fake 
+
+103
+00:05:10,310 --> 00:05:13,310
+out the parts of the test that we didn't want to control. So 
+
+104
+00:05:13,313 --> 00:05:16,313
+this really ... now we have a couple of different concepts about 
+
+105
+00:05:16,316 --> 00:05:19,316
+seams. Remember we said a seam is in place where you can change 
+
+106
+00:05:19,319 --> 00:05:21,319
+the behavior of your program without changing the source code in 
+
+107
+00:05:21,321 --> 00:05:24,321
+that place, and it's particularly useful for testing because 
+
+108
+00:05:24,324 --> 00:05:26,324
+that's exactly what we're trying to do, right? We're trying to, 
+
+109
+00:05:26,326 --> 00:05:29,326
+in a controlled way, exercise little bits of the program without 
+
+110
+00:05:29,329 --> 00:05:32,329
+making changes to the other parts of the program on which they 
+
+111
+00:05:32,332 --> 00:05:35,332
+depend. In that example we saw two different kinds of seams. We 
+
+112
+00:05:35,335 --> 00:05:38,335
+saw a stub, which is similar to what we saw last time. Last time 
+
+113
+00:05:38,338 --> 00:05:42,338
+we saw should_ receive which said, should_ receive means if I 
+
+114
+00:05:42,342 --> 00:05:44,342
+don't get a method call on this object, then that was an error, 
+
+115
+00:05:44,344 --> 00:05:49,344
+that should have happened. Stub is a little bit looser. It says, 
+
+116
+00:05:49,349 --> 00:05:52,349
+you might get a method call on this object and if you do, here's 
+
+117
+00:05:52,352 --> 00:05:54,352
+what instructions you should follow, but it doesn't cause an 
+
+118
+00:05:54,354 --> 00:05:58,354
+error for there not to be one. A mock is a stunt double of an 
+
+119
+00:05:58,358 --> 00:06:02,358
+object and you often use it for behavior verification. In other 
+
+120
+00:06:02,362 --> 00:06:04,362
+words, in this case, we want to verify the behavior of this 
+
+121
+00:06:04,364 --> 00:06:07,364
+other thing. It needs a movie or a list of movie results to 
+
+122
+00:06:07,367 --> 00:06:10,367
+interact with, but we don't want to go to the effort necessarily 
+
+123
+00:06:10,370 --> 00:06:13,370
+of creating the real movie objects because we're not actually 
+
+124
+00:06:13,373 --> 00:06:15,373
+going to do anything to them, right? In this limited case, the 
+
+125
+00:06:15,375 --> 00:06:18,375
+only thing the movie objects are going to do is play the role of 
+
+126
+00:06:18,378 --> 00:06:22,378
+a result that we're returning in a canned manner. Having said 
+
+127
+00:06:22,382 --> 00:06:25,382
+that, we can for example, stub individual methods on it. For 
+
+128
+00:06:25,385 --> 00:06:28,385
+example, suppose we were testing a controller action where we 
+
+129
+00:06:28,388 --> 00:06:31,388
+know that when a movie result, let's say comes back from a movie 
+
+130
+00:06:31,391 --> 00:06:33,391
+model, it's going to take a look at the title attribute, for 
+
+131
+00:06:33,393 --> 00:06:36,393
+instance. In that case, we can do something like this, where 
+
+132
+00:06:36,396 --> 00:06:39,396
+we're creating a mock or a double of a movie object and we're 
+
+133
+00:06:39,399 --> 00:06:42,399
+saying if anybody calls the title method on you, just return 
+
+134
+00:06:42,402 --> 00:06:46,402
+this. Again it's sort of ... you can can a very small number of 
+
+135
+00:06:46,406 --> 00:06:49,406
+behaviors so that you can use the object in very limited 
+
+136
+00:06:49,409 --> 00:06:52,409
+circumstances. If you look at the documentation for the latest 
+
+137
+00:06:52,412 --> 00:06:58,412
+RSpec, which I think is 2.14, they are now deprecating the terms 
+
+138
+00:06:58,418 --> 00:07:01,418
+stub and mock, in favor of a single term, double, and the idea 
+
+139
+00:07:01,421 --> 00:07:05,421
+is that it's called a test double like a stunt double. It's a 
+
+140
+00:07:05,425 --> 00:07:08,425
+stand- in that's not really the real object, but can do part of 
+
+141
+00:07:08,428 --> 00:07:11,428
+the job of the real object in a test. As it turns out, 
+
+142
+00:07:11,431 --> 00:07:14,431
+internally the way that stubs and mocks are implemented are 
+
+143
+00:07:14,434 --> 00:07:17,434
+similar enough, that it makes sense to use a single term. 
+
+144
+00:07:17,437 --> 00:07:20,437
+However, I will personally tell you that I find it useful to 
+
+145
+00:07:20,440 --> 00:07:23,440
+mentally keep a difference between the two things. A mock plays 
+
+146
+00:07:23,443 --> 00:07:26,443
+a role of like, look we need an object, we need a warm body to 
+
+147
+00:07:26,446 --> 00:07:28,446
+stand in and it needs to be able to do one or two specific 
+
+148
+00:07:28,448 --> 00:07:32,448
+things. A stub is more like, this method might be called and 
+
+149
+00:07:32,452 --> 00:07:35,452
+since we don't want to deal with having the real method interact 
+
+150
+00:07:35,455 --> 00:07:38,455
+here, we'll provide a canned response. So the semantics are 
+
+151
+00:07:38,458 --> 00:07:40,458
+subtly different. One of them is more of a convenience of like 
+
+152
+00:07:40,460 --> 00:07:43,460
+ignore the rest of the app. The other one is more, I'm going to 
+
+153
+00:07:43,463 --> 00:07:46,463
+set up some expectations because I need for this object to do a 
+
+154
+00:07:46,466 --> 00:07:50,466
+certain number of things. In each case though, the idea that the 
+
+155
+00:07:50,470 --> 00:07:53,470
+seam enables just enough functionality to pass the specific 
+
+156
+00:07:53,473 --> 00:07:56,473
+behavior in that one test. So let's kind of put these things 
+
+157
+00:07:56,476 --> 00:07:58,476
+together, looking at both this spec and the two that we looked 
+
+158
+00:07:58,478 --> 00:08:02,478
+at last time. If we think of what does it mean to write a good 
+
+159
+00:08:02,482 --> 00:08:04,482
+spec or a good test case? Well first of all, it should test just 
+
+160
+00:08:04,484 --> 00:08:08,484
+one behavior and that's really extreme right? Even in our simple 
+
+161
+00:08:08,488 --> 00:08:12,488
+controller method we saw that calling the model method, passing 
+
+162
+00:08:12,492 --> 00:08:14,492
+the right thing to the model method and making the right thing 
+
+163
+00:08:14,494 --> 00:08:17,494
+available from the result of the model method, that's actually 
+
+164
+00:08:17,497 --> 00:08:19,497
+three different behaviors and we wrote three different specs for 
+
+165
+00:08:19,499 --> 00:08:22,499
+them. Figure out what seams you're going to need to isolate the 
+
+166
+00:08:22,502 --> 00:08:25,502
+behaviors you want to test from other behaviors that they rely 
+
+167
+00:08:25,505 --> 00:08:28,505
+on, but that aren't part of the test and therefore what kinds of 
+
+168
+00:08:28,508 --> 00:08:31,508
+expectations are appropriate to use. You could use stubs if 
+
+169
+00:08:31,511 --> 00:08:33,511
+you're not sure about the number of times something would be 
+
+170
+00:08:33,513 --> 00:08:36,513
+called and if the fact that you're calling it is not necessarily 
+
+171
+00:08:36,516 --> 00:08:39,516
+as central to the test. You could use expectations like should 
+
+172
+00:08:39,519 --> 00:08:42,519
+receive if you want to set up a method and make sure that it 
+
+173
+00:08:42,522 --> 00:08:44,522
+actually gets called or should not receive if you want to make 
+
+174
+00:08:44,524 --> 00:08:46,524
+sure that something doesn't get called. For example, you might 
+
+175
+00:08:46,526 --> 00:08:49,526
+be testing that if the customer didn't agree to the terms of 
+
+176
+00:08:49,529 --> 00:08:52,529
+sale the charge my credit card method should not be called. 
+
+177
+00:08:52,532 --> 00:08:56,532
+That's a perfect legitimate code path. Once you've set up your 
+
+178
+00:08:56,536 --> 00:08:59,536
+before conditions, you've set up your seams, make sure that your 
+
+179
+00:08:59,539 --> 00:09:01,539
+test fails for the correct reason. In other words, the reason 
+
+180
+00:09:01,541 --> 00:09:05,541
+you want it to fail is you have correctly expressed what the 
+
+181
+00:09:05,545 --> 00:09:07,545
+code ought to do but you haven't written the code yet. That's 
+
+182
+00:09:07,547 --> 00:09:10,547
+the reason for the failure as opposed to it fails because of a 
+
+183
+00:09:10,550 --> 00:09:12,550
+syntax error or you misspelled the name of a variable or you 
+
+184
+00:09:12,552 --> 00:09:14,552
+stubbed the wrong thing, or you didn't realize there was 
+
+185
+00:09:14,554 --> 00:09:17,554
+something that the method expects to call and you didn't stub it 
+
+186
+00:09:17,557 --> 00:09:20,557
+and now bad things happen. Given that it fails for the right 
+
+187
+00:09:20,560 --> 00:09:23,560
+reason now you're on to the easy part, right? Writing code in 
+
+188
+00:09:23,563 --> 00:09:26,563
+case you haven't figured this out yet is actually the easy part. 
+
+189
+00:09:26,566 --> 00:09:29,566
+Determining what code to write and how to test it and where the 
+
+190
+00:09:29,569 --> 00:09:32,569
+boundaries ought to be, that's actually the harder part. So this 
+
+191
+00:09:32,572 --> 00:09:34,572
+is kind of a way of making sure that you structure the hard part 
+
+192
+00:09:34,574 --> 00:09:38,574
+of it first and once you've got a good failing test and as we'll 
+
+193
+00:09:38,578 --> 00:09:40,578
+see fixing bugs is really similar, right? The hard thing about 
+
+194
+00:09:40,580 --> 00:09:43,580
+fixing a bug is finding it and reproducing it. If you can do 
+
+195
+00:09:43,583 --> 00:09:46,583
+that in a test, once you've done that back- filling the code to 
+
+196
+00:09:46,586 --> 00:09:49,586
+fix it is a lot easier. Once you've got the test to pass, you 
+
+197
+00:09:49,589 --> 00:09:52,589
+look for opportunities to refactor your code, look for places to 
+
+198
+00:09:52,592 --> 00:09:55,592
+make it beautiful. Just like writing. Once you've got your rough 
+
+199
+00:09:55,595 --> 00:09:57,595
+draft down, it doesn't mean you're done; it means you sort of 
+
+200
+00:09:57,597 --> 00:09:59,597
+understand what your intentions were and now you can actually go 
+
+201
+00:09:59,599 --> 00:10:03,599
+back and make it pretty. We can add to the catalogue of test 
+
+202
+00:10:03,603 --> 00:10:06,603
+techniques we've seen. We already saw should receive, we saw 
+
+203
+00:10:06,606 --> 00:10:09,606
+that you can optionally tell should receive what it should get, 
+
+204
+00:10:09,609 --> 00:10:12,609
+what arguments and you can also optionally tell it what to 
+
+205
+00:10:12,612 --> 00:10:15,612
+return if that matters in your test case. We've also now seen 
+
+206
+00:10:15,615 --> 00:10:20,615
+that you can do stubs and just like should receive, you can stub 
+
+207
+00:10:20,620 --> 00:10:24,620
+something and specify what it returns. Now you might ask could 
+
+208
+00:10:24,624 --> 00:10:26,624
+you call stub and say with just like you can do with should 
+
+209
+00:10:26,626 --> 00:10:30,626
+receive. Well syntactically you can do it but the question is 
+
+210
+00:10:30,630 --> 00:10:34,630
+whether it makes any sense. Because the whole point of a stub is 
+
+211
+00:10:34,634 --> 00:10:37,634
+you're communicating the intent that this is not central to the 
+
+212
+00:10:37,637 --> 00:10:41,637
+functionality I'm testing, whereas with should receive, part of 
+
+213
+00:10:41,641 --> 00:10:43,641
+the central functionality is I want to make sure this method 
+
+214
+00:10:43,643 --> 00:10:46,643
+actually gets called so in that case you might imagine that you 
+
+215
+00:10:46,646 --> 00:10:48,646
+also want to make sure it gets called with the correct 
+
+216
+00:10:48,648 --> 00:10:51,648
+arguments. So you could stub something with arguments but the 
+
+217
+00:10:51,651 --> 00:10:54,651
+fact that you're stubbing it already says I don't actually care 
+
+218
+00:10:54,654 --> 00:10:58,654
+that much if it gets called. It's kind of there just in case. 
+
+219
+00:10:58,658 --> 00:11:01,658
+You can also create mocks, which are doubles of an object. They 
+
+220
+00:11:01,661 --> 00:11:03,661
+will behave like the class you say they are. That's what they'll 
+
+221
+00:11:03,663 --> 00:11:06,663
+claim to be, but if you try to actually call any of the class 
+
+222
+00:11:06,666 --> 00:11:08,666
+methods on them, they'll throw up their hands in despair and 
+
+223
+00:11:08,668 --> 00:11:11,668
+they won't know what to do. They're really, really dumb objects 
+
+224
+00:11:11,671 --> 00:11:14,671
+and you can stub one at a time specific methods on them. In a 
+
+225
+00:11:14,674 --> 00:11:16,674
+moment we'll answer the question of what happens if you're 
+
+226
+00:11:16,676 --> 00:11:19,676
+stubbing so many methods that it turns out you ought to just be 
+
+227
+00:11:19,679 --> 00:11:25,679
+using a real object. We looked at the assigns which is another 
+
+228
+00:11:25,685 --> 00:11:28,685
+one of the matchers that RSpec provides that is specific to 
+
+229
+00:11:28,688 --> 00:11:32,688
+Rails which basically says tell me what the view would get of it 
+
+230
+00:11:32,692 --> 00:11:36,692
+tried to dereference this instance variable. And usually it's 
+
+231
+00:11:36,696 --> 00:11:38,696
+used when you want to make sure that a controller action 
+
+232
+00:11:38,698 --> 00:11:40,698
+correctly set up the value of some instance variable that the 
+
+233
+00:11:40,700 --> 00:11:45,700
+view is then going to render. So here is a question: should 
+
+234
+00:11:45,705 --> 00:11:49,705
+receive combines a something and a something whereas stub is 
+
+235
+00:11:49,709 --> 00:11:54,709
+only a something? You can read while I have a drink. 
+
+

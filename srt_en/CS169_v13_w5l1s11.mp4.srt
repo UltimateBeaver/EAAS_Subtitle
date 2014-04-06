@@ -1,0 +1,337 @@
+1
+00:00:00,000 --> 00:00:06,000
+The most exciting part is let's get them rolling here. Let's get 
+
+2
+00:00:06,006 --> 00:00:12,006
+Cucumber and Capybara moving. This is what's called ... it's 
+
+3
+00:00:12,012 --> 00:00:15,012
+another fun part of this tool. It's incredibly magic. It's 
+
+4
+00:00:15,015 --> 00:00:19,015
+colorful; it's a very colorful tool. It colors the steps when 
+
+5
+00:00:19,019 --> 00:00:22,019
+you use them, so green means the step passed. This is of your 
+
+6
+00:00:22,022 --> 00:00:25,022
+scenario, right. The green steps pass, yellow means you haven't 
+
+7
+00:00:25,025 --> 00:00:29,025
+implemented it yet, red means it failed, and if it fails it's 
+
+8
+00:00:29,029 --> 00:00:32,029
+going to stop there so all the steps afterwards it's going to 
+
+9
+00:00:32,032 --> 00:00:35,032
+color it blue. The goal is to make this red- yellow- green 
+
+10
+00:00:35,035 --> 00:00:38,035
+analysis. You want to make all your steps green. Make all your 
+
+11
+00:00:38,038 --> 00:00:43,038
+steps green and the story is the girlfriend of the guy who came 
+
+12
+00:00:43,043 --> 00:00:47,043
+up with this tool decided that to make it all green then 
+
+13
+00:00:47,047 --> 00:00:51,047
+cucumber would be a cool vegetable to name it after because you 
+
+14
+00:00:51,051 --> 00:00:53,051
+want to make everything green. I guess maybe she's vegan or 
+
+15
+00:00:53,053 --> 00:01:01,053
+something like that. Now we're going to do a live demo with 
+
+16
+00:01:01,061 --> 00:01:05,061
+Cucumber here, our cuc as it's called. There's a screen test 
+
+17
+00:01:05,065 --> 00:01:09,065
+that you can look on but we will see if the video lets me do the 
+
+18
+00:01:09,069 --> 00:01:15,069
+demo. What we're going to do is do ‘ add movie. '  This is the 
+
+19
+00:01:15,075 --> 00:01:20,075
+one we saw before and I'll show it to you in the editor here. 
+
+20
+00:01:20,080 --> 00:01:24,080
+This is what we're going to try and we'll start off trying to 
+
+21
+00:01:24,084 --> 00:01:29,084
+run Cucumber on this thing, and we put this in the features' 
+
+22
+00:01:29,089 --> 00:01:33,089
+directory and this is addmovie. features. Let's go to Cucumber 
+
+23
+00:01:33,093 --> 00:01:37,093
+and you see under the command Cucumber, Features, Add Movie and 
+
+24
+00:01:37,097 --> 00:01:41,097
+let's see what happens. Presumably, since we're doing the red- 
+
+25
+00:01:41,101 --> 00:01:46,101
+yellow- green analysis, this better not be all green and it's 
+
+26
+00:01:46,106 --> 00:01:50,106
+not. It says right here at the bottom we did one scenario that 
+
+27
+00:01:50,110 --> 00:01:53,110
+failed. There were eight steps there, one failed and seven were 
+
+28
+00:01:53,113 --> 00:02:01,113
+skipped and now we scroll up the screen. Here it is, it says, " 
+
+29
+00:02:01,121 --> 00:02:04,121
+Given I am on the rotten potatoes' homepage," and this is in red 
+
+30
+00:02:04,124 --> 00:02:07,124
+so it failed and here's the other message, " I can't find the 
+
+31
+00:02:07,127 --> 00:02:10,127
+mapping from the rotten potatoes' homepage to a path," right. 
+
+32
+00:02:10,130 --> 00:02:15,130
+That's what we should be doing to associate that, not only that. 
+
+33
+00:02:15,135 --> 00:02:18,135
+This is like a navigator. It doesn't just say, " You made a 
+
+34
+00:02:18,138 --> 00:02:21,138
+mistake. Here it is," it says, " Now here's how you fix it, 
+
+35
+00:02:21,141 --> 00:02:27,141
+Dave. Dave go add a mapping to the paths. rb to fix that missing 
+
+36
+00:02:27,147 --> 00:02:30,147
+path," so it not only found what was wrong it tells you what to 
+
+37
+00:02:30,150 --> 00:02:37,150
+go do, so let's do that. That's the Cucumber page and so paths. 
+
+38
+00:02:37,157 --> 00:02:40,157
+rb, it gives you the full directory name there but that's over 
+
+39
+00:02:40,160 --> 00:02:45,160
+here, and let me go back. I almost forgot. This is what it wants 
+
+40
+00:02:45,165 --> 00:02:50,165
+to find so I'll make a copy of this. That's what I'm going to 
+
+41
+00:02:50,170 --> 00:02:55,170
+have here on my ‘ when' condition. I'm going to copy that now 
+
+42
+00:02:55,175 --> 00:02:59,175
+and let me go to paths. rb and here's where it is. It says here 
+
+43
+00:02:59,179 --> 00:03:03,179
+in the file add more mappings here. You can see here's an 
+
+44
+00:03:03,183 --> 00:03:06,183
+example, here's a ‘ when' condition and here's the regular 
+
+45
+00:03:06,186 --> 00:03:09,186
+expression with the hat, meaning the beginning of the line. 
+
+46
+00:03:09,189 --> 00:03:15,189
+We're going to copy that line, put the paths. rb, so I do that. 
+
+47
+00:03:15,195 --> 00:03:19,195
+Now I'm going to want to add this path to figure that out like 
+
+48
+00:03:19,199 --> 00:03:31,199
+Armando showed earlier. I'm going to run rake routes, okay, and 
+
+49
+00:03:31,211 --> 00:03:35,211
+this is going to list what's on the page so this is the index 
+
+50
+00:03:35,215 --> 00:03:38,215
+action. Here's the command ‘ get, '  so here's the path that I 
+
+51
+00:03:38,218 --> 00:03:44,218
+want which is ( slash) / movies. Again I copy that. I go to 
+
+52
+00:03:44,224 --> 00:03:51,224
+paths. rb and I add that after this with the quotes around it, 
+
+53
+00:03:51,231 --> 00:03:56,231
+right there, okay. Cuc found the message and then told me where 
+
+54
+00:03:56,236 --> 00:04:03,236
+to go fix it and I used rake routes to do that. Let me go to the 
+
+55
+00:04:03,243 --> 00:04:06,243
+end there. Let me just clear the screen so it doesn't get 
+
+56
+00:04:06,246 --> 00:04:13,246
+confusing. Let's try it again and it found a mistake. Let's try 
+
+57
+00:04:13,253 --> 00:04:19,253
+and do our red- yellow- green analysis and see if hopefully we 
+
+58
+00:04:19,259 --> 00:04:24,259
+made some progress, and it said, " Look" at the bottom again. 
+
+59
+00:04:24,264 --> 00:04:27,264
+The scenario failed. We have eight steps, two passed this time, 
+
+60
+00:04:27,267 --> 00:04:31,267
+one failed and the rest were skipped. This one's got a pretty 
+
+61
+00:04:31,271 --> 00:04:37,271
+big error message. It should be very similar to this one. When 
+
+62
+00:04:37,277 --> 00:04:40,277
+I'm on the rotten potatoes' homepage and I add a new movie, then 
+
+63
+00:04:40,280 --> 00:04:44,280
+I should be on the Create New Page, movie page. It says, " I 
+
+64
+00:04:44,284 --> 00:04:47,284
+can't find the mapping from Create New Movie page to path," and 
+
+65
+00:04:47,287 --> 00:04:49,287
+this kind of reminds me of a navigator, when you're going in the 
+
+66
+00:04:49,289 --> 00:04:53,289
+car and navigating and you don't follow it after a while. 
+
+67
+00:04:53,293 --> 00:04:55,293
+Doesn't it seem like it starts getting mad at you? " Come on, 
+
+68
+00:04:55,295 --> 00:05:00,295
+turn right." " Dave damn it, go add a mapping to the rotten 
+
+69
+00:05:00,000 --> 00:05:05,300
+potatoes' homepage with the thing." Tell me what to do. I'm 
+
+70
+00:05:05,305 --> 00:05:09,305
+going to make a copy. Now let's go to path. Again I'm going to 
+
+71
+00:05:09,309 --> 00:05:25,309
+want to say ‘ when' in the beginning of the line in the Create 
+
+72
+00:05:25,325 --> 00:05:31,325
+Movie Page. When I'm on the Create Movie Page, now let me go 
+
+73
+00:05:31,331 --> 00:05:34,331
+back to the rake routes and this time I'm doing new right here, 
+
+74
+00:05:34,334 --> 00:05:42,334
+and this is the path I need, movies/ new, so let me copy it. I 
+
+75
+00:05:42,342 --> 00:05:47,342
+go to paths. rb. Let me add that. What we've done is added a 
+
+76
+00:05:47,347 --> 00:05:53,347
+user story around an existing something that worked. We were 
+
+77
+00:05:53,353 --> 00:06:01,353
+just having an extra test to see if it worked. Let's see what 
+
+78
+00:06:01,361 --> 00:06:08,361
+Cucumber says. Let me clear it again, run it to see if it's 
+
+79
+00:06:08,368 --> 00:06:27,368
+happy now. Green, one scenario, one passed, all eight steps 
+
+80
+00:06:27,387 --> 00:06:32,387
+passed and you see it's green analysis so cool as a cucumber, so 
+
+81
+00:06:32,392 --> 00:06:39,392
+to say. Okay It was already existing. We didn't add any new 
+
+82
+00:06:39,399 --> 00:06:43,399
+features. We didn't add new functionality to the app. We just 
+
+83
+00:06:43,403 --> 00:06:46,403
+added a test to make sure it could do that and that we could 
+
+84
+00:06:46,406 --> 00:06:48,406
+see, and then we added Men In Black. It really showed up. 
+
+

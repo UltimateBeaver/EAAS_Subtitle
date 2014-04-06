@@ -1,0 +1,297 @@
+1
+00:00:00,000 --> 00:00:06,000
+With that in mind, suppose we've done a simple where, and we've 
+
+2
+00:00:06,006 --> 00:00:08,006
+looked at this 'movie'. No, there's no trickery here, okay? The 
+
+3
+00:00:08,008 --> 00:00:11,008
+'movie' exists. It doesn't throw an exception. Now, right after 
+
+4
+00:00:11,011 --> 00:00:14,011
+we do this another application writes into the database 
+
+5
+00:00:14,014 --> 00:00:16,014
+directly, perhaps it's another legacy app that's running 
+
+6
+00:00:16,016 --> 00:00:21,016
+alongside ours, and in the database table it makes a change to 
+
+7
+00:00:21,021 --> 00:00:24,021
+some attribute of 'movie'. Let's say it changes the title. So 
+
+8
+00:00:24,024 --> 00:00:28,024
+just after that instance, what is the value of 'movie'? Does it 
+
+9
+00:00:28,028 --> 00:00:30,028
+get updated automatically because of the way ActiveRecord 
+
+10
+00:00:30,030 --> 00:00:34,030
+connects you in- memory data objects to the database? Does it 
+
+11
+00:00:34,034 --> 00:00:37,034
+get updated automatically because ActiveRecord is able to use 
+
+12
+00:00:37,037 --> 00:00:40,037
+metaprogramming to do some of this magic? Is it not updated 
+
+13
+00:00:40,040 --> 00:00:43,040
+automatically, but if you re- executed a where, to sort of 
+
+14
+00:00:43,043 --> 00:00:47,043
+reload it, then you would get the updated value. Or does this 
+
+15
+00:00:47,047 --> 00:00:50,047
+behavior depend in some way on the underlying database? Is it 
+
+16
+00:00:50,050 --> 00:00:53,050
+undefined, and just one of these things you shouldn't do? 
+
+17
+00:00:53,053 --> 00:00:58,053
+Initial vote ... Initial vote says ... Initial vote ... Initial 
+
+18
+00:00:58,058 --> 00:01:04,058
+vote. We have a majority of you for red, with a minority view, I 
+
+19
+00:01:04,064 --> 00:01:07,064
+would say, for orange, and a couple of others. Okay, let's see 
+
+20
+00:01:07,067 --> 00:01:10,067
+if anybody has changed their minds. Second vote. Second vote. 
+
+21
+00:01:10,070 --> 00:01:16,070
+Second vote. Second vote. Second vote ... I would say the margin 
+
+22
+00:01:16,076 --> 00:01:19,076
+for red has increased, but it is far from unanimous. Let's go 
+
+23
+00:01:19,079 --> 00:01:23,079
+through these. Updated automatically because an ActiveRecord 
+
+24
+00:01:23,083 --> 00:01:26,083
+model connects your app to the database. Well it tries to do 
+
+25
+00:01:26,086 --> 00:01:29,086
+that, right? But they're still separate things. There's no ... 
+
+26
+00:01:29,089 --> 00:01:31,089
+If somebody goes around our app and directly into the database, 
+
+27
+00:01:31,091 --> 00:01:34,091
+which is what the question is assuming, there's no way for our 
+
+28
+00:01:34,094 --> 00:01:36,094
+app to sort of magically know about this fact, right? The 
+
+29
+00:01:36,096 --> 00:01:39,096
+database is really more like a passive repository that we're 
+
+30
+00:01:39,099 --> 00:01:42,099
+talking to, so if our app is using ActiveRecord to talk to the 
+
+31
+00:01:42,102 --> 00:01:44,102
+database, but there is some other app that is talking to the 
+
+32
+00:01:44,104 --> 00:01:47,104
+database separately, our app has no real way of understanding 
+
+33
+00:01:47,107 --> 00:01:50,107
+what's going on there, right? The moment after the database 
+
+34
+00:01:50,110 --> 00:01:54,110
+table is directly updated, we have no idea about that fact. As 
+
+35
+00:01:54,114 --> 00:01:56,114
+far as we know, nothing has happened. What about updated 
+
+36
+00:01:56,116 --> 00:01:59,116
+automatically because ActiveRecord uses metaprogramming? It 
+
+37
+00:01:59,119 --> 00:02:01,119
+certainly does use metaprogramming. It does it to make a lot of 
+
+38
+00:02:01,121 --> 00:02:05,121
+the connections easier, but again, there is no magical way for 
+
+39
+00:02:05,125 --> 00:02:07,125
+the database to notify us, generally speaking, that, " Hey, this 
+
+40
+00:02:07,127 --> 00:02:10,127
+has changed." If another app went in behind our backs 
+
+41
+00:02:10,130 --> 00:02:13,130
+essentially and did it, but of course, if we reload it, and 
+
+42
+00:02:13,133 --> 00:02:16,133
+there's more than one way to reload a record, but 'movie. 
+
+43
+00:02:16,136 --> 00:02:19,136
+reload' would also have worked, but in this example this 
+
+44
+00:02:19,139 --> 00:02:22,139
+actually will get us the new value, and woe- be- unto us if we 
+
+45
+00:02:22,142 --> 00:02:27,142
+have made local changes to that value without reflecting those 
+
+46
+00:02:27,147 --> 00:02:29,147
+changes back to the database, right? Our local values would be 
+
+47
+00:02:29,149 --> 00:02:32,149
+stomped on if we did this, but the lesson here is that the 
+
+48
+00:02:32,152 --> 00:02:36,152
+database is a separate piece of machinery from the application. 
+
+49
+00:02:36,156 --> 00:02:38,156
+We're trying to bring them as close together as we can, but if 
+
+50
+00:02:38,158 --> 00:02:41,158
+another app goes in behind our back and makes changes directly 
+
+51
+00:02:41,161 --> 00:02:44,161
+in the database, unless we take special external steps to get 
+
+52
+00:02:44,164 --> 00:02:48,164
+notified of that somehow, we have no way of knowing. Lets have a 
+
+53
+00:02:48,168 --> 00:02:50,168
+little bit of a discussion about this because I see that people 
+
+54
+00:02:50,170 --> 00:02:53,170
+have questions about it. Let's start ... Yes, let's just go from 
+
+55
+00:02:53,173 --> 00:02:56,173
+the back. Speaker 2: I thought that this 'movie. where' thing 
+
+56
+00:02:56,176 --> 00:02:58,176
+didn't return the database object, or any information actually, 
+
+57
+00:02:58,178 --> 00:03:02,178
+from the database, but it was actually pointed to a SQL query 
+
+58
+00:03:02,182 --> 00:03:05,182
+that would eventually, once you dereference 'movie', then it 
+
+59
+00:03:05,185 --> 00:03:08,185
+would go and access the database. Speaker 1: Actually you're 
+
+60
+00:03:08,188 --> 00:03:11,188
+right. You're right. Technically I would ... Yes. Are there 
+
+61
+00:03:11,191 --> 00:03:14,191
+people who did not vote red, but it was for that reason? Group: 
+
+62
+00:03:14,194 --> 00:03:17,194
+Yes. Speaker 1: Okay, you're all actually way smarter than me. 
+
+63
+00:03:17,197 --> 00:03:22,197
+Yes, and ironically, by the way, in rails 2- point- something 
+
+64
+00:03:22,202 --> 00:03:25,202
+and earlier, this wasn't the case. Rails 2. X actually had eager 
+
+65
+00:03:25,205 --> 00:03:29,205
+queries. So all the benefits of chaining lazy things would not 
+
+66
+00:03:29,209 --> 00:03:33,209
+have worked, but yes, that's ... Technically what I should have 
+
+67
+00:03:33,213 --> 00:03:36,213
+done ... You get a free thing from the [ Schreid- bag 00:03:34]. 
+
+68
+00:03:36,216 --> 00:03:38,216
+Remind me. What I should have done is, you know, put 's- movie', 
+
+69
+00:03:38,218 --> 00:03:40,218
+or something that would have forced the evaluation to take 
+
+70
+00:03:40,220 --> 00:03:44,220
+place. But yes, that's very well observed, but technically no 
+
+71
+00:03:44,224 --> 00:03:46,224
+query is happening here. The query doesn't actually happen until 
+
+72
+00:03:46,226 --> 00:03:49,226
+I try to consume the value in some way. Very well pointed out. 
+
+73
+00:03:49,229 --> 00:03:52,229
+All of you who were going to point out the same thing, likewise, 
+
+74
+00:03:52,232 --> 00:03:53,232
+very well pointed out. 
+
+

@@ -1,0 +1,109 @@
+1
+00:00:00,000 --> 00:00:09,000
+Okay, the booth has voted. Everybody else vote. Okay, this is a 
+
+2
+00:00:09,009 --> 00:00:11,009
+good one to talk over and while you guys talk it over, I'll set 
+
+3
+00:00:11,011 --> 00:00:17,011
+up a fun thing that we'll do for the last two minutes. Okay, so 
+
+4
+00:00:17,017 --> 00:00:18,017
+we're voting the second time then we're going to go through the 
+
+5
+00:00:18,018 --> 00:00:24,018
+answers and have four minutes reasoning fun. I would say we have 
+
+6
+00:00:24,024 --> 00:00:28,024
+a majority for green and we have a few people saying blue. Let's 
+
+7
+00:00:28,028 --> 00:00:31,028
+go through this. The top one result should not be empty. That's 
+
+8
+00:00:31,031 --> 00:00:34,031
+perfectly fine. We've seen stuff like that before. Result should 
+
+9
+00:00:34,034 --> 00:00:37,034
+not match a regular expression, absolutely reasonable. That's 
+
+10
+00:00:37,037 --> 00:00:40,037
+also one of the built ins. This is problematic though because 
+
+11
+00:00:40,040 --> 00:00:44,040
+when you say something, should be something, you're asking for a 
+
+12
+00:00:44,044 --> 00:00:49,044
+bullion argument, right? Either five is result or is not result. 
+
+13
+00:00:49,049 --> 00:00:52,049
+There's some property we are trying to get true or false on and 
+
+14
+00:00:52,052 --> 00:00:55,052
+the spaceship operator isn't dual value, right? Spaceship 
+
+15
+00:00:55,055 --> 00:00:58,055
+returns one of three possible values depending on whether the 
+
+16
+00:00:58,058 --> 00:01:00,058
+first thing is less than and the same as, or greater than the 
+
+17
+00:01:00,000 --> 00:01:05,060
+second thing. Whether this is in tactically legal, it's besides 
+
+18
+00:01:05,065 --> 00:01:07,065
+the point. It's confusing because there's no way to tell what it 
+
+19
+00:01:07,067 --> 00:01:10,067
+means. If I had said five should be less than result, that would 
+
+20
+00:01:10,070 --> 00:01:12,070
+have made sense. The spaceship operator isn't something that 
+
+21
+00:01:12,072 --> 00:01:15,072
+returns true or false. In fact and technically speaking, it 
+
+22
+00:01:15,075 --> 00:01:19,075
+always returns a non- false value, right? Zero, one, and minus 
+
+23
+00:01:19,079 --> 00:01:21,079
+one are all ... Because they're not Neil from Ruby's point of 
+
+24
+00:01:21,081 --> 00:01:25,081
+view, that makes them true. The correct answer here is that, 
+
+25
+00:01:25,085 --> 00:01:27,085
+five should be spaceship result isn't that appropriate because 
+
+26
+00:01:27,087 --> 00:01:30,087
+it actually wants a binary valued thing, bullion valued thing 
+
+27
+00:01:30,090 --> 00:01:32,090
+and this isn't one. 
+
+

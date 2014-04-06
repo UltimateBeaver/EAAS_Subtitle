@@ -1,0 +1,113 @@
+1
+00:00:00,000 --> 00:00:02,000
+Let's understand the answers to this self- check question. 
+
+2
+00:00:02,002 --> 00:00:05,002
+What's going on here? We want to select only the word " bar" for 
+
+3
+00:00:05,005 --> 00:00:07,005
+styling and the question is which of these is going to do it? 
+
+4
+00:00:07,007 --> 00:00:11,007
+Well, let's look at them each in turn. What about span. myClass? 
+
+5
+00:00:11,011 --> 00:00:15,011
+That means the element tag has to match span and the C is what 
+
+6
+00:00:15,015 --> 00:00:19,015
+the class attribute has to be myClass. That would work. Here's a 
+
+7
+00:00:19,019 --> 00:00:22,019
+span and it has the correct class value. It selects only the 
+
+8
+00:00:22,022 --> 00:00:25,022
+word " bar". Notice that even though the outer paragraph, the P 
+
+9
+00:00:25,025 --> 00:00:28,025
+also has myClass. It doesn't match, because our role 
+
+10
+00:00:28,028 --> 00:00:32,028
+specifically says it has to be a span tag. This one is okay. 
+
+11
+00:00:32,032 --> 00:00:34,032
+What about the second one? This is an example of descended 
+
+12
+00:00:34,034 --> 00:00:39,034
+navigation. We're saying, we want to match a element that has 
+
+13
+00:00:39,039 --> 00:00:42,039
+the class myClass but only if that element is nested inside of a 
+
+14
+00:00:42,042 --> 00:00:48,042
+P element. Again, here is an element that matches class myClass. 
+
+15
+00:00:48,048 --> 00:00:51,048
+It's nested inside of a P element. The fact that the P element 
+
+16
+00:00:51,051 --> 00:00:55,051
+also happens to have class myClass is irrelevant in this case. 
+
+17
+00:00:55,055 --> 00:00:58,055
+The second one also works, because it does not select the outer 
+
+18
+00:00:58,058 --> 00:01:00,058
+element. It selects the innermost one that matches the whole 
+
+19
+00:01:00,000 --> 00:01:04,060
+rule. Whatever the third one. The third one says we're looking 
+
+20
+00:01:04,064 --> 00:01:08,064
+for a span element, but only if it's inside an element that has 
+
+21
+00:01:08,068 --> 00:01:12,068
+the CSS class myClass. Well, here's a span element and it is 
+
+22
+00:01:12,072 --> 00:01:17,072
+indeed inside of a CSS element that has the class myClass and 
+
+23
+00:01:17,077 --> 00:01:20,077
+just as in the previous rule, the fact that the span element 
+
+24
+00:01:20,080 --> 00:01:23,080
+itself also has that class, that's irrelevant for the purposes 
+
+25
+00:01:23,083 --> 00:01:26,083
+of matching this rule, right? The rule just says a span no 
+
+26
+00:01:26,086 --> 00:01:29,086
+matter what as long as it's inside of something that matches 
+
+27
+00:01:29,089 --> 00:01:33,089
+myClass. In this case, all three of these are valid ways to 
+
+28
+00:01:33,093 --> 00:01:37,093
+select only the word " bar" for applying visual styles. 
+
+

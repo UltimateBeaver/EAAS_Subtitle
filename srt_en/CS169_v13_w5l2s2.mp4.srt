@@ -1,0 +1,377 @@
+1
+00:00:00,000 --> 00:00:07,000
+Next stop is explicit versus implicit and imperative versus 
+
+2
+00:00:07,007 --> 00:00:09,007
+declarative, so different types of scenarios and different ways 
+
+3
+00:00:09,009 --> 00:00:13,009
+to think about scenarios. The motivation slide that we try to 
+
+4
+00:00:13,013 --> 00:00:17,013
+start off everything with is are all the requirements come 
+
+5
+00:00:17,017 --> 00:00:22,017
+directly from user stories? We said scenarios are from three to 
+
+6
+00:00:22,022 --> 00:00:25,022
+eight. How do we keep them closer to three rather than more like 
+
+7
+00:00:25,025 --> 00:00:28,025
+eight so that it doesn't take as long to write them, it doesn't 
+
+8
+00:00:28,028 --> 00:00:35,028
+take as long to understand them? In terms of the outcome from 
+
+9
+00:00:35,035 --> 00:00:38,035
+the user stories, that gets referred to as explicit versus 
+
+10
+00:00:38,038 --> 00:00:43,038
+implicit scenarios. The explicit ones are the things that come 
+
+11
+00:00:43,043 --> 00:00:46,043
+directly from the user, from the customer. They are basically 
+
+12
+00:00:46,046 --> 00:00:55,046
+acceptance test. We added search TMDD. That is to list all the 
+
+13
+00:00:55,055 --> 00:00:57,055
+movies. That's examples of things that the customer want to see 
+
+14
+00:00:57,057 --> 00:01:01,057
+in the page. Things that the customer doesn't maybe care about 
+
+15
+00:01:01,061 --> 00:01:04,061
+would be like that in example when you list them, you list them 
+
+16
+00:01:04,064 --> 00:01:08,064
+in the order that they were entered or in alphabetical order or 
+
+17
+00:01:08,068 --> 00:01:10,068
+chronological order by when the movie came out. Maybe the 
+
+18
+00:01:10,070 --> 00:01:12,070
+customer doesn't really care so you're going to have to figure 
+
+19
+00:01:12,072 --> 00:01:17,072
+out what to do. That's an example of an implicit story. Just 
+
+20
+00:01:17,077 --> 00:01:20,077
+keep that in mind. There are some things that come directly from 
+
+21
+00:01:20,080 --> 00:01:22,080
+the three by five card and some things you're going to figure 
+
+22
+00:01:22,082 --> 00:01:31,082
+out, the customer asking questions all the time. Now when we've 
+
+23
+00:01:31,091 --> 00:01:33,091
+been writing these things up, we've been writing in what's 
+
+24
+00:01:33,093 --> 00:01:38,093
+called an imperative way. Here's a given state and here's a 
+
+25
+00:01:38,098 --> 00:01:42,098
+sequence of steps to get us to this next state so we're ready to 
+
+26
+00:01:42,102 --> 00:01:45,102
+do the test that we want to see, to see if it's doing acceptance 
+
+27
+00:01:45,105 --> 00:01:50,105
+test as we want to do. If a lot of your user stories are 
+
+28
+00:01:50,110 --> 00:01:53,110
+imperative, a lot of them will have the very same steps. Once 
+
+29
+00:01:53,113 --> 00:01:57,113
+again, [ inaudible 00:01:55] goes off, we see a lot of the same 
+
+30
+00:01:57,117 --> 00:01:59,117
+things. There must be some way to try and avoid this because we 
+
+31
+00:01:59,119 --> 00:02:03,119
+want to not repeat ourselves. Basically, the way to try and do 
+
+32
+00:02:03,123 --> 00:02:07,123
+this is what's called declarative, declarative approaches which 
+
+33
+00:02:07,127 --> 00:02:10,127
+is that is we're going to try and say the state we want it to 
+
+34
+00:02:10,130 --> 00:02:16,130
+be. If you think about declarative programming languages versus 
+
+35
+00:02:16,136 --> 00:02:18,136
+imperative programming languages, that's inspirations of these 
+
+36
+00:02:18,138 --> 00:02:22,138
+names. This should take a lot fewer steps. Let me try and make 
+
+37
+00:02:22,142 --> 00:02:24,142
+this concrete. I'm going to talk about listing the movies 
+
+38
+00:02:24,144 --> 00:02:27,144
+alphabetically. I'm going to show you first how you do it 
+
+39
+00:02:27,147 --> 00:02:30,147
+imperatively in a lot of steps and then show you how to do 
+
+40
+00:02:30,150 --> 00:02:34,150
+declaratively. How are we going to say it's in alphabetical 
+
+41
+00:02:34,154 --> 00:02:38,154
+order? What we're going to do is go through these steps. Here is 
+
+42
+00:02:38,158 --> 00:02:41,158
+the imperative approach. Given I'm on the Rotten Potatoes home 
+
+43
+00:02:41,161 --> 00:02:45,161
+page and then I follow add a new movie and then I fill in the 
+
+44
+00:02:45,165 --> 00:02:48,165
+title Zorro and press save changes, then that should be on the 
+
+45
+00:02:48,168 --> 00:02:53,168
+Rotten Potatoes home page and add a new movie and add the title 
+
+46
+00:02:53,173 --> 00:02:57,173
+Apocalypse Now and then give it a rating and I save changes. I 
+
+47
+00:02:57,177 --> 00:03:00,177
+should be in the Rotten Potatoes home page and I should see 
+
+48
+00:03:00,000 --> 00:03:05,180
+Apocalypse Now before Zorro. That was a lot of steps to write, 
+
+49
+00:03:05,185 --> 00:03:08,185
+to go through, to create changes from the state that I wanted 
+
+50
+00:03:08,188 --> 00:03:12,188
+was originally into the state of one of these so I could do this 
+
+51
+00:03:12,192 --> 00:03:16,192
+one test here. That's the behavior I'm after, that it's in 
+
+52
+00:03:16,196 --> 00:03:21,196
+alphabetical order. Remember the BDD, the B in BDD is about 
+
+53
+00:03:21,201 --> 00:03:24,201
+behavior. It seems like it's a little weird that we're trying to 
+
+54
+00:03:24,204 --> 00:03:27,204
+describe behavior. We do it imperatively like you're 
+
+55
+00:03:27,207 --> 00:03:33,207
+implementing it. The idea here is to think of it as making a 
+
+56
+00:03:33,213 --> 00:03:36,213
+domain language, not a domain specific language but a domain 
+
+57
+00:03:36,216 --> 00:03:39,216
+language. You try and come up, think of it in terms of your 
+
+58
+00:03:39,219 --> 00:03:42,219
+applications, in terms of the feature you want to do and the 
+
+59
+00:03:42,222 --> 00:03:46,222
+concepts. This is just an informal language. You're trying to 
+
+60
+00:03:46,226 --> 00:03:49,226
+write the declarative steps in this language. Your step 
+
+61
+00:03:49,229 --> 00:03:55,229
+definitions will define those. How about a declarative version 
+
+62
+00:03:55,235 --> 00:03:59,235
+of the scenario for keeping things in alphabetical might look 
+
+63
+00:03:59,239 --> 00:04:05,239
+like. The feature's the same. View the list after adding a 
+
+64
+00:04:05,245 --> 00:04:09,245
+movie. Given I have added Zorro with a rating, that's just 
+
+65
+00:04:09,249 --> 00:04:13,249
+describing the state that I wanted it to be. Given I have added 
+
+66
+00:04:13,253 --> 00:04:16,253
+Apocalypse Now with a rating, then I should see Apocalypse now 
+
+67
+00:04:16,256 --> 00:04:21,256
+before Zorro. That's a lot better. That's three steps versus 15 
+
+68
+00:04:21,261 --> 00:04:26,261
+steps. One step of those three steps is behavior. That's a lot 
+
+69
+00:04:26,266 --> 00:04:32,266
+better. Declarative scenarios are focused on behavior being 
+
+70
+00:04:32,272 --> 00:04:39,272
+tested rather than steps needs to set up the test. How are we 
+
+71
+00:04:39,279 --> 00:04:41,279
+going to do this? The way we're going to do this is some more 
+
+72
+00:04:41,281 --> 00:04:47,281
+step definitions. The next slide gives you an example. Here's a 
+
+73
+00:04:47,287 --> 00:04:51,287
+step definition, [ inaudible 00:04:49] declaratively. Basically, 
+
+74
+00:04:51,291 --> 00:04:54,291
+you're taking the single step and turning it into a bunch of 
+
+75
+00:04:54,294 --> 00:04:59,294
+smaller steps. Remember we said a step is like a method call and 
+
+76
+00:04:59,299 --> 00:05:02,299
+a step definition is like a method definition. You could think 
+
+77
+00:05:02,302 --> 00:05:04,302
+of that just like we've done it. You do this hierarchically. You 
+
+78
+00:05:04,304 --> 00:05:07,304
+use code. Similarly, you can do that with steps and step 
+
+79
+00:05:07,307 --> 00:05:11,307
+definitions. This example on the left, that's handling the given 
+
+80
+00:05:11,311 --> 00:05:16,311
+statement, given I want to add this movie and it takes these 
+
+81
+00:05:16,316 --> 00:05:21,316
+steps, these more imperative steps in the side. The idea here is 
+
+82
+00:05:21,321 --> 00:05:25,321
+that you may get started writing imperatively but you should 
+
+83
+00:05:25,325 --> 00:05:30,325
+start minding them to try and make step definitions or method 
+
+84
+00:05:30,330 --> 00:05:33,330
+definitions out of them so you could [ inaudible 00:05:33] so 
+
+85
+00:05:33,333 --> 00:05:36,333
+you don't have to write as much codes. You'll start off 
+
+86
+00:05:36,336 --> 00:05:43,336
+imperatively and hopefully migrate to declaratively. With that, 
+
+87
+00:05:43,343 --> 00:05:47,343
+we're ready to see how this works. Let me read this. What's true 
+
+88
+00:05:47,347 --> 00:05:50,347
+about these types of scenarios, implicit and explicit, and 
+
+89
+00:05:50,350 --> 00:05:54,350
+declarative versus imperative. Explicit requirements are usually 
+
+90
+00:05:54,354 --> 00:05:58,354
+defined with imperative scenarios and implicit requirements are 
+
+91
+00:05:58,358 --> 00:06:02,358
+usually defined with declarative scenarios. Explicit scenarios 
+
+92
+00:06:02,362 --> 00:06:07,362
+usually capture integration tests. Declarative scenarios aim to 
+
+93
+00:06:07,367 --> 00:06:11,367
+capture implementation as well as behavior. All of these are 
+
+94
+00:06:11,371 --> 00:06:14,371
+false. 
+
+

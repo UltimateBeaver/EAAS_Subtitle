@@ -1,0 +1,249 @@
+1
+00:00:00,000 --> 00:00:05,000
+So, with that in mind, let's extend that example and say, now
+
+2
+00:00:05,005 --> 00:00:09,005
+we want to do this. We want to be able to write five Euros in 
+
+3
+00:00:09,009 --> 00:00:13,009
+rupees, or in some other currency of our choice. So, as a 
+
+4
+00:00:13,013 --> 00:00:16,013
+general approach, what would we want to do in order to make this 
+
+5
+00:00:16,016 --> 00:00:21,016
+happen? One possibility is we could say, we could change numeric 
+
+6
+00:00:21,021 --> 00:00:24,021
+method missing and we could detect calls to " in" and take a 
+
+7
+00:00:24,024 --> 00:00:28,024
+look at the arguments. That would be one way. Or... So that's 
+
+8
+00:00:28,028 --> 00:00:30,028
+numeric dot method missing. That's the class method. Or we could 
+
+9
+00:00:30,030 --> 00:00:33,030
+change the instance method, numeric method missing, to do that 
+
+10
+00:00:33,033 --> 00:00:37,033
+same thing. We could define a new method called " in," as an 
+
+11
+00:00:37,037 --> 00:00:40,037
+instance method of numeric. By the way, by now you are getting 
+
+12
+00:00:40,040 --> 00:00:43,040
+used to the notation that numeric dot method missing means 
+
+13
+00:00:43,043 --> 00:00:46,043
+method missing as a class method. Numeric hash method missing 
+
+14
+00:00:46,046 --> 00:00:49,046
+means it's an instance method. That's just Ruby notation, all 
+
+15
+00:00:49,049 --> 00:00:54,049
+convention. Or we could define a class method numeric in. So, 
+
+16
+00:00:54,054 --> 00:00:57,054
+which of these four is likely to be the most appropriate way to 
+
+17
+00:00:57,057 --> 00:01:03,057
+handle this kind of example? Let's take a vote. Vote. Voting. 
+
+18
+00:01:03,063 --> 00:01:08,063
+Finally I have a question that has caused some controversy. So 
+
+19
+00:01:08,068 --> 00:01:13,068
+talk about this one for a minute. Okay. Let's try taking another 
+
+20
+00:01:13,073 --> 00:01:20,073
+vote. Ready, everybody? Ready, and voting time. Voting time. 
+
+21
+00:01:20,080 --> 00:01:24,080
+Okay, far from unan- red and blue have some support. Actually, I 
+
+22
+00:01:24,084 --> 00:01:28,084
+think almost every choice has some level of support. So let's 
+
+23
+00:01:28,088 --> 00:01:30,088
+see what's going on here. This is a good one to talk through. 
+
+24
+00:01:30,090 --> 00:01:32,090
+This is a good one to talk through. Okay, so let's go through 
+
+25
+00:01:32,092 --> 00:01:37,092
+these choices. First of all, just by the fact that when we 
+
+26
+00:01:37,097 --> 00:01:40,097
+called five dot Euros, what kind of a method is Euros? Instance 
+
+27
+00:01:40,100 --> 00:01:43,100
+or class? It's an instance method, right? We're calling it on an 
+
+28
+00:01:43,103 --> 00:01:47,103
+instance of fixnum. And remember how we defined the method. All 
+
+29
+00:01:47,107 --> 00:01:50,107
+it does is multiply the number by something, so what kind of 
+
+30
+00:01:50,110 --> 00:01:54,110
+thing do we get back from the Euros method? Also a fixnum. Okay? 
+
+31
+00:01:54,114 --> 00:01:58,114
+So, if we want to be able to call in rupees, for example, on the 
+
+32
+00:01:58,118 --> 00:02:01,118
+results of this, " in" is also at some level going to have to be 
+
+33
+00:02:01,121 --> 00:02:05,121
+an instance method. Right? That much we can agree on. So answers 
+
+34
+00:02:05,125 --> 00:02:07,125
+that are defining any kind of a class method, probably are 
+
+35
+00:02:07,127 --> 00:02:12,127
+barking up the wrong tree here. Okay, so it's not a class 
+
+36
+00:02:12,132 --> 00:02:16,132
+method. Well, what about this? What about modifying the method 
+
+37
+00:02:16,136 --> 00:02:18,136
+missing like we did before. That was defined as an instance 
+
+38
+00:02:18,138 --> 00:02:21,138
+method, right? It gets called if an instance of the object is 
+
+39
+00:02:21,141 --> 00:02:25,141
+unable to respond to something. So could we augment method 
+
+40
+00:02:25,145 --> 00:02:29,145
+missing to handle calls to " in"? Yes, we could. Is it a good 
+
+41
+00:02:29,149 --> 00:02:33,149
+idea? Not necessarily, right? Because in the previous example, 
+
+42
+00:02:33,153 --> 00:02:36,153
+the motivation for things like doing currencies is it gives us a 
+
+43
+00:02:36,156 --> 00:02:39,156
+general way to handle a lot of different method calls that 
+
+44
+00:02:39,159 --> 00:02:41,159
+really all do the same thing. They're just multiplying something 
+
+45
+00:02:41,161 --> 00:02:45,161
+by a number. So it's much more compact. Instead of defining 
+
+46
+00:02:45,165 --> 00:02:48,165
+twenty methods for twenty different currencies, we just use 
+
+47
+00:02:48,168 --> 00:02:51,168
+method missing to handle it in a much more compact way. But this 
+
+48
+00:02:51,171 --> 00:02:53,171
+is a much simpler thing we're trying to do. We're just trying to 
+
+49
+00:02:53,173 --> 00:02:58,173
+define one new method called " in" that is sent to a fixnum and 
+
+50
+00:02:58,178 --> 00:03:01,178
+will cause the conversion to happen in ways that we haven't 
+
+51
+00:03:01,181 --> 00:03:05,181
+determined yet. So defining an instance method called " in" is 
+
+52
+00:03:05,185 --> 00:03:07,185
+the simplest solution to this problem. The method missing 
+
+53
+00:03:07,187 --> 00:03:09,187
+solution would work, but it would be like killing ants with a 
+
+54
+00:03:09,189 --> 00:03:11,189
+sledgehammer. You don't need metaprogramming to solve this 
+
+55
+00:03:11,191 --> 00:03:15,191
+problem. This is just a plain old function call. So part of the 
+
+56
+00:03:15,195 --> 00:03:18,195
+reason to have this exercise in here is, again, just because you 
+
+57
+00:03:18,198 --> 00:03:21,198
+have these powerful mechanisms available doesn't mean you always 
+
+58
+00:03:21,201 --> 00:03:23,201
+have to use them. In fact, you should do the simplest thing that 
+
+59
+00:03:23,203 --> 00:03:25,203
+could possibly work. Remember, that's one of the mottos of 
+
+60
+00:03:25,205 --> 00:03:29,205
+extreme programming. And in this case, a plain old instance 
+
+61
+00:03:29,209 --> 00:03:32,209
+method will do absolutely fine. Any questions about that before 
+
+62
+00:03:32,212 --> 00:03:33,212
+we move on? 
+
+

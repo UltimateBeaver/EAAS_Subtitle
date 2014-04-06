@@ -1,0 +1,77 @@
+1
+00:00:00,000 --> 00:00:06,000
+What happens just to recap if you use printf to print debugging 
+
+2
+00:00:06,006 --> 00:00:09,006
+messages in your production application? Cards out. Raise an 
+
+3
+00:00:09,009 --> 00:00:12,009
+exception, grind to a halt, continue messages lost forever, 
+
+4
+00:00:12,012 --> 00:00:15,012
+continue messages go into the log file, you'll be stricken down 
+
+5
+00:00:15,015 --> 00:00:21,015
+in a fit of rage by the powers that be, or you've already lost 
+
+6
+00:00:21,021 --> 00:00:25,021
+your card. Yeah and since most people have voted correctly, 
+
+7
+00:00:25,025 --> 00:00:29,025
+let's just go through the answers. Raising an exception? Nope. 
+
+8
+00:00:29,029 --> 00:00:31,029
+Rails is nice enough not to raise exceptions for things that are 
+
+9
+00:00:31,031 --> 00:00:34,031
+not really exceptional. You trying to print a message is not 
+
+10
+00:00:34,034 --> 00:00:37,034
+exceptional. Your app will continue, but the messages go into 
+
+11
+00:00:37,037 --> 00:00:40,037
+the log file. No. You can do that but you have to explicitly use 
+
+12
+00:00:40,040 --> 00:00:43,040
+the logger. Printf does not automatically do that for you. If 
+
+13
+00:00:43,043 --> 00:00:46,043
+there were SaaS gods, they might well strike you down, but there 
+
+14
+00:00:46,046 --> 00:00:49,046
+aren't, so you don't need to worry about that option. Indeed 
+
+15
+00:00:49,049 --> 00:00:52,049
+your app will continue, but the messages will get lost forever, 
+
+16
+00:00:52,052 --> 00:00:54,052
+which is almost never the thing you want. Just get used to 
+
+17
+00:00:54,054 --> 00:00:56,054
+thinking about debugging in a different way,. This is no longer 
+
+18
+00:00:56,056 --> 00:00:59,056
+about you and the terminal. There's too many moving parts to 
+
+19
+00:00:59,059 --> 00:01:00,059
+help that work out. 
+
+

@@ -1,0 +1,189 @@
+1
+00:00:00,000 --> 00:00:06,000
+With that let's do another one of these things what is not true 
+
+2
+00:00:06,006 --> 00:00:08,006
+about software and servers for service oriented architecture in 
+
+3
+00:00:08,008 --> 00:00:11,008
+cloud computing clusters are collections of commodity servers 
+
+4
+00:00:11,011 --> 00:00:15,011
+connected by land switches internet supplies the communication 
+
+5
+00:00:15,015 --> 00:00:17,015
+Saas apps that cloud computing uses hardware cluster and 
+
+6
+00:00:17,017 --> 00:00:20,017
+software using redundancy predict that the bill private data 
+
+7
+00:00:20,020 --> 00:00:23,020
+centres could match the cost of warehouse scale computers if 
+
+8
+00:00:23,023 --> 00:00:27,023
+they just use the same type of hardware and software And, ready, 
+
+9
+00:00:27,027 --> 00:00:31,027
+set alright okay this is this is this is these are just too easy 
+
+10
+00:00:31,031 --> 00:00:37,031
+yeah you'll hear people say this who have private data centres 
+
+11
+00:00:37,037 --> 00:00:40,037
+well if I use the same software when you Eucalyptus software 
+
+12
+00:00:40,040 --> 00:00:44,040
+that buy the same PCs they don't have any same price advantage 
+
+13
+00:00:44,044 --> 00:00:46,044
+but it's economies of scale that they don't get when they do 
+
+14
+00:00:46,046 --> 00:00:57,046
+that I alright the next we're going to do some terms about what 
+
+15
+00:00:57,057 --> 00:01:01,057
+type of software we hope you will build. So why do I care if 
+
+16
+00:01:01,061 --> 00:01:05,061
+what others think in my code if works does it matter what looks 
+
+17
+00:01:05,065 --> 00:01:09,065
+like. Well that's the kind of the motto, who cares what it looks 
+
+18
+00:01:09,069 --> 00:01:13,069
+like is a what's called legacy code. It's what that means a 
+
+19
+00:01:13,073 --> 00:01:16,073
+software that keeps meeting customers needs but its difficulty 
+
+20
+00:01:16,076 --> 00:01:20,076
+evolve due to inelegant or antiquated technology so give you an 
+
+21
+00:01:20,080 --> 00:01:24,080
+idea is we had to give an alternative that which we call 
+
+22
+00:01:24,084 --> 00:01:27,084
+beautiful code that does make the needs but on the other hand is 
+
+23
+00:01:27,087 --> 00:01:31,087
+easy to evolve so it's high quality software. So sixty percent 
+
+24
+00:01:31,091 --> 00:01:34,091
+of the cost of software maintenance is adding functionality 
+
+25
+00:01:34,094 --> 00:01:39,094
+legacy software versus just 17 percent for fixing bugs. So the 
+
+26
+00:01:39,099 --> 00:01:44,099
+thing was kind of we knew about legacy code but this is 
+
+27
+00:01:44,104 --> 00:01:47,104
+something that's tradition left out of software engineering 
+
+28
+00:01:47,107 --> 00:01:50,107
+courses and textbooks so when we Armando and I figure out what 
+
+29
+00:01:50,110 --> 00:01:53,110
+to do teach software engineering we went to talk to these half 
+
+30
+00:01:53,113 --> 00:01:57,113
+dozen companies who know how to build software like Google and 
+
+31
+00:01:57,117 --> 00:02:01,117
+Amazon in places like that. And they said the number one 
+
+32
+00:02:01,121 --> 00:02:06,121
+question every single company was the students need to learn to 
+
+33
+00:02:06,126 --> 00:02:09,126
+deal with un-documented legacy code. So the first three 
+
+34
+00:02:09,129 --> 00:02:11,129
+companies went to we tried to argue with them and "no you don't 
+
+35
+00:02:11,131 --> 00:02:14,131
+wanna say that" because we did not do it but after the fourth, 
+
+36
+00:02:14,134 --> 00:02:18,134
+fifth, and sixth we said okay we gotta do that so while we're 
+
+37
+00:02:18,138 --> 00:02:22,138
+gonna do that in this course. So we'll have lectures the talk 
+
+38
+00:02:22,142 --> 00:02:25,142
+about how you deal with like this legacy code in a programming 
+
+39
+00:02:25,145 --> 00:02:29,145
+assignment later in the course where you will deal with legacy 
+
+40
+00:02:29,149 --> 00:02:33,149
+code I'll show you the surveys later we also survey the alumni 
+
+41
+00:02:33,153 --> 00:02:36,153
+from this course to see what was important. And we certainly 
+
+42
+00:02:36,156 --> 00:02:40,156
+alumni from the course who were still in school hadn't graduated 
+
+43
+00:02:40,160 --> 00:02:43,160
+and the alumni who had gone to industry in that people still in 
+
+44
+00:02:43,163 --> 00:02:47,163
+school you know we need legacy might be okay to people in who 
+
+45
+00:02:47,167 --> 00:02:49,167
+from the course who are alumni in industry this is right at the 
+
+46
+00:02:49,169 --> 00:02:54,169
+top of their list you have to deal with legacy legacy code so 
+
+47
+00:02:54,174 --> 00:02:55,174
+that's what we're gonna do 
+
+

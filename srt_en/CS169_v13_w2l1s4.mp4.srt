@@ -1,0 +1,129 @@
+1
+00:00:00,000 --> 00:00:04,000
+Alright, let's do another [ fear question. A big
+
+2
+00:00:04,004 --> 00:00:08,004
+difference . .. which statement is true? A big different between 
+
+3
+00:00:08,008 --> 00:00:11,008
+agile and plan and document is that agile does not use 
+
+4
+00:00:11,011 --> 00:00:13,011
+requirements . A big different between agile and plan and 
+
+5
+00:00:13,013 --> 00:00:17,013
+document is measuring progress against a plan. You can build 
+
+6
+00:00:17,017 --> 00:00:20,017
+softwares and service apps using agile but not with plan and 
+
+7
+00:00:20,020 --> 00:00:23,020
+document . A big different between agile and plan and document 
+
+8
+00:00:23,023 --> 00:00:28,023
+is building prototypes and interacting with customers during the 
+
+9
+00:00:28,028 --> 00:00:34,028
+process . Why don't you take a few seconds here . Ready, set , 
+
+10
+00:00:34,034 --> 00:00:38,034
+vote. How many  people should have . .. how many people have 
+
+11
+00:00:38,038 --> 00:00:41,038
+cards? That one we could talk over . Let's talk that one over. I 
+
+12
+00:00:41,041 --> 00:00:48,041
+think blue and green are the two ones . Let's talk this over for 
+
+13
+00:00:48,048 --> 00:00:51,048
+a minute then we'll vote together.  That's a minute,  let's 
+
+14
+00:00:51,051 --> 00:00:57,051
+vote again . Let's see if . .. ready , set, vote . Alright, I 
+
+15
+00:00:57,057 --> 00:01:00,057
+think it's greener . Let's see. A big different between agile 
+
+16
+00:01:00,000 --> 00:01:03,060
+and plan and document is agile does not use requirements . 
+
+17
+00:01:03,063 --> 00:01:07,063
+There's this thing called user stories . Those are basically 
+
+18
+00:01:07,067 --> 00:01:10,067
+requirements. It's an informal requirement to [ inquirement 
+
+19
+00:01:10,070 --> 00:01:12,070
+00:01:06] , that's not the right answer. You can build saas 
+
+20
+00:01:12,072 --> 00:01:17,072
+applicants using agile but not with plan and document. No, you 
+
+21
+00:01:17,077 --> 00:01:19,077
+could do saas with plan and document . It changes frequently, it 
+
+22
+00:01:19,079 --> 00:01:23,079
+might be expensive but you could do it that way. These are the 
+
+23
+00:01:23,083 --> 00:01:27,083
+last two . A big different between Agile and plan and document 
+
+24
+00:01:27,087 --> 00:01:30,087
+is building prototypes and interacting with customers during the 
+
+25
+00:01:30,090 --> 00:01:31,090
+process. No , that happens in spiral, right ? Spiral and [rap 
+
+26
+00:01:31,091 --> 00:01:35,091
+00:01:28 ] does meet with them they just meet with them a lot 
+
+27
+00:01:35,095 --> 00:01:37,095
+less frequently. The difference is the speed of interaction. The 
+
+28
+00:01:37,097 --> 00:01:41,097
+right answer here is the second one , the green one. A big 
+
+29
+00:01:41,101 --> 00:01:44,101
+different between agile and plan and document is measuring 
+
+30
+00:01:44,104 --> 00:01:47,104
+progress against a plan . There's really not a plan in Agile 
+
+31
+00:01:47,107 --> 00:01:47,107
+that you are measuring progress against. You're interacting with 
+
+32
+00:01:47,107 --> 00:01:48,107
+the customer and making progress that way. 
+
+

@@ -1,0 +1,127 @@
+1
+00:00:00,000 --> 00:00:03,000
+Okay, let's ask some questions about it; see if you followed
+
+2
+00:00:03,003 --> 00:00:07,003
+everything I said there. Which of these things regarding cost is
+
+3
+00:00:07,007 --> 00:00:11,007
+true? Three should be false. As practitioners of Agile
+
+4
+00:00:11,011 --> 00:00:15,011
+Development, Pivotal Labs does not use contracts. As
+
+5
+00:00:15,015 --> 00:00:18,015
+practitioners of pair programming, Pivotal Labs estimates the
+
+6
+00:00:18,018 --> 00:00:22,018
+cost for one pair to do it, and assigns that pair to complete
+
+7
+00:00:22,022 --> 00:00:26,022
+the project. The cost bid is for Pivotal Labs time and materials
+
+8
+00:00:26,026 --> 00:00:29,026
+that covers the number of weeks in the estimate, as studies show
+
+9
+00:00:29,029 --> 00:00:32,029
+that 84 to 90% of projects are on time and on budget, plan and
+
+10
+00:00:32,032 --> 00:00:35,032
+document managers promise customers a set of features for
+
+11
+00:00:35,035 --> 00:00:42,035
+agreed- upon cost by agreed upon date. Which of these is true?
+
+12
+00:00:42,042 --> 00:00:46,042
+Okay, you guys are already ready. Ready, set, vote. All right.
+
+13
+00:00:46,046 --> 00:00:52,046
+That is againâ€¦ I'm an easy question answer. The last one there
+
+14
+00:00:52,052 --> 00:00:58,052
+is, I'm still stunned that 84 to 90% of projects are over
+
+15
+00:00:58,058 --> 00:01:02,058
+budget and on time, so I'll keep throwing that out. The plan as
+
+16
+00:01:02,062 --> 00:01:04,062
+we'll see; the plan and document managers do promise customers
+
+17
+00:01:04,064 --> 00:01:08,064
+a set of features for an agreed- upon cost by an agreed- upon
+
+18
+00:01:08,068 --> 00:01:13,068
+date, despite the fact that 84 to 90% of all projects haven't
+
+19
+00:01:13,073 --> 00:01:18,073
+done that. Nevertheless, that's what a project manager does.
+
+20
+00:01:18,078 --> 00:01:21,078
+Pivotal Labs does not use contracts. They do use contracts, but
+
+21
+00:01:21,081 --> 00:01:24,081
+it's a contracts that's based on effort. There's a contract
+
+22
+00:01:24,084 --> 00:01:30,084
+that's signed, but it's not for features. Pivotal Labs assigns
+
+23
+00:01:30,090 --> 00:01:32,090
+the cost in pairs. They do. They actually, because they believe
+
+24
+00:01:32,092 --> 00:01:36,092
+in pair programming, they actually say it's pair weeks. They
+
+25
+00:01:36,096 --> 00:01:39,096
+don't just assign one pair to do it. They can assign as many
+
+26
+00:01:39,099 --> 00:01:42,099
+pairs as makes sense. You don't want to have too many people
+
+27
+00:01:42,102 --> 00:01:44,102
+that they can get in each other way and too much time
+
+28
+00:01:44,104 --> 00:01:47,104
+communicating, but they'll figure out the scoping of the
+
+29
+00:01:47,107 --> 00:01:49,107
+project and assign people to do it, so it will be done in less
+
+30
+00:01:49,109 --> 00:01:52,109
+time. More than one pair works on it, so they do actually bid in
+
+31
+00:01:52,112 --> 00:01:56,112
+pair weeks. It's based on the time and materials that cover the
+
+32
+00:01:56,116 --> 00:01:59,116
+weeks in the estimate. That was kind of an easy answer.

@@ -1,0 +1,345 @@
+1
+00:00:00,000 --> 00:00:03,000
+We're back. Rotten Potatoes again, but this time we're going to 
+
+2
+00:00:03,003 --> 00:00:06,003
+do some stuff. We're going to add this new feature using the 
+
+3
+00:00:06,006 --> 00:00:11,006
+TMDb and we're going to do routes and just everything that 
+
+4
+00:00:11,011 --> 00:00:29,011
+you're going to do at a small scale. Let's go back here. Because 
+
+5
+00:00:29,029 --> 00:00:34,029
+this is a new feature, we're going to create this feature in its 
+
+6
+00:00:34,034 --> 00:00:37,034
+own file in the features directory. Let's see what it looks 
+
+7
+00:00:37,037 --> 00:00:41,037
+like. I showed it on the screen there. Here it is, the feature 
+
+8
+00:00:41,041 --> 00:00:45,041
+and here's the little extra format as movie fan and this is 
+
+9
+00:00:45,045 --> 00:00:49,045
+doing the sad path were we have to do all the setup and then at 
+
+10
+00:00:49,049 --> 00:00:52,049
+the end, we said, we should see " movies does not exist here". 
+
+11
+00:00:52,052 --> 00:00:59,052
+That's the feature. Let's just go to Cucumber. I'll clear it 
+
+12
+00:00:59,059 --> 00:01:04,059
+again. We're going to want to do Cucumber, not for add movie 
+
+13
+00:01:04,064 --> 00:01:12,064
+feature but for search TMDb. Let's try it. This shouldn't work, 
+
+14
+00:01:12,072 --> 00:01:15,072
+but let's see how far it gets in this feature for searching 
+
+15
+00:01:15,075 --> 00:01:23,075
+TMDb. It said " The scenario failed." There are six steps in 
+
+16
+00:01:23,083 --> 00:01:31,083
+this case. One pass, one failed and the rest were skipped. Given 
+
+17
+00:01:31,091 --> 00:01:34,091
+I'm on the Rotten Potatoes homepage, you can have that, then I 
+
+18
+00:01:34,094 --> 00:01:41,094
+should see search TMDb and it said, " It failed" here. What we 
+
+19
+00:01:41,101 --> 00:01:46,101
+said earlier what was missing ... We said earlier what was 
+
+20
+00:01:46,106 --> 00:01:59,106
+missing; we want to add this Haml code to create the view. We 
+
+21
+00:01:59,119 --> 00:02:01,119
+don't have the view, so let's create the view. We're going to 
+
+22
+00:02:01,121 --> 00:02:09,121
+copy it. We're going to copy this code. The commercial slips 
+
+23
+00:02:09,129 --> 00:02:18,129
+right in there. I keep forgetting to do that. We've copied that, 
+
+24
+00:02:18,138 --> 00:02:22,138
+now let's go back to the terminal window and it says, " Add this 
+
+25
+00:02:22,142 --> 00:02:31,142
+to this Haml file under views." Use the Haml file under views 
+
+26
+00:02:31,151 --> 00:02:34,151
+and it actually said to add it to the end of this, so we'll add 
+
+27
+00:02:34,154 --> 00:02:41,154
+it to the end of that and let's write that out. Now, go back. 
+
+28
+00:02:41,161 --> 00:02:58,161
+Try Cuke again. Let's try it again. I tried putting Jeopardy 
+
+29
+00:02:58,178 --> 00:03:09,178
+music in but I'm afraid we get sued. What happened? A lot of 
+
+30
+00:03:09,189 --> 00:03:14,189
+message. That must have really made a bad turn here. Speaker 2: 
+
+31
+00:03:14,194 --> 00:03:22,194
+You probably did the indentation syntax error on the Haml. 
+
+32
+00:03:22,202 --> 00:03:26,202
+Speaker 1: No. There's no route. It looks bad but it's not a 
+
+33
+00:03:26,206 --> 00:03:29,206
+disaster. There's no route, so I just added the route. That's a 
+
+34
+00:03:29,209 --> 00:03:32,209
+lot of error messages for a route. Speaker 2: That's that pass 
+
+35
+00:03:32,212 --> 00:03:36,212
+before. Speaker 1: What? Speaker 2: That's that pass. Speaker 1: 
+
+36
+00:03:36,216 --> 00:03:42,216
+Let me show you what happens when I add the route. Yes, it did 
+
+37
+00:03:42,222 --> 00:03:46,222
+pass before when I add the route. Here's the route I'd have to 
+
+38
+00:03:46,226 --> 00:04:00,226
+add. Let me just copy it in. Copy it. Let me go over here and we 
+
+39
+00:04:00,000 --> 00:04:05,240
+need to add the route. It actually says to put it right here 
+
+40
+00:04:05,245 --> 00:04:08,245
+after resources movies, it says that in the comments in the 
+
+41
+00:04:08,248 --> 00:04:16,248
+code. It says to do that there. Now, I have added the route and 
+
+42
+00:04:16,256 --> 00:04:30,256
+let's see what Cuke does with this. It's always exciting when 
+
+43
+00:04:30,270 --> 00:04:38,270
+you're giving a live demo. Look, three passed. Let's go back. 
+
+44
+00:04:38,278 --> 00:04:43,278
+Given I'm on the Rotten Potatoes homepage and I searched TMDb. 
+
+45
+00:04:43,283 --> 00:04:46,283
+When I fill the search terms and I press, it says, " Search 
+
+46
+00:04:46,286 --> 00:04:49,286
+TMDb." What it says is, and this is a much more comforting error 
+
+47
+00:04:49,289 --> 00:04:54,289
+message, I can't find the action, the method in the controller 
+
+48
+00:04:54,294 --> 00:04:55,294
+that you're supposed to invoke. That's because we haven't 
+
+49
+00:04:55,295 --> 00:05:04,295
+rendered it yet. That seems good. Let's go back to Pastebin, 
+
+50
+00:05:04,304 --> 00:05:08,304
+find that fake controller methods that often does is writes to 
+
+51
+00:05:08,308 --> 00:05:11,308
+the flash. It's never going to find a movie. It's a terrible 
+
+52
+00:05:11,311 --> 00:05:18,311
+search method. It always fails. We copy it, go back to the 
+
+53
+00:05:18,318 --> 00:05:21,318
+controller. We're going to add this to the controller. You can 
+
+54
+00:05:21,321 --> 00:05:27,321
+save it. You can add it anywhere, so let's just add it at the 
+
+55
+00:05:27,327 --> 00:05:33,327
+top. We've seen it, it looks like. Now, we've got the view, 
+
+56
+00:05:33,333 --> 00:05:36,333
+we've got the route, we've got the action. The route is supposed 
+
+57
+00:05:36,336 --> 00:05:44,336
+to be mapped too. Let's go back to Cuke and try it ... Okay, do 
+
+58
+00:05:44,344 --> 00:05:57,344
+it again. The suspense. Yes, everything passed. All six passed 
+
+59
+00:05:57,357 --> 00:06:01,357
+and everything is green. It's kind of visually exciting when you 
+
+60
+00:06:01,361 --> 00:06:05,361
+do the Cucumber and it works. When you do it and I did actually 
+
+61
+00:06:05,365 --> 00:06:10,365
+do it ... You didn't hear Armando said. Because Haml is not 
+
+62
+00:06:10,370 --> 00:06:14,370
+parenthesized, it's based on indentation, I did enter it one 
+
+63
+00:06:14,374 --> 00:06:17,374
+time with VI and it put extra spaces in and whole thing broke 
+
+64
+00:06:17,377 --> 00:06:21,377
+in. It's very disconcerting but it was exciting when it happens. 
+
+65
+00:06:21,381 --> 00:06:29,381
+Let's go back to PowerPoint here. How will we do the happy path 
+
+66
+00:06:29,389 --> 00:06:35,389
+part of that? We would repeat a whole lot of steps but the path 
+
+67
+00:06:35,395 --> 00:06:36,395
+is lovely and they also go off, but there's a whole lot of 
+
+68
+00:06:36,396 --> 00:06:39,396
+steps, the same between the happy path and the sad path. That 
+
+69
+00:06:39,399 --> 00:06:42,399
+doesn't seem very dry or repeating ourselves. So what do you do? 
+
+70
+00:06:42,402 --> 00:06:46,402
+What is a background thing in Cucumber that says, " You'd run 
+
+71
+00:06:46,406 --> 00:06:49,406
+this before you run any of the scenarios." It's a bunch of stuff 
+
+72
+00:06:49,409 --> 00:06:55,409
+that's common. You can just do it once. If we see this, this is 
+
+73
+00:06:55,415 --> 00:06:58,415
+the sad path; it's shorter than it used to be because we put the 
+
+74
+00:06:58,418 --> 00:07:02,418
+pieces of the sad path over here. But now, the happy path can 
+
+75
+00:07:02,422 --> 00:07:05,422
+use it too. Before any of these scenarios are run, no matter 
+
+76
+00:07:05,425 --> 00:07:08,425
+which one is running, it does all the background work and then 
+
+77
+00:07:08,428 --> 00:07:12,428
+you can just do the pieces of it and we'll do the happy path 
+
+78
+00:07:12,432 --> 00:07:16,432
+after we define the real method. Summarizing Cucumber, it's this 
+
+79
+00:07:16,436 --> 00:07:19,436
+amazing thing. I just can't believe it. When we go around and 
+
+80
+00:07:19,439 --> 00:07:20,439
+give talks about this, I was just at the University of 
+
+81
+00:07:20,440 --> 00:07:24,440
+Washington last week, I think of it as a magic trick. I showed 
+
+82
+00:07:24,444 --> 00:07:27,444
+them the three by five cards and turns into an acceptance test. 
+
+83
+00:07:27,447 --> 00:07:31,447
+It brings all these together that you know, the color step 
+
+84
+00:07:31,451 --> 00:07:35,451
+green. Like I said, usually, you do the happy pass first and we 
+
+85
+00:07:35,455 --> 00:07:38,455
+do this intermittently with BDD and TDD as you'll see. It let's 
+
+86
+00:07:38,458 --> 00:07:42,458
+us dry out these scenarios with the background. 
+
+

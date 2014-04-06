@@ -1,0 +1,521 @@
+1
+00:00:00,000 --> 00:00:03,000
+Seams are such an important concept that I'm giving them a 
+
+2
+00:00:03,003 --> 00:00:09,003
+little section all to themselves. Basically, this definition, 
+
+3
+00:00:09,009 --> 00:00:12,009
+which is my favorite one, is from Michael Feathers who wrote a 
+
+4
+00:00:12,012 --> 00:00:17,012
+book called Dealing Effectively With Legacy Code. A lot of what 
+
+5
+00:00:17,017 --> 00:00:20,017
+we have in our book about legacy code is really inspired by his 
+
+6
+00:00:20,020 --> 00:00:25,020
+framing of the problem. His definition of a seam is it's a place 
+
+7
+00:00:25,025 --> 00:00:27,025
+where you can change the behavior of your application without 
+
+8
+00:00:27,027 --> 00:00:31,027
+changing the source code. It's useful for testing because one of 
+
+9
+00:00:31,031 --> 00:00:34,031
+the things we need to do in unit test is isolate the behavior of 
+
+10
+00:00:34,034 --> 00:00:37,034
+the code that we're testing with these particular tests from the 
+
+11
+00:00:37,037 --> 00:00:40,037
+behavior of other things that it depends on. Even in the example 
+
+12
+00:00:40,040 --> 00:00:43,040
+we just saw, suppose we actually had already coded our find_ in_ 
+
+13
+00:00:43,043 --> 00:00:47,043
+tmdb method in the movie model, one possible reaction be, in 
+
+14
+00:00:47,047 --> 00:00:51,047
+that case, you no longer need to have a seam where you're 
+
+15
+00:00:51,051 --> 00:00:53,051
+essentially faking out the behavior of code that doesn't exist 
+
+16
+00:00:53,053 --> 00:00:56,053
+because, hey, the code exists now. The real reason to use the 
+
+17
+00:00:56,056 --> 00:00:59,056
+seam is not just because the code doesn't exist immediately. 
+
+18
+00:00:59,059 --> 00:01:02,059
+It's because if the code existed but was broken, or somebody 
+
+19
+00:01:02,062 --> 00:01:04,062
+else had made a change to the code, that might have caused your 
+
+20
+00:01:04,064 --> 00:01:08,064
+test to fail, the idea's you can still test in isolation the 
+
+21
+00:01:08,068 --> 00:01:10,068
+other things that depend on that code. You can break that 
+
+22
+00:01:10,070 --> 00:01:14,070
+dependency by a tastefully inserted seam. Should_ receive is an 
+
+23
+00:01:14,074 --> 00:01:18,074
+example, it uses Ruby's open classes to create a seam for 
+
+24
+00:01:18,078 --> 00:01:24,078
+isolating method calls from each other. Happily, after every 
+
+25
+00:01:24,084 --> 00:01:28,084
+single test case, Rspec basically resets all of the seams. If 
+
+26
+00:01:28,088 --> 00:01:30,088
+there's a seam that I'm temporarily creating, like I did in our 
+
+27
+00:01:30,090 --> 00:01:33,090
+example, because I wanted to spy on a method that didn't even 
+
+28
+00:01:33,093 --> 00:01:37,093
+exist yet in the movie class. If that method had existed and I 
+
+29
+00:01:37,097 --> 00:01:40,097
+chose to spy on it, after my test case finishes running for the 
+
+30
+00:01:40,100 --> 00:01:46,100
+very next test case, that stunt double or that spy is torn down. 
+
+31
+00:01:46,106 --> 00:01:48,106
+That means that in every test that I want to spy on, I have to 
+
+32
+00:01:48,108 --> 00:01:51,108
+reestablish that condition which is not a big deal. We'll see 
+
+33
+00:01:51,111 --> 00:01:54,111
+that there are ways to do it for a group of tests at a time. The 
+
+34
+00:01:54,114 --> 00:01:57,114
+important issue is I can keep tests very independent this way, 
+
+35
+00:01:57,117 --> 00:02:00,117
+right? For a very specific test, I can say, " I need to stub out 
+
+36
+00:02:00,000 --> 00:02:03,120
+these places where the test depends on other things. I need to 
+
+37
+00:02:03,123 --> 00:02:06,123
+have a controllable [ canned 00:02:04] behavior of the things 
+
+38
+00:02:06,126 --> 00:02:08,126
+that it depends on because that makes my tests execute 
+
+39
+00:02:08,128 --> 00:02:10,128
+predictably. That's what gives some independence and 
+
+40
+00:02:10,130 --> 00:02:15,130
+repeatability and the other things that are nice about tests. We 
+
+41
+00:02:15,135 --> 00:02:17,135
+already know that we could write ... we have a spec that's going 
+
+42
+00:02:17,137 --> 00:02:21,137
+to fail because we wrote the spec but the controller method, we 
+
+43
+00:02:21,141 --> 00:02:23,141
+emptied the body out. There's nothing in there so what's the 
+
+44
+00:02:23,143 --> 00:02:26,143
+minimum amount of code? Remember, the goal here is what's the 
+
+45
+00:02:26,146 --> 00:02:28,146
+least amount of code we can write that would make our failing 
+
+46
+00:02:28,148 --> 00:02:31,148
+test pass? That would make it go from red to green? The 
+
+47
+00:02:31,151 --> 00:02:34,151
+expectation, the should_ receive said,  " We believe that the 
+
+48
+00:02:34,154 --> 00:02:38,154
+controller method should call movie find_ in_ tmdb." A logical 
+
+49
+00:02:38,158 --> 00:02:42,158
+thing for us to do to pass the test would be let's actually make 
+
+50
+00:02:42,162 --> 00:02:51,162
+that happen. Here it is. Here is my modified controller method. 
+
+51
+00:02:51,171 --> 00:02:54,171
+All I have done is add a line that does exactly what the test 
+
+52
+00:02:54,174 --> 00:02:59,174
+says. It calls find_ in_ tmdb. It passes params from the search 
+
+53
+00:02:59,179 --> 00:03:01,179
+terms. Now, you could say, " Is there actually anything being 
+
+54
+00:03:01,181 --> 00:03:05,181
+tested here?" There is, right? As a programmer, I just made the 
+
+55
+00:03:05,185 --> 00:03:09,185
+assumption that if I look at params search terms that that's 
+
+56
+00:03:09,189 --> 00:03:12,189
+where the title of the movie would have come in from. If my 
+
+57
+00:03:12,192 --> 00:03:15,192
+simulated post in my test case doesn't match that, or if I was 
+
+58
+00:03:15,195 --> 00:03:16,195
+wrong about the name of the foreign fields or anything like 
+
+59
+00:03:16,196 --> 00:03:20,196
+that, even this trivial test would help find that level of 
+
+60
+00:03:20,200 --> 00:03:23,200
+stupid error. It's still the case that we don't have the find_ 
+
+61
+00:03:23,203 --> 00:03:27,203
+in_ tmdb method in movie. We have yet to write it. The important 
+
+62
+00:03:27,207 --> 00:03:29,207
+thing is, we have actually verified about something that's going 
+
+63
+00:03:29,209 --> 00:03:36,209
+on here, right? In fact, we've done a couple of things. We've 
+
+64
+00:03:36,216 --> 00:03:40,216
+done a couple of things. We know that the spec, we could say 
+
+65
+00:03:40,220 --> 00:03:42,220
+that it drove the creation of the code that goes into the 
+
+66
+00:03:42,222 --> 00:03:44,222
+control reaction. It made us think about what the control 
+
+67
+00:03:44,224 --> 00:03:48,224
+reaction has to do. It made us think about what external 
+
+68
+00:03:48,228 --> 00:03:50,228
+entities the controller has to depend on to do its work. In this 
+
+69
+00:03:50,230 --> 00:03:53,230
+case, it depends on the method and the model. It made us realize 
+
+70
+00:03:53,233 --> 00:03:57,233
+that even if that method and the model happen to already exist, 
+
+71
+00:03:57,237 --> 00:03:59,237
+for the purposes of testing, there's an articulation point 
+
+72
+00:03:59,239 --> 00:04:01,239
+between the controller and the model. That's a good place to put 
+
+73
+00:04:01,241 --> 00:04:05,241
+a seam so that we can keep separate the behavior of this test 
+
+74
+00:04:05,245 --> 00:04:08,245
+from the behavior of the things that that code depends on. Now, 
+
+75
+00:04:08,248 --> 00:04:10,248
+one thing that we haven't really addressed is, we haven't 
+
+76
+00:04:10,250 --> 00:04:15,250
+written find_ in_ tmdb but shouldn't that return something? At 
+
+77
+00:04:15,255 --> 00:04:22,255
+this point, all we had done ... all we've done is call it. We 
+
+78
+00:04:22,262 --> 00:04:25,262
+haven't actually said what it should return, right? All we ... 
+
+79
+00:04:25,265 --> 00:04:27,265
+we did the minimum necessary to make this spec pass but it's not 
+
+80
+00:04:27,267 --> 00:04:30,267
+clear that this is going to lead us to the code we actually 
+
+81
+00:04:30,270 --> 00:04:37,270
+need. We're going to return to this in just a moment. In fact, 
+
+82
+00:04:37,277 --> 00:04:40,277
+I'm making the example almost pedagogically a little bit 
+
+83
+00:04:40,280 --> 00:04:42,280
+oversimplified because I'm trying to drive home an important 
+
+84
+00:04:42,282 --> 00:04:46,282
+point which is that one test maps to one behavior. The one 
+
+85
+00:04:46,286 --> 00:04:48,286
+behavior we should care about in this test is the controller 
+
+86
+00:04:48,288 --> 00:04:53,288
+action calls find_ in_ tmdb. The question, should find_ in_ tmdb 
+
+87
+00:04:53,293 --> 00:04:57,293
+actually return something? If so, what happens to that data? We 
+
+88
+00:04:57,297 --> 00:04:58,297
+just haven't addressed that yet. It doesn't mean we don't care 
+
+89
+00:04:58,298 --> 00:05:02,298
+about it but what find_ in_ tmdb should return, that's going to 
+
+90
+00:05:02,302 --> 00:05:05,302
+be something that's tested by the code the test find_ in_ tmdb. 
+
+91
+00:05:05,305 --> 00:05:08,305
+What should happen to the stuff that it does return? That's a 
+
+92
+00:05:08,308 --> 00:05:11,308
+question of what is going to happen when we try to generate the 
+
+93
+00:05:11,311 --> 00:05:14,311
+view? The whole point of calling the model is to get information 
+
+94
+00:05:14,314 --> 00:05:17,314
+for the view. We'll answer those questions in just a moment but 
+
+95
+00:05:17,317 --> 00:05:20,317
+let's take stock for a moment of where we are. We're going to 
+
+96
+00:05:20,320 --> 00:05:24,320
+start a list of things we know how to do in a test. We can setup 
+
+97
+00:05:24,324 --> 00:05:29,324
+this expectation that says, " Certain objects should receive a 
+
+98
+00:05:29,329 --> 00:05:33,329
+certain method call and we can optionally specify what argument 
+
+99
+00:05:33,333 --> 00:05:36,333
+is supposed to be passed to it." In this case, we cared, right? 
+
+100
+00:05:36,336 --> 00:05:38,336
+We cared because one of the things we're testing is, the 
+
+101
+00:05:38,338 --> 00:05:41,338
+controller has to get data from the user and make sure that the 
+
+102
+00:05:41,341 --> 00:05:44,341
+correct aspects of that data make it all the way into the model 
+
+103
+00:05:44,344 --> 00:05:47,344
+method. In our case, we cared both about the fact that find_ in_ 
+
+104
+00:05:47,347 --> 00:05:51,347
+tmdb gets called. Also, about what argument is going to get 
+
+105
+00:05:51,351 --> 00:05:54,351
+passed to it. Both of those things are relevant to the behavior 
+
+106
+00:05:54,354 --> 00:05:57,354
+of it should call a model method that is going to actually query 
+
+107
+00:05:57,357 --> 00:06:00,357
+the database. There are some cases where you care only about one 
+
+108
+00:06:00,000 --> 00:06:03,360
+or the other. For example, if I just care about whether a method 
+
+109
+00:06:03,363 --> 00:06:07,363
+is called and it takes no arguments, or for whatever reason, 
+
+110
+00:06:07,367 --> 00:06:09,367
+this test case is only concerned about control flow and not 
+
+111
+00:06:09,369 --> 00:06:13,369
+about what data is getting passed, I can leave out the whiff. 
+
+112
+00:06:13,373 --> 00:06:16,373
+That means that as long as the method is called at all, no 
+
+113
+00:06:16,376 --> 00:06:19,376
+matter what argument, the expectation will be correctly 
+
+114
+00:06:19,379 --> 00:06:22,379
+fulfilled. This is one of a set of things that we're going to 
+
+115
+00:06:22,382 --> 00:06:26,382
+learn how to do that allow us to specify in a test, what is the 
+
+116
+00:06:26,386 --> 00:06:29,386
+thing that should happen and then how to go back and backfill 
+
+117
+00:06:29,389 --> 00:06:34,389
+the code to make that thing actually happen. Let's make sure we 
+
+118
+00:06:34,394 --> 00:06:36,394
+all agree about being on the same page about this. Eventually, 
+
+119
+00:06:36,396 --> 00:06:40,396
+we'll have to write a real find_ in_ tmdb method. When that 
+
+120
+00:06:40,400 --> 00:06:43,400
+happens, what are we going to do? We can replace the call to 
+
+121
+00:06:43,403 --> 00:06:46,403
+should_ receive with the call to the real method. We can ensure 
+
+122
+00:06:46,406 --> 00:06:50,406
+the API to the real method that we wrote matches the API that we 
+
+123
+00:06:50,410 --> 00:06:52,410
+thought we wanted when we originally did the test with should_ 
+
+124
+00:06:52,412 --> 00:06:56,412
+receive. We should keep the seam exactly as it is but we might 
+
+125
+00:06:56,416 --> 00:06:59,416
+have to change the way the seam looks because when we actually 
+
+126
+00:06:59,419 --> 00:07:02,419
+wrote the method, the API turned out to be different than the 
+
+127
+00:07:02,422 --> 00:07:05,422
+one we had on our original test. Or we can just remove the 
+
+128
+00:07:05,425 --> 00:07:09,425
+entire test case, that we wrote. Now that find_ in_ tmdb exists, 
+
+129
+00:07:09,429 --> 00:07:15,429
+the test case isn't testing anything interesting anymore. 
+
+130
+00:07:15,435 --> 00:07:17,435
+Thinking ... 
+
+

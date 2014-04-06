@@ -1,0 +1,753 @@
+1
+00:00:00,000 --> 00:00:03,000
+Okay, so, so far all of our TDD has been concentrated on the 
+
+2
+00:00:03,003 --> 00:00:06,003
+controller, and we've sort of been putting off this idea that, 
+
+3
+00:00:06,006 --> 00:00:08,006
+while the real work gets done in the model, we haven't actually 
+
+4
+00:00:08,008 --> 00:00:10,008
+dealt with that yet, right? We've just faked it out everywhere 
+
+5
+00:00:10,010 --> 00:00:13,010
+that we needed it. So now, let's do that. Kind of as a preview 
+
+6
+00:00:13,013 --> 00:00:17,013
+to doing that, and you already saw sort of a taste of this in 
+
+7
+00:00:17,017 --> 00:00:20,017
+the Oracle of Bacon homework, is, even if the real work is 
+
+8
+00:00:20,020 --> 00:00:23,020
+occurring in the model, part of the real work is talking to an 
+
+9
+00:00:23,023 --> 00:00:27,023
+external service, and as we know, in test suites, it's not 
+
+10
+00:00:27,027 --> 00:00:31,027
+really appropriate to do that. So, one example that the book 
+
+11
+00:00:31,031 --> 00:00:34,031
+develops to show how we're going to handle TDD for the model 
+
+12
+00:00:34,034 --> 00:00:38,034
+method is this idea of explicit versus implicit requirements. We 
+
+13
+00:00:38,038 --> 00:00:42,038
+already know that- we already laid out the explicit requirement 
+
+14
+00:00:42,042 --> 00:00:45,042
+for what this hypothetical model method is supposed to do. It's 
+
+15
+00:00:45,045 --> 00:00:47,045
+going to call this RubyGem, which in turn calls the TMDb 
+
+16
+00:00:47,047 --> 00:00:51,047
+service. By the way, if we didn't have a RubyGem, what would we 
+
+17
+00:00:51,051 --> 00:00:53,051
+be doing? Well, we'd be doing something a lot like what the 
+
+18
+00:00:53,053 --> 00:00:56,053
+Oracle of Bacon homework was doing, right? We would have to 
+
+19
+00:00:56,056 --> 00:00:58,056
+construct the correct type of URI, and get the response, and 
+
+20
+00:00:58,058 --> 00:01:01,058
+parse it, and create a nice Ruby object. It's just, in this 
+
+21
+00:01:01,061 --> 00:01:05,061
+particular example, the TMDb RubyGem does a lot of this for us. 
+
+22
+00:01:05,065 --> 00:01:09,065
+So, that's the explicit requirement. But, the implicit 
+
+23
+00:01:09,069 --> 00:01:11,069
+requirements come from things like, well, what if that doesn't 
+
+24
+00:01:11,071 --> 00:01:14,071
+work? What are the reasons that that might go wrong? Two 
+
+25
+00:01:14,074 --> 00:01:18,074
+specific cases are if you provide an API key that's not valid 
+
+26
+00:01:18,078 --> 00:01:21,078
+for calling TMDb, or if you just don't provide the API key at 
+
+27
+00:01:21,081 --> 00:01:24,081
+all, if you leave it blank. As the book describes, if you go 
+
+28
+00:01:24,084 --> 00:01:27,084
+through this example, those are actually two different failure 
+
+29
+00:01:27,087 --> 00:01:31,087
+modes, and you can imagine why, right? If the key is blank, 
+
+30
+00:01:31,091 --> 00:01:34,091
+clearly that's wrong, because no legal key is ever blank. But if 
+
+31
+00:01:34,094 --> 00:01:36,094
+the key is not blank, then you have no way of telling if it's 
+
+32
+00:01:36,096 --> 00:01:39,096
+valid, unless you try to actually use it. So, the gem will 
+
+33
+00:01:39,099 --> 00:01:42,099
+actually fail in two different ways for those two different 
+
+34
+00:01:42,102 --> 00:01:46,102
+conditions, and this is a good motivation for how to group tests 
+
+35
+00:01:46,106 --> 00:01:50,106
+using context and describe. Here's an example of blocking of the 
+
+36
+00:01:50,110 --> 00:01:53,110
+tests. By the way, I should point out that describe and context 
+
+37
+00:01:53,113 --> 00:01:56,113
+and fundamentally aliases for one another. They actually call 
+
+38
+00:01:56,116 --> 00:01:59,116
+the same underlying method. So, why are there different words? 
+
+39
+00:01:59,119 --> 00:02:02,119
+Because it helps you signal intent, right? Describe is saying, " 
+
+40
+00:02:02,122 --> 00:02:07,122
+I'm describing a behavior generally, searching TMDb by keyword," 
+
+41
+00:02:07,127 --> 00:02:10,127
+but context lets you say, " These are different situations under 
+
+42
+00:02:10,130 --> 00:02:13,130
+which this behavior might be triggered." One context is if I do 
+
+43
+00:02:13,133 --> 00:02:16,133
+it with a valid key. A different context is if I do it with an 
+
+44
+00:02:16,136 --> 00:02:20,136
+invalid key. By the way, within invalid keys, there's at least 
+
+45
+00:02:20,140 --> 00:02:23,140
+two cases. There's the key not being given at all, so it's 
+
+46
+00:02:23,143 --> 00:02:29,143
+blank, and there's the key being given but incorrect. Basically, 
+
+47
+00:02:29,149 --> 00:02:32,149
+I'm grouping together chunks of tests, and the groupings are 
+
+48
+00:02:32,152 --> 00:02:35,152
+sort of based on whether it's a collection of examples that are 
+
+49
+00:02:35,155 --> 00:02:39,155
+testing related behaviors. Also, as the book explains, if you 
+
+50
+00:02:39,159 --> 00:02:42,159
+have common preconditions that apply to all of the tests in a 
+
+51
+00:02:42,162 --> 00:02:44,162
+group, like, they're all going to use the same stub, or there's 
+
+52
+00:02:44,164 --> 00:02:47,164
+a mock that all of them are going to use, you can put a before 
+
+53
+00:02:47,167 --> 00:02:49,167
+block that applies to a whole bunch of tests, so that you don't 
+
+54
+00:02:49,169 --> 00:02:51,169
+have to repetitively repeat those preconditions in every single 
+
+55
+00:02:51,171 --> 00:02:57,171
+example. So, where are we? The implicit requirements are derived 
+
+56
+00:02:57,177 --> 00:03:00,177
+from the explicit ones, and in the example of TMDb, how do I 
+
+57
+00:03:00,000 --> 00:03:03,180
+know that the gem fails in two different ways? Well, for one 
+
+58
+00:03:03,183 --> 00:03:06,183
+thing, I read the documentation. It's a new concept. Most of 
+
+59
+00:03:06,186 --> 00:03:09,186
+these are well documented. In fact, part of the documentation 
+
+60
+00:03:09,189 --> 00:03:13,189
+for good RubyGems is their specs. By the way, if you're using a 
+
+61
+00:03:13,193 --> 00:03:16,193
+gem, and you can't find the specs that go with it on the 
+
+62
+00:03:16,196 --> 00:03:19,196
+download site, that's a sign that it's either poorly tested or 
+
+63
+00:03:19,199 --> 00:03:21,199
+it's so out- of- date that the specs haven't been maintained. 
+
+64
+00:03:21,201 --> 00:03:24,201
+You don't want that, right? You want libraries that are actively 
+
+65
+00:03:24,204 --> 00:03:26,204
+curated and actively developed, and having a good set of specs 
+
+66
+00:03:26,206 --> 00:03:30,206
+is actually a really good ecosystem indicator of if the gem is 
+
+67
+00:03:30,210 --> 00:03:33,210
+trustworthy. You can also, as you design your classes and you 
+
+68
+00:03:33,213 --> 00:03:36,213
+are experimenting with these pieces of code, you can actually 
+
+69
+00:03:36,216 --> 00:03:39,216
+see how they work, and then you capture that behavior in a test. 
+
+70
+00:03:39,219 --> 00:03:41,219
+We'll have a lot more to say about that when we take about 
+
+71
+00:03:41,221 --> 00:03:44,221
+Legacy code. We use two different stubbing approaches in this 
+
+72
+00:03:44,224 --> 00:03:48,224
+case. In one case, we know that TMDb gem will immediately throw 
+
+73
+00:03:48,228 --> 00:03:51,228
+an error, so the only test we had to create there was, did we 
+
+74
+00:03:51,231 --> 00:03:53,231
+catch the error and convert it to the right kind of exception, 
+
+75
+00:03:53,233 --> 00:03:57,233
+so that the caller always sees an exception of the same class? 
+
+76
+00:03:57,237 --> 00:03:59,237
+In the second case, we actually needed to prevent the gem from 
+
+77
+00:03:59,239 --> 00:04:03,239
+contacting TMDb at all. Now, this is the case where, in the way 
+
+78
+00:04:03,243 --> 00:04:06,243
+the example is developed in the book, and very similar, again, 
+
+79
+00:04:06,246 --> 00:04:09,246
+to the Oracle of Bacon homework, we used FakeWeb to sort of stub 
+
+80
+00:04:09,249 --> 00:04:16,249
+out the entire internet. So, the general question that this 
+
+81
+00:04:16,256 --> 00:04:19,256
+leads to is, when you're testing pieces of software that work in 
+
+82
+00:04:19,259 --> 00:04:22,259
+a service- oriented architecture, where should you stub? 
+
+83
+00:04:22,262 --> 00:04:25,262
+Remember that you can sort of apply this either from the point 
+
+84
+00:04:25,265 --> 00:04:29,265
+of view of, I'm writing tests that are going to reach out- 
+
+85
+00:04:29,269 --> 00:04:31,269
+they're testing code that reaches out to an external service. 
+
+86
+00:04:31,271 --> 00:04:35,271
+So, in that scenario, I am the client, and I want to write tests 
+
+87
+00:04:35,275 --> 00:04:36,275
+that are going to talk to another server, but I need to be able 
+
+88
+00:04:36,276 --> 00:04:39,276
+to stub out that server to keep the test fast and independent. 
+
+89
+00:04:39,279 --> 00:04:43,279
+Another case, as we'll see when we talk about JavaScript 
+
+90
+00:04:43,283 --> 00:04:45,283
+development, JavaScript runs in the client, and you often want 
+
+91
+00:04:45,285 --> 00:04:48,285
+to be able to test it in isolation of the server code that it 
+
+92
+00:04:48,288 --> 00:04:51,288
+depends on. So, the concepts here actually come up in many 
+
+93
+00:04:51,291 --> 00:04:55,291
+different scenarios. Where do you stub? Well, we've already seen 
+
+94
+00:04:55,295 --> 00:04:57,295
+that you can do things like stubbing methods directly in our 
+
+95
+00:04:57,297 --> 00:05:02,297
+model classes, and I think the analogy that one of the students 
+
+96
+00:05:02,302 --> 00:05:05,302
+just gave about a stub as a way of cutting off of a path, that's 
+
+97
+00:05:05,305 --> 00:05:07,305
+exactly how we're going to think of it here. We're cutting off a 
+
+98
+00:05:07,307 --> 00:05:11,307
+path, right? If we say " stub the movie," or " stub the [ fine- 
+
+99
+00:05:11,311 --> 00:05:13,311
+end 0:05:10] TMDb method right in the movie class, in some 
+
+100
+00:05:13,313 --> 00:05:16,313
+sense, we're cutting off the path at the earliest possible 
+
+101
+00:05:16,316 --> 00:05:18,316
+opportunity, right? We're not even allowing the real method to 
+
+102
+00:05:18,318 --> 00:05:20,318
+receive the call. We're just going to- everything below this 
+
+103
+00:05:20,320 --> 00:05:23,320
+line is faked out. We're going to pretend all of this stuff 
+
+104
+00:05:23,323 --> 00:05:27,323
+worked, and we're going to return a canned value. We could also 
+
+105
+00:05:27,327 --> 00:05:30,327
+stub below the level of the gem. This says, look, we're going to 
+
+106
+00:05:30,330 --> 00:05:33,330
+call our movie method, we're going to call the real thing, but 
+
+107
+00:05:33,333 --> 00:05:36,333
+we know that our movie method is going to actually call 
+
+108
+00:05:36,336 --> 00:05:38,336
+something that's in this gem, in this library, so that's where 
+
+109
+00:05:38,338 --> 00:05:41,338
+we're going to stub. We're going to stub the gem instead. This 
+
+110
+00:05:41,341 --> 00:05:44,341
+says, I'm happy to actually test my part of the code, but I want 
+
+111
+00:05:44,344 --> 00:05:48,344
+to stub out the library. Going further than that, we could say, 
+
+112
+00:05:48,348 --> 00:05:51,348
+ultimately, if the TMDb gem is going to call an external 
+
+113
+00:05:51,351 --> 00:05:54,351
+service, it ultimately has to go through one of Ruby's class 
+
+114
+00:05:54,354 --> 00:05:57,354
+libraries that allow you to do HTTP calls. So, we could just 
+
+115
+00:05:57,357 --> 00:06:01,357
+stub that. We could stub the HTTP call, and make sure that the 
+
+116
+00:06:01,361 --> 00:06:04,361
+correct URI is passed, and we could return the contents of the 
+
+117
+00:06:04,364 --> 00:06:08,364
+page. This is the kind of thing that FakeWeb sort of does for 
+
+118
+00:06:08,368 --> 00:06:13,368
+you. Then, if we're going to do that, what we really do is, we 
+
+119
+00:06:13,373 --> 00:06:16,373
+can parse a contrived request. We can look at the real service, 
+
+120
+00:06:16,376 --> 00:06:18,376
+we can do a couple of requests against it, we can capture 
+
+121
+00:06:18,378 --> 00:06:21,378
+exactly what the output of those real requests was, and then we 
+
+122
+00:06:21,381 --> 00:06:24,381
+can use those canned values for something like FakeWeb. This is 
+
+123
+00:06:24,384 --> 00:06:27,384
+what the Oracle of Bacon homework does, and this is kind of the 
+
+124
+00:06:27,387 --> 00:06:30,387
+standard practice when you're trying to code against a remote 
+
+125
+00:06:30,390 --> 00:06:33,390
+service. You learn as much as you can about its API, about what 
+
+126
+00:06:33,393 --> 00:06:36,393
+it returns, you ideally do some interactive tests on your own 
+
+127
+00:06:36,396 --> 00:06:40,396
+using a command line tool like cURLto actually see what happens 
+
+128
+00:06:40,400 --> 00:06:42,400
+when you stimulate it, and then you capture those results, and 
+
+129
+00:06:42,402 --> 00:06:46,402
+you sort of freeze- dry them, and you use a gem like FakeWeb. 
+
+130
+00:06:46,406 --> 00:06:49,406
+Another possibility, which we haven't done, but it's something 
+
+131
+00:06:49,409 --> 00:06:51,409
+that you might do if you were the provider of the service in the 
+
+132
+00:06:51,411 --> 00:06:53,411
+service- oriented architecture is, you could put up a 
+
+133
+00:06:53,413 --> 00:06:57,413
+development version. For example, if you write an app that runs 
+
+134
+00:06:57,417 --> 00:07:00,417
+against PayPal or against Stripe, which are services for 
+
+135
+00:07:00,000 --> 00:07:03,420
+accepting people's money, right, pretty important function, both 
+
+136
+00:07:03,423 --> 00:07:06,423
+of those services have a developer sandbox that behaves 
+
+137
+00:07:06,426 --> 00:07:09,426
+identically from an API point of view to the real production 
+
+138
+00:07:09,429 --> 00:07:12,429
+site, but, happily, it doesn't cause any actual money to change 
+
+139
+00:07:12,432 --> 00:07:15,432
+hands. So, the idea is that you would do these other levels of 
+
+140
+00:07:15,435 --> 00:07:16,435
+stubbing in your own application, and when you're ready to 
+
+141
+00:07:16,436 --> 00:07:20,436
+really test it, there's one more level of qualification you can 
+
+142
+00:07:20,440 --> 00:07:23,440
+do, which is test your full stack against their sandbox server, 
+
+143
+00:07:23,443 --> 00:07:27,443
+which doesn't necessarily do real requests. Not every service 
+
+144
+00:07:27,447 --> 00:07:30,447
+that's out there has a sandbox version of itself. In the case of 
+
+145
+00:07:30,450 --> 00:07:33,450
+the Oracle of Bacon, it's hardly critical. But in the case of 
+
+146
+00:07:33,453 --> 00:07:36,453
+things like payment services or authentication services, if 
+
+147
+00:07:36,456 --> 00:07:39,456
+you're writing a Facebook app- Facebook has some test services 
+
+148
+00:07:39,459 --> 00:07:43,459
+that you can use to test your app against. So, the idea of 
+
+149
+00:07:43,463 --> 00:07:47,463
+stubbing at different levels is pretty pervasive. The rule of 
+
+150
+00:07:47,467 --> 00:07:49,467
+thumb is that, if you're doing more unit testing, where you're 
+
+151
+00:07:49,469 --> 00:07:52,469
+trying to cover a lot of special code paths in a small amount of 
+
+152
+00:07:52,472 --> 00:07:55,472
+code, it's fine to stub nearby, because what you're aiming for 
+
+153
+00:07:55,475 --> 00:07:59,475
+is isolation, right? You want to isolate the code being tested 
+
+154
+00:07:59,479 --> 00:08:02,479
+from the side effects of all the other pieces, but as you move 
+
+155
+00:08:02,482 --> 00:08:05,482
+kind of higher in the testing stack towards integration testing, 
+
+156
+00:08:05,485 --> 00:08:07,485
+with integration testing, you're supposed to be removing more 
+
+157
+00:08:07,487 --> 00:08:10,487
+and more training wheels, right? In those cases, you stub as far 
+
+158
+00:08:10,490 --> 00:08:14,490
+away as you can, because the goal of the integration test is to 
+
+159
+00:08:14,494 --> 00:08:17,494
+be close to reality. Sort of, what's the closest to reality you 
+
+160
+00:08:17,497 --> 00:08:20,497
+can get without contacting a service? Well, it's to get sort of 
+
+161
+00:08:20,500 --> 00:08:22,500
+all the way down here, where you're essentially stubbing out the 
+
+162
+00:08:22,502 --> 00:08:26,502
+internet, and anything that goes wrong would be something that 
+
+163
+00:08:26,506 --> 00:08:30,506
+is in the actual network interaction. So we can, once again, 
+
+164
+00:08:30,510 --> 00:08:36,510
+enhance the things that we know how to do in tests. The book 
+
+165
+00:08:36,516 --> 00:08:39,516
+example develops this in more detail, and I didn't have time to 
+
+166
+00:08:39,519 --> 00:08:43,519
+cover the example in detail in lecture, but just like with stubs 
+
+167
+00:08:43,523 --> 00:08:46,523
+and should receive, you can specify that a method should return 
+
+168
+00:08:46,526 --> 00:08:49,526
+something. You can also specify that under certain circumstances 
+
+169
+00:08:49,529 --> 00:08:53,529
+it should raise an exception, and if you put an action or a 
+
+170
+00:08:53,533 --> 00:08:57,533
+lambda expression inside braces, it will allow you to test that 
+
+171
+00:08:57,537 --> 00:09:00,537
+it raises an error. This is pretty important, because as you 
+
+172
+00:09:00,000 --> 00:09:03,540
+probably figured out during the course of homeworks for this 
+
+173
+00:09:03,543 --> 00:09:05,543
+class, if you have a test case that actually raises an 
+
+174
+00:09:05,545 --> 00:09:08,545
+exception, the test is over, right? Raising an exception is an 
+
+175
+00:09:08,548 --> 00:09:12,548
+instant failure. How do you actually test that something 
+
+176
+00:09:12,552 --> 00:09:14,552
+correctly raises an exception, when that's the behavior you're 
+
+177
+00:09:14,554 --> 00:09:18,554
+interested in? You can basically put the test case itself in 
+
+178
+00:09:18,558 --> 00:09:21,558
+braces, which is just like a block, and that means that you're 
+
+179
+00:09:21,561 --> 00:09:24,561
+creating a lambda expression that can execute, basically, in a 
+
+180
+00:09:24,564 --> 00:09:27,564
+controlled environment, right? Our spec will execute it, and it 
+
+181
+00:09:27,567 --> 00:09:30,567
+will rescue the exceptions, and make sure that the right ones 
+
+182
+00:09:30,570 --> 00:09:36,570
+got raised. So, with that, we're ready to ask a question about 
+
+183
+00:09:36,576 --> 00:09:40,576
+implicit versus explicit requirements. Which statements are true 
+
+184
+00:09:40,580 --> 00:09:42,580
+regarding implicit requirements? That they're often but not 
+
+185
+00:09:42,582 --> 00:09:45,582
+always derived from the explicit ones, that they apply to unit 
+
+186
+00:09:45,585 --> 00:09:48,585
+and functional tests but they do not apply to integration tests, 
+
+187
+00:09:48,588 --> 00:09:49,588
+they're a lower priority for testing because they didn't come 
+
+188
+00:09:49,589 --> 00:09:53,589
+from the customer, or all of the above are true? 
+
+

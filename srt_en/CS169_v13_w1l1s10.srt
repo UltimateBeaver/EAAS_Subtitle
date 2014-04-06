@@ -1,0 +1,433 @@
+1
+00:00:00,000 --> 00:00:03,000
+So which statement is not true about testing: With better test 
+
+2
+00:00:03,003 --> 00:00:07,003
+coverage you're more likely to catch faults while difficult to 
+
+3
+00:00:07,007 --> 00:00:10,007
+achieve a hundred percent test coverage insurance design 
+
+4
+00:00:10,010 --> 00:00:14,010
+reliability, each higher level test delegates more detailed 
+
+5
+00:00:14,014 --> 00:00:18,014
+testing to lower levels or unit test work within a single class 
+
+6
+00:00:18,018 --> 00:00:22,018
+in module testing or works cross classes. So which of these four 
+
+7
+00:00:22,022 --> 00:00:28,022
+is not true just false. Me. So C. K. why don't you think a 
+
+8
+00:00:28,028 --> 00:00:38,028
+second ready, set, vote. Alright, okay, that's I think that's 
+
+9
+00:00:38,038 --> 00:00:42,038
+okay. Why don't you talk that over a little bit and I'll do 
+
+10
+00:00:42,042 --> 00:00:47,042
+something. Okay let's let's try and vote again ready set vote! 
+
+11
+00:00:47,047 --> 00:00:53,047
+Well... it's... okay so let's let's go over these things. With 
+
+12
+00:00:53,053 --> 00:00:56,053
+better test coverage you're more likely catch faults: yes. Each 
+
+13
+00:00:56,056 --> 00:01:01,056
+higher level test delegates more detailed lower levels, that's 
+
+14
+00:01:01,061 --> 00:01:05,061
+true. while difficult to achieve a hundred precent test coverage 
+
+15
+00:01:05,065 --> 00:01:10,065
+ensures design reliability. The problem with that statement is 
+
+16
+00:01:10,070 --> 00:01:13,070
+just because you tested everything doesn't you tested it well. 
+
+17
+00:01:13,073 --> 00:01:16,073
+So it just says you've exercised the path you may have done some 
+
+18
+00:01:16,076 --> 00:01:19,076
+stupid test on it but you'd exercised it. So it's a good goal to 
+
+19
+00:01:19,079 --> 00:01:22,079
+get a hundred percent test coverage but doesn't tell you how 
+
+20
+00:01:22,082 --> 00:01:25,082
+good a test you really have. So you could still have major 
+
+21
+00:01:25,085 --> 00:01:28,085
+easy... easy to have major bugs in your software even if you 
+
+22
+00:01:28,088 --> 00:01:31,088
+have a hundred percent test coverage in the unit testing and 
+
+23
+00:01:31,091 --> 00:01:35,091
+module testing recognition. Okay we're doing good. So good that 
+
+24
+00:01:35,095 --> 00:01:41,095
+I can do another segment was great because I was worried I 
+
+25
+00:01:41,101 --> 00:01:45,101
+wasn't gonna get too optimistic. So one of things that's uh 
+
+26
+00:01:45,105 --> 00:01:49,105
+happens is you know in our field is we have, we deal with change 
+
+27
+00:01:49,109 --> 00:01:52,109
+all the time. And because we deal with change all the time we 
+
+28
+00:01:52,112 --> 00:01:55,112
+have to get more productive. And we're going to talk about doing 
+
+29
+00:01:55,115 --> 00:01:58,115
+that. Basically it's More's law. We're this field that expect 
+
+30
+00:01:58,118 --> 00:02:02,118
+things to double every couple years. No other, no other 
+
+31
+00:02:02,122 --> 00:02:04,122
+technology does something like that. It's been going on for 
+
+32
+00:02:04,124 --> 00:02:08,124
+decades. So what that means is the hardware designs get bigger, 
+
+33
+00:02:08,128 --> 00:02:12,128
+faster processors and bigger memories which means software gets 
+
+34
+00:02:12,132 --> 00:02:16,132
+bigger because it's faster and you have a bigger footprint. And 
+
+35
+00:02:16,136 --> 00:02:19,136
+so what we've had to do is improve software productivity. So how 
+
+36
+00:02:19,139 --> 00:02:22,139
+much bigger is it that uses you know it's it's a million times 
+
+37
+00:02:22,142 --> 00:02:25,142
+more cost effective, a billion times... So giant numbers right? 
+
+38
+00:02:25,145 --> 00:02:29,145
+So suppose we're still writing software the way we did fifty 
+
+39
+00:02:29,149 --> 00:02:32,149
+years ago it would take infinity to write a big you know a 
+
+40
+00:02:32,152 --> 00:02:35,152
+hundred million line piece of the software but we have tools 
+
+41
+00:02:35,155 --> 00:02:39,155
+let's do that today. So there's really four techniques just four 
+
+42
+00:02:39,159 --> 00:02:42,159
+techniques that people are using. First of all is making it 
+
+43
+00:02:42,162 --> 00:02:45,162
+concise by writing in a short amount of information they get 
+
+44
+00:02:45,165 --> 00:02:49,165
+transformed as big amounts of information that's a good way to 
+
+45
+00:02:49,169 --> 00:02:52,169
+be more productive. Code synthesis: you don't even write it. t 
+
+46
+00:02:52,172 --> 00:02:55,172
+gets generated for you reusing stuff that's already been built 
+
+47
+00:02:55,175 --> 00:02:58,175
+that's a big way to improve productivity. And finally automation 
+
+48
+00:02:58,178 --> 00:03:04,178
+and tools. So let's just go through those. So the first one is 
+
+49
+00:03:04,184 --> 00:03:09,184
+conciseness. So this line here that you see that's one way to 
+
+50
+00:03:09,189 --> 00:03:12,189
+write that, right? That that there's some languages that with 
+
+51
+00:03:12,192 --> 00:03:15,192
+the way you write it. But a much more compact version is this 
+
+52
+00:03:15,195 --> 00:03:19,195
+and this is legal ruby right? A should be greater than or equal 
+
+53
+00:03:19,199 --> 00:03:21,199
+to seven is gonna read it and understand it. That's shorter, 
+
+54
+00:03:21,201 --> 00:03:25,201
+fewer characters and it's easier to understand. So that's an 
+
+55
+00:03:25,205 --> 00:03:30,205
+example thirty sizes. in general it's an example of raising the 
+
+56
+00:03:30,210 --> 00:03:33,210
+level of abstraction. That that's why high level languages were 
+
+57
+00:03:33,213 --> 00:03:36,213
+invented. other ideas like automatic memory management... You 
+
+58
+00:03:36,216 --> 00:03:40,216
+know thirty years ago my friends would argue you know that you 
+
+59
+00:03:40,220 --> 00:03:43,220
+know that it's automatic management didn't save you that much 
+
+60
+00:03:43,223 --> 00:03:45,223
+there weren't that many bugs. Now we know that languages like C 
+
+61
+00:03:45,225 --> 00:03:49,225
+there's lots of bugs if you manually remote management. Any 
+
+62
+00:03:49,229 --> 00:03:52,229
+scripting languages like ruby have these ideas reflection 
+
+63
+00:03:52,232 --> 00:03:57,232
+programming slated raise the level of abstraction. software 
+
+64
+00:03:57,237 --> 00:04:00,237
+synthesis is like this idea that you generate the code that 
+
+65
+00:04:00,000 --> 00:04:03,240
+you're gonna use rather than write it yourself. An example is 
+
+66
+00:04:03,243 --> 00:04:08,243
+BitBit which generated code fit to the situation so rather have 
+
+67
+00:04:08,248 --> 00:04:12,248
+an a loop in there to do bit movements a little if statement in 
+
+68
+00:04:12,252 --> 00:04:16,252
+it it would generate situation so that if statement didn't have 
+
+69
+00:04:16,256 --> 00:04:20,256
+to be in as a first example of that and right now in the 
+
+70
+00:04:20,260 --> 00:04:22,260
+research and even in products right now there's programming by 
+
+71
+00:04:22,262 --> 00:04:26,262
+example so you got the latest work version of Microsoft excel 
+
+72
+00:04:26,266 --> 00:04:29,266
+you can give it an example of what you want it to do and it will 
+
+73
+00:04:29,269 --> 00:04:33,269
+create a a macro to do that for you. So we're starting to see 
+
+74
+00:04:33,273 --> 00:04:38,273
+it's code synthesis really happening in products. Re-use is of 
+
+75
+00:04:38,278 --> 00:04:41,278
+course people from the very first computers have all been trying 
+
+76
+00:04:41,281 --> 00:04:43,281
+to do that. Why do we have to write everything yourselves? Why 
+
+77
+00:04:43,283 --> 00:04:47,283
+can't we reuse the code that we already have? So first we're 
+
+78
+00:04:47,287 --> 00:04:50,287
+procedures and functions almost from the dawn of computing we 
+
+79
+00:04:50,290 --> 00:04:55,290
+had that, standardized libraries, once we had a functions than 
+
+80
+00:04:55,295 --> 00:04:59,295
+there we create libraries so lots of people could use them 
+
+81
+00:04:59,299 --> 00:05:02,299
+object oriented programming came along twenty or so years later 
+
+82
+00:05:02,302 --> 00:05:06,302
+that we can put together collections of tasks. And then design 
+
+83
+00:05:06,306 --> 00:05:08,306
+patterns and we'll talk about this whole chapter on design 
+
+84
+00:05:08,308 --> 00:05:11,308
+patterns in the book and we'll talk about in this class is that 
+
+85
+00:05:11,311 --> 00:05:15,311
+as a strategy that can we use even if the implementation varies. 
+
+86
+00:05:15,315 --> 00:05:20,315
+The final topic as automation tools I think of tools as kind of 
+
+87
+00:05:20,320 --> 00:05:23,320
+what computer scientists do: is to see a problem it's tedious 
+
+88
+00:05:23,323 --> 00:05:27,323
+let's build a tool to make it easier to use. In fact that's a 
+
+89
+00:05:27,327 --> 00:05:29,327
+lot of what you'll be doing in this class a lot of what we've 
+
+90
+00:05:29,329 --> 00:05:33,329
+been doing is exactly that some rails programmer found something 
+
+91
+00:05:33,333 --> 00:05:36,333
+that was tedious to do and built a tool because it's kind of 
+
+92
+00:05:36,336 --> 00:05:39,336
+easy to build tools in this environment and suddenly it's a tool 
+
+93
+00:05:39,339 --> 00:05:42,339
+we use. I think this is the fifth time we've taught the class in 
+
+94
+00:05:42,342 --> 00:05:45,342
+the last five years. Every time we've taught the class there's 
+
+95
+00:05:45,345 --> 00:05:48,345
+been some new tool that we had to use that wasn't available last 
+
+96
+00:05:48,348 --> 00:05:53,348
+year that we can't imagine how to use it without it. So what are 
+
+97
+00:05:53,353 --> 00:05:56,353
+the problems is lots of programs are coming up with tools all 
+
+98
+00:05:56,356 --> 00:05:59,356
+rights programs are coming up the tools. So are they dependable 
+
+99
+00:05:59,359 --> 00:06:03,359
+is it have a good user interface? How do you pick from them? 
+
+100
+00:06:03,363 --> 00:06:06,363
+Well we're gonna help you in this classes as Armando and I and 
+
+101
+00:06:06,366 --> 00:06:08,366
+the staff are gonna pick the tools you have to learn. There's a 
+
+102
+00:06:08,368 --> 00:06:10,368
+half a dozen of them but, you know, they work and they're 
+
+103
+00:06:10,370 --> 00:06:13,370
+dependable and you'll have to figure that out on your own after 
+
+104
+00:06:13,373 --> 00:06:17,373
+this class. But as I said earlier software engineering because 
+
+105
+00:06:17,377 --> 00:06:20,377
+we're in this rapidly growing field is something to... that 
+
+106
+00:06:20,380 --> 00:06:23,380
+demands lifetime learning in you'll get an example of that lots 
+
+107
+00:06:23,383 --> 00:06:27,383
+of examples of learning tools here that you'll come to love 
+
+108
+00:06:27,387 --> 00:06:28,387
+would 
+
+

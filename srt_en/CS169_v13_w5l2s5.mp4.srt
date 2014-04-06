@@ -1,0 +1,125 @@
+1
+00:00:00,000 --> 00:00:07,000
+Ready. Set vote. What do we got? We got reds and blues. Reds and 
+
+2
+00:00:07,007 --> 00:00:12,007
+blues. Okay. Why don't you talk it over? Red and blue can't both 
+
+3
+00:00:12,012 --> 00:00:19,012
+be right. Talk it over and come up with a vote. Let's try it 
+
+4
+00:00:19,019 --> 00:00:26,019
+again. Voting together. Ready. Set. Vote. It's still pretty 
+
+5
+00:00:26,026 --> 00:00:30,026
+colorful out there, so let me go over them. The easy one, number 
+
+6
+00:00:30,030 --> 00:00:33,030
+one. The purpose of a Lo- Fi UI, you bought the UI before you 
+
+7
+00:00:33,033 --> 00:00:36,033
+program it. Yep, that's what we're trying to do, debug and reach 
+
+8
+00:00:36,036 --> 00:00:41,036
+agreement with the customer, I guess, both of those things. A 
+
+9
+00:00:41,041 --> 00:00:44,041
+BDD downside is requiring continuous contact with customers, 
+
+10
+00:00:44,044 --> 00:00:47,044
+which may not be possible. We've tried to find you customers 
+
+11
+00:00:47,047 --> 00:00:50,047
+that are desperately care about what you want to meet with you. 
+
+12
+00:00:50,050 --> 00:00:53,050
+Sometimes the customer won't care, they just rather you figure 
+
+13
+00:00:53,053 --> 00:00:58,053
+it out and come back then BDD doesn't work so well. A BDD 
+
+14
+00:00:58,058 --> 00:01:02,058
+downside is that it may lead to a poor software architecture, 
+
+15
+00:01:02,062 --> 00:01:05,062
+since the focus is on behavior. What about that one, which we 
+
+16
+00:01:05,065 --> 00:01:08,065
+haven't talked about much? Kent Beck, who is one of the 
+
+17
+00:01:08,068 --> 00:01:15,068
+signatures of the Agile manifesto, he wrote his John Hancock on 
+
+18
+00:01:15,075 --> 00:01:17,075
+that, and he came up with the idea of extreme programming, which 
+
+19
+00:01:17,077 --> 00:01:21,077
+is the form of Agile that we are practicing in this course. He 
+
+20
+00:01:21,081 --> 00:01:25,081
+said about this statement, " Is it possible you'll end up with a 
+
+21
+00:01:25,085 --> 00:01:27,085
+poor software architecture?" He said, " It's not possible, it's 
+
+22
+00:01:27,087 --> 00:01:31,087
+guaranteed. You are guaranteed to have a poor software 
+
+23
+00:01:31,091 --> 00:01:34,091
+architecture because you're concentrating in behavior." A part 
+
+24
+00:01:34,094 --> 00:01:39,094
+of the magic of agile is, you are expected to be continuously 
+
+25
+00:01:39,099 --> 00:01:44,099
+evolving the code and Armando will talk about two important 
+
+26
+00:01:44,104 --> 00:01:47,104
+ideas, refactoring and design patterns is how to get good 
+
+27
+00:01:47,107 --> 00:01:51,107
+software architectures. That's a part of the Agile model. You 
+
+28
+00:01:51,111 --> 00:01:54,111
+start off, you build things and then you refactor the code as it 
+
+29
+00:01:54,114 --> 00:01:57,114
+becomes more elaborate to make it have a good software 
+
+30
+00:01:57,117 --> 00:02:00,117
+architecture. Yeah, that's a valid criticism, although we 
+
+31
+00:02:00,000 --> 00:02:02,120
+haven't talked about it very much. 
+
+

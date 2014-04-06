@@ -1,0 +1,113 @@
+1
+00:00:00,000 --> 00:00:09,000
+We're voting. We're voting. Okay, let me read the question one 
+
+2
+00:00:09,009 --> 00:00:12,009
+more time because never so many have been so wrong for the same 
+
+3
+00:00:12,012 --> 00:00:19,012
+reason. The method that contacts TMDb to search for a movie? 
+
+4
+00:00:19,019 --> 00:00:23,019
+Take a little bit to think about that, in case you voted, say 
+
+5
+00:00:23,023 --> 00:00:28,023
+red, before. Not that I'm trying to give it away. Let's try 
+
+6
+00:00:28,028 --> 00:00:33,028
+another vote with my very big hint. What's going on here? I want 
+
+7
+00:00:33,033 --> 00:00:37,033
+to see if people are on their toes. I see that the booth has 
+
+8
+00:00:37,037 --> 00:00:42,037
+voted blue. Let's look at the possibilities here. I threw a 
+
+9
+00:00:42,042 --> 00:00:46,042
+little bit of a curve ball at you, but it worked apparently. It 
+
+10
+00:00:46,046 --> 00:00:50,046
+is true, we are about to embark on coding a controller method. 
+
+11
+00:00:50,050 --> 00:00:53,050
+However, I also wanted people to remember in the model to 
+
+12
+00:00:53,053 --> 00:00:57,053
+controller paradigm, where does the action occur that has to do 
+
+13
+00:00:57,057 --> 00:01:00,057
+with any interesting computation around the data model? It 
+
+14
+00:01:00,000 --> 00:01:03,060
+occurs in the model. Okay? The controller method is going to 
+
+15
+00:01:03,063 --> 00:01:06,063
+receive the form submission and it is going to be responsible 
+
+16
+00:01:06,066 --> 00:01:08,066
+for making the right thing happen with the model, but the 
+
+17
+00:01:08,068 --> 00:01:11,068
+action, ultimately, of figuring out how to get data from 
+
+18
+00:01:11,071 --> 00:01:14,071
+somewhere else and transform that into data that we can use to 
+
+19
+00:01:14,074 --> 00:01:17,074
+populate our movie model, that is clearly model related logic. 
+
+20
+00:01:17,077 --> 00:01:20,077
+At the end of the day, it's going to be something in the movie 
+
+21
+00:01:20,080 --> 00:01:23,080
+model that does that and from then on, it should be easier to 
+
+22
+00:01:23,083 --> 00:01:28,083
+figure out, you can't call finding TMDb on any ... you can't 
+
+23
+00:01:28,088 --> 00:01:30,088
+have a specific movie be the recipient of that message because 
+
+24
+00:01:30,090 --> 00:01:32,090
+you haven't found the movie yet. You have to go generally find 
+
+25
+00:01:32,092 --> 00:01:34,092
+the movie and then use the information, so it's going to be a 
+
+26
+00:01:34,094 --> 00:01:37,094
+class method of movie. I understand that you all have the 
+
+27
+00:01:37,097 --> 00:01:39,097
+keyword controller in your brains, but the lesson here is 
+
+28
+00:01:39,099 --> 00:01:41,099
+sometimes the keyword is not the answer. 
+
+

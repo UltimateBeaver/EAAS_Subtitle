@@ -1,0 +1,293 @@
+1
+00:00:00,000 --> 00:00:09,000
+This is like a science fiction to me. We have these 3- by- 5 
+
+2
+00:00:09,009 --> 00:00:13,009
+cards. How come we can't take these 3- by- 5 cards and turn them 
+
+3
+00:00:13,013 --> 00:00:15,013
+into acceptance test because this is what the user asked for? 
+
+4
+00:00:15,015 --> 00:00:17,015
+The user said, " This is what I want and if you'll just do that, 
+
+5
+00:00:17,017 --> 00:00:21,017
+that'll me happy," so you could reach around that. How are you 
+
+6
+00:00:21,021 --> 00:00:23,021
+going to do that? These things are in English, right? How are 
+
+7
+00:00:23,023 --> 00:00:25,023
+you going to turn that? We don't have natural language 
+
+8
+00:00:25,025 --> 00:00:31,025
+understanding systems yet, so this seems impossible. Then, even 
+
+9
+00:00:31,031 --> 00:00:34,031
+if you could do that, don't you have to have a person sitting 
+
+10
+00:00:34,034 --> 00:00:37,034
+there pushing the buttons every time to test your user 
+
+11
+00:00:37,037 --> 00:00:42,037
+interface? This is what Cucumber is about, is going from this 
+
+12
+00:00:42,042 --> 00:00:47,042
+customer- friendly acceptance test users stories to get both 
+
+13
+00:00:47,047 --> 00:00:49,047
+acceptance test and integration test out of them if you remember 
+
+14
+00:00:49,049 --> 00:00:53,049
+that from before. It does this by going halfway in between, so 
+
+15
+00:00:53,053 --> 00:00:59,053
+it's still not code. It's kind of English so that the customer 
+
+16
+00:00:59,059 --> 00:01:02,059
+can understand it yet it's not completely freeform, so the 
+
+17
+00:01:02,062 --> 00:01:07,062
+computer can understand that as well. This is what a user story 
+
+18
+00:01:07,067 --> 00:01:11,067
+looks like in Cucumber. The first thing is called a feature. 
+
+19
+00:01:11,071 --> 00:01:13,071
+This is basically what the user story is, so a user can manually 
+
+20
+00:01:13,073 --> 00:01:17,073
+add a movie. What you have then is one or more scenarios for 
+
+21
+00:01:17,077 --> 00:01:23,077
+each of these user stories or features ... one of the features, 
+
+22
+00:01:23,083 --> 00:01:26,083
+and then this is the stylized form of English but still kind of 
+
+23
+00:01:26,086 --> 00:01:29,086
+understandable, given I am on the Rotten Potatoes home page, 
+
+24
+00:01:29,089 --> 00:01:31,089
+when I follow " Add a New Movie," then I should be on the " 
+
+25
+00:01:31,091 --> 00:01:34,091
+Create New Movie" page, when I fill in " Title" with " Men In 
+
+26
+00:01:34,094 --> 00:01:38,094
+Black" then I select " PG- 13" from " Rating" and press " Save 
+
+27
+00:01:38,098 --> 00:01:40,098
+Changes" then I should be on the Rotten Potatoes page, and I 
+
+28
+00:01:40,100 --> 00:01:43,100
+should see a " Men In Black." These are three to eight; these 
+
+29
+00:01:43,103 --> 00:01:47,103
+are called steps. We have a feature which is user story. We have 
+
+30
+00:01:47,107 --> 00:01:51,107
+multiple scenarios, typically at least one per feature and 
+
+31
+00:01:51,111 --> 00:01:57,111
+there's steps per scenario. Okay, I think I just said that. Now, 
+
+32
+00:01:57,117 --> 00:02:01,117
+where do you put this information away? These are keywords: " 
+
+33
+00:02:01,121 --> 00:02:04,121
+Feature" and " Scenario" and you keep them in a . features file 
+
+34
+00:02:04,124 --> 00:02:10,124
+within the rails framework. Now what we need to is take these 
+
+35
+00:02:10,130 --> 00:02:13,130
+steps that we've defined or we've written. These steps that 
+
+36
+00:02:13,133 --> 00:02:17,133
+we've written out with these given and when words, then words 
+
+37
+00:02:17,137 --> 00:02:20,137
+like that and we have to map them onto the Ruby code that does 
+
+38
+00:02:20,140 --> 00:02:25,140
+the testing. These will be in . rb files so we have . feature 
+
+39
+00:02:25,145 --> 00:02:30,145
+files and . rb files and we'll have some controller name. 
+
+40
+00:02:30,150 --> 00:02:34,150
+These " given" steps mean that's the preconditions, the state of 
+
+41
+00:02:34,154 --> 00:02:38,154
+the world before you start this story. The " when" steps are the 
+
+42
+00:02:38,158 --> 00:02:40,158
+actions; somehow we're going to know how to push ... make the 
+
+43
+00:02:40,160 --> 00:02:44,160
+browser push those browser buttons, and then the " then" steps 
+
+44
+00:02:44,164 --> 00:02:48,164
+are the consequences, what happens after you do it. Then to make 
+
+45
+00:02:48,168 --> 00:02:51,168
+it more readable, there are also conjunctions in there. You can 
+
+46
+00:02:51,171 --> 00:02:54,171
+have and and but, so you can have given and this and this and 
+
+47
+00:02:54,174 --> 00:03:02,174
+this, then and a couple of conditions afterwards. Now the magic 
+
+48
+00:03:02,182 --> 00:03:05,182
+between the steps and the step definitions is you use regular 
+
+49
+00:03:05,185 --> 00:03:07,185
+expressions, so we're going to write good old regular 
+
+50
+00:03:07,187 --> 00:03:10,187
+expressions as we talked about earlier. They're going to match 
+
+51
+00:03:10,190 --> 00:03:14,190
+those English phrases to map them onto the testing code written 
+
+52
+00:03:14,194 --> 00:03:18,194
+in Ruby, so remember the " given." I am on the Rotten Potatoes 
+
+53
+00:03:18,198 --> 00:03:22,198
+home page. There is our regular expression. It's going to match 
+
+54
+00:03:22,202 --> 00:03:25,202
+this and it's going to do that captured string, right? The 
+
+55
+00:03:25,205 --> 00:03:29,205
+captured string is over here in parenthesis and it's going to 
+
+56
+00:03:29,209 --> 00:03:32,209
+remember the Rotten Potatoes home page, which we'll probably use 
+
+57
+00:03:32,212 --> 00:03:38,212
+in the step definitions. To use this, as it says in the book, 
+
+58
+00:03:38,218 --> 00:03:40,218
+you need to install it. Like everything else you install it as a 
+
+59
+00:03:40,220 --> 00:03:44,220
+Cucumber gem. It's going to create for you this kind of 
+
+60
+00:03:44,224 --> 00:03:47,224
+remember. How is rails so productive? It creates a bunch of 
+
+61
+00:03:47,227 --> 00:03:49,227
+things so you don't have to do them. It will create some 
+
+62
+00:03:49,229 --> 00:03:53,229
+commonly used step definitions when you install it. Armando 
+
+63
+00:03:53,233 --> 00:03:57,233
+talked before about having test in production and development. 
+
+64
+00:03:57,237 --> 00:04:00,237
+You need a test database to be working with that, and then 
+
+65
+00:04:00,000 --> 00:04:05,240
+you're going to edit these . feature files to add features. What 
+
+66
+00:04:05,245 --> 00:04:08,245
+about this other part of the question? Who we going to get to 
+
+67
+00:04:08,248 --> 00:04:14,248
+push the buttons? That is a tool called Capybara. Capybara, 
+
+68
+00:04:14,254 --> 00:04:18,254
+probably nobody in the class knows but Armando, is the world's 
+
+69
+00:04:18,258 --> 00:04:22,258
+biggest rat. It's the size of a dog, and that's because the 
+
+70
+00:04:22,262 --> 00:04:24,262
+prior tool was called WebRAT, so this was even better. This is 
+
+71
+00:04:24,264 --> 00:04:31,264
+big rat, Capybara. It interacts with the app to receive pages 
+
+72
+00:04:31,271 --> 00:04:34,271
+and parts of the HTML and submits the form, just the things that 
+
+73
+00:04:34,274 --> 00:04:36,274
+we were talking about, right? We're talking about forms. 
+
+

@@ -1,0 +1,661 @@
+1
+00:00:00,000 --> 00:00:06,000
+Right next segment is about cloud computing. So the question is 
+
+2
+00:00:06,006 --> 00:00:10,006
+so all these people are using these services like a Google 
+
+3
+00:00:10,010 --> 00:00:15,010
+search and Youtbe and Ebay and Amazon all that stuff. What's the 
+
+4
+00:00:15,015 --> 00:00:18,015
+hardware to use? What all these companies use to have millions 
+
+5
+00:00:18,018 --> 00:00:21,018
+of customers? Do they use supercomputers in these giant 
+
+6
+00:00:21,021 --> 00:00:24,021
+expensive computers are mainframe computers these kind of gold 
+
+7
+00:00:24,024 --> 00:00:28,024
+plated things that almost never fail. So that's a question. 
+
+8
+00:00:28,028 --> 00:00:30,028
+Another question is will suppose I don't work for those 
+
+9
+00:00:30,030 --> 00:00:34,030
+companies? I've got this great idea, but I'm I would love to be 
+
+10
+00:00:34,034 --> 00:00:37,034
+able to millions of users but, do I have to build a warehouse 
+
+11
+00:00:37,037 --> 00:00:40,037
+computer and spend a get some venture capitalists to invest a 
+
+12
+00:00:40,040 --> 00:00:43,040
+hundred million dollars in my idea? And we don't even know it 
+
+13
+00:00:43,043 --> 00:00:48,043
+works. So, am I can be shut out? Right? So what's the answer to 
+
+14
+00:00:48,048 --> 00:00:52,048
+this? It turns out, let's first list what you need right. To do 
+
+15
+00:00:52,052 --> 00:00:55,052
+software as a service over the internet you need to communicate 
+
+16
+00:00:55,055 --> 00:00:59,055
+to interact with that service you need scalability so what does 
+
+17
+00:00:59,059 --> 00:01:02,059
+that mean? So, if you're doing like a photo sharing service in 
+
+18
+00:01:02,062 --> 00:01:06,062
+it's right around Halloween you know that suddenly all these 
+
+19
+00:01:06,066 --> 00:01:08,066
+photos are gonna show up and you're gonna need a lot more 
+
+20
+00:01:08,068 --> 00:01:13,068
+computing. Or, if you're doing sales of like Amazon does around 
+
+21
+00:01:13,073 --> 00:01:15,073
+Christmas there's going to be this huge demand but the rest of 
+
+22
+00:01:15,075 --> 00:01:18,075
+the year not so much. You have to be able to scale up to be able 
+
+23
+00:01:18,078 --> 00:01:20,078
+to handle the load "'cause" if you can't scale to handle the 
+
+24
+00:01:20,080 --> 00:01:23,080
+load, then customers get frustrated and go to your competitor. 
+
+25
+00:01:23,083 --> 00:01:27,083
+It has to work you've only got one copy of the the software. You 
+
+26
+00:01:27,087 --> 00:01:30,087
+only have one copy the hardware, if that one goes down you're 
+
+27
+00:01:30,090 --> 00:01:32,090
+off the air. You're not making money and you're making customers 
+
+28
+00:01:32,092 --> 00:01:36,092
+mad. If you know with shrink wrapped software you can you know 
+
+29
+00:01:36,096 --> 00:01:39,096
+of you have millions of copies if you crash so what. Right? If 
+
+30
+00:01:39,099 --> 00:01:42,099
+this is the only copy it's gotta work. So what the hardware that 
+
+31
+00:01:42,102 --> 00:01:47,102
+people ended up doing was clusters. Clusters actually got 
+
+32
+00:01:47,107 --> 00:01:51,107
+started here at Berkeley is part of the network of workstations 
+
+33
+00:01:51,111 --> 00:01:54,111
+project that Armando and I are involved in. With the cluster is 
+
+34
+00:01:54,114 --> 00:01:58,114
+is you put a a bunch of computers together like like P. C.s are 
+
+35
+00:01:58,118 --> 00:02:02,118
+workstations. And you connect them with ethernet switches. So, 
+
+36
+00:02:02,122 --> 00:02:05,122
+just like what's in the buildings here on campus but you 
+
+37
+00:02:05,125 --> 00:02:09,125
+dedicate them for this service you wanna provide. Now what 
+
+38
+00:02:09,129 --> 00:02:15,129
+happened was and that this proved to be much more scalable data 
+
+39
+00:02:15,135 --> 00:02:18,135
+network as a fundamentally more scalable and then other choices 
+
+40
+00:02:18,138 --> 00:02:25,138
+out there it was a lot cheaper. The people's purposal in Louise 
+
+41
+00:02:25,145 --> 00:02:27,145
+Verosa wrote a book about warehouse scaled computers make things 
+
+42
+00:02:27,147 --> 00:02:30,147
+about a factor twenty cheaper. So, for the same amount 
+
+43
+00:02:30,150 --> 00:02:33,150
+computation or disk storage or memory it cost twenty times as 
+
+44
+00:02:33,153 --> 00:02:36,153
+much to buy the book gold plated stuff from the mainframe like 
+
+45
+00:02:36,156 --> 00:02:42,156
+I. B. M. versus P. C.s and the way they get dependability in 
+
+46
+00:02:42,162 --> 00:02:44,162
+clusters is to have a lot of redundant copies. So if it's twenty 
+
+47
+00:02:44,164 --> 00:02:47,164
+times cheaper you can afford to have three replicas of 
+
+48
+00:02:47,167 --> 00:02:50,167
+everything it's still you know one seventh the cost of gold 
+
+49
+00:02:50,170 --> 00:02:53,170
+plated version, so they just it's. The parts aren't very 
+
+50
+00:02:53,173 --> 00:02:56,173
+dependable but you have a triplicate them and so the 
+
+51
+00:02:56,176 --> 00:03:00,176
+collectively software makes that dependable. And it turns out if 
+
+52
+00:03:00,000 --> 00:03:03,180
+you have thousands of computers all, pretty much the same, all 
+
+53
+00:03:03,183 --> 00:03:06,183
+running the same software, they're not that hard to manage. So, 
+
+54
+00:03:06,186 --> 00:03:11,186
+that a few operators can handle thousands of servers and then as 
+
+55
+00:03:11,191 --> 00:03:14,191
+we talked earlier a virtual machines can really help make this 
+
+56
+00:03:14,194 --> 00:03:19,194
+work so that's another thing that can simplify the task. So 
+
+57
+00:03:19,199 --> 00:03:24,199
+warehouse scale computers soon grew yeah the first ones had 
+
+58
+00:03:24,204 --> 00:03:27,204
+maybe a thousand servers, but as customers increased over time. 
+
+59
+00:03:27,207 --> 00:03:30,207
+They have now a hundred thousand servers is demand increased 
+
+60
+00:03:30,210 --> 00:03:35,210
+what they discovered is when you build a warehouses heaters you 
+
+61
+00:03:35,215 --> 00:03:38,215
+order a hundred thousand computers at the time you get huge 
+
+62
+00:03:38,218 --> 00:03:42,218
+amount of timings to scale. If you were to go Dell or H. P. and 
+
+63
+00:03:42,222 --> 00:03:45,222
+say I want hundred thousand computers they're gonna give your 
+
+64
+00:03:45,225 --> 00:03:48,225
+really good deal. If you're gonna build a warehouse rather than 
+
+65
+00:03:48,228 --> 00:03:51,228
+just for a thousand computers, but a hundred thousand that's 
+
+66
+00:03:51,231 --> 00:03:54,231
+much more efficient way to build it and if you get network 
+
+67
+00:03:54,234 --> 00:03:57,234
+bandwidth by the you know you gigabits this opposed to by the 
+
+68
+00:03:57,237 --> 00:04:01,237
+megabits that's much cheaper that way. So by factors of three or 
+
+69
+00:04:01,241 --> 00:04:03,241
+eight, so I factors of three or eight per computers it was 
+
+70
+00:04:03,243 --> 00:04:07,243
+cheaper to do the warehouse scaled computing. Also, what happens 
+
+71
+00:04:07,247 --> 00:04:10,247
+is traditional data centers are underutilized so there was a 
+
+72
+00:04:10,250 --> 00:04:13,250
+hundred data centers used for the thousands computers maybe 
+
+73
+00:04:13,253 --> 00:04:16,253
+these ten or twenty percent of the time to consolidate them 
+
+74
+00:04:16,256 --> 00:04:21,256
+together to get more utilization. So, what ends up happening in 
+
+75
+00:04:21,261 --> 00:04:24,261
+particular starting with amazon, they realized they can earn 
+
+76
+00:04:24,264 --> 00:04:28,264
+money to offer a pay as you go service, because their costs are 
+
+77
+00:04:28,268 --> 00:04:31,268
+so much less that they could sell for less than the customer 
+
+78
+00:04:31,271 --> 00:04:35,271
+cost, but they still make a profit. And so the characteristic of 
+
+79
+00:04:35,275 --> 00:04:40,275
+this, what's called utility computing or public cloud computing 
+
+80
+00:04:40,280 --> 00:04:43,280
+is that offers a computation storage communication at pennies 
+
+81
+00:04:43,283 --> 00:04:47,283
+per hour and remarkably there's no cost for scaling. Usually, if 
+
+82
+00:04:47,287 --> 00:04:50,287
+you wanna a thousand times faster computer you pay a lot more 
+
+83
+00:04:50,290 --> 00:04:54,290
+than a thousand times more for that privilege. Here a thousand 
+
+84
+00:04:54,294 --> 00:04:57,294
+years one hours the same price is one computer four thousand 
+
+85
+00:04:57,297 --> 00:05:02,297
+hours. Their job that companies are providing us to makes you 
+
+86
+00:05:02,302 --> 00:05:05,302
+think you have as many computers as you want and their job is to 
+
+87
+00:05:05,305 --> 00:05:09,305
+fulfill that pledge, which is a very attractive and Amazon Web 
+
+88
+00:05:09,309 --> 00:05:12,309
+Services Google App Engine, and Microsoft Asure were the leading 
+
+89
+00:05:12,312 --> 00:05:15,312
+ones to do this. Over the years now Amazon's been doing this 
+
+90
+00:05:15,315 --> 00:05:18,315
+about seven years I think they're model has won, so now Google 
+
+91
+00:05:18,318 --> 00:05:21,318
+App Engine, Microsoft Azure are pretty much imitating what 
+
+92
+00:05:21,321 --> 00:05:25,321
+Amazon Web Services has done and so the slides took together 
+
+93
+00:05:25,325 --> 00:05:29,325
+which is now there's seventeen different types of instances that 
+
+94
+00:05:29,329 --> 00:05:33,329
+you can get there. The the original one the small one which 
+
+95
+00:05:33,333 --> 00:05:37,333
+seven years ago was ten cents an hour is now six cents an hour 
+
+96
+00:05:37,337 --> 00:05:40,337
+and that's kind of the building block you see things the cost 
+
+97
+00:05:40,340 --> 00:05:44,340
+seventy five times as much down here. And you can see things 
+
+98
+00:05:44,344 --> 00:05:47,344
+with a hundred times as much memory or a hundred times as much 
+
+99
+00:05:47,347 --> 00:05:50,347
+computing. All kinda flavors different one so you can whatever 
+
+100
+00:05:50,350 --> 00:05:54,350
+your task is you pick the one you pay the price so when Amazon 
+
+101
+00:05:54,354 --> 00:05:57,354
+came out and they said they announced doing things for ten cents 
+
+102
+00:05:57,357 --> 00:06:00,357
+an hour and you say oh they gotta be losing money doing that. 
+
+103
+00:06:00,000 --> 00:06:03,360
+Well that was seven years ago with Moore's law right. So seven 
+
+104
+00:06:03,363 --> 00:06:06,363
+years later they went from ten cents an hour to six cents per 
+
+105
+00:06:06,366 --> 00:06:09,366
+hour. Only forty percent drop despite Moore's seven years of 
+
+106
+00:06:09,369 --> 00:06:12,369
+Moore's Law, which could be a factor of a hundred cheaper, so 
+
+107
+00:06:12,372 --> 00:06:15,372
+that they are perceived as making up a lot of money doing this. 
+
+108
+00:06:15,375 --> 00:06:19,375
+I went to a conference last year from Amazon their first public 
+
+109
+00:06:19,379 --> 00:06:24,379
+conference. And they said a remarkable statement they said every 
+
+110
+00:06:24,384 --> 00:06:29,384
+day they rollout is many servers as it took to run Amazon.com in 
+
+111
+00:06:29,389 --> 00:06:32,389
+two thousand three one of the five billion dollar your six 
+
+112
+00:06:32,392 --> 00:06:35,392
+thousand employee company. So in the beginning when this started 
+
+113
+00:06:35,395 --> 00:06:38,395
+the person who made the argument for Amazon to get into this is 
+
+114
+00:06:38,398 --> 00:06:40,398
+we have all these computers we only need them near Christmas. 
+
+115
+00:06:40,400 --> 00:06:43,400
+Let's rent them out the other eleven months per year. Well then 
+
+116
+00:06:43,403 --> 00:06:46,403
+it's an interesting argument what happens across Christmas 
+
+117
+00:06:46,406 --> 00:06:49,406
+right. Well they got started in it and suddenly became so 
+
+118
+00:06:49,409 --> 00:06:54,409
+popular that roles reversed now Amazon.com, where you go buy 
+
+119
+00:06:54,414 --> 00:06:58,414
+books they don't have any computers they're just a client of 
+
+120
+00:06:58,418 --> 00:07:01,418
+Amazon web services they're relatively small client of Amazon 
+
+121
+00:07:01,421 --> 00:07:04,421
+Web Service and Netflix and many others are doing that. So and 
+
+122
+00:07:04,424 --> 00:07:08,424
+and the rolling I don't know five thousand servers today I don't 
+
+123
+00:07:08,428 --> 00:07:12,428
+know how many servers they're putting out. Another thing we did 
+
+124
+00:07:12,432 --> 00:07:15,432
+kind of show off was that they could build a supercomputer out 
+
+125
+00:07:15,435 --> 00:07:19,435
+of these rented services. So they put five hundred these larger 
+
+126
+00:07:19,439 --> 00:07:22,439
+ones together and they were able to do two hundred forty tera 
+
+127
+00:07:22,442 --> 00:07:26,442
+flops which at times but the top one hundred of the fastest five 
+
+128
+00:07:26,446 --> 00:07:28,446
+hundred supercomputers in the world. That cost about thirteen 
+
+129
+00:07:28,448 --> 00:07:32,448
+hundred dollars an hour. So that you can rent a a supercomputer 
+
+130
+00:07:32,452 --> 00:07:36,452
+with your credit card to take advantage of this? Well when Zynga 
+
+131
+00:07:36,456 --> 00:07:38,456
+did Farm Vill and they could've built their own data center, 
+
+132
+00:07:38,458 --> 00:07:41,458
+then go to venture capitalists and say what we need a bunch of 
+
+133
+00:07:41,461 --> 00:07:44,461
+servers to do this the biggest online game before that happened 
+
+134
+00:07:44,464 --> 00:07:48,464
+five million users so we need of servers five million that's or 
+
+135
+00:07:48,468 --> 00:07:51,468
+maybe that's that's the biggest ones will start small. 
+
+136
+00:07:51,471 --> 00:07:54,471
+Fortunately, for them they went to Amazon Web Services and so 
+
+137
+00:07:54,474 --> 00:07:57,474
+every time the number of customers increase they just increased 
+
+138
+00:07:57,477 --> 00:08:04,477
+their credit card limit and got more servers. So in the for four 
+
+139
+00:08:04,484 --> 00:08:07,484
+days they went up to a million you know. From zero to million in 
+
+140
+00:08:07,487 --> 00:08:10,487
+four days. In two months ten million, nine months of seventy 
+
+141
+00:08:10,490 --> 00:08:13,490
+five million. If it hadn't been on Amazon Web Services they 
+
+142
+00:08:13,493 --> 00:08:16,493
+couldn't have done that. So, that they're able to take in as 
+
+143
+00:08:16,496 --> 00:08:19,496
+much income as they could get computers. So, without having to 
+
+144
+00:08:19,499 --> 00:08:22,499
+do that. So, think about that for a a minute you all heard of 
+
+145
+00:08:22,502 --> 00:08:27,502
+the jeopardy champion Watson. So, that bottom harbours about 
+
+146
+00:08:27,507 --> 00:08:31,507
+ninety these servers let's say we we picked one that's like two 
+
+147
+00:08:31,511 --> 00:08:34,511
+hundred dollars an hour. So what's two hundred dollars an hour 
+
+148
+00:08:34,514 --> 00:08:36,514
+that's like what you know what these people we talked about 
+
+149
+00:08:36,516 --> 00:08:40,516
+earlier an attorney or accountant is paid. A good attorney or 
+
+150
+00:08:40,520 --> 00:08:45,520
+accountant gets paid two hundred dollars an hour Think about in 
+
+151
+00:08:45,525 --> 00:08:47,525
+your careers as machine learning starts to work and A.I. starts 
+
+152
+00:08:47,527 --> 00:08:52,527
+to work kinda for what task is A.I. as good as a highly trained 
+
+153
+00:08:52,532 --> 00:08:55,532
+person two hundred dollars an hour. That's today's prices is 
+
+154
+00:08:55,535 --> 00:08:58,535
+right? It's gonna go down. So, what is gonna mean for society 
+
+155
+00:08:58,538 --> 00:09:01,538
+right? What this is going to mean is computers get smarter can 
+
+156
+00:09:01,541 --> 00:09:05,541
+do more things. And we know what jobs are out there I have this 
+
+157
+00:09:05,545 --> 00:09:09,545
+sense that we're this you know tremendously efficient job 
+
+158
+00:09:09,549 --> 00:09:13,549
+killing industry. I think the reason I think the reason 
+
+159
+00:09:13,553 --> 00:09:15,553
+attorneys is to be pretty cool jobs is dropping. I think it's 
+
+160
+00:09:15,555 --> 00:09:18,555
+got to do computer technology. They're good at discovering 
+
+161
+00:09:18,558 --> 00:09:22,558
+things that they use to use law clerks to do. So, yeah so this 
+
+162
+00:09:22,562 --> 00:09:26,562
+is a really good job this is this is a good one to pick, cause 
+
+163
+00:09:26,566 --> 00:09:28,566
+I'm sure there's gonna be a demand for this I just hope that 
+
+164
+00:09:28,568 --> 00:09:31,568
+we're gonna start getting into the job generating side of 
+
+165
+00:09:31,571 --> 00:09:31,571
+things. 
+
+

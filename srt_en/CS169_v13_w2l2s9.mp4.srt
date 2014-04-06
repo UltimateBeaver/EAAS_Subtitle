@@ -1,0 +1,550 @@
+1
+00:00:00,000 --> 00:00:09,000
+Duck Typing, this is fun. I keep saying, right, Ruby emphasizes
+
+2
+00:00:09,009 --> 00:00:13,009
+what do you do, what methods do you respond to instead of
+
+3
+00:00:13,013 --> 00:00:17,013
+emphasizing what class are you? The question is why should you
+
+4
+00:00:17,017 --> 00:00:20,017
+care about this, right? How does this encourage productivity?
+
+5
+00:00:20,020 --> 00:00:24,020
+What kind of reuse does it buy you? An informal and humorous
+
+6
+00:00:24,024 --> 00:00:26,024
+name some people have used to refer to Ruby's implementation of
+
+7
+00:00:26,026 --> 00:00:32,026
+this is Duck Typing . You may have heard the colloquial
+
+8
+00:00:32,032 --> 00:00:35,032
+expression that if it looks like a duck , it walks like a duck ,
+
+9
+00:00:35,035 --> 00:00:37,035
+quacks like a duck , well , it might as well treat it like a
+
+10
+00:00:37,037 --> 00:00:41,037
+duck. What we are saying is if you have an object that responds
+
+11
+00:00:41,041 --> 00:00:45,041
+to certain kinds of methods, you just treat it as the thing that
+
+12
+00:00:45,045 --> 00:00:49,045
+looks like it is . If it responds to things like give me each of
+
+13
+00:00:49,049 --> 00:00:52,049
+yourself or reverse yourself, well , what is it meaningful to
+
+14
+00:00:52,052 --> 00:00:55,052
+talk about those operations on? Well , it must be some kind of a
+
+15
+00:00:55,052 --> 00:00:58,055
+collection. You say something quacks like a collection in
+
+16
+00:00:58,055 --> 00:01:01,058
+Ruby it means, " Ah, you can expect that thing to respond to
+
+17
+00:01:01,058 --> 00:01:03,000
+most of the same collection -oriented methods that a normal
+
+18
+00:01:03,000 --> 00:01:06,064
+collection like a built -in collection arrays would respond to.
+
+19
+00:01:06,067 --> 00:01:08,067
+" If you use interfaces in Java , you will notice this is kind
+
+20
+00:01:08,069 --> 00:01:15,069
+of similar , but I think this is actually much easier to use. As
+
+21
+00:01:15,076 --> 00:01:19,076
+an example, if I call Sort on my list, what does that actually
+
+22
+00:01:19,080 --> 00:01:21,080
+mean ? Well, suppose my list is something like this array of
+
+23
+00:01:21,082 --> 00:01:25,082
+integers, you can imagine what it would mean for Sort to operate
+
+24
+00:01:25,086 --> 00:01:27,086
+on that . What if it was a list of Strings , you can imagine for
+
+25
+00:01:27,088 --> 00:01:31,088
+what it means for Sort to operate on that or even a list of
+
+26
+00:01:31,092 --> 00:01:34,092
+symbols or even what you get back from IO readlines , which is
+
+27
+00:01:34,095 --> 00:01:37,095
+all of the lines in a file one line at a time, right ? This last
+
+28
+00:01:37,098 --> 00:01:42,098
+one is basically we are saying, "Sort this file ." Why does this
+
+29
+00:01:42,103 --> 00:01:45,103
+work? To get the answer to the question, we will introduce one
+
+30
+00:01:45,106 --> 00:01:47,106
+new Ruby construct that doesn't really appear in other languages
+
+31
+00:01:47,108 --> 00:01:52,108
+. In languages where it does appear , the term module doesn't
+
+32
+00:01:52,113 --> 00:01:55,113
+mean the same thing . In Ruby, a module is a collection of
+
+33
+00:01:55,116 --> 00:01:58,100
+methods that aren't a Class . You can't instantiate it. There
+
+34
+00:01:58,119 --> 00:02:01,119
+are no instances of a module . It's really just a group of
+
+35
+00:02:01,122 --> 00:02:04,200
+methods that collect a bunch of related behaviors and they go
+
+36
+00:02:04,200 --> 00:02:07,174
+together . Now in some simple cases, the use of a module is just
+
+37
+00:02:07,203 --> 00:02:11,203
+to collect methods like methods related to a common set of
+
+38
+00:02:11,207 --> 00:02:15,207
+operations like mathematical operations or constants that are
+
+39
+00:02:15,207 --> 00:02:17,200
+mathematical operations . That's pretty trivial . The much more
+
+40
+00:02:17,200 --> 00:02:21,200
+interesting use of modules, which we focus on is when you use a
+
+41
+00:02:21,204 --> 00:02:25,204
+module to mix methods into a class . What does that mean ?
+
+42
+00:02:25,208 --> 00:02:29,208
+Suppose, during my declaration for Class A, I say include the
+
+43
+00:02:29,212 --> 00:02:32,212
+name of some module , that means that when I try to call a
+
+44
+00:02:32,215 --> 00:02:36,215
+method on an instance of A , if I call for example, A. foo,
+
+45
+00:02:36,219 --> 00:02:41,219
+first it will search whether Class A has that method, then it
+
+46
+00:02:41,224 --> 00:02:43,224
+will search whether any modules included into the class have
+
+47
+00:02:43,226 --> 00:02:45,226
+that method, and then it will do the other stuff we have already
+
+48
+00:02:45,228 --> 00:02:48,228
+talked about . It will call method missing . It will point up to
+
+49
+00:02:48,231 --> 00:02:50,231
+the ancestors, but modules essentially give you a way to say,
+
+50
+00:02:50,233 --> 00:02:53,233
+"Wait a minute , add a few things to this class , I am not done
+
+51
+00:02:53,236 --> 00:02:57,236
+with it yet. " The reason you'd want to do that is that it's
+
+52
+00:02:57,060 --> 00:03:00,240
+often possible , because Ruby cares more about responding
+
+53
+00:03:00,243 --> 00:03:04,243
+than it does about classes and types . It's possible to define
+
+54
+00:03:04,247 --> 00:03:07,247
+modules, collections of behaviors in a way that's reusable
+
+55
+00:03:07,250 --> 00:03:10,250
+around a lot of different classes. In fact it might surprise you
+
+56
+00:03:10,253 --> 00:03:13,253
+to learn . As one example, that the sort method we used on the
+
+57
+00:03:13,256 --> 00:03:15,256
+previous slide as an example , you would think that it's defined
+
+58
+00:03:15,258 --> 00:03:21,258
+on arrays , but it's actually not to defined on arrays, it's
+
+59
+00:03:21,264 --> 00:03:23,264
+defined a module called Enumerable . The Enumerable module can
+
+60
+00:03:23,266 --> 00:03:26,266
+be mixed into any class that knows how to enumerate the elements
+
+61
+00:03:26,269 --> 00:03:29,269
+of itself .
+Let me say that again, because this is a little bit
+
+62
+00:03:29,272 --> 00:03:33,272
+non -obvious , okay? We saw these different examples of using
+
+63
+00:03:33,276 --> 00:03:36,276
+each and I kept saying we are not intrusively reaching into a
+
+64
+00:03:36,279 --> 00:03:38,279
+collection and getting stuff, we are asking the collection
+
+65
+00:03:38,281 --> 00:03:41,281
+nicely , "Please give me back each element of yourself in turn.
+
+66
+00:03:41,284 --> 00:03:43,284
+I don't care how you get them, I just want each elements so that
+
+67
+00:03:43,286 --> 00:03:47,286
+I can do stuff to it ." Now, what we are saying is , "Well , if
+
+68
+00:03:47,290 --> 00:03:50,290
+you can do that, then there is a bunch of things that I know
+
+69
+00:03:50,293 --> 00:03:53,293
+how to do for free . For example, if you can return
+
+70
+00:03:53,296 --> 00:03:56,296
+each  element of yourself, I can sort you ," great , provided
+
+71
+00:03:56,299 --> 00:03:59,299
+that your methods .. . the things inside your collection are in
+
+72
+00:03:59,302 --> 00:04:02,302
+fact sortable . We will come to that in a moment . What else
+
+73
+00:04:02,305 --> 00:04:05,300
+could you do? If you can return every element of yourself , I
+
+74
+00:04:05,300 --> 00:04:08,309
+can test every element against some condition that was Select
+
+75
+00:04:08,312 --> 00:04:11,312
+and Collect and those methods that we saw. What does this mean
+
+76
+00:04:11,315 --> 00:04:14,315
+? As a concrete example , it means that a mix-in is like a
+
+77
+00:04:14,318 --> 00:04:18,318
+contract . The module Enumerable, we are going to use it as an
+
+78
+00:04:18,322 --> 00:04:21,322
+example, because it's used all over the place in Ruby , it's
+
+79
+00:04:21,325 --> 00:04:24,325
+very common. It assumes that the target object in the class you
+
+80
+00:04:24,328 --> 00:04:28,328
+are mixing it into know how to respond to each, right ? Like I
+
+81
+00:04:28,328 --> 00:04:31,500
+said, if you define a new class , for example, a binary tree
+
+82
+00:04:31,500 --> 00:04:34,500
+data structure and you define each as a way to get at the
+
+83
+00:04:34,503 --> 00:04:37,503
+elements of that data structure, you can now mix -in Enumerable
+
+84
+00:04:37,506 --> 00:04:41,506
+and you will get these methods for free . It will define for you
+
+85
+00:04:41,510 --> 00:04:44,510
+predicates like all and any, collect , find, include , map,
+
+86
+00:04:44,513 --> 00:04:49,513
+partition ; a whole bunch of really neat stuff just because you
+
+87
+00:04:49,518 --> 00:04:53,518
+agreed to provide each . This is a hugely powerful behavior .
+
+88
+00:04:53,518 --> 00:04:57,400
+Enumerable is also where  Sort happens to be defined in Ruby ,
+
+89
+00:04:57,400 --> 00:05:00,427
+but Sort also has another  requirement, which is that your model
+
+90
+00:05:00,430 --> 00:05:04,400
+. .. sorry . Sort also has another requirement, which is that
+
+91
+00:05:04,400 --> 00:05:08,400
+the class .. . the elements in the collection be able to respond
+
+92
+00:05:08,400 --> 00:05:10,406
+to the Spaceship operator. Remember the Spaceship operator ?
+
+93
+00:05:10,408 --> 00:05:14,408
+It's kind of rolling all the equality operators into one. A
+
+94
+00:05:14,412 --> 00:05:17,412
+Spaceship B is negative one if A is less than B. Positive one if
+
+95
+00:05:17,412 --> 00:05:20,415
+B is greater than A. Negative one if A is less than B, positive
+
+96
+00:05:20,418 --> 00:05:25,400
+one if A is greater than B and zero if they are equal , right?
+
+97
+00:05:25,500 --> 00:05:28,522
+You can imagine for whatever class you want you can define the
+
+98
+00:05:28,525 --> 00:05:32,525
+Spaceship operator. You can define it to be sorting your colors
+
+99
+00:05:32,529 --> 00:05:35,529
+in your favorite order if you wanted. Now , obviously in classes
+
+100
+00:05:35,532 --> 00:05:38,532
+like Int and String, Spaceship is already defined with the
+
+101
+00:05:38,532 --> 00:05:42,535
+semantics that you would expect . The important thing about this
+
+102
+00:05:42,535 --> 00:05:44,900
+is if you have a collection of things and the collection
+
+103
+00:05:45,000 --> 00:05:48,400
+responds to each and if the elements in the collection respond
+
+104
+00:05:48,500 --> 00:05:50,956
+to Spaceship, then you have to do zero work to get that thing to
+
+105
+00:05:51,003 --> 00:05:55,003
+be sorted, right ? Because what is sorting? It's taking para
+
+106
+00:05:55,007 --> 00:05:58,007
+-wise comparisons and seeing which one is greater of the two,
+
+107
+00:05:58,010 --> 00:06:01,010
+and in some algorithmic form put in those things back together
+
+108
+00:06:01,013 --> 00:06:05,000
+.
+In fact there is another module that ships with Ruby called
+
+109
+00:06:05,116 --> 00:06:07,116
+Comparable, which says , if you provide the Spaceship operator,
+
+110
+00:06:07,118 --> 00:06:11,118
+which takes one argument , right? Spaceship takes one argument
+
+111
+00:06:11,122 --> 00:06:13,122
+because there is the receiver of Spaceship and there is the
+
+112
+00:06:13,124 --> 00:06:15,124
+thing you are comparing the receiver against. If you provide
+
+113
+00:06:15,126 --> 00:06:20,126
+Spaceship , then I will define these other ones for you and also
+
+114
+00:06:20,131 --> 00:06:23,131
+give you happy ones like between which tells you if one element
+
+115
+00:06:23,134 --> 00:06:25,100
+is between two others according to sort order . What does this
+
+116
+00:06:25,136 --> 00:06:28,100
+all mean? It means the class of objects really doesn't matter
+
+117
+00:06:28,100 --> 00:06:31,140
+almost at all only the methods to which they respond. Let's look
+
+118
+00:06:31,140 --> 00:06:35,100
+at a couple of concrete examples of this . Sorting a file, well
+
+119
+00:06:35,100 --> 00:06:37,100
+, we have File. open, that's a method that returns an IO object
+
+120
+00:06:37,100 --> 00:06:41,800
+representing an open file . IO objects actually define each.
+
+121
+00:06:41,900 --> 00:06:45,900
+They define it as, " I am going to return each line of the file
+
+122
+00:06:45,909 --> 00:06:49,909
+in turn. " That's a pretty sensible semantics for reading a text
+
+123
+00:06:49,913 --> 00:06:53,913
+file . What does that mean? I can say open a file and sort it .
+
+124
+00:06:53,917 --> 00:06:57,917
+That's it. I don't have to provide anything because the thing
+
+125
+00:06:57,921 --> 00:06:59,921
+that I am calling sort on is a collection that responds to each
+
+126
+00:06:59,923 --> 00:07:02,923
+. It knows how to yield every element of itself . Inside that
+
+127
+00:07:02,926 --> 00:07:07,926
+collection what is each element? Well , it's a String, right ?
+
+128
+00:07:07,931 --> 00:07:10,931
+It's a line of a file. Strings know how to compare themselves ,
+
+129
+00:07:10,934 --> 00:07:12,934
+that's part of the built in String behavior. With no extra work
+
+130
+00:07:12,936 --> 00:07:15,936
+I can reuse behaviors despite the fact that the classes are
+
+131
+00:07:15,939 --> 00:07:19,939
+different. I can also say which lines of this file begin with a
+
+132
+00:07:19,943 --> 00:07:22,943
+vowel , well, that's easy enough . We already know how to use
+
+133
+00:07:22,943 --> 00:07:26,000
+Select to pass an anonymous method to something ,
+
+134
+00:07:26,000 --> 00:07:28,000
+anonymous function . For every line of a file we are going to
+
+135
+00:07:28,100 --> 00:07:30,500
+we are going to pick out the ones where this regular expression returns
+
+136
+00:07:30,500 --> 00:07:35,500
+true. Again, zero additional work. We can do our own example
+
+137
+00:07:35,500 --> 00:07:42,500
+with accounts, but before we do that, let's ask how it would be done?
+

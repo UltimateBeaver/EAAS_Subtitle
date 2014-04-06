@@ -1,0 +1,129 @@
+1
+00:00:00,000 --> 00:00:02,000
+Alright what statement is true about productivity copying and 
+
+2
+00:00:02,002 --> 00:00:08,002
+pasting code is another good way for use. I suppose I suppose 
+
+3
+00:00:08,008 --> 00:00:11,008
+laughter maybe a hint. Ha. Meta programming helps productivity 
+
+4
+00:00:11,011 --> 00:00:15,011
+via program synthesis of the four productivity reasons the 
+
+5
+00:00:15,015 --> 00:00:19,015
+primary one for high level languages reuse a concise syntax is 
+
+6
+00:00:19,019 --> 00:00:22,019
+more likely to have your bugs and easy maintain. So what you 
+
+7
+00:00:22,022 --> 00:00:30,022
+think about maybe this one's a a little harder. So which one is 
+
+8
+00:00:30,030 --> 00:00:34,030
+true you're not getting the false one the true right. Ready. 
+
+9
+00:00:34,034 --> 00:00:44,034
+Set. Ready. Set Okay Vote. WOW, this is a, I think this class a 
+
+10
+00:00:44,044 --> 00:00:49,044
+smarter another classes that we've taught. Alright, wow all you 
+
+11
+00:00:49,049 --> 00:00:55,049
+got, well about 90% of you have blue. So, yes meta programming 
+
+12
+00:00:55,055 --> 00:01:01,055
+helps productivity probably reuse isn't the main reason for high 
+
+13
+00:01:01,061 --> 00:01:04,061
+level languages probably the main reason is that it's concise 
+
+14
+00:01:04,064 --> 00:01:08,064
+and concise is more likely fewer bugs. Fortunately, all of a 
+
+15
+00:01:08,068 --> 00:01:12,068
+laughed about copying pasting. But that actually is a part of 
+
+16
+00:01:12,072 --> 00:01:15,072
+the reuse culture about copying pasting is that there's this 
+
+17
+00:01:15,075 --> 00:01:19,075
+thing that that's called don't repeat yourself. Or dry is what 
+
+18
+00:01:19,079 --> 00:01:22,079
+we'll use. This schemes from these guys Hunt and Thomas, every 
+
+19
+00:01:22,082 --> 00:01:24,082
+piece of knowledge must have a single unambiguous authoratative 
+
+20
+00:01:24,084 --> 00:01:27,084
+representation of the system. So, you wanna refactor the code so 
+
+21
+00:01:27,087 --> 00:01:31,087
+there's only one place by copy and pasting. So, now here's our 
+
+22
+00:01:31,091 --> 00:01:38,091
+test. So, in conclusion of good work in conclusion so we cover 
+
+23
+00:01:38,098 --> 00:01:43,098
+today so this class gonna learns the best job in world by 
+
+24
+00:01:43,103 --> 00:01:47,103
+deploying it and really getting a for real customers on the on 
+
+25
+00:01:47,107 --> 00:01:51,107
+the real same software. Software services less hassle for 
+
+26
+00:01:51,111 --> 00:01:53,111
+developers and users the servers are in architecture, which 
+
+27
+00:01:53,113 --> 00:02:00,113
+makes it it easy to reuse the current code. It's warehouse 
+
+28
+00:02:00,000 --> 00:02:04,120
+computing this scale is much cheaper so you could resell it as 
+
+29
+00:02:04,124 --> 00:02:08,124
+utility computing and testing issues, software quality and 
+
+30
+00:02:08,128 --> 00:02:11,128
+software quality means it's good for the customer and for the 
+
+31
+00:02:11,131 --> 00:02:14,131
+developer. Product testing is how ay we keep up with okay with 
+
+32
+00:02:14,134 --> 00:02:14,134
+that 
+
+

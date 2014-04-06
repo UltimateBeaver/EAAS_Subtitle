@@ -1,0 +1,233 @@
+1
+00:00:00,000 --> 00:00:06,000
+Given that, here are three possible ways for generating the 
+
+2
+00:00:06,006 --> 00:00:09,006
+form_ tag that, when submitted, would call the Create New Movie 
+
+3
+00:00:09,009 --> 00:00:14,009
+action. The question is, which of these are valid ways to do it? 
+
+4
+00:00:14,014 --> 00:00:16,014
+By the way, the way these questions are phrased clearly either 
+
+5
+00:00:16,016 --> 00:00:19,016
+exactly one of them is valid or all of three of them are valid, 
+
+6
+00:00:19,019 --> 00:00:22,019
+the way that I wrote the question. Take a look at this for a 
+
+7
+00:00:22,022 --> 00:00:26,022
+moment. You can see that the top one is a call to a method, a 
+
+8
+00:00:26,026 --> 00:00:30,026
+Ruby method in Rails called form_ tag. The other ones are really 
+
+9
+00:00:30,030 --> 00:00:32,030
+just the HAML equivalent of manually creating a form_ tag 
+
+10
+00:00:32,032 --> 00:00:37,032
+ourselves. Are these three all okay or is exactly one of them 
+
+11
+00:00:37,037 --> 00:00:46,037
+okay? I'll remind you, in case it's useful, very briefly of what 
+
+12
+00:00:46,046 --> 00:00:51,046
+you want the result to look like. Remember that from the 
+
+13
+00:00:51,051 --> 00:00:53,051
+browser's point of view, this is the only thing that matters. It 
+
+14
+00:00:53,053 --> 00:00:56,053
+doesn't matter how you got here. Just matters is that I know 
+
+15
+00:00:56,056 --> 00:01:00,056
+what method to use when I submit the movie form and what URI I 
+
+16
+00:01:00,000 --> 00:01:06,060
+have to submit it to. Do a quick initial vote on this one. 
+
+17
+00:01:06,066 --> 00:01:13,066
+Initial voting? Initial voting? People? Cards? If you have no 
+
+18
+00:01:13,073 --> 00:01:20,073
+arm, you don't have to hold up a card but otherwise you do. Most 
+
+19
+00:01:20,080 --> 00:01:22,080
+people who held up a card held to the right color. Next time, 
+
+20
+00:01:22,082 --> 00:01:25,082
+I'm going to have everybody hold the cards. But for this time, 
+
+21
+00:01:25,085 --> 00:01:27,085
+blue is the right answer. I'm just going to walk through it 
+
+22
+00:01:27,087 --> 00:01:32,087
+quickly. What's going on with these three? Taking a look at the 
+
+23
+00:01:32,092 --> 00:01:36,092
+raw versions of these, really here we're just going to do a one- 
+
+24
+00:01:36,096 --> 00:01:40,096
+to- one mapping of a HAML tag to an HTML tag. As you remember, 
+
+25
+00:01:40,100 --> 00:01:43,100
+when you do a HAML tag, any attributes that you pass in this 
+
+26
+00:01:43,103 --> 00:01:47,103
+Ruby hash essentially become the attributes of the HTML. Both 
+
+27
+00:01:47,107 --> 00:01:51,107
+number two and number three would match what we saw that we need 
+
+28
+00:01:51,111 --> 00:01:55,111
+to generate in terms of the HTML. Why is that they would both 
+
+29
+00:01:55,115 --> 00:02:00,115
+match? The only difference between them is in one case, we use 
+
+30
+00:02:00,000 --> 00:02:04,120
+the URI helper movies_ path. In the other case, we hard wire the 
+
+31
+00:02:04,124 --> 00:02:07,124
+URI slash movies. If you did rake routes, you would see that the 
+
+32
+00:02:07,127 --> 00:02:11,127
+movies_ path helper is created to give you this path back. Why 
+
+33
+00:02:11,131 --> 00:02:13,131
+would you use the helper instead of hard wiring the path? 
+
+34
+00:02:13,133 --> 00:02:16,133
+Because as your app gets more complicated, you may include 
+
+35
+00:02:16,136 --> 00:02:19,136
+additional routes and you may change the mapping of logical 
+
+36
+00:02:19,139 --> 00:02:22,139
+action names to the URIs that they connect to, using this level 
+
+37
+00:02:22,142 --> 00:02:25,142
+of indirection, like movies_ path, allows you to redefine this 
+
+38
+00:02:25,145 --> 00:02:27,145
+without then going ahead and changing the 25 different views 
+
+39
+00:02:27,147 --> 00:02:31,147
+without a curse. The only other difference between number two 
+
+40
+00:02:31,151 --> 00:02:34,151
+and number three is the use of a symbol versus a string. As I 
+
+41
+00:02:34,154 --> 00:02:38,154
+mentioned much earlier, this is a Rubyism. In many cases, there 
+
+42
+00:02:38,158 --> 00:02:41,158
+are methods where you can pass either a symbol or a string. It 
+
+43
+00:02:41,161 --> 00:02:43,161
+gets converted to whatever is needed internally. This happens to 
+
+44
+00:02:43,163 --> 00:02:46,163
+be one of those methods. I also mentioned that the reason or a 
+
+45
+00:02:46,166 --> 00:02:50,166
+main reason that you would use a symbol rather than a string is 
+
+46
+00:02:50,170 --> 00:02:52,170
+to connote that the value is not arbitrary. It's one of an 
+
+47
+00:02:52,172 --> 00:02:56,172
+enumerable set. In this case, indeed, the only legitimate values 
+
+48
+00:02:56,176 --> 00:02:59,176
+for method are the different HTTP methods, like get and post and 
+
+49
+00:02:59,179 --> 00:03:03,179
+put and so forth. Its intent revealing to pass a symbol, because 
+
+50
+00:03:03,183 --> 00:03:06,183
+it means this is one of a fix number of possible values as 
+
+51
+00:03:06,186 --> 00:03:10,186
+opposed to this is an arbitrary string. Then as far as the first 
+
+52
+00:03:10,190 --> 00:03:14,190
+choice here, form_ tag really just generates a form whose method 
+
+53
+00:03:14,194 --> 00:03:18,194
+is going to be built in his post and whose URI is based on the 
+
+54
+00:03:18,198 --> 00:03:20,198
+first argument of form_ tag, and again we're using the movies_ 
+
+55
+00:03:20,200 --> 00:03:23,200
+path helper here. For all practical purposes, these three are 
+
+56
+00:03:23,203 --> 00:03:26,203
+all the same. My view is the first one is the most intention 
+
+57
+00:03:26,206 --> 00:03:29,206
+revealing, because it says what you're trying to do and it uses 
+
+58
+00:03:29,209 --> 00:03:33,209
+the URI helpers rather than hard wiring the URI in place. 
+
+

@@ -1,0 +1,645 @@
+1
+00:00:00,000 --> 00:00:04,000
+Okay, so the next logical step as we'll see in a moment, 
+
+2
+00:00:04,004 --> 00:00:09,004
+fixtures and factories, answers the following problem. It's easy 
+
+3
+00:00:09,009 --> 00:00:12,009
+once you learn about mocks to start going mock and stub crazy, 
+
+4
+00:00:12,012 --> 00:00:15,012
+and step back and look at your tests and really that all you've 
+
+5
+00:00:15,015 --> 00:00:19,015
+done is test a bunch of nothing. In fact sometimes what you 
+
+6
+00:00:19,019 --> 00:00:28,019
+really need is the real thing. Let's take a look at an example. 
+
+7
+00:00:28,028 --> 00:00:33,028
+What's happening here, the premise of my test set up is I want 
+
+8
+00:00:33,033 --> 00:00:35,033
+to test this method called " Name with Rating". That is supposed 
+
+9
+00:00:35,035 --> 00:00:37,035
+to put together the name and the rating of a movie, simplest 
+
+10
+00:00:37,037 --> 00:00:41,037
+thing in the world. What I've done is ... Oh, I know how to use 
+
+11
+00:00:41,041 --> 00:00:45,041
+stubs and mocks. I'll create a stub double or mock of the movie, 
+
+12
+00:00:45,045 --> 00:00:48,045
+but I know that this name with rating method is going to look at 
+
+13
+00:00:48,048 --> 00:00:51,048
+the title and rating attributes. I have to stub specific methods 
+
+14
+00:00:51,051 --> 00:00:54,051
+on that mock. This is the long hand way of stubbing them. I 
+
+15
+00:00:54,054 --> 00:00:58,054
+create the mock first, and instead of also passing additional 
+
+16
+00:00:58,058 --> 00:01:00,058
+parameters of what to stub, I can do it separately. They mean 
+
+17
+00:01:00,000 --> 00:01:03,060
+the same thing. Basically I end up stubbing two things, and then 
+
+18
+00:01:03,063 --> 00:01:07,063
+call them " Name with Rating". Once my hangover abates and I 
+
+19
+00:01:07,067 --> 00:01:10,067
+look at this and say, " You know, why didn't I just use a real 
+
+20
+00:01:10,070 --> 00:01:13,070
+movie?" I mean, it's like it was more work to create this fake 
+
+21
+00:01:13,073 --> 00:01:15,073
+object with certain fake behaviors, than it would've been to 
+
+22
+00:01:15,075 --> 00:01:18,075
+just create a real object and let it use it. In cases where you 
+
+23
+00:01:18,078 --> 00:01:22,078
+need the real thing the question is where do you get a real copy 
+
+24
+00:01:22,082 --> 00:01:26,082
+of an object? One thing you can do is you can create a fixture; 
+
+25
+00:01:26,086 --> 00:01:29,086
+it's a term that comes from the manufacturing world. Basically a 
+
+26
+00:01:29,089 --> 00:01:32,089
+fixture is a harness that you put a piece of machinery in, or a 
+
+27
+00:01:32,092 --> 00:01:34,092
+thing that you've manufactured. You're going to probe it and 
+
+28
+00:01:34,094 --> 00:01:37,094
+poke at it and do a bunch of tests. The fixture is sort of the 
+
+29
+00:01:37,097 --> 00:01:42,097
+part that doesn't move, hence the name. In the SAS world what it 
+
+30
+00:01:42,102 --> 00:01:44,102
+corresponds to is, because models tend to live in tables, it 
+
+31
+00:01:44,104 --> 00:01:48,104
+means we're going to pre- load some known data into some of the 
+
+32
+00:01:48,108 --> 00:01:51,108
+model tables. We're going to then have tests that expect to find 
+
+33
+00:01:51,111 --> 00:01:53,111
+those data objects there. One possibility in the example I just 
+
+34
+00:01:53,113 --> 00:01:56,113
+showed is you could create a couple of movies. You know that 
+
+35
+00:01:56,116 --> 00:01:59,116
+they're going to be there, you know what their attributes are. 
+
+36
+00:01:59,119 --> 00:02:01,119
+Then when you have some tests you can rely on the presence of 
+
+37
+00:02:01,121 --> 00:02:04,121
+those movies in the database. That's one possibility. The other 
+
+38
+00:02:04,124 --> 00:02:08,124
+possibility is a factory, not to be confused with the factory 
+
+39
+00:02:08,128 --> 00:02:11,128
+design pattern, or the factory method when you are constructing 
+
+40
+00:02:11,131 --> 00:02:14,131
+objects of an abstract class. There is the concept of creating, 
+
+41
+00:02:14,134 --> 00:02:17,134
+and the idea is in a factory you create only what you need for 
+
+42
+00:02:17,137 --> 00:02:21,137
+this test. If I just had a test that needed a couple of movies, 
+
+43
+00:02:21,141 --> 00:02:25,141
+I'll create the movies just in the set up for that test. As you 
+
+44
+00:02:25,145 --> 00:02:28,145
+might have already guessed, our spec is helpful enough when you 
+
+45
+00:02:28,148 --> 00:02:35,148
+run it with [ rails 0:02:27] apps ... If you create database 
+
+46
+00:02:35,155 --> 00:02:44,155
+records within a specific test case, because that test case 
+
+47
+00:02:44,164 --> 00:02:48,164
+needs to use them, it's actually the case that after that test 
+
+48
+00:02:48,168 --> 00:02:52,168
+runs those database records are wiped out. For those of you who 
+
+49
+00:02:52,172 --> 00:02:54,172
+are in the database world, what actually happens, in case you're 
+
+50
+00:02:54,174 --> 00:02:58,174
+curious, is that each one of the R spec tests gets run inside a 
+
+51
+00:02:58,178 --> 00:03:01,178
+transaction. Once the test finishes the transaction is rolled 
+
+52
+00:03:01,181 --> 00:03:05,181
+back. You can create a whole mess of temporary data inside one 
+
+53
+00:03:05,185 --> 00:03:09,185
+test case; and with high confidence you can know that data is 
+
+54
+00:03:09,189 --> 00:03:12,189
+going to evaporate when the next test case runs. That helps keep 
+
+55
+00:03:12,192 --> 00:03:15,192
+your tests independent. That brings up the tension between 
+
+56
+00:03:15,195 --> 00:03:19,195
+fixtures and factories. The database is wiped and reloaded 
+
+57
+00:03:19,199 --> 00:03:23,199
+before each spec. If we add this line at the beginning of one of 
+
+58
+00:03:23,203 --> 00:03:25,203
+our described blocks it basically says, " Before you run the 
+
+59
+00:03:25,205 --> 00:03:29,205
+tests on this block, pre- load all of the fixtures described in 
+
+60
+00:03:29,209 --> 00:03:33,209
+this file." The file is " yml", yet another mark- up language. 
+
+61
+00:03:33,213 --> 00:03:36,213
+You've seen " yml" files already in rails, they're trivial. You 
+
+62
+00:03:36,216 --> 00:03:39,216
+can basically specify a handful of movies or whatever, and 
+
+63
+00:03:39,219 --> 00:03:41,219
+they're going to be loaded into the movies table. Convention 
+
+64
+00:03:41,221 --> 00:03:44,221
+over configuration says, " As usual, I'll look at the file name 
+
+65
+00:03:44,224 --> 00:03:47,224
+and I'll infer which database table these fixtures are supposed 
+
+66
+00:03:47,227 --> 00:03:51,227
+to go on." You could do that, and the nice thing about it is 
+
+67
+00:03:51,231 --> 00:03:53,231
+that now you know what the data is. It never changes; it gets 
+
+68
+00:03:53,233 --> 00:03:57,233
+loaded before every test; you can rely on it. On the other hand 
+
+69
+00:03:57,237 --> 00:03:59,237
+you might end up introducing accidental dependencies into your 
+
+70
+00:03:59,239 --> 00:04:03,239
+tests. For example, if you've got a test someplace else that has 
+
+71
+00:04:03,243 --> 00:04:05,243
+to do with counting the number of movies that match some 
+
+72
+00:04:05,245 --> 00:04:08,245
+criterion, if you start adding or subtracting fixtures for other 
+
+73
+00:04:08,248 --> 00:04:12,248
+tests, that may affect the counts that would be performed by the 
+
+74
+00:04:12,252 --> 00:04:14,252
+tests you don't care about. The bad side of a fixture is it's 
+
+75
+00:04:14,254 --> 00:04:16,254
+sort of there for all the tests, whether you want them to be 
+
+76
+00:04:16,256 --> 00:04:20,256
+there or not. As opposed to a factory where, instead what you do 
+
+77
+00:04:20,260 --> 00:04:23,260
+is, you have some helper methods that make it really easy to 
+
+78
+00:04:23,263 --> 00:04:26,263
+create versions of objects that have simple default attributes. 
+
+79
+00:04:26,266 --> 00:04:29,266
+You know they're valid. You can create them for each test and, 
+
+80
+00:04:29,269 --> 00:04:31,269
+because they're only created inside the tests, they're wiped out 
+
+81
+00:04:31,271 --> 00:04:35,271
+after each test. You don't have to worry about independence. 
+
+82
+00:04:35,275 --> 00:04:36,275
+What would this look like? Well, if you're going to do this 
+
+83
+00:04:36,276 --> 00:04:40,276
+don't do it yourself, find a good library [ or a gem 00:04:40]. 
+
+84
+00:04:40,280 --> 00:04:44,280
+I have started to use one called " FactoryGirl", if I can find 
+
+85
+00:04:44,284 --> 00:04:51,284
+it. Here's an example of how you would use FactoryGirl to create 
+
+86
+00:04:51,291 --> 00:04:56,291
+a factory for movies. In one of my factory's definitions I 
+
+87
+00:04:56,296 --> 00:04:59,296
+say, " Whenever I want to create a default version of a movie, 
+
+88
+00:04:59,299 --> 00:05:01,299
+just give it this title, give it this rating, and give it this 
+
+89
+00:05:01,301 --> 00:05:05,301
+release date." On a per- instance basis if I have specific tests 
+
+90
+00:05:05,305 --> 00:05:07,305
+where I want to override those, I can certainly do it. This 
+
+91
+00:05:07,307 --> 00:05:11,307
+basically means whenever I need a sort of, a real movie object, 
+
+92
+00:05:11,311 --> 00:05:14,311
+not a stand- in, but an honest- to- goodness movie, I can just 
+
+93
+00:05:14,314 --> 00:05:17,314
+say, " Build". Here's an example of where, in this case I chose 
+
+94
+00:05:17,317 --> 00:05:20,317
+to override the title. For my own purposes I need the movie to 
+
+95
+00:05:20,320 --> 00:05:23,320
+have a different title. The idea is you have one place where you 
+
+96
+00:05:23,323 --> 00:05:26,323
+put some basic logic that lets you create these objects. Then 
+
+97
+00:05:26,326 --> 00:05:29,326
+creating them is sort of a one- liner, right? It's almost as 
+
+98
+00:05:29,329 --> 00:05:31,329
+easy as creating a mock version of the object, only you get a 
+
+99
+00:05:31,331 --> 00:05:34,331
+real object. The reason you'd want to do this is, as we'll see 
+
+100
+00:05:34,334 --> 00:05:37,334
+when we start doing more complex apps, often there are objects 
+
+101
+00:05:37,337 --> 00:05:40,337
+that have relationships among them. For example, you can imagine 
+
+102
+00:05:40,340 --> 00:05:45,340
+that if I have a movie- goer object, and I have something like a 
+
+103
+00:05:45,345 --> 00:05:48,345
+street address. You can't imagine a movie- goer without a valid 
+
+104
+00:05:48,348 --> 00:05:50,348
+street address. Really, when you create a movie- goer you also 
+
+105
+00:05:50,350 --> 00:05:53,350
+have to create these other ancillary objects that go along with 
+
+106
+00:05:53,353 --> 00:05:56,353
+them. Factories let you do that pretty easily because you can 
+
+107
+00:05:56,356 --> 00:05:58,356
+put all the logic in one place for saying, " This is what it 
+
+108
+00:05:58,358 --> 00:06:01,358
+means to create a usable version of this object." Even if it 
+
+109
+00:06:01,361 --> 00:06:04,361
+also involves temporarily creating these other side objects that 
+
+110
+00:06:04,364 --> 00:06:07,364
+it's going to use. Maybe the usable version of an object itself 
+
+111
+00:06:07,367 --> 00:06:11,367
+relies on mocks that are set up to do these ancillary jobs; all 
+
+112
+00:06:11,371 --> 00:06:13,371
+of those things can be captured in one place in the factory 
+
+113
+00:06:13,373 --> 00:06:20,373
+definition. Which one do you use? As I said, one potential 
+
+114
+00:06:20,380 --> 00:06:25,380
+downside of factories is if you have complex relationships you 
+
+115
+00:06:25,385 --> 00:06:28,385
+have to set up, the factories could get complicated. On the 
+
+116
+00:06:28,388 --> 00:06:30,388
+other hand, whenever you find yourself in a situation like that, 
+
+117
+00:06:30,390 --> 00:06:33,390
+what it should be telling you is, " There's something about your 
+
+118
+00:06:33,393 --> 00:06:36,393
+code that's not well- factored." If doing a simple test requires 
+
+119
+00:06:36,396 --> 00:06:39,396
+setting up a lot of complex relationships, there must be a 
+
+120
+00:06:39,399 --> 00:06:42,399
+function somewhere that knows way more than it should about all 
+
+121
+00:06:42,402 --> 00:06:44,402
+of those relationships. You should be looking at how to re- 
+
+122
+00:06:44,404 --> 00:06:47,404
+factor your classes, so that they don't have such dense cross- 
+
+123
+00:06:47,407 --> 00:06:49,407
+connections. We'll talk about that quite a bit when we talk 
+
+124
+00:06:49,409 --> 00:06:53,409
+about re- factoring. How do you know if you've committed one of 
+
+125
+00:06:53,413 --> 00:06:56,413
+the blunders of factories versus fixtures? One of my favorite 
+
+126
+00:06:56,416 --> 00:06:58,416
+ones is called the " mock train wreck". To motivate it here is 
+
+127
+00:06:58,418 --> 00:07:02,418
+an example of we want to test a hypothetical method that would 
+
+128
+00:07:02,422 --> 00:07:05,422
+search for a movie by its director, or by the Oscars that it 
+
+129
+00:07:05,425 --> 00:07:08,425
+received, by the awards it received. This is the thing we'd 
+
+130
+00:07:08,428 --> 00:07:15,428
+ultimately want to write in our tests. Here's the same test we 
+
+131
+00:07:15,435 --> 00:07:17,435
+want to check for the name of a director. If we wanted to put 
+
+132
+00:07:17,437 --> 00:07:19,437
+things like this into our test, that means that we have to have 
+
+133
+00:07:19,439 --> 00:07:22,439
+a movie object. The movie object has to be associated with the 
+
+134
+00:07:22,442 --> 00:07:26,442
+director object, which has to have a name attribute. The fact 
+
+135
+00:07:26,446 --> 00:07:28,446
+that we're chaining these three things together means that the 
+
+136
+00:07:28,448 --> 00:07:31,448
+movie object knows a whole lot about an object that is its 
+
+137
+00:07:31,451 --> 00:07:36,451
+grandchildren. If we wanted to actually set this up we could 
+
+138
+00:07:36,456 --> 00:07:38,456
+mock the award, we could mock what a director is, and then we 
+
+139
+00:07:38,458 --> 00:07:41,458
+could mock a movie that has those two things as attributes. By 
+
+140
+00:07:41,461 --> 00:07:44,461
+now you really should be asking yourself, " Wait a minute. Why 
+
+141
+00:07:44,464 --> 00:07:47,464
+is it again if the award type is an important thing for the 
+
+142
+00:07:47,467 --> 00:07:50,467
+movie to know, shouldn't the award object expose that as a first 
+
+143
+00:07:50,470 --> 00:07:53,470
+class attribute, as a first class getter?" By the way if it did 
+
+144
+00:07:53,473 --> 00:07:56,473
+that, we could just stub that getter directly. We wouldn't have 
+
+145
+00:07:56,476 --> 00:07:59,476
+to go through this dance of creating a sequence of mocks, hence 
+
+146
+00:07:59,479 --> 00:08:02,479
+the name " mock train wreck"; they're all chained together. The 
+
+147
+00:08:02,482 --> 00:08:05,482
+real problem is that the movie shouldn't know things about its 
+
+148
+00:08:05,485 --> 00:08:08,485
+descendants. It should know things about awards, but it 
+
+149
+00:08:08,488 --> 00:08:11,488
+shouldn't know the sub- classes or the attributes of awards; 
+
+150
+00:08:11,491 --> 00:08:14,491
+that's too much information. We'll talk about that more when we 
+
+151
+00:08:14,494 --> 00:08:17,494
+come back to refactoring. As a preview, that's called " 
+
+152
+00:08:17,497 --> 00:08:20,497
+inappropriate intimacy". A movie has no business reaching into 
+
+153
+00:08:20,500 --> 00:08:23,500
+award and understanding its internals. Take that any way you 
+
+154
+00:08:23,503 --> 00:08:28,503
+wish. Now that you've learned about fixtures and factories 
+
+155
+00:08:28,508 --> 00:08:32,508
+here's a good intuition question. What are examples of kinds of 
+
+156
+00:08:32,512 --> 00:08:35,512
+data that should not be set up as fixtures? Which one of these, 
+
+157
+00:08:35,515 --> 00:08:38,515
+if any, would not be a good candidate for doing a fixture? 
+
+158
+00:08:38,518 --> 00:08:42,518
+Movies and their ratings; the API key for TMDb in the TMDb 
+
+159
+00:08:42,522 --> 00:08:46,522
+example we've been doing; or time zone settings for the 
+
+160
+00:08:46,526 --> 00:08:50,526
+application wherever it runs. Would not be a good candidate for 
+
+161
+00:08:50,530 --> 00:08:54,530
+fixturing, and of course why? 
+
+

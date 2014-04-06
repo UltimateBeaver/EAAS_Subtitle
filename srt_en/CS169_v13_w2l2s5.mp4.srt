@@ -1,0 +1,481 @@
+1
+00:00:00,000 --> 00:00:03,000
+What do we mean when we say all programming is metaprogramming?
+
+2
+00:00:03,003 --> 00:00:06,003
+What are metaprogramming and reflection? They're $ 20 words. It 
+
+3
+00:00:06,006 --> 00:00:09,006
+should make you feel smarter to use them, but reflection means 
+
+4
+00:00:09,009 --> 00:00:12,009
+we can ask an object questions about itself at runtime. We can 
+
+5
+00:00:12,012 --> 00:00:16,012
+have it modify itself at runtime, and metaprogramming means when 
+
+6
+00:00:16,016 --> 00:00:20,016
+we write code whose job is to write new code that at runtime 
+
+7
+00:00:20,020 --> 00:00:23,020
+actually causes interesting things to happen. The question is, 
+
+8
+00:00:23,023 --> 00:00:26,023
+are these just $ 20 words to make you feel smarter or do they 
+
+9
+00:00:26,026 --> 00:00:29,026
+play some role in making your code more dry and more concise or 
+
+10
+00:00:29,029 --> 00:00:33,029
+otherwise easier to read. Of course, I wouldn't be explaining it 
+
+11
+00:00:33,033 --> 00:00:36,033
+unless there was an affirmative answer to that question, so to 
+
+12
+00:00:36,036 --> 00:00:38,036
+illustrate it, let's modify a bank account to make it 
+
+13
+00:00:38,038 --> 00:00:41,038
+international. We want to be able to deposit other currencies. 
+
+14
+00:00:41,041 --> 00:00:44,041
+We can already say, deposit $ 100. It'd be nice if we could 
+
+15
+00:00:44,044 --> 00:00:48,044
+deposit, let's say Euros, so we could deposit Euros to dollars ( 
+
+16
+00:00:48,048 --> 00:00:51,048
+20), but that's pretty ugly. That looks like something a 
+
+17
+00:00:51,051 --> 00:00:55,051
+programmer might write. Twenty Euros is like a dollar in today's 
+
+18
+00:00:55,055 --> 00:00:58,055
+currency or something. Okay, so that's ugly. What else might we 
+
+19
+00:00:58,058 --> 00:01:01,058
+do. If we were in a traditional [ Inaudible 00:01:01] language, 
+
+20
+00:01:01,061 --> 00:01:06,061
+we might be forced into something like this, substantiating a 
+
+21
+00:01:06,066 --> 00:01:09,066
+currency converter ... yeah, I know, right? Groan with me. 
+
+22
+00:01:09,069 --> 00:01:13,069
+That's terrible. So, that's not beautiful. We're all about 
+
+23
+00:01:13,073 --> 00:01:17,073
+trying to write beautiful code. So what would we like to be able 
+
+24
+00:01:17,077 --> 00:01:19,077
+to say? What would be a more readable version of what we want to 
+
+25
+00:01:19,079 --> 00:01:24,079
+do? That's dollars. How about that for Euros? That's pretty 
+
+26
+00:01:24,084 --> 00:01:28,084
+clear what you want to do. This is no problem in Ruby because 
+
+27
+00:01:28,088 --> 00:01:31,088
+one of the nice things about a dynamic language is that we have 
+
+28
+00:01:31,091 --> 00:01:34,091
+open classes. That means that we can modify, not only creating 
+
+29
+00:01:34,094 --> 00:01:37,094
+our own classes, but modifying and extending the classes that 
+
+30
+00:01:37,097 --> 00:01:42,097
+Ruby ships with. How would we do this? We already know 
+
+31
+00:01:42,102 --> 00:01:44,102
+everything is a method call, right? So if we write this, we're 
+
+32
+00:01:44,104 --> 00:01:48,104
+saying that Euros must be a method that we can invoke on the 
+
+33
+00:01:48,108 --> 00:01:51,108
+receiver 20. That makes it an instance method of the numeric 
+
+34
+00:01:51,111 --> 00:01:55,111
+class. No problem. We open the class. We define our Euros 
+
+35
+00:01:55,115 --> 00:01:57,115
+according to an exchange rate that is what we call 'the good ol' 
+
+36
+00:01:57,117 --> 00:02:01,117
+days' in the United States, and we're done. Does this really 
+
+37
+00:02:01,121 --> 00:02:11,121
+work? Let's try it. I reopened the class. I added a method. 
+
+38
+00:02:11,131 --> 00:02:16,131
+Pretty cool. Before you gasp in further astonishment, let's go 
+
+39
+00:02:16,136 --> 00:02:25,136
+further than this. What about that? What about that? This is 
+
+40
+00:02:25,145 --> 00:02:30,145
+problematic because our function is called Euros, not Euro. 
+
+41
+00:02:30,150 --> 00:02:32,150
+There's a dry solution to that, but to motivate the solution 
+
+42
+00:02:32,152 --> 00:02:36,152
+further, let's try something even more ambitious. Let's go 
+
+43
+00:02:36,156 --> 00:02:40,156
+beyond that and say, I also want to support other currencies. 
+
+44
+00:02:40,160 --> 00:02:43,160
+But it'd be kind of wasteful if all I'm really dealing with is a 
+
+45
+00:02:43,163 --> 00:02:46,163
+list of currency names and conversion factors. I don't really 
+
+46
+00:02:46,166 --> 00:02:49,166
+want to write end separate methods that look like my three- line 
+
+47
+00:02:49,169 --> 00:02:54,169
+method, so surely there's a drier way to do this. There is in 
+
+48
+00:02:54,174 --> 00:02:57,174
+fact a drier way to do this, and here's one possible solution. 
+
+49
+00:02:57,177 --> 00:03:00,177
+I've reopened the class numeric just like before, but now I have 
+
+50
+00:03:00,000 --> 00:03:03,180
+a more general ... here's my hash, which just maps currency 
+
+51
+00:03:03,183 --> 00:03:06,183
+names to conversion factors, no surprises there. This is the 
+
+52
+00:03:06,186 --> 00:03:10,186
+cool part. One of the facilities in Ruby is called method 
+
+53
+00:03:10,190 --> 00:03:15,190
+missing, so method missing gets called when you call a method on 
+
+54
+00:03:15,195 --> 00:03:17,195
+the receiver and the receiver doesn't know any method by that 
+
+55
+00:03:17,197 --> 00:03:21,197
+name, but if you've defined a method called method missing in 
+
+56
+00:03:21,201 --> 00:03:25,201
+your class, it will receive the call instead. Method missing is 
+
+57
+00:03:25,205 --> 00:03:28,205
+passed up to three arguments. The first one is the actual name 
+
+58
+00:03:28,208 --> 00:03:30,208
+of the method you tried to call, but which doesn't appear to 
+
+59
+00:03:30,210 --> 00:03:34,210
+exist, a list of the arguments that that method would have 
+
+60
+00:03:34,214 --> 00:03:37,214
+received if it existed, and optionally a block. We'll learn a 
+
+61
+00:03:37,217 --> 00:03:41,217
+lot more about blocks shortly, but because most Ruby methods are 
+
+62
+00:03:41,221 --> 00:03:43,221
+written so that they can take a block as an argument, there's 
+
+63
+00:03:43,223 --> 00:03:46,223
+the possibility that our method could be allowed to as well. 
+
+64
+00:03:46,226 --> 00:03:50,226
+What method missing does in our case is, it looks at the method 
+
+65
+00:03:50,230 --> 00:03:55,230
+ID, converts it to a string, gets rid of any final S ... 
+
+66
+00:03:55,235 --> 00:03:58,235
+remember we had the problem of wanting to be able to call 1. 
+
+67
+00:03:58,238 --> 00:04:01,238
+Euro as well as 1. Euros ... so we're basically going to 
+
+68
+00:04:01,241 --> 00:04:05,241
+canonicalize the name of a currency to its singular, and then we 
+
+69
+00:04:05,245 --> 00:04:08,245
+just ask whether we already have a key for that currency and we 
+
+70
+00:04:08,248 --> 00:04:13,248
+convert it. Minds are slowly being blown. I can feel it. I can 
+
+71
+00:04:13,253 --> 00:04:15,253
+feel it from across the screen that minds are being blown. Let's 
+
+72
+00:04:15,255 --> 00:04:18,255
+actually see what happens here when we do this. I will copy that 
+
+73
+00:04:18,258 --> 00:04:27,258
+code. I'm back in the interpreter. Hmm. So what's going on here 
+
+74
+00:04:27,267 --> 00:04:31,267
+if I do something like ... this didn't work, right?. So what 
+
+75
+00:04:31,271 --> 00:04:35,271
+went wrong here? Method missing got called, right? In fact, the 
+
+76
+00:04:35,275 --> 00:04:38,275
+debugger is helpfully telling us that where things went sour is 
+
+77
+00:04:38,278 --> 00:04:42,278
+in method missing. Here's my method missing that I defined. 
+
+78
+00:04:42,282 --> 00:04:45,282
+Here's the problem right here, right? We don't have a key in our 
+
+79
+00:04:45,285 --> 00:04:49,285
+currencies array for pound, so that fails, and when that fails, 
+
+80
+00:04:49,289 --> 00:04:53,289
+what happens? Then I call, I try to basically punt up to my 
+
+81
+00:04:53,293 --> 00:04:57,293
+super class. As in all [ Inaudible 00:04:55] languages, there is 
+
+82
+00:04:57,297 --> 00:05:00,297
+the idea that if you don't have a function, but your super class 
+
+83
+00:05:00,000 --> 00:05:03,300
+or one of your ancestor classes does have it, it gets control. 
+
+84
+00:05:03,303 --> 00:05:06,303
+Well, Ruby has the same thing with the difference that method 
+
+85
+00:05:06,306 --> 00:05:09,306
+missing is called first, so before my ancestor gets a chance to 
+
+86
+00:05:09,309 --> 00:05:12,309
+handle it, I get a chance to handle it using method missing. So 
+
+87
+00:05:12,312 --> 00:05:15,312
+this is a nice extensible way to do the thing that we were 
+
+88
+00:05:15,315 --> 00:05:26,315
+trying to do before. Get it? Dry. So what does this mean? 
+
+89
+00:05:26,326 --> 00:05:30,326
+Reflection and metaprogramming are not just these fancy big 
+
+90
+00:05:30,330 --> 00:05:33,330
+concepts. You can ask Ruby objects questions about themselves at 
+
+91
+00:05:33,333 --> 00:05:37,333
+runtime. For example, method missing gets to look at the name of 
+
+92
+00:05:37,337 --> 00:05:39,337
+the method that would have been called and the arguments that 
+
+93
+00:05:39,339 --> 00:05:41,339
+that method would have received. We can use that information to 
+
+94
+00:05:41,341 --> 00:05:45,341
+generate new code at runtime. That's what attr_ accessor is 
+
+95
+00:05:45,345 --> 00:05:49,345
+exactly doing, right? It's creating, on the fly, getters and 
+
+96
+00:05:49,349 --> 00:05:52,349
+setters for instance variables, which means you can have code 
+
+97
+00:05:52,352 --> 00:05:56,352
+that writes code, and as we just saw, you can reopen any class, 
+
+98
+00:05:56,356 --> 00:05:58,356
+whether it's your own or whether it's one of Ruby's built in- 
+
+99
+00:05:58,358 --> 00:06:01,358
+classes, at any time, and you can add stuff to it or you can 
+
+100
+00:06:01,361 --> 00:06:05,361
+modify what it does. Now, one of the things about Ruby that when 
+
+101
+00:06:05,365 --> 00:06:08,365
+I first explain this to people who come from another language, 
+
+102
+00:06:08,368 --> 00:06:11,368
+one reaction that is very common is, " Oh, my gosh, that's 
+
+103
+00:06:11,371 --> 00:06:14,371
+chaos. You mean you could reopen any class and if I'm working 
+
+104
+00:06:14,374 --> 00:06:16,374
+with somebody's code, I don't really know if a string is a 
+
+105
+00:06:16,376 --> 00:06:19,376
+string or if it's a special kind of string, and if I call a 
+
+106
+00:06:19,379 --> 00:06:21,379
+method and they've got all kinds of method missing hooks, then 
+
+107
+00:06:21,381 --> 00:06:23,381
+I'm not really calling the method that I thought I was calling, 
+
+108
+00:06:23,383 --> 00:06:28,383
+that's chaos." Here's my message to you. You're all grownups. At 
+
+109
+00:06:28,388 --> 00:06:31,388
+least I assume most of you are grownups, and with great power 
+
+110
+00:06:31,391 --> 00:06:34,391
+comes great responsibility, right? Any language that gives you 
+
+111
+00:06:34,394 --> 00:06:37,394
+enough rope to hang yourself, demands that you have a certain 
+
+112
+00:06:37,397 --> 00:06:40,397
+amount of taste in when it's good to do this. If in doubt, you 
+
+113
+00:06:40,400 --> 00:06:42,400
+can ask somebody who's more experienced. You can look at other 
+
+114
+00:06:42,402 --> 00:06:46,402
+people's code, and it's true that there are some abuses of these 
+
+115
+00:06:46,406 --> 00:06:48,406
+features as there are with any good features. Any good 
+
+116
+00:06:48,408 --> 00:06:51,408
+technology can be used for good or evil purposes. We will try to 
+
+117
+00:06:51,411 --> 00:06:54,411
+present examples of good purposes that lead to beautiful code, 
+
+118
+00:06:54,414 --> 00:06:57,414
+but things like code review, pair programming and so on are 
+
+119
+00:06:57,417 --> 00:07:00,417
+going to help us avoid some of the worst excesses that would 
+
+120
+00:07:00,000 --> 00:07:04,420
+lead to poor usages and/ or abuses of these features. 
+
+

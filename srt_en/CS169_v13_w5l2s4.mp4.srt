@@ -1,0 +1,321 @@
+1
+00:00:00,000 --> 00:00:06,000
+Here, let's wrap up BDD here and there's BDD seems like a pretty 
+
+2
+00:00:06,006 --> 00:00:10,006
+simple set of ideas, common sense once you explain them. We'll 
+
+3
+00:00:10,010 --> 00:00:13,010
+have to see if you follow them but there's a lot of pitfalls 
+
+4
+00:00:13,013 --> 00:00:17,013
+here. The first one is because we're talking about this is the 
+
+5
+00:00:17,017 --> 00:00:22,017
+user interfaces as well as how you helped the code. You've 
+
+6
+00:00:22,022 --> 00:00:26,022
+started meeting with customers and the reason that their ... 
+
+7
+00:00:26,026 --> 00:00:28,026
+when you see a three by five card, show it to the customer they 
+
+8
+00:00:28,028 --> 00:00:30,028
+don't think it's been implemented, right? Tell them a piece of 
+
+9
+00:00:30,030 --> 00:00:34,030
+paper. If you do a mock up of you using interface with just, 
+
+10
+00:00:34,034 --> 00:00:40,034
+it's easier for you to use [ Hamel 00:00:36] to make up a screen 
+
+11
+00:00:40,040 --> 00:00:42,040
+image and flash it up there. The customers are liable to think 
+
+12
+00:00:42,042 --> 00:00:45,042
+that you already built and be kind of reticent to make changes 
+
+13
+00:00:45,045 --> 00:00:47,045
+to it. That is until late in the project when they say, " No, I 
+
+14
+00:00:47,047 --> 00:00:49,047
+don't like to use interface," and make you start over, then, " 
+
+15
+00:00:49,049 --> 00:00:51,049
+Why didn't you tell me that earlier, while they were little 
+
+16
+00:00:51,051 --> 00:00:56,051
+intimidated by the code." Stick to that paper and pencil, crayon 
+
+17
+00:00:56,056 --> 00:01:02,056
+based mock up so they won't be afraid to change it. A relate 
+
+18
+00:01:02,062 --> 00:01:05,062
+thing is to just doing the sketches but not doing the story 
+
+19
+00:01:05,065 --> 00:01:09,065
+boards. The user interface involves the interaction of all these 
+
+20
+00:01:09,069 --> 00:01:13,069
+pages and you want the customer to agree that how this are 
+
+21
+00:01:13,073 --> 00:01:16,073
+related together before you spend the time building the things, 
+
+22
+00:01:16,076 --> 00:01:19,076
+and again the storyboards. If you actually, if go to YouTube and 
+
+23
+00:01:19,079 --> 00:01:22,079
+you look up user stories somebody even took the time to make a 
+
+24
+00:01:22,082 --> 00:01:26,082
+little stop action movie with it and said a while which you 
+
+25
+00:01:26,086 --> 00:01:28,086
+could do as well. I don't think they'll be ... they won't think 
+
+26
+00:01:28,088 --> 00:01:36,088
+to stop action with paste, colors, color crayons and pasty 
+
+27
+00:01:36,096 --> 00:01:38,096
+paper. They're going to think that's a real user interface but 
+
+28
+00:01:38,098 --> 00:01:41,098
+they animated then I push this and the changes around. Do 
+
+29
+00:01:41,101 --> 00:01:45,101
+something and show them to make sure you get it in advance. Now, 
+
+30
+00:01:45,105 --> 00:01:50,105
+the more traditional software delinquent pitfalls that Agile was 
+
+31
+00:01:50,110 --> 00:01:53,110
+invented to try and prevent which is a thing to do is that the 
+
+32
+00:01:53,113 --> 00:01:55,113
+programmer, developers come up with some feature that they think 
+
+33
+00:01:55,115 --> 00:01:58,115
+would be cool. Right? Oh man. They see that it's cool because it 
+
+34
+00:01:58,118 --> 00:02:01,118
+would be fun to program or they think the customer's going to 
+
+35
+00:02:01,121 --> 00:02:06,121
+really like this but then it gets rejected when the customer, 
+
+36
+00:02:06,126 --> 00:02:13,126
+they were at wrong. The customer didn't really want that. You're 
+
+37
+00:02:13,133 --> 00:02:17,133
+BDD is all about going to the customer and figuring out what you 
+
+38
+00:02:17,137 --> 00:02:21,137
+want to write before you'd write the code. What you write stick 
+
+39
+00:02:21,141 --> 00:02:27,141
+around. We want to try and avoid that waste of effort. Trying to 
+
+40
+00:02:27,147 --> 00:02:30,147
+predict what you need or things that you think will be cool, 
+
+41
+00:02:30,150 --> 00:02:33,150
+don't do that, listen to your customer and don't waste your 
+
+42
+00:02:33,153 --> 00:02:38,153
+time. Another issue or pitfall and these are pitfalls because 
+
+43
+00:02:38,158 --> 00:02:42,158
+there they can easy to happen even though if their coming, is to 
+
+44
+00:02:42,162 --> 00:02:45,162
+think their done when you done the happy path, right? You got a 
+
+45
+00:02:45,165 --> 00:02:48,165
+happy path for each of the features and so it seems to work that 
+
+46
+00:02:48,168 --> 00:02:53,168
+you done. You really need a sad path as well as a happy path. 
+
+47
+00:02:53,173 --> 00:02:56,173
+From a customer's perspective it's just as important as the [ 
+
+48
+00:02:56,176 --> 00:03:05,176
+feature 00:02:56] when I had works but when a user makes a 
+
+49
+00:03:05,185 --> 00:03:10,185
+mistake that it doesn't blow up, right? That it will record an 
+
+50
+00:03:10,190 --> 00:03:13,190
+air message. Studies of humans that we just have an error right. 
+
+51
+00:03:13,193 --> 00:03:17,193
+You'll hear a mondo and I say the wrong word, we know the right 
+
+52
+00:03:17,197 --> 00:03:19,197
+word in the lectures but we just use the wrong word. Humans have 
+
+53
+00:03:19,199 --> 00:03:24,199
+an error right, so the error is human. At part of building an 
+
+54
+00:03:24,204 --> 00:03:29,204
+app successfully is to make sure you have both sad path and a 
+
+55
+00:03:29,209 --> 00:03:33,209
+happy path working. On the other hand, dunk over board on the 
+
+56
+00:03:33,213 --> 00:03:36,213
+sad paths. How many ways can my app go wrong? There's millions 
+
+57
+00:03:36,216 --> 00:03:38,216
+of bugs, unlimited number of bugs you could have. If you start 
+
+58
+00:03:38,218 --> 00:03:41,218
+seeing user stories then I should not see this, and then I 
+
+59
+00:03:41,221 --> 00:03:44,221
+should not see that. You got a lot of steps of what you should 
+
+60
+00:03:44,224 --> 00:03:46,224
+not see. Be aware because there's an incredible number of them. 
+
+61
+00:03:46,226 --> 00:03:49,226
+You need to have some sad paths but you can't anticipate all 
+
+62
+00:03:49,229 --> 00:03:54,229
+possible bugs. Then the flip side to is you have to be careful 
+
+63
+00:03:54,234 --> 00:03:58,234
+on the happy path when you're looking for positive expectations, 
+
+64
+00:03:58,238 --> 00:04:02,238
+like in a movie page, you have to be careful so then I should 
+
+65
+00:04:02,242 --> 00:04:06,242
+see the movie Emma. Depending on your user interface that name 
+
+66
+00:04:06,246 --> 00:04:10,246
+of a movie might show up many places on page and so you could 
+
+67
+00:04:10,250 --> 00:04:13,250
+pass even the pictures not working, it's not where you want. 
+
+68
+00:04:13,253 --> 00:04:18,253
+What do you do about that? Capybara has some, if you see the 
+
+69
+00:04:18,258 --> 00:04:22,258
+restricts, the documentation about Capybara, it has some helpers 
+
+70
+00:04:22,262 --> 00:04:24,262
+to help you narrow the focus to the sections of the page where 
+
+71
+00:04:24,264 --> 00:04:29,264
+you can look at. In this example, then I should see Emma within 
+
+72
+00:04:29,269 --> 00:04:35,269
+this shopping cart area. We hope by going over this pitfalls 
+
+73
+00:04:35,275 --> 00:04:42,275
+you're less likely to fall into the pits. With that let's go 
+
+74
+00:04:42,282 --> 00:04:46,282
+over another pure instructions. Which statement is false about 
+
+75
+00:04:46,286 --> 00:04:51,286
+Lo- FI UI and BDD? The purpose of Lo- Fi UI approach is to debug 
+
+76
+00:04:51,291 --> 00:04:54,291
+the UI before you program it. A BDD downside is requiring 
+
+77
+00:04:54,294 --> 00:04:59,294
+continuous contact with customers, which may not be possible. A 
+
+78
+00:04:59,299 --> 00:05:03,299
+BDD downside is that it may lead to poor software architecture 
+
+79
+00:05:03,303 --> 00:05:07,303
+since this focus on behavior. None are false, all three above 
+
+80
+00:05:07,307 --> 00:05:10,307
+are true. Think I met there. 
+
+

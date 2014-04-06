@@ -1,0 +1,73 @@
+1
+00:00:00,000 --> 00:00:02,000
+Okay, let's try the [ inaudible 00:01]. Ready. Set. Vote. Let's 
+
+2
+00:00:02,002 --> 00:00:07,002
+see what colors we get. Lots of blues and oranges, so why don't 
+
+3
+00:00:07,007 --> 00:00:13,007
+you talk it over. Ready. Set, let's vote as teams and see if the 
+
+4
+00:00:13,013 --> 00:00:19,013
+colors change and vote. it's a lot bluer than it was last time 
+
+5
+00:00:19,019 --> 00:00:23,019
+so let's see what it was. Explicit scenarios, starting with the 
+
+6
+00:00:23,023 --> 00:00:26,023
+second one, it's explicit scenarios usually capture integration 
+
+7
+00:00:26,026 --> 00:00:28,026
+tests. No, they're usually the acceptance test. This is the 
+
+8
+00:00:28,028 --> 00:00:31,028
+thing. The customer you talk about, you got it on a 3x5 card, 
+
+9
+00:00:31,031 --> 00:00:36,031
+that's probably an acceptance test. Declarative scenarios aim to 
+
+10
+00:00:36,036 --> 00:00:40,036
+capture implementation as well as behavior, their aiming at 
+
+11
+00:00:40,040 --> 00:00:43,040
+behavior, so people didn't vote for that one. The first one, 
+
+12
+00:00:43,043 --> 00:00:45,043
+explicit requirements are usually defined with imperative 
+
+13
+00:00:45,045 --> 00:00:48,045
+scenarios and implicit requirements. No, that was just like 
+
+14
+00:00:48,048 --> 00:00:51,048
+Armando last time, just put all the words together. There's no 
+
+15
+00:00:51,051 --> 00:00:55,051
+relationship between ... explicit/ implicit is orthogonal from 
+
+16
+00:00:55,055 --> 00:00:59,055
+declarative and imperative, so that's the other thing. The right 
+
+17
+00:00:59,059 --> 00:01:05,059
+answer was blue. All these are false. Any questions about that? 
+
+18
+00:01:05,065 --> 00:01:05,065
+Good. 
+
+

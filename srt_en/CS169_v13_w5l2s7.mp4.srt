@@ -1,0 +1,441 @@
+1
+00:00:00,000 --> 00:00:03,000
+We're going to start talking about RSpec and Rails. We got a 
+
+2
+00:00:03,003 --> 00:00:06,003
+brief introduction to RSpec recently, and I don't know how many 
+
+3
+00:00:06,006 --> 00:00:09,006
+of you have actually taken to heart our advice that as you do 
+
+4
+00:00:09,009 --> 00:00:11,009
+these homeworks, even though right now we're providing test 
+
+5
+00:00:11,011 --> 00:00:15,011
+cases for you, we wanted you to start reading the test cases, 
+
+6
+00:00:15,015 --> 00:00:19,015
+just to understand what they look like, and start getting by 
+
+7
+00:00:19,019 --> 00:00:21,019
+osmosis a sense of what our spec code looks like. Because now 
+
+8
+00:00:21,021 --> 00:00:24,021
+we're going to start talking about it in a lot more detail. 
+
+9
+00:00:24,024 --> 00:00:29,024
+Interestingly, as Dave said, the previous cohort of students, 
+
+10
+00:00:29,029 --> 00:00:32,029
+when we introduce BDD to them, I was afraid that BDD and 
+
+11
+00:00:32,032 --> 00:00:35,032
+Cucumber would be where the cognitive sticking point was, 
+
+12
+00:00:35,035 --> 00:00:38,035
+because it's a new tool, it's a new kind of language, it's not 
+
+13
+00:00:38,038 --> 00:00:42,038
+actually code, it's somewhere between code and natural language. 
+
+14
+00:00:42,042 --> 00:00:46,042
+In fact, students, once they had gotten used to doing it, they 
+
+15
+00:00:46,046 --> 00:00:48,046
+really embraced it, and I think they absorbed the fact that it 
+
+16
+00:00:48,048 --> 00:00:51,048
+was a natural way to communicate with a customer, and also 
+
+17
+00:00:51,051 --> 00:00:55,051
+express integration test. That was great. What we didn't expect 
+
+18
+00:00:55,055 --> 00:00:59,055
+was that people had more difficulty than we anticipated grasping 
+
+19
+00:00:59,059 --> 00:01:01,059
+the unit and functional testing at the level that you would do 
+
+20
+00:01:01,061 --> 00:01:06,061
+with RSpec. Hopefully this time around, we'll do even better. We 
+
+21
+00:01:06,066 --> 00:01:08,066
+already got introduced to the idea that RSPec is this domain- 
+
+22
+00:01:08,068 --> 00:01:11,068
+specific language for testing. We already know, because we have 
+
+23
+00:01:11,071 --> 00:01:13,071
+be following along looking at the homeworks, that there is a 
+
+24
+00:01:13,073 --> 00:01:18,073
+spec directory, and what we haven't told you yet is, just like 
+
+25
+00:01:18,078 --> 00:01:20,078
+we have a generator that we used, for example when we created 
+
+26
+00:01:20,080 --> 00:01:22,080
+migrations, it creates some empty code for you in the right 
+
+27
+00:01:22,082 --> 00:01:26,082
+places, there is a generator that you can run on your Rails 
+
+28
+00:01:26,086 --> 00:01:29,086
+app, " rails generate rspec: install", that will generate all 
+
+29
+00:01:29,089 --> 00:01:33,089
+the directories so that tests will be placed in the right 
+
+30
+00:01:33,093 --> 00:01:35,093
+locations that it expects to find them. Now in the homeworks 
+
+31
+00:01:35,095 --> 00:01:38,095
+you've had so far, we really just had two subdirectories of 
+
+32
+00:01:38,098 --> 00:01:41,098
+interest. There is a lib subdirectory, where your code goes, and 
+
+33
+00:01:41,101 --> 00:01:45,101
+there is a spec subdirectory, where the tests go. In fact, in 
+
+34
+00:01:45,105 --> 00:01:47,105
+order to keep the tests a little bit better organized for Rails 
+
+35
+00:01:47,107 --> 00:01:50,107
+apps, there's actually three different kinds of tests we're 
+
+36
+00:01:50,110 --> 00:01:52,110
+going to write. There's the unit tests, which mostly test the 
+
+37
+00:01:52,112 --> 00:01:56,112
+models, sometimes test the helpers. There's functional tests, 
+
+38
+00:01:56,116 --> 00:01:59,116
+which mostly test controller methods. What about integration 
+
+39
+00:01:59,119 --> 00:02:03,119
+tests? Could we write RSpec tests around views? Some people do, 
+
+40
+00:02:03,123 --> 00:02:07,123
+some people don't. There's mixed opinion about it. Our view is 
+
+41
+00:02:07,127 --> 00:02:11,127
+that integration testing is really part of the process of coming 
+
+42
+00:02:11,131 --> 00:02:13,131
+to agreement with the customer. Our view is that it's fine to 
+
+43
+00:02:13,133 --> 00:02:16,133
+use Cucumber as the way of expressing your integration test, 
+
+44
+00:02:16,136 --> 00:02:19,136
+because you can express things like what should appear, or 
+
+45
+00:02:19,139 --> 00:02:22,139
+should not appear in the views. Having said that, be aware that 
+
+46
+00:02:22,142 --> 00:02:24,142
+even though we're not going to talk about it much in this class, 
+
+47
+00:02:24,144 --> 00:02:28,144
+you can, in fact, write specs for your views. We'll give some 
+
+48
+00:02:28,148 --> 00:02:31,148
+examples of the kind of things you might put into a spec for a 
+
+49
+00:02:31,151 --> 00:02:35,151
+view if you were to write one. In terms of a Rails application, 
+
+50
+00:02:35,155 --> 00:02:38,155
+just like we have subdirectories for models, controllers and 
+
+51
+00:02:38,158 --> 00:02:42,158
+views, there's a parallel hierarchy under spec where our, model 
+
+52
+00:02:42,162 --> 00:02:45,162
+specs, controller specs, and if we wrote view specs, there would 
+
+53
+00:02:45,165 --> 00:02:47,165
+be a place for them, but we're fine having everybody just use 
+
+54
+00:02:47,167 --> 00:02:51,167
+Cucumber for that. The example we are going to pick up on is 
+
+55
+00:02:51,171 --> 00:02:55,171
+going back to the BDD example, where we're adding this method 
+
+56
+00:02:55,175 --> 00:02:57,175
+where we're hypothetically going to call out to the TMDb 
+
+57
+00:02:57,177 --> 00:03:00,177
+service, and be able to populate our movie database using 
+
+58
+00:03:00,000 --> 00:03:05,180
+information from that. Remember that the setup for this was in 
+
+59
+00:03:05,185 --> 00:03:09,185
+the sad path for the Cucumber test, there was a step, and I 
+
+60
+00:03:09,189 --> 00:03:14,189
+pressed " Search TMDb", and the idea is that in a fully working 
+
+61
+00:03:14,194 --> 00:03:16,194
+app, that would invoke a controller method that would actually 
+
+62
+00:03:16,196 --> 00:03:20,196
+cause the external service to be queried, return the data, and 
+
+63
+00:03:20,200 --> 00:03:25,200
+then put that data into our model. What would we do to actually 
+
+64
+00:03:25,205 --> 00:03:28,205
+fill out that example? Remember we said that there's this BDD/ 
+
+65
+00:03:28,208 --> 00:03:32,208
+TDD interaction. You start with a step of a Cucumber scenario, 
+
+66
+00:03:32,212 --> 00:03:35,212
+and because there's no code, that step will fail, and now we're 
+
+67
+00:03:35,215 --> 00:03:36,215
+going to get to the point where, " Okay, time to write the code 
+
+68
+00:03:36,216 --> 00:03:39,216
+for that step to pass." We're recursively going to take the same 
+
+69
+00:03:39,219 --> 00:03:42,219
+idea. We're going to first think about what we would like that 
+
+70
+00:03:42,222 --> 00:03:45,222
+code to do, how we wish it would behave if we had it. We're 
+
+71
+00:03:45,225 --> 00:03:48,225
+going to write tests that capture those behaviors, and then 
+
+72
+00:03:48,228 --> 00:03:52,228
+piecemeal, we're going to backfill the code, so that it does 
+
+73
+00:03:52,232 --> 00:03:54,232
+what the tests say that it should do. Conceptually not very 
+
+74
+00:03:54,234 --> 00:03:58,234
+difficult, feels totally unnatural the first time you do it, so 
+
+75
+00:03:58,238 --> 00:04:01,238
+you're going to have to stick with us. Recall when we said 
+
+76
+00:04:01,241 --> 00:04:04,241
+you're adding new functionality to a Rails app, there's these 
+
+77
+00:04:04,244 --> 00:04:07,244
+things you always have to do. You have to add a new route, new 
+
+78
+00:04:07,247 --> 00:04:09,247
+controller method, and new view. We're now going to focus on the 
+
+79
+00:04:09,249 --> 00:04:12,249
+controller method, and we're going to ask, " What should the 
+
+80
+00:04:12,252 --> 00:04:16,252
+controller method do when it receives the search form?" What we 
+
+81
+00:04:16,256 --> 00:04:18,256
+said before, when we were planning out this feature, is that it 
+
+82
+00:04:18,258 --> 00:04:20,258
+should call a method that will search TMDb for the specified 
+
+83
+00:04:20,260 --> 00:04:24,260
+movie, and if it finds a match for that movie, it should select 
+
+84
+00:04:24,264 --> 00:04:27,264
+the " Search Results" view, display the match, etc. Let's just 
+
+85
+00:04:27,267 --> 00:04:30,267
+start with that much. When it says, " The controller method 
+
+86
+00:04:30,270 --> 00:04:34,270
+should do these things", we can actually capture this in normal 
+
+87
+00:04:34,274 --> 00:04:38,274
+code, and ... okay, here is the RSpec centric version of what I 
+
+88
+00:04:38,278 --> 00:04:42,278
+just said. I said that when we have a controller method that's 
+
+89
+00:04:42,282 --> 00:04:44,282
+going to search TMDb, it should call the model method that 
+
+90
+00:04:44,284 --> 00:04:47,284
+performs the search, it should select the search results 
+
+91
+00:04:47,287 --> 00:04:50,287
+template for rendering, assuming that that worked out, and it 
+
+92
+00:04:50,290 --> 00:04:52,290
+should make the search results available to that template, so 
+
+93
+00:04:52,292 --> 00:04:55,292
+that the template has something to display. All I've really done 
+
+94
+00:04:55,295 --> 00:04:58,295
+is translate ... think of this as like a user story, but for the 
+
+95
+00:04:58,298 --> 00:05:02,298
+programmer. Just as we were able to take the customer specified 
+
+96
+00:05:02,302 --> 00:05:05,302
+behavior and write a Cucumber story, we're now talking about at 
+
+97
+00:05:05,305 --> 00:05:08,305
+the level of code we want to write, what does that code have to 
+
+98
+00:05:08,308 --> 00:05:11,308
+be able to do? This is all actually legal RSpec. These are three 
+
+99
+00:05:11,311 --> 00:05:15,311
+test cases beginning with " It" that we haven't written yet. If 
+
+100
+00:05:15,315 --> 00:05:17,315
+you've been looking through some of the test cases that come 
+
+101
+00:05:17,317 --> 00:05:20,317
+with the homeworks, you would know that if we put a Do ... End 
+
+102
+00:05:20,320 --> 00:05:22,320
+block after each one of these, that's where the code would go 
+
+103
+00:05:22,322 --> 00:05:25,322
+that actually does each of those tests. Let's see what that 
+
+104
+00:05:25,325 --> 00:05:30,325
+would take. Let's do a sanity check on this first. Remember that 
+
+105
+00:05:30,330 --> 00:05:34,330
+we're about to add new functionality to our app, and we're going 
+
+106
+00:05:34,334 --> 00:05:37,334
+to have this method at some point that actually has to contact 
+
+107
+00:05:37,337 --> 00:05:40,337
+TMDb and search for a movie. Just so we're all on the same page 
+
+108
+00:05:40,340 --> 00:05:43,340
+about what we need to do, is that method going to be a class 
+
+109
+00:05:43,343 --> 00:05:47,343
+method in Movie, an instance method in Movie, a method in the 
+
+110
+00:05:47,347 --> 00:05:50,347
+controller, or a helper method? 
+
+

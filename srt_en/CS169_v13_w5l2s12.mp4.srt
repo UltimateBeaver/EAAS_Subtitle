@@ -1,0 +1,337 @@
+1
+00:00:00,000 --> 00:00:15,000
+Thinking? Voting? Voting? Red and orange, and it's not quite 
+
+2
+00:00:15,015 --> 00:00:18,015
+half and half, so, it's good to talk about. Okay, let's vote 
+
+3
+00:00:18,018 --> 00:00:23,018
+again, vote again, voting again, voting again. Much okay. Much 
+
+4
+00:00:23,023 --> 00:00:27,023
+convergence toward red. Let's go through the answers there. 
+
+5
+00:00:27,027 --> 00:00:30,027
+Could we replace the call to should receive with the call to the 
+
+6
+00:00:30,030 --> 00:00:35,030
+real find in TMDb? We could do that, but then we've coupled the 
+
+7
+00:00:35,035 --> 00:00:38,035
+behavior of our controller test with the behavior of whatever 
+
+8
+00:00:38,038 --> 00:00:41,038
+find in TMDb actually does. Now, this is a double- edged sword, 
+
+9
+00:00:41,041 --> 00:00:42,041
+right? There's a very legitimate argument that says, " Well 
+
+10
+00:00:42,042 --> 00:00:46,042
+look, if somebody actually change find in TMDb in a way that 
+
+11
+00:00:46,046 --> 00:00:49,046
+breaks my test, that means that my test made some assumptions 
+
+12
+00:00:49,049 --> 00:00:52,049
+about how you call that method. Somebody has now gone and 
+
+13
+00:00:52,052 --> 00:00:55,052
+changed the methods so that my assumptions aren't true. If I was 
+
+14
+00:00:55,055 --> 00:00:59,055
+calling the real find in TMDb, I would know that immediately. 
+
+15
+00:00:59,059 --> 00:01:01,059
+That's true, but I think a counter argument, which is at least 
+
+16
+00:01:01,061 --> 00:01:04,061
+as persuasive, is the role of functional and integration test 
+
+17
+00:01:04,064 --> 00:01:07,064
+which touch multiple code paths, that's where the areas tend to 
+
+18
+00:01:07,067 --> 00:01:11,067
+get flushed out. The goal of unit test is to really sort of 
+
+19
+00:01:11,071 --> 00:01:14,071
+narrow down the scope, so you're testing a small piece of logic. 
+
+20
+00:01:14,074 --> 00:01:17,074
+To do that repeatedly, over the long run it's better to leave 
+
+21
+00:01:17,077 --> 00:01:21,077
+the seams in place and rely on integration tests and design 
+
+22
+00:01:21,081 --> 00:01:25,081
+reviews to let you know when behaviors of change that make your 
+
+23
+00:01:25,085 --> 00:01:28,085
+assumptions about seems obsolete. As you'll see, this is 
+
+24
+00:01:28,088 --> 00:01:32,088
+actually a trade- off that we make a lot. Right? One of the 
+
+25
+00:01:32,092 --> 00:01:35,092
+dichotomies between unit- versus- integration testing is the 
+
+26
+00:01:35,095 --> 00:01:38,095
+granularity at which you're testing stuff. Unit tests are way 
+
+27
+00:01:38,098 --> 00:01:41,098
+more detailed, you can catch more corner cases, but what you'll 
+
+28
+00:01:41,101 --> 00:01:44,101
+find is in order to do that, you also have to make more 
+
+29
+00:01:44,104 --> 00:01:46,104
+assumptions to isolate the test from other things that depends 
+
+30
+00:01:46,106 --> 00:01:49,106
+on. That's how you make it controllable enough to test all the 
+
+31
+00:01:49,109 --> 00:01:53,109
+interesting behaviors. But an unfortunate downside of doing that 
+
+32
+00:01:53,113 --> 00:01:56,113
+is you might be faking out things that actually matter a lot. If 
+
+33
+00:01:56,116 --> 00:01:59,116
+somebody changes these interfaces, that will affect you. You 
+
+34
+00:01:59,119 --> 00:02:02,119
+can't really get away with focusing entirely on one of the other 
+
+35
+00:02:02,122 --> 00:02:03,122
+kind of tests, and we're going to keep coming back for this many 
+
+36
+00:02:03,123 --> 00:02:07,123
+times. Ensure the API to the real method matches the one that 
+
+37
+00:02:07,127 --> 00:02:10,127
+you used in your tests. When you write your tests, especially if 
+
+38
+00:02:10,130 --> 00:02:13,130
+you're mocking out, or if you're creating a seam for a code that 
+
+39
+00:02:13,133 --> 00:02:16,133
+doesn't exist somewhere else, you have to make some initial 
+
+40
+00:02:16,136 --> 00:02:19,136
+guesses about how it would be good for that code to work, and 
+
+41
+00:02:19,139 --> 00:02:20,139
+you're making them from the point of view of the controller 
+
+42
+00:02:20,140 --> 00:02:23,140
+who's going to call it. That's a good place to be. It doesn't 
+
+43
+00:02:23,143 --> 00:02:25,143
+guarantee that you're going to be right. When the time comes to 
+
+44
+00:02:25,145 --> 00:02:27,145
+write the real method, that's where the rubber meets the road. 
+
+45
+00:02:27,147 --> 00:02:30,147
+That's the running code that's going to be in the app. Yes, 
+
+46
+00:02:30,150 --> 00:02:31,150
+sometimes that means that you're going to have to go back and 
+
+47
+00:02:31,151 --> 00:02:34,151
+change your test because your test began with assumptions that 
+
+48
+00:02:34,154 --> 00:02:36,154
+were reasonable when you made them, but turned out just not you 
+
+49
+00:02:36,156 --> 00:02:40,156
+to be borne out by the design. Totally normal. Keeping the seam 
+
+50
+00:02:40,160 --> 00:02:43,160
+in place but if necessary changing the spec to match the real 
+
+51
+00:02:43,163 --> 00:02:45,163
+API. That's exactly what I'm advocating. My choice would have 
+
+52
+00:02:45,165 --> 00:02:48,165
+been number three and remove the spec because it's not really 
+
+53
+00:02:48,168 --> 00:02:52,168
+testing anything interesting anymore. Unless it's testing dead 
+
+54
+00:02:52,172 --> 00:02:56,172
+code that never gets called or code that has no variables or 
+
+55
+00:02:56,176 --> 00:02:59,176
+inputs and always behaves the same way, almost every test is 
+
+56
+00:02:59,179 --> 00:03:02,179
+testing something interesting. Among most of my coding friends, 
+
+57
+00:03:02,182 --> 00:03:07,182
+there's kind of a proverb that could be paraphrased as, " Bugs 
+
+58
+00:03:07,187 --> 00:03:10,187
+that you stop monitoring or that go away by themselves tend to 
+
+59
+00:03:10,190 --> 00:03:13,190
+come back and bring all their friends." Keeping your test in 
+
+60
+00:03:13,193 --> 00:03:16,193
+there to make sure that whatever bug you originally were trying 
+
+61
+00:03:16,196 --> 00:03:19,196
+to prevent or trying to fix with that test, there's always a 
+
+62
+00:03:19,199 --> 00:03:21,199
+chance that those bugs could recur. Something like twenty 
+
+63
+00:03:21,201 --> 00:03:24,201
+percent of bugs that recur could have been prevented by a 
+
+64
+00:03:24,204 --> 00:03:26,204
+regression test. There's actually a couple of studies we quote 
+
+65
+00:03:26,206 --> 00:03:30,206
+in the book about that. It's very rare that removing a test is 
+
+66
+00:03:30,210 --> 00:03:32,210
+the right thing to do, but you'll have to change them all the 
+
+67
+00:03:32,212 --> 00:03:35,212
+time as your app evolves and that's normal. We have had students 
+
+68
+00:03:35,215 --> 00:03:38,215
+in this class before who express shock at the idea that, " Wait 
+
+69
+00:03:38,218 --> 00:03:41,218
+a minute. My tests were passing, I boot the code, the code is 
+
+70
+00:03:41,221 --> 00:03:43,221
+passing, I'm all good. Now I have to make a change to the code? 
+
+71
+00:03:43,223 --> 00:03:45,223
+You're telling me I got go change the test? But I already wrote 
+
+72
+00:03:45,225 --> 00:03:47,225
+the test." Right? That's not the way to think about it. The test 
+
+73
+00:03:47,227 --> 00:03:51,227
+and the code go together. Write the T in first is for timely, 
+
+74
+00:03:51,231 --> 00:03:53,231
+that when you're changing code, you're also changing tests at 
+
+75
+00:03:53,233 --> 00:03:57,233
+about the same time. So yes you're going to write great tests, 
+
+76
+00:03:57,237 --> 00:03:58,237
+then you're going to write great code that passes all those 
+
+77
+00:03:58,238 --> 00:04:00,238
+tests. Then you're going to realize that for other reasons 
+
+78
+00:04:00,000 --> 00:04:03,240
+you've got to make a change to your code and yes, you've got to 
+
+79
+00:04:03,243 --> 00:04:06,243
+change the tests so that they now reflect the way your code 
+
+80
+00:04:06,246 --> 00:04:09,246
+actually works. Commenting on the test doesn't count. Removing 
+
+81
+00:04:09,249 --> 00:04:11,249
+it from your test suite doesn't count. It's still going to be 
+
+82
+00:04:11,251 --> 00:04:14,251
+there, right? It was there for a reason. You had some reason in 
+
+83
+00:04:14,254 --> 00:04:17,254
+mind of what you wanted to guard against when you wrote the 
+
+84
+00:04:17,257 --> 00:04:19,257
+test, so don't let go of that good intuition. 
+
+

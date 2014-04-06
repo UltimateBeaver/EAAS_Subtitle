@@ -1,0 +1,361 @@
+1
+00:00:00,000 --> 00:00:04,000
+Welcome to software engineering this is a really it's I'm 
+
+2
+00:00:04,004 --> 00:00:07,004
+excited to be talking about this when I was a student what was 
+
+3
+00:00:07,007 --> 00:00:10,007
+called software engineering just didn't make any sense you know 
+
+4
+00:00:10,010 --> 00:00:13,010
+what other people trying to figure out how to build software and 
+
+5
+00:00:13,013 --> 00:00:16,013
+advice they had you couldn't possibly take advantage of this 
+
+6
+00:00:16,016 --> 00:00:19,016
+course what's exciting is now we can the software has been 
+
+7
+00:00:19,019 --> 00:00:23,019
+changed so it 's easier to do. So why are you all here maybe not 
+
+8
+00:00:23,023 --> 00:00:27,023
+why are you all here but what a great taste you have in courses 
+
+9
+00:00:27,027 --> 00:00:31,027
+I think that so so last year somebody get a ranking of all the 
+
+10
+00:00:31,031 --> 00:00:34,031
+jobs in the united states by job title this company. So I I 
+
+11
+00:00:34,034 --> 00:00:37,034
+thought I'd go through it in reverse order here like a top ten 
+
+12
+00:00:37,037 --> 00:00:42,037
+list you know so somebody you are a kid growing up I think this 
+
+13
+00:00:42,042 --> 00:00:45,042
+is a cool job and so let me go go backwards looks like maybe you 
+
+14
+00:00:45,045 --> 00:00:49,045
+want to be a lumberjack that's absolutely the worst job so how 
+
+15
+00:00:49,049 --> 00:00:54,049
+it is how do they picked it was based on salary stress levels 
+
+16
+00:00:54,054 --> 00:00:56,054
+hiring outlook physical demands of work environments a 
+
+17
+00:00:56,056 --> 00:01:01,056
+lumberjack work environment not so great but lumberjack is only 
+
+18
+00:01:01,061 --> 00:01:05,061
+four things worse than newspaper reporter yeah so so for your 
+
+19
+00:01:05,065 --> 00:01:09,065
+friends in journalism you might you know check. Maybe they'd 
+
+20
+00:01:09,069 --> 00:01:13,069
+like lumberjack and and then you're growing up you know I wanna 
+
+21
+00:01:13,073 --> 00:01:17,073
+be a firefighter or maybe a flight attendant or a police officer 
+
+22
+00:01:17,077 --> 00:01:21,077
+or high school teacher fashion designer pilot those are all on 
+
+23
+00:01:21,081 --> 00:01:26,081
+the bottom half of the one hundred list okay now maybe a little 
+
+24
+00:01:26,086 --> 00:01:29,086
+bit later in school you thought you know I'd like to have a 
+
+25
+00:01:29,089 --> 00:01:33,089
+challenge job you know all good lifestyle today suppose you said 
+
+26
+00:01:33,093 --> 00:01:37,093
+attorney well that's a little better that's in the top half but 
+
+27
+00:01:37,097 --> 00:01:40,097
+towards the bottom now we 're in the ECS department how's how 
+
+28
+00:01:40,100 --> 00:01:52,100
+many of you are electrical engineers right that's next Yeah it 
+
+29
+00:01:52,112 --> 00:01:55,112
+seems like engineering seems pretty good so mechanical still the 
+
+30
+00:01:55,115 --> 00:01:58,115
+but you know if you're not the top quarter yet accountants you 
+
+31
+00:01:58,118 --> 00:02:02,118
+know that's in the top quarter finally how about a doctor you 
+
+32
+00:02:02,122 --> 00:02:07,122
+can lots of kids wanna be a doctor right that's barely there or 
+
+33
+00:02:07,127 --> 00:02:12,127
+a nurse in terms of the kind the best engineering position is 
+
+34
+00:02:12,132 --> 00:02:14,132
+civil engineering at least on the Berkeley campus is actually 
+
+35
+00:02:14,134 --> 00:02:16,134
+another one we don't have petroleum engineering that's a pretty 
+
+36
+00:02:16,136 --> 00:02:20,136
+good job right now. But the number one job in the united states 
+
+37
+00:02:20,140 --> 00:02:29,140
+is software engineer right sorry. So that's very it's cool that 
+
+38
+00:02:29,149 --> 00:02:31,149
+we are teaching things you know that people can have the best 
+
+39
+00:02:31,151 --> 00:02:36,151
+job in the united states but if it's such the best job why do we 
+
+40
+00:02:36,156 --> 00:02:40,156
+screw up at it so much okay that's the thing that's fascinating 
+
+41
+00:02:40,160 --> 00:02:43,160
+or yeah yeah are frustrating to having been in the field a long 
+
+42
+00:02:43,163 --> 00:02:46,163
+time and you can you can follow this on wikipedia. but there's a 
+
+43
+00:02:46,166 --> 00:02:49,166
+few of them if you are in a software engineering community you 
+
+44
+00:02:49,169 --> 00:02:52,169
+know the cliche all you have to do is mention the word video 
+
+45
+00:02:52,172 --> 00:02:54,172
+yeah I I know about that one So you need to know if you don't 
+
+46
+00:02:54,174 --> 00:02:58,174
+know about that so one of the first scary ones is the Therac 
+
+47
+00:02:58,178 --> 00:03:01,178
+lethal radiation overdose So this is nineteen eighty five and 
+
+48
+00:03:01,181 --> 00:03:04,181
+the predecessor machine had hard[unclear] inner locks to make 
+
+49
+00:03:04,184 --> 00:03:08,184
+sure you didn't give somebody too much radiation that machine 
+
+50
+00:03:08,188 --> 00:03:12,188
+the Thrac twenty five took away the hard? locks the software was 
+
+51
+00:03:12,192 --> 00:03:15,192
+already working under And its predecessor that uses the same 
+
+52
+00:03:15,195 --> 00:03:18,195
+software made some changes to it you moved the software forward 
+
+53
+00:03:18,198 --> 00:03:21,198
+there was a bug that rarely occurred six people would burn to 
+
+54
+00:03:21,201 --> 00:03:25,201
+creation and three of those died So a software for bug kill 
+
+55
+00:03:25,205 --> 00:03:29,205
+people that was eye opening the Mars climate orbiter 
+
+56
+00:03:29,209 --> 00:03:34,209
+disintegration. So the ground computer used imperial units and 
+
+57
+00:03:34,214 --> 00:03:38,214
+the satellite computer used metric units they use different 
+
+58
+00:03:38,218 --> 00:03:41,218
+units and so when the orbiter came its time went the wrong angle 
+
+59
+00:03:41,221 --> 00:03:45,221
+and burned up so psht three hundred million dollars the thing 
+
+60
+00:03:45,225 --> 00:03:48,225
+that amazes me is that the F. B. I. partial file case. So what 
+
+61
+00:03:48,228 --> 00:03:50,228
+happened that for five years they tried to build a virtual file 
+
+62
+00:03:50,230 --> 00:03:54,230
+case to give F. B. I. agents the ability to have things at their 
+
+63
+00:03:54,234 --> 00:03:56,234
+fingertips they gave it was so bad they they didn't like fix it 
+
+64
+00:03:56,236 --> 00:03:59,236
+they said just okay we'll just throw it all away a hundred 70 
+
+65
+00:03:59,239 --> 00:04:04,239
+million dollars. But the most spectacular software bug the Arian 
+
+66
+00:04:04,244 --> 00:04:10,244
+five so the aryan five annals of history that one momentarily 
+
+67
+00:04:10,250 --> 00:04:17,250
+yeah so the Aryan four again it worked fine but the Aryan five 
+
+68
+00:04:17,257 --> 00:04:22,257
+ran faster than the aryan four so they they take the aryan four 
+
+69
+00:04:22,262 --> 00:04:27,262
+software for five to save space they stored numbers in sixteen 
+
+70
+00:04:27,267 --> 00:04:30,267
+bit integers but they calculated sixty four bit floating point 
+
+71
+00:04:30,270 --> 00:04:35,270
+numbers the Aryan five can fly faster than the Aryan four so the 
+
+72
+00:04:35,275 --> 00:04:44,275
+number was bigger and so what happens is what it's going oh you 
+
+73
+00:04:44,284 --> 00:04:58,284
+can't hear it right okay software there goes three hundred 
+
+74
+00:04:58,298 --> 00:05:02,298
+twenty five million dollars of satellites right there okay so 
+
+75
+00:05:02,302 --> 00:05:06,302
+this you know there's this IEEE software or ItripleE spectrum 
+
+76
+00:05:06,306 --> 00:05:10,306
+has a whole a wall of shame that I think it's seventeen billion 
+
+77
+00:05:10,310 --> 00:05:17,310
+dollars so why it is such a great job you know why is it why's 
+
+78
+00:05:17,317 --> 00:05:21,317
+it so bad so there's this wall of shame how do you avoid that 
+
+79
+00:05:21,321 --> 00:05:24,321
+right so that we've been developing software for sixty years. 
+
+80
+00:05:24,324 --> 00:05:28,324
+And what we're gonna do in this classes is go over all the 
+
+81
+00:05:28,328 --> 00:05:32,328
+things that you can oh there's been a lot of [unclear] try but 
+
+82
+00:05:32,332 --> 00:05:35,332
+we're gonna go over them in this class but there's one we're 
+
+83
+00:05:35,335 --> 00:05:38,335
+going emphasize really we're going to emphasize the one that's 
+
+84
+00:05:38,338 --> 00:05:41,338
+got the software why we're saying ten thousand students around 
+
+85
+00:05:41,341 --> 00:05:45,341
+the world have got certificates from the course last year 
+
+86
+00:05:45,345 --> 00:05:47,345
+enrollments have grown you know before before computing was 
+
+87
+00:05:47,347 --> 00:05:51,347
+popular computing was popular teaching evaluations last time was 
+
+88
+00:05:51,351 --> 00:05:54,351
+really good so what you're gonna do is how do you not end up on 
+
+89
+00:05:54,354 --> 00:05:56,354
+wikipedia pages something you want to take off your resume right 
+
+90
+00:05:56,356 --> 00:05:58,356
+you're gonna learn how to do it the right way 
+
+

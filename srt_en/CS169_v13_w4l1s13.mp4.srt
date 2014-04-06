@@ -1,0 +1,1209 @@
+1
+00:00:00,000 --> 00:00:03,000
+This is the plan and document perspective. Partly the reason 
+
+2
+00:00:03,003 --> 00:00:08,003
+that we’ re doing this is, in the past when we taught the class; 
+
+3
+00:00:08,008 --> 00:00:11,008
+we get lots of nice comments about the class. It changed my 
+
+4
+00:00:11,011 --> 00:00:17,011
+life. I got a job. It’ s wonderful [ inaudible 00:00:16]. People 
+
+5
+00:00:17,017 --> 00:00:20,017
+say, “ Oh I’ m done internships before. Nobody builds software, 
+
+6
+00:00:20,020 --> 00:00:22,020
+in the real world, we’ ll don’ t do it that way.” Even on the [ 
+
+7
+00:00:22,022 --> 00:00:25,022
+inaudible 00:00:23] comments. They were, “ I would never use 
+
+8
+00:00:25,025 --> 00:00:28,025
+software built with Agile. This is crazy. This is the way the 
+
+9
+00:00:28,028 --> 00:00:31,028
+others do it.” We thought we’ d let you know what the official 
+
+10
+00:00:31,031 --> 00:00:35,031
+alternative units look like, because if you become software 
+
+11
+00:00:35,035 --> 00:00:37,035
+engineers., you may do projects like this and you need to know 
+
+12
+00:00:37,037 --> 00:00:41,037
+these things are. It’ ll help you see where Agile came from and 
+
+13
+00:00:41,041 --> 00:00:44,041
+appreciate what it’ s doing. This will take a little bit a while 
+
+14
+00:00:44,044 --> 00:00:47,044
+to be able to do this. They don’ t use user stories, points, or 
+
+15
+00:00:47,047 --> 00:00:51,047
+velocity. What do they do instead? It’ s before… pre- Agile. How 
+
+16
+00:00:51,051 --> 00:00:55,051
+do you make these costs? How do you make these schedules? These 
+
+17
+00:00:55,055 --> 00:00:58,055
+are all the steps. If you get to be the program manager, you’ re 
+
+18
+00:00:58,058 --> 00:01:01,058
+going to do requirements in elicitation, requirements, 
+
+19
+00:01:01,061 --> 00:01:05,061
+documentation, the cost estimate. You’ ll be scheduling and 
+
+20
+00:01:05,065 --> 00:01:08,065
+monitoring the progress of the project. You’ re going to do, 
+
+21
+00:01:08,068 --> 00:01:13,068
+change management, like version control for your schedule, the 
+
+22
+00:01:13,073 --> 00:01:17,073
+cost, and the requirements document. You have to ensure that the 
+
+23
+00:01:17,077 --> 00:01:20,077
+implementation actually matches the features that were in the 
+
+24
+00:01:20,080 --> 00:01:26,080
+contract, in the documentation. Then, to increase the chances 
+
+25
+00:01:26,086 --> 00:01:28,086
+that you’ ll hit the schedule, hit the target in the budget, you 
+
+26
+00:01:28,088 --> 00:01:32,088
+do risk analysis and risk management. These are all your tasks 
+
+27
+00:01:32,092 --> 00:01:34,092
+to do. This will take a little while to go over it. Let’ s do 
+
+28
+00:01:34,094 --> 00:01:37,094
+the requirements elicitation. You’ re looking for both, what I 
+
+29
+00:01:37,097 --> 00:01:39,097
+call functional and non- functional requirements. Functional is 
+
+30
+00:01:39,099 --> 00:01:43,099
+like we’ ve seen. Add a movie to run databases. Non- functional 
+
+31
+00:01:43,103 --> 00:01:47,103
+would be… It’ s a weird word, but it’ s about its performance. 
+
+32
+00:01:47,107 --> 00:01:50,107
+Non- functional; it’ s not features. It should be non- feature. 
+
+33
+00:01:50,110 --> 00:01:55,110
+Nonfunctional means 99% response time less than a second or 4/ 9 
+
+34
+00:01:55,115 --> 00:01:59,115
+of dependability. How do you elicit those things? Again, it has 
+
+35
+00:01:59,119 --> 00:02:02,119
+to come from the customer, so it’ s pretty much the project 
+
+36
+00:02:02,122 --> 00:02:05,122
+manager, primarily doing this. Project manager tries 
+
+37
+00:02:05,125 --> 00:02:08,125
+interviewing. You want to find out how the work is really done, 
+
+38
+00:02:08,128 --> 00:02:10,128
+not the way it’ s supposed to be done. Maybe you sent a 
+
+39
+00:02:10,130 --> 00:02:13,130
+questionnaire to all the stakeholders to have them fill them out 
+
+40
+00:02:13,133 --> 00:02:15,133
+or you just have these informal discussions. You’ re trying to 
+
+41
+00:02:15,135 --> 00:02:20,135
+feel out how should this really be done or how is it done today. 
+
+42
+00:02:20,140 --> 00:02:23,140
+You work with the customer to create these scenarios. You start 
+
+43
+00:02:23,143 --> 00:02:27,143
+off with the initial state. You show the flow for happy and sad 
+
+44
+00:02:27,147 --> 00:02:30,147
+paths, what can be done concurrently, and the final state. A 
+
+45
+00:02:30,150 --> 00:02:34,150
+third approach is what’ s called use cases and there’ s actually 
+
+46
+00:02:34,154 --> 00:02:36,154
+a program… There’ s a language called the unified modeling 
+
+47
+00:02:36,156 --> 00:02:39,156
+language helps you describe these use cases. They have little 
+
+48
+00:02:39,159 --> 00:02:43,159
+stick figures in showing all the steps for the user in the 
+
+49
+00:02:43,163 --> 00:02:48,163
+system to achieve the goal. These are ways for the product… User 
+
+50
+00:02:48,168 --> 00:02:52,168
+product elicitation, what does the customer want? After you’ ve 
+
+51
+00:02:52,172 --> 00:02:56,172
+elicited the requirements, you do documentation. This is serious 
+
+52
+00:02:56,176 --> 00:03:00,176
+documentation. It’ s called the SRS, in the lingo that stands 
+
+53
+00:03:00,000 --> 00:03:04,180
+for Software Requirements Specification. These are big, hundreds 
+
+54
+00:03:04,184 --> 00:03:09,184
+of pages. There is even IEEE standard on how to write an SRS. 
+
+55
+00:03:09,189 --> 00:03:13,189
+You can read a document that describes a standard about how to 
+
+56
+00:03:13,193 --> 00:03:17,193
+build this document. Remember, this is inspired by software 
+
+57
+00:03:17,197 --> 00:03:19,197
+doesn’ t work; we got to make it like civil engineering. Civil 
+
+58
+00:03:19,199 --> 00:03:22,199
+engineering has a lot of documents. We’ re going to have a lot 
+
+59
+00:03:22,202 --> 00:03:28,202
+of documents. How do you figure out if the SRS is okay? I’ ll 
+
+60
+00:03:28,208 --> 00:03:31,208
+tell you the four things to look at. The way you do it, get the 
+
+61
+00:03:31,211 --> 00:03:34,211
+customers to read these hundreds of pages give you feedback or 
+
+62
+00:03:34,214 --> 00:03:37,214
+you build a prototype that has some of the features to give you 
+
+63
+00:03:37,217 --> 00:03:41,217
+feedback or you generate the test cases to test the SRS. What 
+
+64
+00:03:41,221 --> 00:03:45,221
+are you looking for here? Four things: Validity: are all the 
+
+65
+00:03:45,225 --> 00:03:49,225
+requirements necessary. Consistency: that’ s pretty bad. If the 
+
+66
+00:03:49,229 --> 00:03:51,229
+requirements conflict, sounds like it would be hard to be 
+
+67
+00:03:51,231 --> 00:03:55,231
+successful. Completeness: Is everything there and all the 
+
+68
+00:03:55,235 --> 00:03:59,235
+restraints included? Finally, can it be implemented? You’ re 
+
+69
+00:03:59,239 --> 00:04:02,239
+building this book about the project before you build the 
+
+70
+00:04:02,242 --> 00:04:06,242
+project. That’ s requirements documentation. How about the cost 
+
+71
+00:04:06,246 --> 00:04:12,246
+estimation? What the manager does is decompose the software 
+
+72
+00:04:12,252 --> 00:04:17,252
+requirements specifications into tasks. You want to bind it a 
+
+73
+00:04:17,257 --> 00:04:20,257
+little bit like points for use or storage you want to abound the 
+
+74
+00:04:20,260 --> 00:04:23,260
+task between one and eight weeks if it’ s more than eight weeks, 
+
+75
+00:04:23,263 --> 00:04:27,263
+that’ s too big a task; less than one week is hard to schedule. 
+
+76
+00:04:27,267 --> 00:04:31,267
+Your manager’ s looking at the task, breaking up these pieces, 
+
+77
+00:04:31,271 --> 00:04:35,271
+then giving the task estimates. You convert that into dollars, 
+
+78
+00:04:35,275 --> 00:04:38,275
+via salaries and overhead. That’ s pretty straightforward. When 
+
+79
+00:04:38,278 --> 00:04:41,278
+do you do this? You do it before you get the contract and then 
+
+80
+00:04:41,281 --> 00:04:44,281
+after you get the contract. You’ d sure like those cost 
+
+81
+00:04:44,284 --> 00:04:48,284
+estimates to be similar; what I did to get it and what is going 
+
+82
+00:04:48,288 --> 00:04:51,288
+to cost the company to build it. One idea is you have a safety 
+
+83
+00:04:51,291 --> 00:04:54,291
+margin. You, maybe you and your team work through a many weeks. 
+
+84
+00:04:54,294 --> 00:04:57,294
+It’ s going to take to do these tasks and you multiply it by a 
+
+85
+00:04:57,297 --> 00:05:01,297
+number like 1.3 or 1.5. Another idea is you make three 
+
+86
+00:05:01,301 --> 00:05:05,301
+estimates. You make the best- case estimate, the expected case, 
+
+87
+00:05:05,305 --> 00:05:08,305
+and the worst- case and after you look at all those estimates, 
+
+88
+00:05:08,308 --> 00:05:11,308
+then you make your best guess. That’ s the cost model [ 
+
+89
+00:05:11,311 --> 00:05:16,311
+inaudible00: 05:11]. There’ s two kind of approaches to how to 
+
+90
+00:05:16,316 --> 00:05:19,316
+do that and one’ s called experiential, which is basically based 
+
+91
+00:05:19,319 --> 00:05:21,319
+on the program managers’ experience and maybe the company’ s 
+
+92
+00:05:21,321 --> 00:05:24,321
+experience. This is what our guess is, how many weeks it will 
+
+93
+00:05:24,324 --> 00:05:27,324
+take to do all these tasks. They were trying to make software 
+
+94
+00:05:27,327 --> 00:05:30,327
+engineering like civil engineering again so they came with 
+
+95
+00:05:30,330 --> 00:05:32,330
+quantitative approaches. The first [ inaudible00: 05:32] was 
+
+96
+00:05:32,332 --> 00:05:35,332
+simply, “ Let’ s estimate the lines of code of each of these 
+
+97
+00:05:35,335 --> 00:05:38,335
+tasks, calculate for the company the lines of code per person- 
+
+98
+00:05:38,338 --> 00:05:40,338
+month and you divide them and you’ ll get how many person- 
+
+99
+00:05:40,340 --> 00:05:43,340
+months it’ s going to take. The problem with that is his lines- 
+
+100
+00:05:43,343 --> 00:05:45,343
+of- code is like… Bill Gates has a code about lines of code 
+
+101
+00:05:45,345 --> 00:05:48,345
+being the wrong way to measure this stuff. That didn’ t work 
+
+102
+00:05:48,348 --> 00:05:51,348
+very well. The researchers decided we’ re going to look… Measure 
+
+103
+00:05:51,351 --> 00:05:54,351
+a bunch of projects. We’ re going to come with a better 
+
+104
+00:05:54,354 --> 00:05:57,354
+quantitative model. They call it the Kokomo model, constructive 
+
+105
+00:05:57,357 --> 00:06:02,357
+cost model. It’ s got two factors and an exponent. They looked 
+
+106
+00:06:02,362 --> 00:06:06,362
+at a bunch of projects and here’ s the three significant digits. 
+
+107
+00:06:06,366 --> 00:06:12,366
+I think the efforts go to be 2.942 to the lines of code size and 
+
+108
+00:06:12,372 --> 00:06:18,372
+lines of code to this 1.23 penalty with the product factor of 
+
+109
+00:06:18,378 --> 00:06:20,378
+1.07. You multiply that together, that will tell you how much 
+
+110
+00:06:20,380 --> 00:06:23,380
+effort it is put that in your cost [ inaudible00: 06:21]. The 
+
+111
+00:06:23,383 --> 00:06:26,383
+guys that came up with the Kokomo; that didn’ t work very well, 
+
+112
+00:06:26,386 --> 00:06:31,386
+so they came up with Kokomo to and had 17 factors. The software 
+
+113
+00:06:31,391 --> 00:06:33,391
+is getting more sophisticated over time. They are trying… We can 
+
+114
+00:06:33,393 --> 00:06:36,393
+make this quantitative, I know if we just try hard enough. Not 
+
+115
+00:06:36,396 --> 00:06:40,396
+surprisingly, survey says 92% of the time the customer just 
+
+116
+00:06:40,400 --> 00:06:44,400
+relies on their experience to make this model. That’ s the cost 
+
+117
+00:06:44,404 --> 00:06:49,404
+estimation. What about scheduling? What you’ re trying to figure 
+
+118
+00:06:49,409 --> 00:06:52,409
+out is what tasks you can do in code and parallel and you may 
+
+119
+00:06:52,412 --> 00:06:56,412
+have heard of PERT charts. Let me show you what a PERT chart is. 
+
+120
+00:06:56,416 --> 00:06:59,416
+It’ s developed in the aerospace industry. He figured how long 
+
+121
+00:06:59,419 --> 00:07:03,419
+it would take, how long it would take to build space shot. Each 
+
+122
+00:07:03,423 --> 00:07:08,423
+of these nodes are milestones. These little rectangles, there’ s 
+
+123
+00:07:08,428 --> 00:07:13,428
+11 milestones for the project and then these names that are on 
+
+124
+00:07:13,433 --> 00:07:16,433
+these arcs say what’ s being done. This is requirements 
+
+125
+00:07:16,436 --> 00:07:21,436
+elicitation. What these little numbers are on the arcs are how 
+
+126
+00:07:21,441 --> 00:07:25,441
+much effort it is say in person- weeks, for example. Then the 
+
+127
+00:07:25,445 --> 00:07:29,445
+arrowheads indicate dependencies. One of the reasons that people 
+
+128
+00:07:29,449 --> 00:07:32,449
+made PERT charts is to figure out what’ s called the critical 
+
+129
+00:07:32,452 --> 00:07:37,452
+path; is given all these arrowheads, what’ s the… the longest 
+
+130
+00:07:37,457 --> 00:07:43,457
+time through this effort till we get to the final milestone. In 
+
+131
+00:07:43,463 --> 00:07:46,463
+this example, here’ s the critical path so you just divide up 
+
+132
+00:07:46,466 --> 00:07:50,466
+all the effort along those lines. Then that’ ll tell you, and 
+
+133
+00:07:50,470 --> 00:07:52,470
+then some kind of productivity factor, and tell you how long it 
+
+134
+00:07:52,472 --> 00:07:55,472
+would take to do the project. It could show you what things you 
+
+135
+00:07:55,475 --> 00:07:59,475
+can do in parallel. If you’ re the project manager, you can do 
+
+136
+00:07:59,479 --> 00:08:02,479
+the SRS to break it up in tasks; you get it in the cost and then 
+
+137
+00:08:02,482 --> 00:08:06,482
+use those to create a schedule using something like PERT charts. 
+
+138
+00:08:06,486 --> 00:08:09,486
+Now that you’ ve made a PERT chart, what you do all the projects 
+
+139
+00:08:09,489 --> 00:08:13,489
+going? Now you want to compare what you predicted to how long 
+
+140
+00:08:13,493 --> 00:08:16,493
+things are taking, so you track both the actual expenditures and 
+
+141
+00:08:16,496 --> 00:08:20,496
+the time for those tasks against her PERT chart. What they found 
+
+142
+00:08:20,500 --> 00:08:22,500
+is that by sharing these intermediate milestones; their 11 
+
+143
+00:08:22,502 --> 00:08:27,502
+milestones on the slide; everybody is aware of whether you’ re 
+
+144
+00:08:27,507 --> 00:08:31,507
+on budget or schedule or not; both the people building it, and 
+
+145
+00:08:31,511 --> 00:08:39,511
+the customers. This is can you build it in time and on budget, 
+
+146
+00:08:39,519 --> 00:08:42,519
+but you’ re not done as project manager. Does it actually do 
+
+147
+00:08:42,522 --> 00:08:45,522
+what you want, what the customer asked for? This is called 
+
+148
+00:08:45,525 --> 00:08:49,525
+requirements traceability, there’ s tools that are developed to 
+
+149
+00:08:49,529 --> 00:08:53,529
+try to tie in all these pieces together, the software 
+
+150
+00:08:53,533 --> 00:08:57,533
+requirements spec. What piece of the software requirements back 
+
+151
+00:08:57,537 --> 00:09:00,537
+is associated with the piece of code that implements it, which 
+
+152
+00:09:00,000 --> 00:09:03,540
+is associated with the test validates that? By having these 
+
+153
+00:09:03,543 --> 00:09:06,543
+tools to keep those together, you can ask yourself, “ Did we 
+
+154
+00:09:06,546 --> 00:09:08,546
+really implement everything the customer asked? Will let me go 
+
+155
+00:09:08,548 --> 00:09:13,548
+in and test.” Is it passing that test? Well, good, because then, 
+
+156
+00:09:13,553 --> 00:09:16,553
+it’ s handled that piece of the requirement. Are all the pieces 
+
+157
+00:09:16,556 --> 00:09:20,556
+of the hundred- page document covered with tests and the 
+
+158
+00:09:20,560 --> 00:09:24,560
+corresponding code in the SRS? If pieces of the code changes, 
+
+159
+00:09:24,564 --> 00:09:28,564
+you want to go back and test that. To try and increase your 
+
+160
+00:09:28,568 --> 00:09:32,568
+chances of hitting the target, there is borrowed from the 
+
+161
+00:09:32,572 --> 00:09:36,572
+business school, is risk analysis management. Basically, are 
+
+162
+00:09:36,576 --> 00:09:39,576
+trying to make this more accurate. You’ re trying to guess what 
+
+163
+00:09:39,579 --> 00:09:43,579
+the risks are going to be before you do it. What you do if you 
+
+164
+00:09:43,583 --> 00:09:47,583
+identify risk? You can do extra work to reduce the risk, do 
+
+165
+00:09:47,587 --> 00:09:50,587
+extra work to repair yourself, or change your plan so that risk 
+
+166
+00:09:50,590 --> 00:09:55,590
+goes away. A technical challenge; the relational database scale 
+
+167
+00:09:55,595 --> 00:09:58,595
+won’ t be big enough. Maybe we could find a bigger machine with 
+
+168
+00:09:58,598 --> 00:10:03,598
+a bigger relational database so we can make that risk away. Our 
+
+169
+00:10:03,603 --> 00:10:06,603
+organization is an familiar with J2EE, which we have to use to 
+
+170
+00:10:06,606 --> 00:10:12,606
+build that. What can we do to mitigate that risk? We could take 
+
+171
+00:10:12,612 --> 00:10:15,612
+tutorials; online tutorials to get them better a J2EE so that 
+
+172
+00:10:15,615 --> 00:10:19,615
+risk is mitigated. Oh boy, the business risk is, it’ s going to 
+
+173
+00:10:19,619 --> 00:10:22,619
+be too late for the market. Maybe we should cut back features so 
+
+174
+00:10:22,622 --> 00:10:26,622
+we can get it in the market in time, so that it will be viable. 
+
+175
+00:10:26,626 --> 00:10:32,626
+If it’ s really bad, then we shouldn’ t do this at all. You can 
+
+176
+00:10:32,632 --> 00:10:35,632
+imagine, you’ re guessing the risks, so what’ s the advice you 
+
+177
+00:10:35,635 --> 00:10:40,635
+should do? Try and guess what the risks are. Make your best 
+
+178
+00:10:40,640 --> 00:10:44,640
+guess of the chances of this risk happening and then on your own 
+
+179
+00:10:44,644 --> 00:10:49,644
+10 point scale, give it a impact factor if this thing happens. 
+
+180
+00:10:49,649 --> 00:10:52,649
+How bad it will be for the project? You multiply the chance 
+
+181
+00:10:52,652 --> 00:10:55,652
+times the impact factor, you come with a number, you sort your 
+
+182
+00:10:55,655 --> 00:11:00,655
+risk by that tack the top 20%, and you’ re hoping that that’ s 
+
+183
+00:11:00,000 --> 00:11:03,660
+most of the risk. The risk analysis is trying to hit you on 
+
+184
+00:11:03,663 --> 00:11:06,663
+schedule. These are all the things you need to do is the 
+
+185
+00:11:06,666 --> 00:11:09,666
+manager. We put the side- by- side in table, which you may be 
+
+186
+00:11:09,669 --> 00:11:13,669
+able to read. Here’ s the seven steps on the left: the 
+
+187
+00:11:13,673 --> 00:11:17,673
+requirements documentation, elicitation, change management, 
+
+188
+00:11:17,677 --> 00:11:20,677
+schedule, budget, ensuring requirements, features, scheduling 
+
+189
+00:11:20,680 --> 00:11:23,680
+and monitoring. That’ s all that corresponds to user stories, 
+
+190
+00:11:23,683 --> 00:11:26,683
+points, and velocity. User stories, points, and velocity, which 
+
+191
+00:11:26,686 --> 00:11:31,686
+I just talked about, in the last couple of segments is 
+
+192
+00:11:31,691 --> 00:11:35,691
+relatively intuitive. This is what that replaces for Agile. Then 
+
+193
+00:11:35,695 --> 00:11:38,695
+the cost estimation is the kind of loosey- goosey thing we 
+
+194
+00:11:38,698 --> 00:11:41,698
+talked about. Instead of trying to hit it and promising it , and 
+
+195
+00:11:41,701 --> 00:11:45,701
+delivering features and doing extensive risk management to make 
+
+196
+00:11:45,705 --> 00:11:48,705
+it more likely you say you’ re doing it on a best effort, 
+
+197
+00:11:48,708 --> 00:11:55,708
+approach. That’ s the alternative universe here, that a lot of 
+
+198
+00:11:55,715 --> 00:11:58,715
+people do use for lots of projects, and you may do yourself, if 
+
+199
+00:11:58,718 --> 00:12:02,718
+it helps you to see what is different about Agile. Let’ s see 
+
+200
+00:12:02,722 --> 00:12:07,722
+with going ahead. Which expression regarding plan and document 
+
+201
+00:12:07,727 --> 00:12:11,727
+requirements and cost estimation is false? The closest to plan 
+
+202
+00:12:11,731 --> 00:12:14,731
+and document scheduling and monitoring tasks are Agile points of 
+
+203
+00:12:14,734 --> 00:12:17,734
+velocity. The closest to plan and document software requirements 
+
+204
+00:12:17,737 --> 00:12:22,737
+spec document is agile user stories. Agile has no equivalent to 
+
+205
+00:12:22,742 --> 00:12:26,742
+ensuring requirements such as traceability. Actually, they’ re 
+
+206
+00:12:26,746 --> 00:12:31,746
+all true. None of them are false. I want you to pause over that 
+
+207
+00:12:31,751 --> 00:12:37,751
+one. Let’ s get them. First vote up there, ready, set vote. Oh 
+
+208
+00:12:37,757 --> 00:12:42,757
+yeah, lots of colors, so talk this one over. Let’ s try and vote 
+
+209
+00:12:42,762 --> 00:12:48,762
+again. Ready, set voters pairs go. Wow, that converged, all 
+
+210
+00:12:48,768 --> 00:12:52,768
+right, working magic. Let’ s go over them. The closest to plan 
+
+211
+00:12:52,772 --> 00:12:54,772
+and document scheduling and monitoring are Agile points and 
+
+212
+00:12:54,774 --> 00:12:59,774
+velocity. Yep. Agile is used in retrospective. What’ s the 
+
+213
+00:12:59,779 --> 00:13:01,779
+experience of your team and assigning points and how fast you 
+
+214
+00:13:01,781 --> 00:13:04,781
+use them to predict the future? Yep, as opposed to in advance, 
+
+215
+00:13:04,784 --> 00:13:08,784
+making schedule. That’ s a big difference. The closest to the 
+
+216
+00:13:08,788 --> 00:13:11,788
+software requirements spec in plan and document is Agile user 
+
+217
+00:13:11,791 --> 00:13:14,791
+stories. Yes, those little tiny 3 x 5 cards are your written 
+
+218
+00:13:14,794 --> 00:13:18,794
+documentation specs that you work with the customer and that’ s 
+
+219
+00:13:18,798 --> 00:13:21,798
+opposed to 100- page book or hundreds of pages book and an IEEE 
+
+220
+00:13:21,801 --> 00:13:26,801
+standard. Agile has no equivalent to ensuring requirements such 
+
+221
+00:13:26,806 --> 00:13:31,806
+as traceability. Yes, that’ s what the BDD is. BDD gets the 
+
+222
+00:13:31,811 --> 00:13:35,811
+requirements into user stories and we’ ll see shortly that we 
+
+223
+00:13:35,815 --> 00:13:38,815
+can take those 3 x 5 cards and turn them into acceptance tests. 
+
+224
+00:13:38,818 --> 00:13:41,818
+We’ re going directly from the customer get them writing cards, 
+
+225
+00:13:41,821 --> 00:13:45,821
+what the features we want, implement them [ inaudible00: 13:43]. 
+
+226
+00:13:45,825 --> 00:13:47,825
+That’ s the acceptance test, where make sure those features are 
+
+227
+00:13:47,827 --> 00:13:50,827
+there where it’ s not part of plan and documents, so they have 
+
+228
+00:13:50,830 --> 00:13:54,830
+these traceability’ s tools to try and make sure you do that. 
+
+229
+00:13:54,834 --> 00:14:00,834
+Actually four and three or faults, but that would have been kind 
+
+230
+00:14:00,000 --> 00:14:06,840
+of clever. Questions about this? Questions? Good. All right, so 
+
+231
+00:14:06,846 --> 00:14:08,846
+that’ s what this alternative order of the universe looks like. 
+
+232
+00:14:08,848 --> 00:14:11,848
+When you guys make these comments, “ Oh, I know how software is 
+
+233
+00:14:11,851 --> 00:14:13,851
+really built.” Okay, yeah, there’ s another way to build 
+
+234
+00:14:13,853 --> 00:14:16,853
+software. This is in the only way. It’ s got positives and if I 
+
+235
+00:14:16,856 --> 00:14:19,856
+was doing space shuttle stuff I’ d probably use the plan and 
+
+236
+00:14:19,859 --> 00:14:23,859
+document with all that stuff, but not for a lot of things. Let’ 
+
+237
+00:14:23,863 --> 00:14:27,863
+s go ahead and will have time to do one more segment about 
+
+238
+00:14:27,867 --> 00:14:30,867
+comments. This is again another thing about writing beautiful 
+
+239
+00:14:30,870 --> 00:14:35,870
+code. What’ s interesting is two my good friends are Armando Fox 
+
+240
+00:14:35,875 --> 00:14:37,875
+and John Ousterhout. John Ousterhout used to be a faculty member 
+
+241
+00:14:37,877 --> 00:14:42,877
+here, one of the best programmers I’ ve ever met. He and Armando 
+
+242
+00:14:42,882 --> 00:14:47,882
+just do not agree about comments in general Armando believes in 
+
+243
+00:14:47,887 --> 00:14:51,887
+self- documenting code and Ousterhout thinks that’ s evil. Self- 
+
+244
+00:14:51,891 --> 00:14:55,891
+document code is evil. Let me go over Ousterhout’ s advice and 
+
+245
+00:14:55,895 --> 00:14:58,895
+we’ ll talk a little bit about where they agree, where they 
+
+246
+00:14:58,898 --> 00:15:02,898
+agree. Examples of bad comments, which they both agree on this. 
+
+247
+00:15:02,902 --> 00:15:07,902
+Here’ s a good useful comment. Add one to i. Well, thanks I’ m 
+
+248
+00:15:07,907 --> 00:15:12,907
+glad you didn’ t not comment. Without that comment, I don’ t 
+
+249
+00:15:12,912 --> 00:15:15,912
+know what I would have figured out, okay. Here’ s another one. 
+
+250
+00:15:15,915 --> 00:15:21,915
+Lock against concurrent access. Spinlock detects. Yeah, that’ s… 
+
+251
+00:15:21,921 --> 00:15:25,921
+Your writing down what it does. This function swaps panels void 
+
+252
+00:15:25,925 --> 00:15:31,925
+swap panels, panel 1, panel 2. Great. Thank you for doing that. 
+
+253
+00:15:31,931 --> 00:15:35,931
+What the idea is for good comments and Armando would agree these 
+
+254
+00:15:35,935 --> 00:15:39,935
+comments aren’ t that good. What Ousterhout says what’ s missing 
+
+255
+00:15:39,939 --> 00:15:43,939
+is the reason why you did it. What’ s the motivation? Don’ t 
+
+256
+00:15:43,943 --> 00:15:47,943
+write comments about what it is. Put in the why. You can’ t 
+
+257
+00:15:47,947 --> 00:15:49,947
+figure that out from the code, the why, that you did that. That 
+
+258
+00:15:49,949 --> 00:15:53,949
+should be here. You want to the comments at a higher level, so 
+
+259
+00:15:53,953 --> 00:15:55,953
+that if you change; when you change the code, which you 
+
+260
+00:15:55,955 --> 00:15:57,955
+ultimately will have to do, it doesn’ t break the comments. 
+
+261
+00:15:57,957 --> 00:16:05,957
+Here’ s an example. If we’ re going to be scanning an array to 
+
+262
+00:16:05,965 --> 00:16:07,965
+see if the symbol exists, do it that way, rather than basic kind 
+
+263
+00:16:07,967 --> 00:16:12,967
+of implement the code in comments. This is a much better 
+
+264
+00:16:12,972 --> 00:16:16,972
+comment [ inaudible00: 16:12] doing it. What’ s tough about 
+
+265
+00:16:16,976 --> 00:16:21,976
+comments is there is not lots of good examples. Open source has 
+
+266
+00:16:21,981 --> 00:16:24,981
+terrible comments. If that’ s your example, it’ s rare that you 
+
+267
+00:16:24,984 --> 00:16:27,984
+see good comments in this. In Ousterhout code, there’ s as many 
+
+268
+00:16:27,987 --> 00:16:30,987
+comments as there are lines of code, there. That really helps 
+
+269
+00:16:30,990 --> 00:16:35,990
+it. I think Armando agrees with the why part of this, that 
+
+270
+00:16:35,995 --> 00:16:38,995
+writing down why is a good thing. He’ d like to believe with the 
+
+271
+00:16:38,998 --> 00:16:42,998
+elegance of Ruby and good variable names and stuff like that. 
+
+272
+00:16:42,1002 --> 00:16:46,1002
+The code can be understandable without the comments. He would 
+
+273
+00:16:46,1006 --> 00:16:52,1006
+agree that you can’ t capture the why in there. One of the big 
+
+274
+00:16:52,1012 --> 00:16:54,1012
+things about the legacy code when you’ re trying to figure out 
+
+275
+00:16:54,1014 --> 00:16:57,1014
+what’ s going on is typically that there’ s no comments. They 
+
+276
+00:16:57,1017 --> 00:17:04,1017
+may want to try and work on that. When I talked to my friend 
+
+277
+00:17:04,1024 --> 00:17:07,1024
+Ousterhout, and I think he agrees with this point. What I really 
+
+278
+00:17:07,1027 --> 00:17:10,1027
+love about this course is virtually every time we tell you a 
+
+279
+00:17:10,1030 --> 00:17:14,1030
+good idea. There’ s a tool that implements that. Good idea. What 
+
+280
+00:17:14,1034 --> 00:17:22,1034
+about ABC complexity? We got Flog for that. How about Cyclomatic 
+
+281
+00:17:22,1042 --> 00:17:27,1042
+complexity? That’ s Seguro or Smells. Oh, that’ s Reek. Good 
+
+282
+00:17:27,1047 --> 00:17:31,1047
+comments. We don’ t have a tool. The problem with that, if there 
+
+283
+00:17:31,1051 --> 00:17:33,1051
+was a natural language understanding tool that would say this is 
+
+284
+00:17:33,1053 --> 00:17:36,1053
+a pretty good comment, that would be useful. What I like about 
+
+285
+00:17:36,1056 --> 00:17:39,1056
+the course is the advice we give you. You can follow and we can 
+
+286
+00:17:39,1059 --> 00:17:42,1059
+see if you follow the advisors tool to do that. With comments, 
+
+287
+00:17:42,1062 --> 00:17:45,1062
+somebody has to read through the code to see if you’ re writing 
+
+288
+00:17:45,1065 --> 00:17:48,1065
+good comments and that’ s not a scalable, so he can make the 
+
+289
+00:17:48,1068 --> 00:17:54,1068
+classes big students would like. Let me wrap this up. We started 
+
+290
+00:17:54,1074 --> 00:17:56,1074
+off with giving advice on how to write beautiful code and SOFA: 
+
+291
+00:17:56,1076 --> 00:18:00,1076
+short, do one thing, few arguments and consistent abstraction, 
+
+292
+00:18:00,000 --> 00:18:02,1080
+so you don’ t have smelly code here. These metrics will point to 
+
+293
+00:18:02,1082 --> 00:18:05,1082
+areas of concern. They’ re not a foolproof guarantee but they 
+
+294
+00:18:05,1085 --> 00:18:10,1085
+are good indicators. Big idea, behavior different design is the 
+
+295
+00:18:10,1090 --> 00:18:14,1090
+user stories and Lo- Fi user interfaces to be able to work with 
+
+296
+00:18:14,1094 --> 00:18:16,1094
+the customer right now to be able to figure what they want, and 
+
+297
+00:18:16,1096 --> 00:18:18,1096
+you need to do that. How to make good ones; they need to be 
+
+298
+00:18:18,1098 --> 00:18:22,1098
+specific, measurable, achievable, relevant, and timeboxed, 
+
+299
+00:18:22,1102 --> 00:18:26,1102
+Trackers, this useful thing to be able to calculate progress. 
+
+300
+00:18:26,1106 --> 00:18:31,1106
+This other universe has the project manager. They get good pay, 
+
+301
+00:18:31,1111 --> 00:18:34,1111
+but there’ s a lot on the line to try and be successful. With 
+
+302
+00:18:34,1114 --> 00:18:36,1114
+that, we’ ll see you next time. 
+
+

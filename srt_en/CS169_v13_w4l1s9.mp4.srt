@@ -1,0 +1,233 @@
+1
+00:00:00,000 --> 00:00:02,000
+Next thing you need to do when you meet with a customer besides 
+
+2
+00:00:02,002 --> 00:00:04,002
+coming up with the user’ s stories, is work on the user 
+
+3
+00:00:04,004 --> 00:00:09,004
+interface. Why? Because most SaaS applications have a user 
+
+4
+00:00:09,009 --> 00:00:12,009
+interface. There’ s a piece in the cloud. There’ s a piece on 
+
+5
+00:00:12,012 --> 00:00:17,012
+the browser typically. What can we do to get the customer to 
+
+6
+00:00:17,017 --> 00:00:23,017
+participate, like the 3 x 5 cards? We want to avoid the WISBNWIW 
+
+7
+00:00:23,023 --> 00:00:28,023
+user interface. Everybody knows what that is. The WISBNWIW 
+
+8
+00:00:28,028 --> 00:00:31,028
+interface, that’ s the, what I said but not what I want user 
+
+9
+00:00:31,031 --> 00:00:35,031
+interface. You don’ t want to build the user interface as far as 
+
+10
+00:00:35,035 --> 00:00:38,035
+you can tell just what the customer asked for, and then once the 
+
+11
+00:00:38,038 --> 00:00:42,038
+customer sees this, “ No, no, no. That’ s not what I want.” We 
+
+12
+00:00:42,042 --> 00:00:45,042
+want to avoid that thing. So what’ s the user interface 
+
+13
+00:00:45,045 --> 00:00:48,045
+equivalent of that? Then that’ s kind of you could imagine some 
+
+14
+00:00:48,048 --> 00:00:51,048
+kind of picture that you create, like Photo Shop user interface 
+
+15
+00:00:51,051 --> 00:00:56,051
+that way, but a user interface is active. It’ s animated. Many 
+
+16
+00:00:56,056 --> 00:00:59,056
+things are going on. How do we reflect that into what make it 
+
+17
+00:00:59,059 --> 00:01:02,059
+easy to change? The answer is you’ ve already learned this in 
+
+18
+00:01:02,062 --> 00:01:07,062
+kindergarten. We do user interface sketches with pen and paper 
+
+19
+00:01:07,067 --> 00:01:09,067
+or with crayons. You could do it with the crayons, and you make 
+
+20
+00:01:09,069 --> 00:01:15,069
+what’ s called the Lo- Fi, low fidelity user interface. Here’ s 
+
+21
+00:01:15,075 --> 00:01:19,075
+one that I did, so you can see at the top of this page is rotten 
+
+22
+00:01:19,079 --> 00:01:23,079
+potatoes, and we’ re creating a new movie. I left some blanks, 
+
+23
+00:01:23,083 --> 00:01:27,083
+some forms to fill in for the title, rating, release date, and 
+
+24
+00:01:27,087 --> 00:01:31,087
+here’ s a button at the bottom where they save the changes. 
+
+25
+00:01:31,091 --> 00:01:35,091
+That’ s my sketch. That took me very little time to sketch, and 
+
+26
+00:01:35,095 --> 00:01:38,095
+we could show it, and because it’ s not threatening like 3 x 5 
+
+27
+00:01:38,098 --> 00:01:40,098
+cards, “ No, no, no, that’ s not what I want”, we could just 
+
+28
+00:01:40,100 --> 00:01:42,100
+throw the pieces away or do it on a white board and take 
+
+29
+00:01:42,102 --> 00:01:46,102
+pictures of it. It’ s really low tech, but we can get an idea of 
+
+30
+00:01:46,106 --> 00:01:49,106
+what’ s going on. That’ s like a statistic one. What about this 
+
+31
+00:01:49,109 --> 00:01:53,109
+animated when you click on it? Well, once again the user 
+
+32
+00:01:53,113 --> 00:01:56,113
+interface community came up with another good idea, which is 
+
+33
+00:01:56,116 --> 00:01:59,116
+storyboards, which they borrowed from the movie industries. You’ 
+
+34
+00:01:59,119 --> 00:02:01,119
+ve probably all seen movies about movies where you see these 
+
+35
+00:02:01,121 --> 00:02:04,121
+storyboards, like for Disney, and here’ s how the scene is put 
+
+36
+00:02:04,124 --> 00:02:07,124
+together. It’ s like the scenes of a movie, but instead of 
+
+37
+00:02:07,127 --> 00:02:12,127
+linear, like pieces of a movie, we can go to anyone. So let’ s 
+
+38
+00:02:12,132 --> 00:02:17,132
+go look at the storyboard version of this examples. This one is 
+
+39
+00:02:17,137 --> 00:02:23,137
+a mock up of a page that when I click on add a new movie, this 
+
+40
+00:02:23,143 --> 00:02:25,143
+arrow says, this page is supposed to pop up. That was the one I 
+
+41
+00:02:25,145 --> 00:02:29,145
+showed you before. What happens after I save changes, it’ s 
+
+42
+00:02:29,149 --> 00:02:33,149
+supposed to go to this page, which shows the movie being added, 
+
+43
+00:02:33,153 --> 00:02:36,153
+and then I can click back to the movies and go over there. It’ s 
+
+44
+00:02:36,156 --> 00:02:40,156
+multiple of these Lo- Fi sketches and with some arrows to show 
+
+45
+00:02:40,160 --> 00:02:43,160
+how it works. That’ s storyboards. Believe it or not, with 
+
+46
+00:02:43,163 --> 00:02:46,163
+pieces of paper and storyboards and dealing with the customer 
+
+47
+00:02:46,166 --> 00:02:50,166
+that you can help evolve, at very little effort, figure out what 
+
+48
+00:02:50,170 --> 00:02:56,170
+the customer wants and likes and be happy before you build it. 
+
+49
+00:02:56,176 --> 00:02:59,176
+It seemed kind of a lot of work, but it’ s a lot less work than 
+
+50
+00:02:59,179 --> 00:03:05,179
+producing html, and again, not threatening, engage the customer 
+
+51
+00:03:05,185 --> 00:03:11,185
+more. After this, we talked a little bit about Haml, and Armando 
+
+52
+00:03:11,191 --> 00:03:15,191
+did talk about Cascade Style Sheet, CSS, so it’ s important to 
+
+53
+00:03:15,195 --> 00:03:18,195
+make it pretty, but after you figure out what they want. You 
+
+54
+00:03:18,198 --> 00:03:21,198
+don’ t want to make it pretty and then we throw it away. That’ s 
+
+55
+00:03:21,201 --> 00:03:25,201
+the idea of Lo- FI UI, and as you meet with the customers and 3 
+
+56
+00:03:25,205 --> 00:03:30,205
+x 5 cards, as soon as you get tired of talking about that, you 
+
+57
+00:03:30,210 --> 00:03:33,210
+could start talking about the user interface and the storyboards 
+
+58
+00:03:33,213 --> 00:03:35,213
+and how they would work. 
+
+

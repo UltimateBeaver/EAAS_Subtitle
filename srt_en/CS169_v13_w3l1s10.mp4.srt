@@ -1,0 +1,97 @@
+1
+00:00:00,000 --> 00:00:03,000
+Let's go through the answers to this matching question. The 
+
+2
+00:00:03,003 --> 00:00:05,003
+terms I'm trying to match are presentation, logic and 
+
+3
+00:00:05,005 --> 00:00:09,005
+persistence here. We basically have the names and number of open 
+
+4
+00:00:09,009 --> 00:00:12,009
+source and proprietary products here but what's the presentation 
+
+5
+00:00:12,012 --> 00:00:15,012
+tier? The presentation tier is the first thing the client sees 
+
+6
+00:00:15,015 --> 00:00:18,015
+when it ask a question. It's their first point of contact with a 
+
+7
+00:00:18,018 --> 00:00:21,018
+server. That means that the presentation tier is going to be a 
+
+8
+00:00:21,021 --> 00:00:25,021
+web server of some kind. Apache is a plausible answer to that. 
+
+9
+00:00:25,025 --> 00:00:27,025
+Internet information server from Microsoft is an answer but 
+
+10
+00:00:27,027 --> 00:00:31,027
+Firefox clearly is not because the presentation tier is some 
+
+11
+00:00:31,031 --> 00:00:35,031
+part of the server and Firefox is a client. That rules out the 
+
+12
+00:00:35,035 --> 00:00:38,035
+green answer and it rules out the blue answer over here. What 
+
+13
+00:00:38,038 --> 00:00:40,038
+about the logic tier? Well, we said that's where your 
+
+14
+00:00:40,040 --> 00:00:44,040
+application runs so rack and rails are certainly an example of a 
+
+15
+00:00:44,044 --> 00:00:47,044
+logic tier that means that the red answer is still on the 
+
+16
+00:00:47,047 --> 00:00:51,047
+running here. Then, the last one is the persistence tier. What 
+
+17
+00:00:51,051 --> 00:00:54,051
+happens there, that's where stuff gets stored that survives a 
+
+18
+00:00:54,054 --> 00:00:58,054
+cross invitations of HTTP request so a relational database, 
+
+19
+00:00:58,058 --> 00:01:01,058
+certainly a plausible choice for that but the Apache web server, 
+
+20
+00:01:01,061 --> 00:01:03,061
+well, web servers tend to be stateless. They're part of the 
+
+21
+00:01:03,063 --> 00:01:07,063
+presentation tier that we scale out and one of the reasons they 
+
+22
+00:01:07,067 --> 00:01:09,067
+can do that is because they don't manage persistent data where 
+
+23
+00:01:09,069 --> 00:01:12,069
+the problem of multiple copies could arise. In this case, the 
+
+24
+00:01:12,072 --> 00:01:16,072
+correct answer is the first one. 
+
+

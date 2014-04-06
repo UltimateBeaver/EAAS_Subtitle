@@ -1,0 +1,169 @@
+1
+00:00:00,000 --> 00:00:13,000
+Okay, first vote. First vote. Okay, I think enough people got 
+
+2
+00:00:13,013 --> 00:00:16,013
+this and I think we're just gonna go and explain the answers 
+
+3
+00:00:16,016 --> 00:00:20,016
+here. So, which statements are true about implicit requirements? 
+
+4
+00:00:20,020 --> 00:00:23,020
+First, that they're often, but not always, derived from the 
+
+5
+00:00:23,023 --> 00:00:26,023
+explicit requirements. That is certainly true. We just saw a 
+
+6
+00:00:26,026 --> 00:00:28,026
+simple example where the explicit requirement really just talked 
+
+7
+00:00:28,028 --> 00:00:31,028
+about what a method should do, but it didn't talk about what 
+
+8
+00:00:31,031 --> 00:00:33,031
+happens when the method fails, or what are the ways in which it 
+
+9
+00:00:33,033 --> 00:00:36,033
+could fail, and how do we handle those. So, that's an example 
+
+10
+00:00:36,036 --> 00:00:38,036
+where we had to sort of derive some additional implicit 
+
+11
+00:00:38,038 --> 00:00:40,038
+requirements, even though they weren't part of what we wish the 
+
+12
+00:00:40,040 --> 00:00:42,040
+code would do, right? Usually, when we think about what we wish 
+
+13
+00:00:42,042 --> 00:00:46,042
+the code would do, we tend to think in terms of what it would do 
+
+14
+00:00:46,046 --> 00:00:48,046
+when it works correctly, all right. We tend to think about the 
+
+15
+00:00:48,048 --> 00:00:50,048
+happy path. Sometimes, the implicit requirements come out of 
+
+16
+00:00:50,050 --> 00:00:54,050
+also considering what are the various sad paths. They apply only 
+
+17
+00:00:54,054 --> 00:00:57,054
+to unit and functional tests? Not necessarily. Implicit 
+
+18
+00:00:57,057 --> 00:01:00,057
+requirements can come from integration tests as well, or from 
+
+19
+00:01:00,000 --> 00:01:04,060
+user- level acceptance tests. In fact, the users tend to have 
+
+20
+00:01:04,064 --> 00:01:07,064
+the same issue, right? They tend to think of a flow in terms of 
+
+21
+00:01:07,067 --> 00:01:10,067
+the happy path, and often at each step there are many different 
+
+22
+00:01:10,070 --> 00:01:12,070
+ways that something could go wrong. And you need to have a 
+
+23
+00:01:12,072 --> 00:01:16,072
+sensible response when either the user makes an error or the 
+
+24
+00:01:16,076 --> 00:01:18,076
+user tries to do something that they thought would work, but it 
+
+25
+00:01:18,078 --> 00:01:21,078
+doesn't work. So again, in those cases, you're really deriving 
+
+26
+00:01:21,081 --> 00:01:23,081
+these implicit requirements of ... Okay, well what about when 
+
+27
+00:01:23,083 --> 00:01:26,083
+we're not on the happy path? What's a reasonable behavior to do 
+
+28
+00:01:26,086 --> 00:01:29,086
+then? And you have to test for those as well. And testing them 
+
+29
+00:01:29,089 --> 00:01:33,089
+is not really any lower priority because the reaction when the 
+
+30
+00:01:33,093 --> 00:01:37,093
+user does something incorrect, but expected, is in some sense 
+
+31
+00:01:37,097 --> 00:01:38,097
+just as important as when they do something correct but 
+
+32
+00:01:38,098 --> 00:01:41,098
+expected. From the user's point of view, if they see a cryptic 
+
+33
+00:01:41,101 --> 00:01:44,101
+error message, as opposed to seeing a helpful, " Oh, you tried 
+
+34
+00:01:44,104 --> 00:01:48,104
+to do X, but here's why you can't do X right now." You have to 
+
+35
+00:01:48,108 --> 00:01:50,108
+implement and test those code paths because from the user's 
+
+36
+00:01:50,110 --> 00:01:52,110
+point of view, the app doesn't work if they don't understand how 
+
+37
+00:01:52,112 --> 00:01:54,112
+it failed, right? If they're not getting feedback about what 
+
+38
+00:01:54,114 --> 00:01:58,114
+they did wrong so that they could use it more effectively. So, 
+
+39
+00:01:58,118 --> 00:02:00,118
+my view of the answer to this question is that the first 
+
+40
+00:02:00,000 --> 00:02:03,120
+statement is true. The second and third statements are for the 
+
+41
+00:02:03,123 --> 00:02:06,123
+most part not true. And that makes the fourth statement also not 
+
+42
+00:02:06,126 --> 00:02:06,126
+true. 
+
+

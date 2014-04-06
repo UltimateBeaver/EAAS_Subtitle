@@ -1,0 +1,513 @@
+1
+00:00:00,000 --> 00:00:05,000
+Let's go on to team. What are the questions here? First of all,
+
+2
+00:00:05,005 --> 00:00:10,005
+earlier in my youth in getting into software many years ago. It 
+
+3
+00:00:10,010 --> 00:00:14,010
+was kind of this superhero programmer. We are now in the post- 
+
+4
+00:00:14,014 --> 00:00:18,014
+superhero programmer. It was just the state of software, 
+
+5
+00:00:18,018 --> 00:00:22,018
+whatever it was 30 years ago was such that one smart person 
+
+6
+00:00:22,022 --> 00:00:24,022
+could build this brilliant thing better than anything that was 
+
+7
+00:00:24,024 --> 00:00:28,024
+out there. Why isn't that happening today? Why don't we have the 
+
+8
+00:00:28,028 --> 00:00:31,028
+single superhero anymore that we had 30 years ago? I think it's 
+
+9
+00:00:31,031 --> 00:00:34,031
+just that software is a lot better. It's raised the level of 
+
+10
+00:00:34,034 --> 00:00:36,034
+functionality and quality that you really can't do it by 
+
+11
+00:00:36,036 --> 00:00:40,036
+yourself. Now, to have a successful software engineering career, 
+
+12
+00:00:40,040 --> 00:00:43,040
+you have to be good at programming which a lot of you already 
+
+13
+00:00:43,043 --> 00:00:46,043
+are. You have to get along with others and you have to help make 
+
+14
+00:00:46,046 --> 00:00:52,046
+the team win. Quoting [ Fred Brooks 00:00:48] for the third time 
+
+15
+00:00:52,052 --> 00:00:54,052
+today, " There are no winners on a losing team, and no losers on 
+
+16
+00:00:54,054 --> 00:00:58,054
+a winning team." He said this about basketball at the University 
+
+17
+00:00:58,058 --> 00:01:01,058
+of North Carolina where he was, but no winners on a losing team. 
+
+18
+00:01:01,061 --> 00:01:04,061
+If the team loses you're not going to be bragging about that. If 
+
+19
+00:01:04,064 --> 00:01:06,064
+you're on that infamy hall of fame, hey, I was the best 
+
+20
+00:01:06,066 --> 00:01:10,066
+programmer on the FBI file case abandonment project, that's not 
+
+21
+00:01:10,070 --> 00:01:14,070
+a good thing as a resume. No losers on the winning team, hey, I 
+
+22
+00:01:14,074 --> 00:01:19,074
+help found Google. I only did this minor role, but I help found 
+
+23
+00:01:19,079 --> 00:01:21,079
+Google. Man, if you help found Google, you're going to need that 
+
+24
+00:01:21,081 --> 00:01:24,081
+on your resume. It'd be pretty good. It turns out I've got a lot 
+
+25
+00:01:24,084 --> 00:01:29,084
+of experience in sports, in teams. I think one of my strengths 
+
+26
+00:01:29,089 --> 00:01:33,089
+is building teams. Ironically, I wasn't on a sport like football 
+
+27
+00:01:33,093 --> 00:01:35,093
+or any of the sports that involve a lot of teams. I did 
+
+28
+00:01:35,095 --> 00:01:41,095
+wrestling which is highly individual. This was high school. This 
+
+29
+00:01:41,101 --> 00:01:47,101
+is me. This is me and this is me, and this is 50 years later a 
+
+30
+00:01:47,107 --> 00:01:51,107
+coach and this is Rich Burn whose standing there and we were 
+
+31
+00:01:51,111 --> 00:01:54,111
+best men at each other's wedding and we're still good friends 
+
+32
+00:01:54,114 --> 00:01:57,114
+today. One of the things that these ... I had really good 
+
+33
+00:01:57,117 --> 00:01:59,117
+wrestling coaches. To talk the importance of working as a team 
+
+34
+00:01:59,119 --> 00:02:02,119
+even in an individual sport like wrestling and that's kind 
+
+35
+00:02:02,122 --> 00:02:04,122
+of ... That carries over today and I think that's one of my 
+
+36
+00:02:04,124 --> 00:02:06,124
+strengths as a faculty member. I can get all these independent 
+
+37
+00:02:06,126 --> 00:02:09,126
+faculty members to work together as a team, but basically 
+
+38
+00:02:09,129 --> 00:02:12,129
+you ... If you're in a winning team, there's no losers and 
+
+39
+00:02:12,132 --> 00:02:15,132
+that's what you need to be able to figure out what to do. All 
+
+40
+00:02:15,135 --> 00:02:18,135
+right, so what's an alternative? The Plan and Document has this 
+
+41
+00:02:18,138 --> 00:02:23,138
+program manager style and it's in hierarchical, depends on the 
+
+42
+00:02:23,143 --> 00:02:27,143
+manager, how should we organize an Agile team? It's probably not 
+
+43
+00:02:27,147 --> 00:02:30,147
+going to have this manager model. Is there some alternative to 
+
+44
+00:02:30,150 --> 00:02:34,150
+this hierarchical model? That's what's called Scrum. Scrum is an 
+
+45
+00:02:34,154 --> 00:02:39,154
+example of a way to organize an Agile team. They come up with 
+
+46
+00:02:39,159 --> 00:02:42,159
+this two pizza size team which is four to nine people which is a 
+
+47
+00:02:42,162 --> 00:02:45,162
+good size so you don't spend too much time communicating. 
+
+48
+00:02:45,165 --> 00:02:51,165
+Scrums, the name comes from rugby which I played also. That's 
+
+49
+00:02:51,171 --> 00:02:57,171
+not why. Scrum is inspired by these short daily meetings. 
+
+50
+00:02:57,177 --> 00:03:01,177
+Fifteen minutes every day at the same place, you show up, like 
+
+51
+00:03:01,181 --> 00:03:04,181
+9:07 in the morning, you get there and you have a short meeting 
+
+52
+00:03:04,184 --> 00:03:07,184
+and you just go around the circle and answer three questions. 
+
+53
+00:03:07,187 --> 00:03:11,187
+The three questions are: what have you done since yesterday, 
+
+54
+00:03:11,191 --> 00:03:15,191
+what are you planning to do today, and are there any impediments 
+
+55
+00:03:15,195 --> 00:03:17,195
+or stumbling blocks there? You're going around in a circle and 
+
+56
+00:03:17,197 --> 00:03:21,197
+what the idea is is you try and help individuals on your team, 
+
+57
+00:03:21,201 --> 00:03:26,201
+in the Scrum and see if they have some obstacle and maybe you 
+
+58
+00:03:26,206 --> 00:03:28,206
+can do something to change what you're doing to help them 
+
+59
+00:03:28,208 --> 00:03:31,208
+overcome their obstacle or maybe you have some experience you 
+
+60
+00:03:31,211 --> 00:03:34,211
+can share. Hey, I've had that problem before and you do that. 
+
+61
+00:03:34,214 --> 00:03:37,214
+Every day, 15 minutes, what are you going to do each day? 
+
+62
+00:03:37,217 --> 00:03:41,217
+There's a couple of roles. There's the team which develops it, 
+
+63
+00:03:41,221 --> 00:03:45,221
+but then this person called the Scrum Master and that's the team 
+
+64
+00:03:45,225 --> 00:03:48,225
+member who does these followings things. He acts as a buffer or 
+
+65
+00:03:48,228 --> 00:03:51,228
+he or she acts as a buffer between the team and any kind of 
+
+66
+00:03:51,231 --> 00:03:55,231
+external distraction to try to keep the team focused, working on 
+
+67
+00:03:55,235 --> 00:03:57,235
+the things at hand rather than getting distracted and working on 
+
+68
+00:03:57,237 --> 00:04:01,237
+things besides the user stories you're supposed to. He or she 
+
+69
+00:04:01,241 --> 00:04:04,241
+enforces the team rules, like if you have a coding standard, 
+
+70
+00:04:04,244 --> 00:04:07,244
+make sure every body is sticking to the coding standard and if 
+
+71
+00:04:07,247 --> 00:04:11,247
+there's impediments in making progress, like access to data or 
+
+72
+00:04:11,251 --> 00:04:15,251
+software, the Scrum Master takes that on. The one other role is 
+
+73
+00:04:15,255 --> 00:04:18,255
+called the Product Owner. This is a team member whose not the 
+
+74
+00:04:18,258 --> 00:04:21,258
+Scrum Master, somebody else who represents the voice of the 
+
+75
+00:04:21,261 --> 00:04:26,261
+customer and helps prioritize user stories. We've got the Scrum 
+
+76
+00:04:26,266 --> 00:04:28,266
+Master to help keep the people in the right direction, the 
+
+77
+00:04:28,268 --> 00:04:30,268
+Product Owner. They're going to say, hey I don't know ... As the 
+
+78
+00:04:30,270 --> 00:04:33,270
+Product Owner, I don't think that's a good way to do this or I 
+
+79
+00:04:33,273 --> 00:04:38,273
+think this is more important than trying to push them to do 
+
+80
+00:04:38,278 --> 00:04:41,278
+this. We'll say it again, it's a good idea to rotate these 
+
+81
+00:04:41,281 --> 00:04:45,281
+roles. In this informal organization, certainly the Product 
+
+82
+00:04:45,285 --> 00:04:49,285
+Owner and quite possibly the Scrum Master. Now, one of the 
+
+83
+00:04:49,289 --> 00:04:52,289
+things that happened in teams is resolving conflicts. You know, 
+
+84
+00:04:52,292 --> 00:04:55,292
+there are different opinions on what's the right way to go on a 
+
+85
+00:04:55,295 --> 00:05:00,295
+particular technical issue. Let's talk about some ways to 
+
+86
+00:05:00,000 --> 00:05:05,300
+resolve these conflicts. One way is instead of starting with a 
+
+87
+00:05:05,305 --> 00:05:07,305
+disagreement, it's starting where you agree. Let's start off 
+
+88
+00:05:07,307 --> 00:05:13,307
+with listing all of the things where you agree and then maybe 
+
+89
+00:05:13,313 --> 00:05:16,313
+you're going to realize, well gee, we're not far apart. On these 
+
+90
+00:05:16,316 --> 00:05:18,316
+seven or eight things is one thing to differ, maybe it's not 
+
+91
+00:05:18,318 --> 00:05:24,318
+that big. Another way to do this is to articulate each other's 
+
+92
+00:05:24,324 --> 00:05:28,324
+arguments. Being in arguments, you swap roles. Even if you don't 
+
+93
+00:05:28,328 --> 00:05:32,328
+agree with it, you give the other argument of the other person 
+
+94
+00:05:32,332 --> 00:05:34,332
+and then, that other person switches roles and gives your 
+
+95
+00:05:34,334 --> 00:05:39,334
+argument back. What this does is it avoids confusion about the 
+
+96
+00:05:39,339 --> 00:05:41,339
+terms or assumptions. Maybe the reason of the argument is just 
+
+97
+00:05:41,341 --> 00:05:43,341
+you have different assumptions and once you understand each 
+
+98
+00:05:43,343 --> 00:05:48,343
+other's assumptions, that's the real cause of the conflict. 
+
+99
+00:05:48,348 --> 00:05:52,348
+Intel actually embraces conflicts. They have what they call 
+
+100
+00:05:52,352 --> 00:05:57,352
+constructive confrontation. If you have an Intel blue badger, an 
+
+101
+00:05:57,357 --> 00:06:01,357
+Intel employee, you are told in the first day that if you have a 
+
+102
+00:06:01,361 --> 00:06:04,361
+strong opinion that the person is proposing the wrong thing 
+
+103
+00:06:04,364 --> 00:06:08,364
+technically, not business, but technically. You are obligated to 
+
+104
+00:06:08,368 --> 00:06:10,368
+bring it up by your badge or I'll bring it up. Even if it's the 
+
+105
+00:06:10,370 --> 00:06:14,370
+President of the company. That's constructive confrontation. 
+
+106
+00:06:14,374 --> 00:06:17,374
+That sounds good. That causes lots of people to examine ideas. 
+
+107
+00:06:17,377 --> 00:06:21,377
+That could lead to problems. They also have another part of the 
+
+108
+00:06:21,381 --> 00:06:25,381
+culture is disagree and commit. Once decision is made, so 
+
+109
+00:06:25,385 --> 00:06:29,385
+there's two people. One is probably right, one is wrong, you 
+
+110
+00:06:29,389 --> 00:06:32,389
+need to go with that one, embrace it and go ahead and basically, 
+
+111
+00:06:32,392 --> 00:06:36,392
+what we say I still disagree. Basically, you're still wrong, but 
+
+112
+00:06:36,396 --> 00:06:40,396
+I disagree but I'm going to help even if I don't agree. I don't 
+
+113
+00:06:40,400 --> 00:06:42,400
+have to agree to help, but I have to help because I want to be a 
+
+114
+00:06:42,402 --> 00:06:45,402
+team member. As I think about these things, my wife and I 
+
+115
+00:06:45,405 --> 00:06:49,405
+celebrated our 46th wedding anniversary like Wednesday and 
+
+116
+00:06:49,409 --> 00:06:51,409
+there's a chance that this conflict stuff could be useful in a 
+
+117
+00:06:51,411 --> 00:06:56,411
+future career. There's a chance that when you get married, you 
+
+118
+00:06:56,416 --> 00:06:58,416
+may not always see eye to eye and if you could be good at 
+
+119
+00:06:58,418 --> 00:07:01,418
+resolving conflicts ... This is ... Software engineering 
+
+120
+00:07:01,421 --> 00:07:05,421
+improving your personal lives. Boy, you handle these conflicts 
+
+121
+00:07:05,425 --> 00:07:09,425
+so well. How did you do that? Well, I'm a software engineer so. 
+
+122
+00:07:09,429 --> 00:07:16,429
+Of course. Summarizing Scrum is basically a kind of a guidelines 
+
+123
+00:07:16,436 --> 00:07:19,436
+to self- organize the team, the big part of it is the stand- up 
+
+124
+00:07:19,439 --> 00:07:23,439
+15 minutes questions, 15 minute meetings where you answer these 
+
+125
+00:07:23,443 --> 00:07:26,443
+three questions, what did you do yesterday, what are you going 
+
+126
+00:07:26,446 --> 00:07:29,446
+to do today, and are there any obstacles and you've got these 
+
+127
+00:07:29,449 --> 00:07:32,449
+two roles, the Product Owner and Scrum Master that you rotate 
+
+128
+00:07:32,452 --> 00:07:34,452
+around, so everybody has as chance to do it. 
+
+

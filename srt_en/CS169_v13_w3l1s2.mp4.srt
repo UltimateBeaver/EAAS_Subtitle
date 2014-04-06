@@ -1,0 +1,173 @@
+1
+00:00:00,000 --> 00:00:12,000
+With that in mind, we can do a question. Cards out. Every blank 
+
+2
+00:00:12,012 --> 00:00:16,012
+in Ruby accepts a blank but not vice versa. Let's see if you 
+
+3
+00:00:16,016 --> 00:00:23,016
+followed all the terminology. Let's do our initial vote. Initial 
+
+4
+00:00:23,023 --> 00:00:28,023
+vote. Initial. I like the holding up smart phones. Initial vote. 
+
+5
+00:00:28,028 --> 00:00:31,028
+Okay, we have a lot ... Lot of votes for blue. Majority of votes 
+
+6
+00:00:31,031 --> 00:00:36,031
+for blue, I would say. Let's talk through why blue is actually 
+
+7
+00:00:36,036 --> 00:00:39,036
+the correct answer. Congratulations those of you voted blue. 
+
+8
+00:00:39,039 --> 00:00:42,039
+What is an iterator? Remember, an iterator is something that is 
+
+9
+00:00:42,042 --> 00:00:45,042
+responsible for knowing how to reach into a collection and get 
+
+10
+00:00:45,045 --> 00:00:48,045
+elements out of it. What it's going to do with those elements? 
+
+11
+00:00:48,048 --> 00:00:51,048
+Well, that's why you have to pass a block to a iterator. An 
+
+12
+00:00:51,051 --> 00:00:55,051
+iterator is really just one special case of a yield statement. 
+
+13
+00:00:55,055 --> 00:00:58,055
+That might have made you think that orange is the right answer, 
+
+14
+00:00:58,058 --> 00:01:00,058
+but if you put the sentence together, every yield statement 
+
+15
+00:01:00,000 --> 00:01:03,060
+accepts an iterator, no, that doesn't make any sense. An 
+
+16
+00:01:03,063 --> 00:01:06,063
+iterator is actually just one usage of a yield statement. 
+
+17
+00:01:06,066 --> 00:01:10,066
+Similarly, closures are certainly involved here. Closures is 
+
+18
+00:01:10,070 --> 00:01:12,070
+really just the name of the concept by which the procedural 
+
+19
+00:01:12,072 --> 00:01:15,072
+environment carries around its variables with it. That's not 
+
+20
+00:01:15,075 --> 00:01:19,075
+correct. Every block accepts an iterator. Well, that's just ... 
+
+21
+00:01:19,079 --> 00:01:21,079
+It happens to be backwards. Those are the correct two words. I 
+
+22
+00:01:21,081 --> 00:01:23,081
+tried every combination of words that I thought might be 
+
+23
+00:01:23,083 --> 00:01:25,083
+confusing and for people who aimed to just pick the answer that 
+
+24
+00:01:25,085 --> 00:01:28,085
+has keywords in it, it wouldn't work. Okay, but you all are 
+
+25
+00:01:28,088 --> 00:01:34,088
+smarter than that. To summarize what we've learned about Ruby. 
+
+26
+00:01:34,094 --> 00:01:39,094
+We saw duck typing before. It's a way to encourage reuse by not 
+
+27
+00:01:39,099 --> 00:01:41,099
+caring about the classes of things but only caring about what 
+
+28
+00:01:41,101 --> 00:01:44,101
+method something responds to. We saw a particular interesting 
+
+29
+00:01:44,104 --> 00:01:47,104
+example of that right now which is that if you create a class 
+
+30
+00:01:47,107 --> 00:01:50,107
+that responds to the each method and if your implementation of 
+
+31
+00:01:50,110 --> 00:01:53,110
+each uses yield to yield control back to a block, you can make 
+
+32
+00:01:53,113 --> 00:01:56,113
+things like iterators. You can assume that the blocks that get 
+
+33
+00:01:56,116 --> 00:01:58,116
+called will have the variables and scope that they had when they 
+
+34
+00:01:58,118 --> 00:02:02,118
+started out. This is an extremely, extremely common Ruby you're 
+
+35
+00:02:02,122 --> 00:02:05,122
+going to see all over the place. You'll become very familiar 
+
+36
+00:02:05,125 --> 00:02:08,125
+with it and the good news is that when we talk about Java script 
+
+37
+00:02:08,128 --> 00:02:10,128
+later on in the course, you're going to feel right at home 
+
+38
+00:02:10,130 --> 00:02:15,130
+because it's really exactly the same idea. The last thing I'm 
+
+39
+00:02:15,135 --> 00:02:17,135
+going to say is like any programming language, you learn it more 
+
+40
+00:02:17,137 --> 00:02:21,137
+by doing it. It'll become easier as you go. That's why we have 
+
+41
+00:02:21,141 --> 00:02:24,141
+an all new homework assignment called The Oracle of Bacon which 
+
+42
+00:02:24,144 --> 00:02:26,144
+you're going to learn about pretty soon that will give you even 
+
+43
+00:02:26,146 --> 00:02:29,146
+better Ruby ops. 
+
+

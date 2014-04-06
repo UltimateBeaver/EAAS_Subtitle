@@ -1,0 +1,193 @@
+1
+00:00:00,000 --> 00:00:06,000
+So, which of these is poor advice? Poor advice. Initial vote, 
+
+2
+00:00:06,006 --> 00:00:10,006
+poor advice. Okay, people are either internalizing the message, 
+
+3
+00:00:10,010 --> 00:00:14,010
+or really want to be on Facebook. Okay, let's briefly talk about 
+
+4
+00:00:14,014 --> 00:00:18,014
+why the correct answer is blue in this case. So mock and stub 
+
+5
+00:00:18,018 --> 00:00:20,018
+early and often in unit tests. Certainly good advice because the 
+
+6
+00:00:20,020 --> 00:00:23,020
+whole power of unit tests is the ability to isolate the code you 
+
+7
+00:00:23,023 --> 00:00:26,023
+really care about, and mocks and stubs are a big part of how you 
+
+8
+00:00:26,026 --> 00:00:30,026
+do that. Aim for high unit test coverage. Nothing wrong with 
+
+9
+00:00:30,030 --> 00:00:32,030
+high unit test coverage. If you're obsessive about it, and 
+
+10
+00:00:32,032 --> 00:00:35,032
+that's all you aim for, that would be bad. But in and of itself, 
+
+11
+00:00:35,035 --> 00:00:37,035
+it's a reasonable goal, right? If you have unit test coverages 
+
+12
+00:00:37,037 --> 00:00:40,037
+in the high nineties, you should be happy. Sometimes, it's okay 
+
+13
+00:00:40,040 --> 00:00:42,040
+to use stubs and mocks in your integration tests. Well, we've 
+
+14
+00:00:42,042 --> 00:00:44,042
+seen that sometimes you kinda have to, right? If you're 
+
+15
+00:00:44,044 --> 00:00:47,044
+testing ... if you have an integration test for something that 
+
+16
+00:00:47,047 --> 00:00:50,047
+runs against an external service that's a perfect example of 
+
+17
+00:00:50,050 --> 00:00:52,050
+where a stub or a mock makes a lot of sense. You don't want to 
+
+18
+00:00:52,052 --> 00:00:55,052
+be hitting the TMDB database every time you run your Cucumber 
+
+19
+00:00:55,055 --> 00:00:59,055
+scenarios. You hit it once, you capture the results, and it's a 
+
+20
+00:00:59,059 --> 00:01:01,059
+pretty realistic playback because it's based on the live site. 
+
+21
+00:01:01,061 --> 00:01:04,061
+But having said that, keep in mind that, the same pitfalls that 
+
+22
+00:01:04,064 --> 00:01:08,064
+apply to your regular test cases apply here. Namely, if I have a 
+
+23
+00:01:08,068 --> 00:01:11,068
+test case, for example, a unit test that stubs out the model and 
+
+24
+00:01:11,071 --> 00:01:14,071
+all of my tests are passing. And now, somebody goes and changes 
+
+25
+00:01:14,074 --> 00:01:17,074
+the behavior of that model method that I stubbed out. They may 
+
+26
+00:01:17,077 --> 00:01:21,077
+have tested their change, but if I wasn't made aware of the fact 
+
+27
+00:01:21,081 --> 00:01:24,081
+that the API changed, my test is now going to be assuming an API 
+
+28
+00:01:24,084 --> 00:01:26,084
+that doesn't exist anymore. So, my test is gonna still pass 
+
+29
+00:01:26,086 --> 00:01:29,086
+because I'm stubbing out the method. But once I actually run an 
+
+30
+00:01:29,089 --> 00:01:32,089
+integration test, it'll fail. Because now, when you remove the 
+
+31
+00:01:32,092 --> 00:01:35,092
+stub and you call the real method the API's don't match anymore 
+
+32
+00:01:35,095 --> 00:01:37,095
+and boom! So, the same thing can happen in a service- oriented 
+
+33
+00:01:37,097 --> 00:01:41,097
+architecture. We used TMDB, we played some real, live requests 
+
+34
+00:01:41,101 --> 00:01:44,101
+against it. We captured the output and fed it to fake web and 
+
+35
+00:01:44,104 --> 00:01:47,104
+now TMDB goes and changes the way they return output, or they 
+
+36
+00:01:47,107 --> 00:01:51,107
+change something about the restful behavior of the API. Unless 
+
+37
+00:01:51,111 --> 00:01:53,111
+you know this fact and change your tests to match, you'll be in 
+
+38
+00:01:53,113 --> 00:01:56,113
+this scenario where all of your tests seem to pass, and it's 
+
+39
+00:01:56,116 --> 00:01:58,116
+because you're mocking up the thing that mattered most. You 
+
+40
+00:01:58,118 --> 00:02:02,118
+mocked out the interface. So, you have to, sort of, reach a 
+
+41
+00:02:02,122 --> 00:02:04,122
+level of peace with yourself about how much you mock and stub, 
+
+42
+00:02:04,124 --> 00:02:08,124
+how much you do an integration test? You always need some. So, 
+
+43
+00:02:08,128 --> 00:02:10,128
+that leaves the only piece of bad advice as unit tests giving 
+
+44
+00:02:10,130 --> 00:02:13,130
+you higher confidence of correctness. It is neither higher nor 
+
+45
+00:02:13,133 --> 00:02:15,133
+lower. It's a different kind of correctness. It's correctness 
+
+46
+00:02:15,135 --> 00:02:19,135
+about code paths and special cases, as opposed to correctness 
+
+47
+00:02:19,139 --> 00:02:22,139
+across interfaces, or across code paths that touch many 
+
+48
+00:02:22,142 --> 00:02:24,142
+different pieces. You need both. 
+
+

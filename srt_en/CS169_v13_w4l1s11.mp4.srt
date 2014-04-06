@@ -1,0 +1,189 @@
+1
+00:00:00,000 --> 00:00:06,000
+Okay, cost estimation in Agile. Sounds like an oxymoron. In the 
+
+2
+00:00:06,006 --> 00:00:08,006
+real world you need to estimate the cost before a customer's 
+
+3
+00:00:08,008 --> 00:00:11,008
+going to agree on the project, but there's no careful planning 
+
+4
+00:00:11,011 --> 00:00:14,011
+and scheduling in Agile unlike [ planning of 00:13] documents 
+
+5
+00:00:14,014 --> 00:00:19,014
+like we'll talk about shortly. How can you estimate the cost? In 
+
+6
+00:00:19,019 --> 00:00:22,019
+fact, that's exactly the question … Armando and I had written 
+
+7
+00:00:22,022 --> 00:00:24,022
+versions of the book, we didn't have cost estimation in it, so 
+
+8
+00:00:24,024 --> 00:00:28,024
+we said, " Hey, how do you guys do this?" This is the answer. 
+
+9
+00:00:28,028 --> 00:00:31,028
+Pivotal Labs, they actually not only do they develop code they 
+
+10
+00:00:31,031 --> 00:00:35,031
+help teach the customer how to develop code by teaching them 
+
+11
+00:00:35,035 --> 00:00:41,035
+Agile. They never promise that we'll deliver these three 
+
+12
+00:00:41,041 --> 00:00:45,041
+features by this date. They don’ t do that. What they do instead 
+
+13
+00:00:45,045 --> 00:00:50,045
+is they're going to commit resources efficiently up until that 
+
+14
+00:00:50,050 --> 00:00:53,050
+date, and they'll work with the customer to define the 
+
+15
+00:00:53,053 --> 00:00:59,053
+priorities to see how things take. It's not a hitting a target 
+
+16
+00:00:59,059 --> 00:01:04,059
+based on features in a time window, it's estimating how much 
+
+17
+00:01:04,064 --> 00:01:08,064
+effort will be and then we'll see how it goes. Where do you 
+
+18
+00:01:08,068 --> 00:01:11,068
+think you get the estimate from? What's the steps they go 
+
+19
+00:01:11,071 --> 00:01:15,071
+through? First it starts off with a one- hour phone call. A 
+
+20
+00:01:15,075 --> 00:01:18,075
+person, a company's interested in working with Pivotal Labs. 
+
+21
+00:01:18,078 --> 00:01:20,078
+They call on the phone, and part of what they do on the phone is 
+
+22
+00:01:20,080 --> 00:01:24,080
+explain how things are done. This is not a contract, this is not 
+
+23
+00:01:24,084 --> 00:01:27,084
+outsourcing a contract of work to do. This is a joint effort 
+
+24
+00:01:27,087 --> 00:01:31,087
+with you and us. You need to make the time commitment for [ 
+
+25
+00:01:31,091 --> 00:01:33,091
+inaudible 01:32] and it's after the phone call that goes okay, 
+
+26
+00:01:33,093 --> 00:01:36,093
+they say, " Okay, why don't you come visit?" Then they have this 
+
+27
+00:01:36,096 --> 00:01:39,096
+hour and a half session that's called a scoping session. What 
+
+28
+00:01:39,099 --> 00:01:44,099
+they're doing is, is they are ... the customer has to bring 
+
+29
+00:01:44,104 --> 00:01:46,104
+everybody associated who has some idea about the design, whether 
+
+30
+00:01:46,106 --> 00:01:50,106
+it's design documents they have, developers and designers, 
+
+31
+00:01:50,110 --> 00:01:55,110
+anything that can clarify what has to be done. Pivotal brings 
+
+32
+00:01:55,115 --> 00:01:58,115
+two of their engineers, and they ask these questions. What 
+
+33
+00:01:58,118 --> 00:02:00,118
+they're trying to identify is there anything about the project 
+
+34
+00:02:00,000 --> 00:02:04,120
+that's going to be risky, risky in terms of the schedule, and 
+
+35
+00:02:04,124 --> 00:02:08,124
+try and work that out. As soon as the customer leaves, the 
+
+36
+00:02:08,128 --> 00:02:12,128
+engineers spend half an hour to try and make a guess of how long 
+
+37
+00:02:12,132 --> 00:02:16,132
+this is going to take. If it's not ... it seems pretty solid, 
+
+38
+00:02:16,136 --> 00:02:18,136
+the customer knows what they want, not much risk, then they 
+
+39
+00:02:18,138 --> 00:02:22,138
+say, " Okay, 20 to 22 weeks." If there's a large uncertainty, 
+
+40
+00:02:22,142 --> 00:02:24,142
+it'll have a bigger range. They say, " Well, we think it's going 
+
+41
+00:02:24,144 --> 00:02:28,144
+to be somewhere between 18 and 26 weeks." Then what the manager 
+
+42
+00:02:28,148 --> 00:02:32,148
+does, " Well, it's that many weeks, it's that many programmers," 
+
+43
+00:02:32,152 --> 00:02:34,152
+we multiply that out, add a small profit. It's time and 
+
+44
+00:02:34,154 --> 00:02:38,154
+material. That's the Agile model. " We're going to make our best 
+
+45
+00:02:38,158 --> 00:02:41,158
+effort based ... and this is how much it's going to cost. 
+
+46
+00:02:41,161 --> 00:02:45,161
+This'll be our cost to you, so are you happy with that?" Okay, 
+
+47
+00:02:45,165 --> 00:02:49,165
+so that's how Agile costing is done. 
+
+

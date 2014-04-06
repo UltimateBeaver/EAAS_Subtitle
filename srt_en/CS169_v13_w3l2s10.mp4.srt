@@ -1,0 +1,332 @@
+00:00:00,000 --> 00:00:02,000
+Which statement is not true ... I didn't realize that many of 
+
+2
+00:00:02,002 --> 00:00:05,002
+these ended up in this lecture. That's okay, though. Which 
+
+3
+00:00:05,005 --> 00:00:09,005
+statement is not true regarding the scalability of SaaS apps? 
+
+4
+00:00:09,009 --> 00:00:12,009
+Shared- nothing clusters scale better generally speaking than 
+
+5
+00:00:12,012 --> 00:00:15,012
+system built from mainframes, relational database scale better 
+
+6
+00:00:15,015 --> 00:00:18,015
+than so- called " NoSQL" databases, the programming language 
+
+7
+00:00:18,018 --> 00:00:22,018
+used isn't a main factor in scalability and scalability can be 
+
+8
+00:00:22,022 --> 00:00:25,022
+impeded by any part of the app that becomes the bottleneck. One 
+
+9
+00:00:25,025 --> 00:00:29,025
+of these statements is not true, other things being equal. Not 
+
+10
+00:00:29,029 --> 00:00:37,029
+true. Initial vote says ... I think yeah, different people's 
+
+11
+00:00:37,037 --> 00:00:40,037
+smartphones have different shades of green but I think it's ... 
+
+12
+00:00:40,040 --> 00:00:41,040
+you're holding up a thing that's got four colors, you're not 
+
+13
+00:00:41,041 --> 00:00:48,041
+allowed to do that. That's better. Green is indeed correct. This 
+
+14
+00:00:48,048 --> 00:00:50,048
+was not the world's most challenging question, but it's really 
+
+15
+00:00:50,050 --> 00:00:54,050
+an excuse to bust a couple of myths around the other ones. Given 
+
+16
+00:00:54,054 --> 00:00:57,054
+that we just talked about one reason that you might use a NoSQL 
+
+17
+00:00:57,057 --> 00:01:01,057
+database is that you run into scalability problems, that should 
+
+18
+00:01:01,061 --> 00:01:04,061
+make it pretty obvious why green is the non- true statement 
+
+19
+00:01:04,064 --> 00:01:07,064
+among these choices. Looking at the others, shared- nothing 
+
+20
+00:01:07,067 --> 00:01:10,067
+clusters scale better than systems built from mainframes. The 
+
+21
+00:01:10,070 --> 00:01:13,070
+first search engine that beat AltaVista by having a larger 
+
+22
+00:01:13,073 --> 00:01:17,073
+vocabulary was built in this exact way. It's not uncommon for 
+
+23
+00:01:17,077 --> 00:01:21,077
+large SaaS sites to employ hundreds of servers in a cloud 
+
+24
+00:01:21,081 --> 00:01:25,081
+computing cluster, the average capacity of which dwarfs the 
+
+25
+00:01:25,085 --> 00:01:28,085
+largest mainframes that ever have been built. In fact, there was 
+
+26
+00:01:28,088 --> 00:01:32,088
+an interesting comparison about how much Amazon EC2 capacity it 
+
+27
+00:01:32,092 --> 00:01:36,092
+would take to equal the computational capacity of Watson. As 
+
+28
+00:01:36,096 --> 00:01:39,096
+Dave Paterson pointed out in Early Election, you could rent the 
+
+29
+00:01:39,099 --> 00:01:43,099
+equivalent of Watson's computational capacity for less per hour 
+
+30
+00:01:43,103 --> 00:01:47,103
+than many attorneys and accountants charge. It is absolutely 
+
+31
+00:01:47,107 --> 00:01:49,107
+true that shared- nothing clusters do scale better. The trick is 
+
+32
+00:01:49,109 --> 00:01:52,109
+that you have to architect your software so that it runs well on 
+
+33
+00:01:52,112 --> 00:01:55,112
+a shared- nothing cluster and the kind of app architecture we've 
+
+34
+00:01:55,115 --> 00:01:58,115
+been looking at is largely geared toward ... we have these great 
+
+35
+00:01:58,118 --> 00:02:02,118
+scale clusters, what choices can we make so that our apps will 
+
+36
+00:02:02,122 --> 00:02:05,122
+be able to be deployed on them? What about the programming 
+
+37
+00:02:05,125 --> 00:02:08,125
+language used isn't a main factor in scalability? This statement 
+
+38
+00:02:08,128 --> 00:02:11,128
+is true and I think doesn't get the recognition that it 
+
+39
+00:02:11,131 --> 00:02:14,131
+sometimes deserves. For a long time, people obsessed over the 
+
+40
+00:02:14,134 --> 00:02:17,134
+performance of languages, " Oh, you're using an interpreted 
+
+41
+00:02:17,137 --> 00:02:19,137
+language, what a wimp. If you compiled it, it would be a lot 
+
+42
+00:02:19,139 --> 00:02:23,139
+faster." Computers are what, a million times faster now than 
+
+43
+00:02:23,143 --> 00:02:26,143
+when the C Language was invented? Moore's law has blessed us, 
+
+44
+00:02:26,146 --> 00:02:30,146
+let us not squander the blessing. If you can scale your 
+
+45
+00:02:30,150 --> 00:02:32,150
+application out by adding more computers in a cloud computing 
+
+46
+00:02:32,152 --> 00:02:36,152
+setting, then the performance you're getting each computer is 
+
+47
+00:02:36,156 --> 00:02:39,156
+not really that critical, as long as it's good enough. People 
+
+48
+00:02:39,159 --> 00:02:43,159
+obsessed about performance way too much, and as John Ousterhout 
+
+49
+00:02:43,163 --> 00:02:46,163
+and others pointed out, the best performance improvement is the 
+
+50
+00:02:46,166 --> 00:02:49,166
+one that goes from the non- working state to the working state 
+
+51
+00:02:49,169 --> 00:02:53,169
+of an application. The reason we've invented modern languages, 
+
+52
+00:02:53,173 --> 00:02:56,173
+even though they have a performance cost, is that they allow you 
+
+53
+00:02:56,176 --> 00:02:59,176
+to focus more on the what, as opposed to focusing on the gory 
+
+54
+00:02:59,179 --> 00:03:02,179
+details of the how. The programming language used really is not 
+
+55
+00:03:02,182 --> 00:03:04,182
+a factor in scalability, and if the other person is using a 
+
+56
+00:03:04,184 --> 00:03:07,184
+better language and gets their app running faster than you do 
+
+57
+00:03:07,187 --> 00:03:11,187
+and they beat you to customers, then so much for performance. 
+
+58
+00:03:11,191 --> 00:03:14,191
+Lastly, scalability can be impeded by any part of the app that 
+
+59
+00:03:14,194 --> 00:03:17,194
+becomes a bottleneck. Again, clearly a true statement on its 
+
+60
+00:03:17,197 --> 00:03:19,197
+face, but it doesn't get the actual attention it deserves. When 
+
+61
+00:03:19,199 --> 00:03:23,199
+the app is running too slow, people immediately start scrambling 
+
+62
+00:03:23,203 --> 00:03:25,203
+for things like, “ Let's change the language we're using, let's 
+
+63
+00:03:25,205 --> 00:03:28,205
+get faster servers, let's get add more memory.” A thing you 
+
+64
+00:03:28,208 --> 00:03:31,208
+could actually do is measure the app. You could measure and find 
+
+65
+00:03:31,211 --> 00:03:33,211
+out what part of the app is slowing things down, and when we 
+
+66
+00:03:33,213 --> 00:03:38,213
+talk much later about operations and how to deal with dev ops, 
+
+67
+00:03:38,218 --> 00:03:40,218
+there are tools that will allow you to run the app and say, " 
+
+68
+00:03:40,220 --> 00:03:43,220
+The only reason my app is slow is these five lines of code are 
+
+69
+00:03:43,223 --> 00:03:46,223
+really idiotic and they're written backwards, and if I just 
+
+70
+00:03:46,226 --> 00:03:51,226
+change these five lines, the problem goes away." Scalability, 
+
+71
+00:03:51,231 --> 00:03:54,231
+there's many ways that an app could fail to scale, and when it's 
+
+72
+00:03:54,234 --> 00:03:56,234
+not performing the way you want or not performing the way you 
+
+73
+00:03:56,236 --> 00:03:58,236
+want, the first thing you need to do is understand what's going 
+
+74
+00:03:58,238 --> 00:04:02,238
+on that is breaking. It could be anywhere. People think, " Oh, 
+
+75
+00:04:02,242 --> 00:04:06,242
+the database doesn't scale. My app is too slow. Therefore, the 
+
+76
+00:04:06,246 --> 00:04:09,246
+problem must be that I'm running into the database limitations," 
+
+77
+00:04:09,249 --> 00:04:12,249
+probably not true. We're going talk about pivotal tracker later 
+
+78
+00:04:12,252 --> 00:04:15,252
+on, which is a tool for letting you keep stories about your app 
+
+79
+00:04:15,255 --> 00:04:18,255
+on the web and stuff. All of pivotal tracker for the whole world 
+
+80
+00:04:18,258 --> 00:04:21,258
+runs on a single server with a single database. Most people who 
+
+81
+00:04:21,261 --> 00:04:24,261
+say the database is the problem just haven't been in business 
+
+82
+00:04:24,264 --> 00:04:27,264
+long enough. Look for the scalability bottleneck and sometimes 
+
+83
+00:04:27,267 --> 00:04:30,267
+it's much easier to resolve. We're done on that question. 
+
+

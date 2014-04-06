@@ -1,0 +1,457 @@
+1
+00:00:00,000 --> 00:00:04,000
+Okay, we're almost done with CRUD; we've done create, we've done 
+
+2
+00:00:04,004 --> 00:00:07,004
+read, and now we just have to do update and delete. The good 
+
+3
+00:00:07,007 --> 00:00:10,007
+news is you pretty much have now at least seen all of the basic 
+
+4
+00:00:10,010 --> 00:00:12,010
+machinery. We're just going to be putting it together in 
+
+5
+00:00:12,012 --> 00:00:17,012
+different ways here. When we did the create action, we saw that 
+
+6
+00:00:17,017 --> 00:00:20,017
+doing a create really amounts to 2 interactions, when you're 
+
+7
+00:00:20,020 --> 00:00:22,020
+talking about a human- facing web service. There is getting the 
+
+8
+00:00:22,022 --> 00:00:25,022
+form to fill out, and then there's submitting the filled out 
+
+9
+00:00:25,025 --> 00:00:28,025
+form and those are 2 different controller actions, usually. By 
+
+10
+00:00:28,028 --> 00:00:29,028
+the way, I am going to point out, and we're going to come back 
+
+11
+00:00:29,029 --> 00:00:33,029
+to this in just a few minutes, that the idea that creating 
+
+12
+00:00:33,033 --> 00:00:36,033
+something is 2 actions, it's important to realize why that's an 
+
+13
+00:00:36,036 --> 00:00:41,036
+artifact of us doing a human- facing application. If you're 
+
+14
+00:00:41,041 --> 00:00:45,041
+thinking of Ron Potatoes [ ph 00:00:41] as a remote service that 
+
+15
+00:00:45,045 --> 00:00:47,045
+manages movie information reviews, then you would think, 
+
+16
+00:00:47,047 --> 00:00:51,047
+logically, creating a new movie listing is 1 action. It's, 
+
+17
+00:00:51,051 --> 00:00:53,051
+here's some data to create a new movie. Just create it and let 
+
+18
+00:00:53,053 --> 00:00:56,053
+me know if it succeeded. What we are going to see in a moment is 
+
+19
+00:00:56,056 --> 00:00:58,056
+that with basically a 1- line controller change, you can make 
+
+20
+00:00:58,058 --> 00:01:03,058
+the same logic in your app work for both a human- facing site, 
+
+21
+00:01:03,063 --> 00:01:06,063
+where the user has to do 2 interactions to do a create, as well 
+
+22
+00:01:06,066 --> 00:01:08,066
+as a service- orientated architecture- facing site, where it ‘ s 
+
+23
+00:01:08,068 --> 00:01:11,068
+a single action. You can basically repurpose your code to do 
+
+24
+00:01:11,071 --> 00:01:15,071
+that really trivially. Having said all that, the edit update 
+
+25
+00:01:15,075 --> 00:01:18,075
+action is exactly analogous, that if I want to edit information 
+
+26
+00:01:18,078 --> 00:01:21,078
+about an existing movie, I've got to do 2 things; I first have 
+
+27
+00:01:21,081 --> 00:01:24,081
+to get the existing information in front of me, usually in a 
+
+28
+00:01:24,084 --> 00:01:27,084
+form that already has the values prefilled, and then I have to 
+
+29
+00:01:27,087 --> 00:01:29,087
+be able to submit the form with the modified information. We're 
+
+30
+00:01:29,089 --> 00:01:32,089
+going to use the same technique in that the first action 
+
+31
+00:01:32,092 --> 00:01:36,092
+retrieves the form, the second action submits the form, and just 
+
+32
+00:01:36,096 --> 00:01:39,096
+as with create, at the end of our update action we'll use a 
+
+33
+00:01:39,099 --> 00:01:42,099
+redirect, in this case, back to the action that shows the movie 
+
+34
+00:01:42,102 --> 00:01:45,102
+details, rather than just having a view that says update 
+
+35
+00:01:45,105 --> 00:01:48,105
+successful, and nowhere to go from there. Now, what's different 
+
+36
+00:01:48,108 --> 00:01:51,108
+about this case is that, when you're creating a new movie, the 
+
+37
+00:01:51,111 --> 00:01:54,111
+initial form should be blank, but if you're editing an existing 
+
+38
+00:01:54,114 --> 00:01:57,114
+one, it makes more sense for the existing values to already be 
+
+39
+00:01:57,117 --> 00:02:04,117
+filled in. So, how would we do that? The edit update pair is 
+
+40
+00:02:04,124 --> 00:02:06,124
+really similar to what we've seen before. The difference is in 
+
+41
+00:02:06,126 --> 00:02:10,126
+the action. The edit action which is going to serve the form, is 
+
+42
+00:02:10,130 --> 00:02:14,130
+first going to grab the movie ID of which existing movie is 
+
+43
+00:02:14,134 --> 00:02:19,134
+being edited, and it's going to use that to populate this ad 
+
+44
+00:02:19,139 --> 00:02:22,139
+movie variable, so that when we first display the form, the 
+
+45
+00:02:22,142 --> 00:02:24,142
+existing information is going to, essentially, be pre- 
+
+46
+00:02:24,144 --> 00:02:28,144
+populated. Then, the update action looks a lot like the create 
+
+47
+00:02:28,148 --> 00:02:30,148
+action. We're just going to grab the ID of the movie to be 
+
+48
+00:02:30,150 --> 00:02:33,150
+updated; this is a difference, because before we were creating a 
+
+49
+00:02:33,153 --> 00:02:36,153
+brand new one, and we're going to call update attributes, which 
+
+50
+00:02:36,156 --> 00:02:40,156
+you've seen. We're going to pass that hash of values that the 
+
+51
+00:02:40,160 --> 00:02:44,160
+user filled out on the form, and a flash message and a redirect. 
+
+52
+00:02:44,164 --> 00:02:47,164
+So, all of the same machinery, really, that applies to what we 
+
+53
+00:02:47,167 --> 00:02:52,167
+just did for the create action. The other difference is that, 
+
+54
+00:02:52,172 --> 00:02:55,172
+where we were using a post to do the creation of a new movie, 
+
+55
+00:02:55,175 --> 00:03:00,175
+we're using a put to do the update of an existing movie. First 
+
+56
+00:03:00,000 --> 00:03:02,180
+of all, why is that, and second, how could we even do that given 
+
+57
+00:03:02,182 --> 00:03:06,182
+that web browsers generally only support get and post, but not 
+
+58
+00:03:06,186 --> 00:03:10,186
+put. What's going on there? Well, one reason here is that, 
+
+59
+00:03:10,190 --> 00:03:12,190
+again, Rails really is trying to say think about building a 
+
+60
+00:03:12,192 --> 00:03:16,192
+restful app first, and then secondarily think about how you 
+
+61
+00:03:16,196 --> 00:03:19,196
+would make a human- facing interface for it. During your design 
+
+62
+00:03:19,199 --> 00:03:21,199
+process, you really ought to be thinking in terms of restful 
+
+63
+00:03:21,201 --> 00:03:24,201
+actions. One way to distinguish different kinds of restful 
+
+64
+00:03:24,204 --> 00:03:27,204
+actions, as post versus a put, and it's becoming an increasingly 
+
+65
+00:03:27,207 --> 00:03:31,207
+common semantics, the put is what you use to update something in 
+
+66
+00:03:31,211 --> 00:03:34,211
+place, versus post is what you use to submit brand new 
+
+67
+00:03:34,214 --> 00:03:38,214
+information. It's sort of an emerging consensus. It's no problem 
+
+68
+00:03:38,218 --> 00:03:42,218
+to have different restful routes whose only distinction is which 
+
+69
+00:03:42,222 --> 00:03:45,222
+verb they use, whether they use put or post. Now, what about the 
+
+70
+00:03:45,225 --> 00:03:48,225
+second problem where web browsers can only generate either get 
+
+71
+00:03:48,228 --> 00:03:51,228
+or post actions; they can't generate puts. How do we do that? 
+
+72
+00:03:51,231 --> 00:03:59,231
+Well, happily, as it turns out, anticipating this very question, 
+
+73
+00:03:59,239 --> 00:04:03,239
+what happens in the Rails world if we actually specify method 
+
+74
+00:04:03,243 --> 00:04:06,243
+put, which is what we're going to have to do with this form, 
+
+75
+00:04:06,246 --> 00:04:08,246
+we're saying we want to trigger the restful action that updates, 
+
+76
+00:04:08,248 --> 00:04:12,248
+in place, existing information. But, what actually happens here 
+
+77
+00:04:12,252 --> 00:04:16,252
+is that, when html gets rendered from this, it will be rendered 
+
+78
+00:04:16,256 --> 00:04:19,256
+as a post, which the web browser knows how to handle, but there 
+
+79
+00:04:19,259 --> 00:04:22,259
+will be an additional hidden form field that is basically 
+
+80
+00:04:22,262 --> 00:04:25,262
+embedded in the form, and is a trigger to Rails to say this was 
+
+81
+00:04:25,265 --> 00:04:28,265
+supposed to really be a put, but web browsers don't know how to 
+
+82
+00:04:28,268 --> 00:04:31,268
+do a put, so on your way into the controller method, change the 
+
+83
+00:04:31,271 --> 00:04:34,271
+post into a put. It's interesting, so the effect of all this is 
+
+84
+00:04:34,274 --> 00:04:38,274
+that in your controller action, you can ask which HCDP method 
+
+85
+00:04:38,278 --> 00:04:42,278
+was used to submit this form, and the answer is, it was put, 
+
+86
+00:04:42,282 --> 00:04:44,282
+even though it really started out back on the web browser as a 
+
+87
+00:04:44,284 --> 00:04:47,284
+post. Again, why would you want to design Rails to support this 
+
+88
+00:04:47,287 --> 00:04:51,287
+behavior; it's because you're really designing a restful service 
+
+89
+00:04:51,291 --> 00:04:53,291
+interface, and you'd like the controller method to say, okay, 
+
+90
+00:04:53,293 --> 00:04:56,293
+I've got a put, and I got this verb; I know what that means, it 
+
+91
+00:04:56,296 --> 00:04:58,296
+means update. The only thing I really need to know is is the 
+
+92
+00:04:58,298 --> 00:05:01,298
+result going to be visible to a human, or the result going to 
+
+93
+00:05:01,301 --> 00:05:05,301
+another programmatic service. I want the semantic of put to be 
+
+94
+00:05:05,305 --> 00:05:08,305
+the same, whichever one of those 2 it is. This is a build up to 
+
+95
+00:05:08,308 --> 00:05:10,308
+the fact that, in a moment, I'm going show you exactly how to do 
+
+96
+00:05:10,310 --> 00:05:14,310
+that. Given that you can take my word for the fact that the put 
+
+97
+00:05:14,314 --> 00:05:19,314
+gets changed to a post, the only other thing we haven't done is 
+
+98
+00:05:19,319 --> 00:05:22,319
+destroy, which is simplicity itself. Remember we said destroy is 
+
+99
+00:05:22,322 --> 00:05:26,322
+an instance method and the reason for that is you would think 
+
+100
+00:05:26,326 --> 00:05:29,326
+that you call ... on a collection of movies, say destroy this 
+
+101
+00:05:29,329 --> 00:05:32,329
+one. But no, what you really want to do is destroy the instance, 
+
+102
+00:05:32,332 --> 00:05:35,332
+because you want to give it a chance to clean up after itself. 
+
+103
+00:05:35,335 --> 00:05:37,335
+That's a topic we'll talk about more when we start doing 
+
+104
+00:05:37,337 --> 00:05:40,337
+associations and advanced Rails methods. Because destroy is an 
+
+105
+00:05:40,340 --> 00:05:43,340
+instance method, we have the same strategy where we can find the 
+
+106
+00:05:43,343 --> 00:05:47,343
+movie first, based on the params hash. We can call destroy in 
+
+107
+00:05:47,347 --> 00:05:50,347
+it, and then we can include a little flash message to confirm 
+
+108
+00:05:50,350 --> 00:05:53,350
+that everything worked, and redirect somewhere interesting. 
+
+109
+00:05:53,353 --> 00:05:56,353
+Redirect is this general mechanism for saying I did what you 
+
+110
+00:05:56,356 --> 00:05:58,356
+wanted me to do, and rather than just show you a boring page 
+
+111
+00:05:58,358 --> 00:06:01,358
+that states that fact, I'll save you a step and take you back 
+
+112
+00:06:01,361 --> 00:06:05,361
+some place potentially more interesting. But, that's it'; you've 
+
+113
+00:06:05,365 --> 00:06:08,365
+basically now seen all of the CRUD actions that you can do, and 
+
+114
+00:06:08,368 --> 00:06:10,368
+the relatively small amount of machinery required to do them. 
+
+

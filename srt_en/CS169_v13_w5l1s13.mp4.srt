@@ -1,0 +1,53 @@
+1
+00:00:00,000 --> 00:00:03,000
+﻿All right. With that, let's ask some questions before [ our 
+
+2
+00:00:03,003 --> 00:00:09,003
+trend in 00:00:03] demo. Again, this might not be too hard, 
+
+3
+00:00:09,009 --> 00:00:12,009
+which is true. Usually, you complete Behavior Driven Design 
+
+4
+00:00:12,012 --> 00:00:15,012
+phase with Cucumber before starting the Test Driven Development 
+
+5
+00:00:15,015 --> 00:00:20,015
+phase with RSpec. Usually you code the sad path first. A sad 
+
+6
+00:00:20,020 --> 00:00:24,020
+path can pass without having code written needed to make a happy 
+
+7
+00:00:24,024 --> 00:00:36,024
+path pass. None of the above is true. Ready, set, vote. Which is 
+
+8
+00:00:36,036 --> 00:00:42,036
+true? I think everybody got this one right. Usually, you 
+
+9
+00:00:42,042 --> 00:00:46,042
+complete BDD a separate design phase. No, it's either to back 
+
+10
+00:00:46,046 --> 00:00:49,046
+and forth in BDD and TDD. Usually you code the sad path first. 
+
+11
+00:00:49,049 --> 00:00:51,049
+Usually, you code the happy path first. You like to see it 
+
+12
+00:00:51,051 --> 00:00:55,051
+working, but we just got this pedagogic problem and we're going 
+
+13
+00:00:55,055 --> 00:00:57,055
+to do this example, so yes. Okay. 
+
+

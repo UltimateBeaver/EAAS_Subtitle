@@ -1,0 +1,33 @@
+1
+00:00:00,000 --> 00:00:04,000
+With that, they're ready for our cards again. All right, so what 
+
+2
+00:00:04,004 --> 00:00:07,004
+about points, velocity and trackers too and comparing to team, 
+
+3
+00:00:07,007 --> 00:00:10,007
+the one with the higher velocity is more productive. When you 
+
+4
+00:00:10,010 --> 00:00:13,010
+don't know how to approach a given story, just give it three 
+
+5
+00:00:13,013 --> 00:00:17,013
+points. With Tracker, developers pick the user stories and mark 
+
+6
+00:00:17,017 --> 00:00:20,017
+as Accepted when done, and tracker helps prioritize and keep 
+
+7
+00:00:20,020 --> 00:00:23,020
+track of user stories and their status, calculate velocity, and 
+
+8
+00:00:23,023 --> 00:01:16,023
+predicts software development time. Any questions? 
+
+

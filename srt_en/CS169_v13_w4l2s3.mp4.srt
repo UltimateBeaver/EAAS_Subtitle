@@ -1,0 +1,693 @@
+1
+00:00:00,000 --> 00:00:03,000
+Let's start our whirlwind tour of Rails, and its Model View 
+
+2
+00:00:03,003 --> 00:00:05,003
+Controller. We're going to more or less go in that order, so 
+
+3
+00:00:05,005 --> 00:00:07,005
+we'll start with the part that's actually the heaviest weight 
+
+4
+00:00:07,007 --> 00:00:11,007
+part. I'll give you an introduction to Active Record. Active 
+
+5
+00:00:11,011 --> 00:00:13,011
+Record is actually a design pattern. It's not just the name of 
+
+6
+00:00:13,013 --> 00:00:16,013
+this library that's part of Rails. It's a way, like we said 
+
+7
+00:00:16,016 --> 00:00:19,016
+earlier, of thinking about how you connect in- memory objects 
+
+8
+00:00:19,019 --> 00:00:23,019
+that are instances of a Ruby class, with the representation of 
+
+9
+00:00:23,023 --> 00:00:25,023
+those objects when they're stored in something like a persistent 
+
+10
+00:00:25,025 --> 00:00:30,025
+database. The thing that Active Record tries to answer for us is 
+
+11
+00:00:30,030 --> 00:00:32,030
+how can we use some of the interesting language features we've 
+
+12
+00:00:32,032 --> 00:00:35,032
+seen like reflection and meta- programming to simplify how this 
+
+13
+00:00:35,035 --> 00:00:39,035
+design pattern is provided to us and how it's implemented? In 
+
+14
+00:00:39,039 --> 00:00:42,039
+this case, the design pattern in question is Active Record, 
+
+15
+00:00:42,042 --> 00:00:45,042
+which bridges the gap between instances of a Ruby class that 
+
+16
+00:00:45,045 --> 00:00:49,045
+you've defined and their stored representation. CRUD in SQL. 
+
+17
+00:00:49,049 --> 00:00:52,049
+Let's start out with some acronyms right away. The Structured 
+
+18
+00:00:52,052 --> 00:00:55,052
+Query Language, if you've never heard the abbreviation, SQL, 
+
+19
+00:00:55,055 --> 00:00:57,055
+most people pronounce it sequel, although I believe technically 
+
+20
+00:00:57,057 --> 00:01:00,057
+that is not correct, is a query language that is used by 
+
+21
+00:01:00,000 --> 00:01:03,060
+relational databases, which is probably one of the most 
+
+22
+00:01:03,063 --> 00:01:07,063
+important, if not the most important, advance that computer 
+
+23
+00:01:07,067 --> 00:01:10,067
+science made in understanding how to organize and query and talk 
+
+24
+00:01:10,070 --> 00:01:13,070
+about the relationships among different types of data. In fact, 
+
+25
+00:01:13,073 --> 00:01:16,073
+Ted Codd received the Turing Award for his contribution of the 
+
+26
+00:01:16,076 --> 00:01:19,076
+relational algebra, which is a formalism for manipulating data, 
+
+27
+00:01:19,079 --> 00:01:22,079
+and the SQL language really is a way to instantiate the 
+
+28
+00:01:22,082 --> 00:01:25,082
+relational algebra in engineering terms and build engines that 
+
+29
+00:01:25,085 --> 00:01:29,085
+can manipulate data according to those rules. The way Active 
+
+30
+00:01:29,089 --> 00:01:32,089
+Record works is that Rails generates the SQL statements you need 
+
+31
+00:01:32,092 --> 00:01:35,092
+at Runtime based on your Ruby code, and I'm going to use this 
+
+32
+00:01:35,095 --> 00:01:38,095
+icon to call your attention to the fact that this is one of many 
+
+33
+00:01:38,098 --> 00:01:42,098
+examples we'll see of code being generated at Runtime. Sometimes 
+
+34
+00:01:42,102 --> 00:01:45,102
+at Runtime, other times at Compiletime, but the idea of code 
+
+35
+00:01:45,105 --> 00:01:47,105
+that writes other code is pervasive in Ruby. We've already seen 
+
+36
+00:01:47,107 --> 00:01:51,107
+a little bit using things like method_ missing and attr_ 
+
+37
+00:01:51,111 --> 00:01:54,111
+accessor, where we can create new code at Runtime. This is 
+
+38
+00:01:54,114 --> 00:01:57,114
+another example. There's four things that you can do to a piece 
+
+39
+00:01:57,117 --> 00:02:00,117
+of data when it sits in a persistent storage system, and not 
+
+40
+00:02:00,000 --> 00:02:03,120
+just in a relational database, really in any persistent storage. 
+
+41
+00:02:03,123 --> 00:02:06,123
+You can create a new piece of data there. You can read data that 
+
+42
+00:02:06,126 --> 00:02:09,126
+is already in there. You can update something about an existing 
+
+43
+00:02:09,129 --> 00:02:12,129
+piece of data or you can delete it. We're not going to do very 
+
+44
+00:02:12,132 --> 00:02:15,132
+much raw SQL in this class. We actually don't have to, but it is 
+
+45
+00:02:15,135 --> 00:02:18,135
+worth at least going through a couple of the SQL tutorials to 
+
+46
+00:02:18,138 --> 00:02:21,138
+see some of the basics and to get used to what it looks like, 
+
+47
+00:02:21,141 --> 00:02:24,141
+just because in some cases like all abstractions, Active Record 
+
+48
+00:02:24,144 --> 00:02:27,144
+is a leaky abstraction. Sometimes it doesn't work quite the way 
+
+49
+00:02:27,147 --> 00:02:30,147
+you expect or sometimes, because of your own misunderstanding, 
+
+50
+00:02:30,150 --> 00:02:33,150
+you might accidentally misuse it and not express the query you 
+
+51
+00:02:33,153 --> 00:02:35,153
+thought that you were expressing. At some level, it is useful to 
+
+52
+00:02:35,155 --> 00:02:38,155
+be able to look at the SQL that was generated and say, " 'Oh 
+
+53
+00:02:38,158 --> 00:02:40,158
+okay, that's why my query is not working." Here's a simple 
+
+54
+00:02:40,160 --> 00:02:43,160
+example of what creation looks like if you were writing in raw 
+
+55
+00:02:43,163 --> 00:02:46,163
+SQL. Here, the assumption is users is the name of the table and 
+
+56
+00:02:46,166 --> 00:02:49,166
+I'm going to insert into it values for at least these three 
+
+57
+00:02:49,169 --> 00:02:51,169
+columns, which are assumed to be part of the schema. Columns in 
+
+58
+00:02:51,171 --> 00:02:54,171
+that table. Here's the values that I'm going to put into those 
+
+59
+00:02:54,174 --> 00:02:57,174
+columns. I've got one tuple, which is information about myself, 
+
+60
+00:02:57,177 --> 00:03:00,177
+and another tuple, which is information about Dave. I've added 
+
+61
+00:03:00,000 --> 00:03:03,180
+two rows to the database. I haven't made explicit whether 
+
+62
+00:03:03,183 --> 00:03:05,183
+there's other columns in the table or not, but certainly I'm 
+
+63
+00:03:05,185 --> 00:03:08,185
+assuming that these three exist. I can also read from that 
+
+64
+00:03:08,188 --> 00:03:12,188
+table. I can say select, and the star means when you find rows 
+
+65
+00:03:12,192 --> 00:03:15,192
+that match my criterion, give me back all of the attributes 
+
+66
+00:03:15,195 --> 00:03:19,195
+associated with each of those rows. Select star from the users 
+
+67
+00:03:19,199 --> 00:03:22,199
+table where certain conditions are true. An example of a simple 
+
+68
+00:03:22,202 --> 00:03:24,202
+condition is birth date between two particular dates. There's 
+
+69
+00:03:24,204 --> 00:03:28,204
+many other ways that you can do matching things in SQL. I can 
+
+70
+00:03:28,208 --> 00:03:33,208
+update. I can say in the users table, do an update such that any 
+
+71
+00:03:33,213 --> 00:03:36,213
+user where the user name equals fox, you should substitute, you 
+
+72
+00:03:36,216 --> 00:03:41,216
+should set a new value, for the email attribute to be this. In 
+
+73
+00:03:41,221 --> 00:03:44,221
+some cases, if we assume user name is unique in our example, 
+
+74
+00:03:44,224 --> 00:03:47,224
+then in this case, update would only affect a single row. It's 
+
+75
+00:03:47,227 --> 00:03:50,227
+possible, and indeed Rails relies on the fact, that you can 
+
+76
+00:03:50,230 --> 00:03:52,230
+write update statements that affect many rows. You have a 
+
+77
+00:03:52,232 --> 00:03:55,232
+collection of rows that match some criterion, and on each one of 
+
+78
+00:03:55,235 --> 00:03:58,235
+those rows, you're going to update in place one or more of its 
+
+79
+00:03:58,238 --> 00:04:02,238
+attributes. Finally you can say DELETE FROM, and again, you can 
+
+80
+00:04:02,242 --> 00:04:05,242
+provide a variety of ways to match what the WHERE condition is. 
+
+81
+00:04:05,245 --> 00:04:07,245
+Those are the four basic operations. We're going to use those as 
+
+82
+00:04:07,247 --> 00:04:12,247
+a starting point to talk about Active Record. We briefly 
+
+83
+00:04:12,252 --> 00:04:15,252
+discussed that the Ruby side of a model inherits from Active 
+
+84
+00:04:15,255 --> 00:04:17,255
+Record base and that's the way you connect the model to the 
+
+85
+00:04:17,257 --> 00:04:20,257
+database. Among the many things Active Record does is it 
+
+86
+00:04:20,260 --> 00:04:22,260
+certainly makes it easier to do those CRUD operations on the 
+
+87
+00:04:22,262 --> 00:04:26,262
+model. Let's switch over to a code view. Here's a small chunk of 
+
+88
+00:04:26,266 --> 00:04:31,266
+Ruby code. What have I done here? I declared a class movie that 
+
+89
+00:04:31,271 --> 00:04:35,271
+inherits from Active Record base. That's it. I have not put any 
+
+90
+00:04:35,275 --> 00:04:38,275
+code whatsoever into this class. Because you all know object- 
+
+91
+00:04:38,278 --> 00:04:41,278
+oriented programming, you realize that that doesn't matter 
+
+92
+00:04:41,281 --> 00:04:43,281
+because there's already a bunch of code in the class, so to 
+
+93
+00:04:43,283 --> 00:04:46,283
+speak. It's the code that its ancestor has, Active Record base. 
+
+94
+00:04:46,286 --> 00:04:48,286
+I'm just saying I'm going to create objects of class movie, 
+
+95
+00:04:48,288 --> 00:04:50,288
+they're going to inherit all of the behaviors of Active Record 
+
+96
+00:04:50,290 --> 00:04:53,290
+base. Here's examples of some of them. I'm going to create a new 
+
+97
+00:04:53,293 --> 00:04:57,293
+movie and remember, when we see the capital letters for class 
+
+98
+00:04:57,297 --> 00:05:01,297
+names: Movie. NEW, that means that new is a class method. That 
+
+99
+00:05:01,301 --> 00:05:04,301
+makes sense. You don't have an object yet, then you can't do 
+
+100
+00:05:04,304 --> 00:05:07,304
+anything to it. You need a class method to create the object for 
+
+101
+00:05:07,307 --> 00:05:11,307
+you. Once you've got the object, I'm assuming that it's got 
+
+102
+00:05:11,311 --> 00:05:13,311
+these attributes: title and rating. What we're going to see in a 
+
+103
+00:05:13,313 --> 00:05:17,313
+minute is that rather than declaring in Ruby what the attributes 
+
+104
+00:05:17,317 --> 00:05:19,317
+are and then separately making sure you have a database table 
+
+105
+00:05:19,319 --> 00:05:22,319
+that matches, Ruby will actually infer what the attributes are 
+
+106
+00:05:22,322 --> 00:05:25,322
+by looking at the database table. It saves you some typing. 
+
+107
+00:05:25,325 --> 00:05:28,325
+Another way that I could create a new movie is I could use the 
+
+108
+00:05:28,328 --> 00:05:32,328
+fact that NEW optionally takes a block and it yields, to that 
+
+109
+00:05:32,332 --> 00:05:35,332
+block, the newly created object. If I had to do some complicated 
+
+110
+00:05:35,335 --> 00:05:38,335
+initialization of the object, it's often easier to do this, than 
+
+111
+00:05:38,338 --> 00:05:44,338
+to have a bunch of lines setting up individual things. In Rails, 
+
+112
+00:05:44,344 --> 00:05:46,344
+another thing we're going to see a lot of, which is the 
+
+113
+00:05:46,346 --> 00:05:49,346
+handshake icon here, is convention over configuration, which 
+
+114
+00:05:49,349 --> 00:05:52,349
+means if you stick to certain rules for naming things, there's a 
+
+115
+00:05:52,352 --> 00:05:55,352
+bunch of work you don't have to do to tell Rails the 
+
+116
+00:05:55,355 --> 00:05:58,355
+correspondence between different types of objects. In this case, 
+
+117
+00:05:58,358 --> 00:06:01,358
+the database table name is assumed to be derived from the name 
+
+118
+00:06:01,361 --> 00:06:04,361
+of the model. If the model name is Movie with a capital M, then 
+
+119
+00:06:04,364 --> 00:06:09,364
+the database table is lowercase movies, s- plural. Why is it s- 
+
+120
+00:06:09,369 --> 00:06:11,369
+plural? Because it stands to reason a table contains more than 
+
+121
+00:06:11,371 --> 00:06:14,371
+one movie, so a table called movie wouldn't make a lot of sense. 
+
+122
+00:06:14,374 --> 00:06:17,374
+It's just more satisfying to pluralize it. In case you were 
+
+123
+00:06:17,377 --> 00:06:19,377
+going to ask, if you have a table or if you have a model called 
+
+124
+00:06:19,379 --> 00:06:22,379
+person, does that mean that the table is called people? Yes, it 
+
+125
+00:06:22,382 --> 00:06:25,382
+does. If your model is called sheep, does that mean that the 
+
+126
+00:06:25,385 --> 00:06:28,385
+table is also called sheep? Yes, there's a part of Ruby that 
+
+127
+00:06:28,388 --> 00:06:30,388
+just cares about how to pluralize words. It's called the 
+
+128
+00:06:30,390 --> 00:06:34,390
+inflector. Again, why is this? Because it makes sense. You have 
+
+129
+00:06:34,394 --> 00:06:38,394
+a movie, a table holds lots of movies. Very sensible. The 
+
+130
+00:06:38,398 --> 00:06:41,398
+database table column names become getters and setters for model 
+
+131
+00:06:41,401 --> 00:06:43,401
+attributes. This is really important, because what we've seen so 
+
+132
+00:06:43,403 --> 00:06:47,403
+far is we defined, using attr_ accessor for example, what we 
+
+133
+00:06:47,407 --> 00:06:50,407
+wanted the attributes to be. What I showed you is when you use 
+
+134
+00:06:50,410 --> 00:06:52,410
+attr_ accessor, the only thing that it really does is create the 
+
+135
+00:06:52,412 --> 00:06:55,412
+world's simplest getters and setters. Really just wrappers 
+
+136
+00:06:55,415 --> 00:06:58,415
+around setting instance variables. Now this is going to be 
+
+137
+00:06:58,418 --> 00:07:01,418
+different, and this shows you the benefit of why it's cool, in 
+
+138
+00:07:01,421 --> 00:07:05,421
+some sense, that the only access to a data object's attributes 
+
+139
+00:07:05,425 --> 00:07:08,425
+is through getters and setters. Active Record defines getters 
+
+140
+00:07:08,428 --> 00:07:12,428
+and setters that actually work by talking to the database. The 
+
+141
+00:07:12,432 --> 00:07:14,432
+way that you use these models, and Ruby looks just like plain 
+
+142
+00:07:14,434 --> 00:07:18,434
+old models with attr_ accessor, but the way that the 
+
+143
+00:07:18,438 --> 00:07:21,438
+implementation works is completely different. As we'll see, the 
+
+144
+00:07:21,441 --> 00:07:24,441
+getters and setters don't actually modify instance variables. 
+
+145
+00:07:24,444 --> 00:07:27,444
+There is no underlining instance variable, for example, at title 
+
+146
+00:07:27,447 --> 00:07:32,447
+for a movie, instead there's an internal manipulation that Ruby 
+
+147
+00:07:32,452 --> 00:07:35,452
+manipulates and that Rails causes to be translated to the 
+
+148
+00:07:35,455 --> 00:07:39,455
+database. How does this work? We've created a new movie, but we 
+
+149
+00:07:39,459 --> 00:07:41,459
+haven't actually put it in the database yet. All we've done is 
+
+150
+00:07:41,461 --> 00:07:45,461
+create a new Ruby object and set some attributes on it. If we 
+
+151
+00:07:45,465 --> 00:07:48,465
+call save on that object, or save bang or save or whatever you 
+
+152
+00:07:48,468 --> 00:07:51,468
+want to call the other one, once you call that on the model, 
+
+153
+00:07:51,471 --> 00:07:53,471
+that's actually when the changes happen. That's when the 
+
+154
+00:07:53,473 --> 00:07:56,473
+database actually gets updated with the new attributes that 
+
+155
+00:07:56,476 --> 00:07:59,476
+you've set for that model. Remember we said before, that when 
+
+156
+00:07:59,479 --> 00:08:01,479
+there's a bang on the end of a method name, it usually means 
+
+157
+00:08:01,481 --> 00:08:05,481
+dangerous method, use with care. In the case of the Active 
+
+158
+00:08:05,485 --> 00:08:07,485
+Record methods that have bang on the end, it means they raise an 
+
+159
+00:08:07,487 --> 00:08:11,487
+exception if they fail as opposed to the non- bang methods, 
+
+160
+00:08:11,491 --> 00:08:14,491
+which just return nil if they fail and you have to check. Which 
+
+161
+00:08:14,494 --> 00:08:16,494
+one is more appropriate to use depends on the context in which 
+
+162
+00:08:16,496 --> 00:08:20,496
+you're trying to do it. Once an object's been created, it 
+
+163
+00:08:20,500 --> 00:08:24,500
+acquires a primary key. Remember, we said that by convention, 
+
+164
+00:08:24,504 --> 00:08:29,504
+the primary keys of Rails' objects are integers. It's an ID that 
+
+165
+00:08:29,509 --> 00:08:32,509
+is unique in the entire table. Obviously before the object has 
+
+166
+00:08:32,512 --> 00:08:34,512
+been saved, it can't have an ID, it only acquires one the first 
+
+167
+00:08:34,514 --> 00:08:39,514
+time the database saves it. If you have an Active Record model 
+
+168
+00:08:39,519 --> 00:08:42,519
+and its ID attribute is nil, or if you call new record on it and 
+
+169
+00:08:42,522 --> 00:08:45,522
+you get back true, it means that model has never been saved. 
+
+170
+00:08:45,525 --> 00:08:47,525
+You've manipulated it in memory, you have not actually saved it 
+
+171
+00:08:47,527 --> 00:08:51,527
+in the database. All these behaviors are inherited from Active 
+
+172
+00:08:51,531 --> 00:08:53,531
+Record base. They're not things that are true of Ruby objects in 
+
+173
+00:08:53,533 --> 00:08:55,533
+general. 
+
+

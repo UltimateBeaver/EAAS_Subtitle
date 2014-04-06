@@ -1,0 +1,585 @@
+1
+00:00:00,000 --> 00:00:02,000
+A few last words about testing from the plan- and- document 
+
+2
+00:00:02,002 --> 00:00:07,002
+perspective. We added a lot of stuff about the plan- and- 
+
+3
+00:00:07,007 --> 00:00:09,007
+document perspective recently in the book because we wanted to 
+
+4
+00:00:09,009 --> 00:00:12,009
+make sure that we're not perceived as sending the message that 
+
+5
+00:00:12,012 --> 00:00:15,012
+Agile is always the right way to do things and it's the only way 
+
+6
+00:00:15,015 --> 00:00:19,015
+to do things. In fact, there's a lot of testing activity in 
+
+7
+00:00:19,019 --> 00:00:22,019
+plan- and- document. In fact, one of the criticisms of plan- 
+
+8
+00:00:22,022 --> 00:00:24,022
+and- document in a classroom setting is that people feel there's 
+
+9
+00:00:24,024 --> 00:00:27,024
+so much of that that they don't get to actually write any code. 
+
+10
+00:00:27,027 --> 00:00:32,027
+We've seen that in the BDD/ TDD Agile extreme approach. We write 
+
+11
+00:00:32,032 --> 00:00:34,032
+the test before the code. We start from user stories. The 
+
+12
+00:00:34,034 --> 00:00:37,034
+developers are responsible for, generally speaking, for writing 
+
+13
+00:00:37,037 --> 00:00:40,037
+tests that go along with their own code. The question is, what 
+
+14
+00:00:40,040 --> 00:00:44,040
+happens in a plan- and- document setting for these same tasks? 
+
+15
+00:00:44,044 --> 00:00:47,044
+There's a very important role in the P& D family of approaches. 
+
+16
+00:00:47,047 --> 00:00:50,047
+There's a project manager who documents the project management 
+
+17
+00:00:50,050 --> 00:00:56,050
+plan, which includes a software requirements spec, SRS, and in 
+
+18
+00:00:56,056 --> 00:00:58,056
+case you were wondering, yes, there is a standard for how you 
+
+19
+00:00:58,058 --> 00:01:03,058
+write an SRS. The standard itself is actually tens of pages. The 
+
+20
+00:01:03,063 --> 00:01:06,063
+SRS is enormous and the idea is that that captures the 
+
+21
+00:01:06,066 --> 00:01:10,066
+requirements. It captures the test plan and then once you've got 
+
+22
+00:01:10,070 --> 00:01:13,070
+this overall plan, you're going to now divide the plan into 
+
+23
+00:01:13,073 --> 00:01:16,073
+programming units and essentially assign different teams to work 
+
+24
+00:01:16,076 --> 00:01:19,076
+on each unit. Teams of different developers are assigned to 
+
+25
+00:01:19,079 --> 00:01:21,079
+different units. They do their own unit testing, but when it 
+
+26
+00:01:21,081 --> 00:01:24,081
+comes to putting a lot of pieces of together and doing system 
+
+27
+00:01:24,084 --> 00:01:27,084
+and integration tests, there's often a separate QA team that 
+
+28
+00:01:27,087 --> 00:01:31,087
+does that. There's different ways that the QA team can do its 
+
+29
+00:01:31,091 --> 00:01:34,091
+job. One way is you try to do top down integration. This is more 
+
+30
+00:01:34,094 --> 00:01:37,094
+like what we think of as user stories, where you look at the top 
+
+31
+00:01:37,097 --> 00:01:40,097
+level, or the customer's view, as what the app should do and 
+
+32
+00:01:40,100 --> 00:01:42,100
+that drives you to get some of the customer- facing 
+
+33
+00:01:42,102 --> 00:01:45,102
+functionality working early on so you can start testing it. On 
+
+34
+00:01:45,105 --> 00:01:47,105
+the other hand, it means you have to do a lot of stubbing below 
+
+35
+00:01:47,107 --> 00:01:51,107
+that level, so the customer- facing things have something to do. 
+
+36
+00:01:51,111 --> 00:01:55,111
+It's the equivalent of doing a wireframe but with code. You 
+
+37
+00:01:55,115 --> 00:01:57,115
+could also go the other way and say we're going to build out the 
+
+38
+00:01:57,117 --> 00:02:00,117
+pieces and we're going to test as we go and as we put the pieces 
+
+39
+00:02:00,000 --> 00:02:03,120
+together, but that means that the customer- facing part actually 
+
+40
+00:02:03,123 --> 00:02:07,123
+might not be testable for quite some time. In this approach, you 
+
+41
+00:02:07,127 --> 00:02:10,127
+have the benefit that you're relying a lot less on stubs. As we 
+
+42
+00:02:10,130 --> 00:02:13,130
+all know, the problem with relying on stubs is if the stubs get 
+
+43
+00:02:13,133 --> 00:02:16,133
+out sync with reality, then your stub tests will all be passing, 
+
+44
+00:02:16,136 --> 00:02:20,136
+but the reality may turn out to be that they fail. The downside 
+
+45
+00:02:20,140 --> 00:02:23,140
+of the second approach is it's very late in the game before you 
+
+46
+00:02:23,143 --> 00:02:25,143
+can really put the pieces together and start getting rid of the 
+
+47
+00:02:25,145 --> 00:02:30,145
+stubs. Sandwich integration tries to go from both ends. You work 
+
+48
+00:02:30,150 --> 00:02:33,150
+downwards from the customer- facing stuff and stub where you 
+
+49
+00:02:33,153 --> 00:02:37,153
+need. You work upwards from the unit test and you start putting 
+
+50
+00:02:37,157 --> 00:02:40,157
+modules together. The idea is that at any given point in time, 
+
+51
+00:02:40,160 --> 00:02:43,160
+you have at least some customer- facing things that actually 
+
+52
+00:02:43,163 --> 00:02:46,163
+might talk to real app code, the rest of them are being stubbed 
+
+53
+00:02:46,166 --> 00:02:48,166
+but they're working toward each other. It's like digging a 
+
+54
+00:02:48,168 --> 00:02:51,168
+tunnel from both ends, so you try to get it both ways. When 
+
+55
+00:02:51,171 --> 00:02:55,171
+you're ready to do the more serious testing, you turn it over to 
+
+56
+00:02:55,175 --> 00:02:58,175
+the QA team. They are the ones who are doing the system test and 
+
+57
+00:02:58,178 --> 00:03:01,178
+at this point, they're really testing the whole app. They are 
+
+58
+00:03:01,181 --> 00:03:03,181
+also testing non- functional requirements, which we're going to 
+
+59
+00:03:03,183 --> 00:03:06,183
+talk about when we talk about operations. Things like 
+
+60
+00:03:06,186 --> 00:03:09,186
+performance, are there performance targets they have to meet, 
+
+61
+00:03:09,189 --> 00:03:12,189
+targets of robustness in terms of defending the data in the app 
+
+62
+00:03:12,192 --> 00:03:16,192
+against malicious attacks. How do they know when they're done? 
+
+63
+00:03:16,196 --> 00:03:19,196
+It depends on the project. In some cases, it's based on things 
+
+64
+00:03:19,199 --> 00:03:22,199
+like coverage and metrics. We saw different versions of 
+
+65
+00:03:22,202 --> 00:03:25,202
+coverage. They are not only about the control paths followed, 
+
+66
+00:03:25,205 --> 00:03:27,205
+but things like define and use coverage, which talk about data 
+
+67
+00:03:27,207 --> 00:03:30,207
+production and data consumption, have you tested all of those 
+
+68
+00:03:30,210 --> 00:03:35,210
+paths. Once the QA team has signed off, now the customer gets to 
+
+69
+00:03:35,215 --> 00:03:41,215
+test it. You can see why the Agile methodology tends to put the 
+
+70
+00:03:41,221 --> 00:03:44,221
+customer first. The amount of work that has happened by the time 
+
+71
+00:03:44,224 --> 00:03:47,224
+the user acceptance test comes is pretty much everything in the 
+
+72
+00:03:47,227 --> 00:03:50,227
+project. The assumption is, the customer is going to like it by 
+
+73
+00:03:50,230 --> 00:03:53,230
+the time it's done. This is the validation versus 
+
+74
+00:03:53,233 --> 00:03:55,233
+verification, " Did I build the right thing as opposed to did I 
+
+75
+00:03:55,235 --> 00:03:59,235
+just build the thing right?" It may turn out that in the user 
+
+76
+00:03:59,239 --> 00:04:02,239
+acceptance test, the customer changes their mind. Again, it's 
+
+77
+00:04:02,242 --> 00:04:06,242
+not that Agile is good for all projects and it's not that Agile 
+
+78
+00:04:06,246 --> 00:04:08,246
+does things fundamentally differently in terms of which tasks 
+
+79
+00:04:08,248 --> 00:04:12,248
+are involved compared to plan- and- document, but the tasks are 
+
+80
+00:04:12,252 --> 00:04:14,252
+factored into a different order and you carve them off in small 
+
+81
+00:04:14,254 --> 00:04:17,254
+chunks. You do use mocks, you do write unit test, you do 
+
+82
+00:04:17,257 --> 00:04:20,257
+integration tests, you do put the product in front of the 
+
+83
+00:04:20,260 --> 00:04:22,260
+customer, but you do that for small slices at a time and then 
+
+84
+00:04:22,262 --> 00:04:26,262
+you come back and do another slice. As we all know, we saw it 
+
+85
+00:04:26,266 --> 00:04:29,266
+very early on that testing can be used to show the presence of 
+
+86
+00:04:29,269 --> 00:04:34,269
+bugs, but never the absence of bugs. Again, what do we do when 
+
+87
+00:04:34,274 --> 00:04:39,274
+we can't do testing? Formal methods have been ... yeah, I know, 
+
+88
+00:04:39,279 --> 00:04:42,279
+Dave made the animations for these slides. I can't take credit 
+
+89
+00:04:42,282 --> 00:04:45,282
+for the happy dancing robots. Formal methods are a completely 
+
+90
+00:04:45,285 --> 00:04:48,285
+different approach to program correctness. Basically, testing is 
+
+91
+00:04:48,288 --> 00:04:51,288
+about engineering. Testing is you've got this code artifact and 
+
+92
+00:04:51,291 --> 00:04:54,291
+you want to see what it does. Formal methods actually take a 
+
+93
+00:04:54,294 --> 00:04:57,294
+formal representation of the program and they try to prove some 
+
+94
+00:04:57,297 --> 00:05:00,297
+things just based on the formal specification. For example, you 
+
+95
+00:05:00,000 --> 00:05:03,300
+might want to guarantee that it can never enter a certain state. 
+
+96
+00:05:03,303 --> 00:05:07,303
+In fact, this is gaining traction in industry in both hardware 
+
+97
+00:05:07,307 --> 00:05:13,307
+and software. As late as last decade, Intel, for example, was 
+
+98
+00:05:13,313 --> 00:05:16,313
+using formal verification to model the bus protocols for their 
+
+99
+00:05:16,316 --> 00:05:18,316
+multiprocessor systems. Because what you want to do is prove 
+
+100
+00:05:18,318 --> 00:05:21,318
+that, for example, you can never have a sequence of events that 
+
+101
+00:05:21,321 --> 00:05:25,321
+results in a bus deadlock. There's a big issue, which is that 
+
+102
+00:05:25,325 --> 00:05:28,325
+often the formal spec is not necessarily a thing from which you 
+
+103
+00:05:28,328 --> 00:05:31,328
+can generate program code. You may have proven that the formal 
+
+104
+00:05:31,331 --> 00:05:34,331
+spec is correct in the sense that it never goes into these bad 
+
+105
+00:05:34,334 --> 00:05:37,334
+states, but you still have to prove that the thing that gets 
+
+106
+00:05:37,337 --> 00:05:39,337
+built also follows the formal spec, and that's a different 
+
+107
+00:05:39,339 --> 00:05:44,339
+problem. A human might be able to do these proofs, but more 
+
+108
+00:05:44,344 --> 00:05:47,344
+commonly computers do them using theorem proving. You can also 
+
+109
+00:05:47,347 --> 00:05:50,347
+use model checking which is a combination of symbolic execution 
+
+110
+00:05:50,350 --> 00:05:54,350
+and checking to whether ... what sequence of states might be 
+
+111
+00:05:54,354 --> 00:05:58,354
+reachable, depending on input values and control paths. These 
+
+112
+00:05:58,358 --> 00:06:01,358
+are pretty computationally expensive. They tend to be used on 
+
+113
+00:06:01,361 --> 00:06:04,361
+smaller- size systems, on systems that are expensive to repair, 
+
+114
+00:06:04,364 --> 00:06:06,364
+because, for example, they might be out in space or they're 
+
+115
+00:06:06,366 --> 00:06:10,366
+difficult to test. Safety critical software systems are usually 
+
+116
+00:06:10,370 --> 00:06:14,370
+a good candidate for these. Just to give you some metrics, the 
+
+117
+00:06:14,374 --> 00:06:17,374
+largest project that I know about that's been formally verified 
+
+118
+00:06:17,377 --> 00:06:20,377
+is the L4 operating system kernel, that's about 10,000 lines of 
+
+119
+00:06:20,380 --> 00:06:24,380
+code, and the research effort required comes out to about $ 500 
+
+120
+00:06:24,384 --> 00:06:27,384
+per line of code. NASA has managed to beat that. The space 
+
+121
+00:06:27,387 --> 00:06:30,387
+shuttle software costs about $ 80 per line of code per year to 
+
+122
+00:06:30,390 --> 00:06:33,390
+maintain. It doesn't change very much and the process for 
+
+123
+00:06:33,393 --> 00:06:37,393
+changing it is extremely heavy weight, but there has never 
+
+124
+00:06:37,397 --> 00:06:39,397
+really been a software failure in the space shuttle program, 
+
+125
+00:06:39,399 --> 00:06:43,399
+ever. The methods do work if you apply them correctly. Since we 
+
+126
+00:06:43,403 --> 00:06:46,403
+are doing software that is relatively easy to change, easy to 
+
+127
+00:06:46,406 --> 00:06:49,406
+repair and relatively easy to test, we won't be doing very much 
+
+128
+00:06:49,409 --> 00:06:51,409
+in terms of the formal methods, but I would say if you're going 
+
+129
+00:06:51,411 --> 00:06:53,411
+to the software engineering field, within 5 years, you can 
+
+130
+00:06:53,413 --> 00:06:58,413
+expect these to be widely used across many companies. Summing 
+
+131
+00:06:58,418 --> 00:07:03,418
+up. In the plan- and- document world and versus the Agile world, 
+
+132
+00:07:03,423 --> 00:07:05,423
+we actually are doing all of the same things. We're creating 
+
+133
+00:07:05,425 --> 00:07:07,425
+customer specs, user stories and so forth, but the order in 
+
+134
+00:07:07,427 --> 00:07:10,427
+which we do them is really what's different and how the teams 
+
+135
+00:07:10,430 --> 00:07:14,430
+are factored to do them. Rather than having a top down plan and 
+
+136
+00:07:14,434 --> 00:07:16,434
+a project manager, we're doing things piece by piece and row by 
+
+137
+00:07:16,436 --> 00:07:21,436
+row. Let's, very quickly, do a formal methods statement, then we 
+
+138
+00:07:21,441 --> 00:07:24,441
+have three minutes to do, a fun thing. Which statement regarding 
+
+139
+00:07:24,444 --> 00:07:27,444
+testing is false? Formal methods are expensive, but worthwhile 
+
+140
+00:07:27,447 --> 00:07:32,447
+for important applications. In P& D development efforts, 
+
+141
+00:07:32,452 --> 00:07:35,452
+developers code before they write test, which is the opposite of 
+
+142
+00:07:35,455 --> 00:07:38,455
+agile. Agile developers perform module integration, system 
+
+143
+00:07:38,458 --> 00:07:41,458
+acceptance test, but P& D developers generally don't do this 
+
+144
+00:07:41,461 --> 00:07:44,461
+themselves, and sandwich integration tries to get the best of 
+
+145
+00:07:44,464 --> 00:07:46,464
+both worlds, reducing the number of stubs while getting some 
+
+146
+00:07:46,466 --> 00:07:50,466
+general functionality going early. Which is false? 
+
+

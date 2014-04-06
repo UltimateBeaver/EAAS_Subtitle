@@ -1,0 +1,204 @@
+00:00:00,000 --> 00:00:03,000
+Since this is our last segment, we have a last question. Since 
+
+2
+00:00:03,003 --> 00:00:07,003
+I've just been assuming, as I said, when you get to the 
+
+3
+00:00:07,007 --> 00:00:09,007
+controller action, where is it going to look for a view to 
+
+4
+00:00:09,009 --> 00:00:12,009
+render? Implicit in that statement is the assumption that 
+
+5
+00:00:12,012 --> 00:00:16,012
+something must be rendered. Here's my question, why is that the 
+
+6
+00:00:16,016 --> 00:00:20,016
+case? Why must every interaction with a SaaS app eventually 
+
+7
+00:00:20,020 --> 00:00:23,020
+cause something to be rendered? One possibility is it's 
+
+8
+00:00:23,023 --> 00:00:25,023
+convention over configuration. This is the default way that you 
+
+9
+00:00:25,025 --> 00:00:29,025
+do things. If you're going to follow that method, then you don't 
+
+10
+00:00:29,029 --> 00:00:32,029
+have to do anything special. Second, it's because HTTP is a 
+
+11
+00:00:32,032 --> 00:00:36,032
+request- reply protocol. Third, because in Model- View- 
+
+12
+00:00:36,036 --> 00:00:39,036
+Controller, the implication is every action should be rendering 
+
+13
+00:00:39,039 --> 00:00:43,039
+its own view, or all of the above are true. Why must every 
+
+14
+00:00:43,043 --> 00:00:46,043
+interaction with the SaaS app eventually cause something to be 
+
+15
+00:00:46,046 --> 00:00:53,046
+rendered? Initial voting is ... initial voting is varied. This 
+
+16
+00:00:53,053 --> 00:00:54,053
+is one to talk about, since we actually have a couple of 
+
+17
+00:00:54,054 --> 00:00:59,054
+minutes. Let me give you a hint to inform your discussion. 
+
+18
+00:00:59,059 --> 00:01:02,059
+Here's a hint to inform your discussion. Note that I did not 
+
+19
+00:01:02,062 --> 00:01:07,062
+say ... hint to inform discussion. I did not ask why must every 
+
+20
+00:01:07,067 --> 00:01:11,067
+interaction with a Rails app, blah, blah, blah. Also, I did not 
+
+21
+00:01:11,071 --> 00:01:13,071
+asked, why must every interaction with a Model- View- Controller 
+
+22
+00:01:13,073 --> 00:01:16,073
+app, blah, blah, blah. I asked every SaaS app. This is a pretty 
+
+23
+00:01:16,076 --> 00:01:33,076
+universal question. I guess I could say, every interaction that 
+
+24
+00:01:33,093 --> 00:01:37,093
+does not result in an error, but you know what I mean. One more 
+
+25
+00:01:37,097 --> 00:01:47,097
+vote. Voting now. Voting now, voting now, voting and ... the 
+
+26
+00:01:47,107 --> 00:01:52,107
+good old days. Let's go through the answers to this. Why must 
+
+27
+00:01:52,112 --> 00:01:54,112
+every interaction with the SaaS app eventually cause something 
+
+28
+00:01:54,114 --> 00:01:58,114
+to be rendered? I hate to oversimplify, but let's go back to the 
+
+29
+00:01:58,118 --> 00:02:02,118
+very beginning. HTTP is a request- reply protocol. If you ask a 
+
+30
+00:02:02,122 --> 00:02:05,122
+question, an answer is required. The only way you can give an 
+
+31
+00:02:05,125 --> 00:02:08,125
+answer is by rendering something that gets sent back over HTTP. 
+
+32
+00:02:08,128 --> 00:02:10,128
+If the user asks you to do something stupid, the thing you 
+
+33
+00:02:10,130 --> 00:02:13,130
+render might be an error page, or the web server might render an 
+
+34
+00:02:13,133 --> 00:02:15,133
+error page saying, " You're not allowed to do this,” or “ You're 
+
+35
+00:02:15,135 --> 00:02:19,135
+not logged in,” or, “ The hell with you.” At the end of the day, 
+
+36
+00:02:19,139 --> 00:02:21,139
+it has to say something, otherwise, there's an error. The 
+
+37
+00:02:21,141 --> 00:02:25,141
+question has to be answered. Convention over configuration, it's 
+
+38
+00:02:25,145 --> 00:02:28,145
+a nice thing that's in place so that as you're constructing your 
+
+39
+00:02:28,148 --> 00:02:31,148
+reply, you can save yourself the time of telling Rails where to 
+
+40
+00:02:31,151 --> 00:02:35,151
+find the various pieces needed. Model- View- Controller implies 
+
+41
+00:02:35,155 --> 00:02:38,155
+that every action renders a view. You could make that case, but 
+
+42
+00:02:38,158 --> 00:02:40,158
+that's actually not strictly true. Model- View- Controller is 
+
+43
+00:02:40,160 --> 00:02:42,160
+not as strict, because remember, we said you could use MVC to 
+
+44
+00:02:42,162 --> 00:02:45,162
+structure things like peer- to- peer applications. Peer- to- 
+
+45
+00:02:45,165 --> 00:02:48,165
+peer applications don't follow the client- server request- reply 
+
+46
+00:02:48,168 --> 00:02:51,168
+pattern. This question is even more general than those. It's 
+
+47
+00:02:51,171 --> 00:02:54,171
+really just because HTTP was designed around the fact that one 
+
+48
+00:02:54,174 --> 00:02:57,174
+person asked the questions, or the client asked the question, 
+
+49
+00:02:57,177 --> 00:02:59,177
+the server has to give the answer. Therefore, anything that hits 
+
+50
+00:02:59,179 --> 00:03:02,179
+the server eventually has to have a termination which is, " Here 
+
+51
+00:03:02,182 --> 00:03:05,182
+is what the answer is." There we are. 
+
+

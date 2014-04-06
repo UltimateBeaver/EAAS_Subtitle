@@ -1,0 +1,309 @@
+1
+00:00:00,000 --> 00:00:07,000
+Alright let's start with software as a service. So it's like you 
+
+2
+00:00:07,007 --> 00:00:09,007
+know here's a laundry where you can rent laundry machines don't 
+
+3
+00:00:09,009 --> 00:00:11,009
+have to have your own washer and dryer and you are going to just 
+
+4
+00:00:11,011 --> 00:00:15,011
+rent them with the same thing's true do you wanna rent your 
+
+5
+00:00:15,015 --> 00:00:18,015
+software than own it yourself so here's what traditionally 
+
+6
+00:00:18,018 --> 00:00:21,018
+happens you get this binary you download on your device that has 
+
+7
+00:00:21,021 --> 00:00:25,021
+to work with the right version of hardware and software. And and 
+
+8
+00:00:25,025 --> 00:00:29,025
+that means developers have to take a long time to make sure that 
+
+9
+00:00:29,029 --> 00:00:31,029
+the software runs with all kinds of combinations of operating 
+
+10
+00:00:31,031 --> 00:00:37,031
+systems. And with hardware devices. Um so isn't there a better 
+
+11
+00:00:37,037 --> 00:00:39,037
+way to do this where you only have to work on one platform and 
+
+12
+00:00:39,039 --> 00:00:43,039
+if you could it'd be fewer release cycles no user upgrades and 
+
+13
+00:00:43,043 --> 00:00:46,043
+that's what it gets called a software a service so the software 
+
+14
+00:00:46,046 --> 00:00:50,046
+in the data gets deliberate over the Internet that something 
+
+15
+00:00:50,050 --> 00:00:54,050
+program like the browser running on a client device. So you know 
+
+16
+00:00:54,054 --> 00:00:57,054
+search social networking is examples of software as a service. 
+
+17
+00:00:57,057 --> 00:01:00,057
+It's so popular now that even traditional software like 
+
+18
+00:01:00,000 --> 00:01:04,060
+Microsoft office or turbo tax instead of buying software 
+
+19
+00:01:04,064 --> 00:01:09,064
+installing it you can rent it you can use it um way and so 
+
+20
+00:01:09,069 --> 00:01:13,069
+Armando and I think this is not just a fad that's gonna go way 
+
+21
+00:01:13,073 --> 00:01:16,073
+we think this is a fundamental change that this is a revolution 
+
+22
+00:01:16,076 --> 00:01:20,076
+in how software is being made in we're seeing the impact of that 
+
+23
+00:01:20,080 --> 00:01:24,080
+this decade you read the newspaper lots of things are happening 
+
+24
+00:01:24,084 --> 00:01:26,084
+today in Microsoft reorganising buying companies and stuff like 
+
+25
+00:01:26,086 --> 00:01:30,086
+that and something we think this is fundamentally the shift from 
+
+26
+00:01:30,090 --> 00:01:33,090
+software that you put on your shrink wrap software that's offers 
+
+27
+00:01:33,093 --> 00:01:37,093
+a service that's gonna play out over this decade. So why's it so 
+
+28
+00:01:37,097 --> 00:01:42,097
+popular I know installation worries is like user it's gonna work 
+
+29
+00:01:42,102 --> 00:01:44,102
+you know we're not gonna have about different hardware 
+
+30
+00:01:44,104 --> 00:01:48,104
+capability or you instal the wrong version. We don't have to 
+
+31
+00:01:48,108 --> 00:01:51,108
+worry lose your cell phone the date is up in the cloud you 
+
+32
+00:01:51,111 --> 00:01:54,111
+haven't lost your data if you're gonna have people working 
+
+33
+00:01:54,114 --> 00:01:57,114
+together it's naturally to do in the cloud it's easy for them to 
+
+34
+00:01:57,117 --> 00:02:02,117
+interact if the data is gigantic or changes all the time you 
+
+35
+00:02:02,122 --> 00:02:04,122
+don't wanna have to send the data to all people it's in the 
+
+36
+00:02:04,124 --> 00:02:08,124
+cloud is one copy it's easy to keep up to date for the software 
+
+37
+00:02:08,128 --> 00:02:11,128
+developer. It's great there's only one copy of software it only 
+
+38
+00:02:11,131 --> 00:02:15,131
+has to work on one set of hardware one operating system. So 
+
+39
+00:02:15,135 --> 00:02:18,135
+there's no hassle for developers and then one of the benefits of 
+
+40
+00:02:18,138 --> 00:02:21,138
+it is it's in the cloud before you bring in a new feature you 
+
+41
+00:02:21,141 --> 00:02:24,141
+can try on a small fraction the users that's gonna be A B 
+
+42
+00:02:24,144 --> 00:02:29,144
+testing you know one percent of them at time and finally there 
+
+43
+00:02:29,149 --> 00:02:35,149
+is no upgrade so that the upgrades feel for the users they don't 
+
+44
+00:02:35,155 --> 00:02:38,155
+have to it seems like every time I turn my computer I've gotta 
+
+45
+00:02:38,158 --> 00:02:42,158
+give permission something to upgrade it and the that's a lot 
+
+46
+00:02:42,162 --> 00:02:46,162
+simpler for the developers as well so they can control the 
+
+47
+00:02:46,166 --> 00:02:49,166
+environment. So that's the reason for SaaS So what's a good 
+
+48
+00:02:49,169 --> 00:02:53,169
+programming environment for SaaS there's a lot of them SaaS 
+
+49
+00:02:53,173 --> 00:02:56,173
+apart there's lots and lots of languages but we use ruby on 
+
+50
+00:02:56,176 --> 00:03:01,176
+rails which is called rails in short rails is a really popular 
+
+51
+00:03:01,181 --> 00:03:07,181
+framework it's get used by Twitter for example but it's it's a 
+
+52
+00:03:07,187 --> 00:03:10,187
+reason that it's so popular is got a really great programming 
+
+53
+00:03:10,190 --> 00:03:14,190
+language in fact the inventor of rails picked ruby which is not 
+
+54
+00:03:14,194 --> 00:03:17,194
+a very popular languages because of it's great features. So 
+
+55
+00:03:17,197 --> 00:03:20,197
+rails a ruby is a modern scripting language it's both functional 
+
+56
+00:03:20,200 --> 00:03:24,200
+and object oriented has of course automatic memory management it 
+
+57
+00:03:24,204 --> 00:03:28,204
+has dynamic types it has reuse via mix-ins and closures and and 
+
+58
+00:03:28,208 --> 00:03:31,208
+lots of programming to learn about that so why don't think ruby 
+
+59
+00:03:31,211 --> 00:03:34,211
+on rails causes a lot to learn in this course but you only got 
+
+60
+00:03:34,214 --> 00:03:37,214
+twelve weeks to learn it you get twelve weeks to learn them. But 
+
+61
+00:03:37,217 --> 00:03:40,217
+either you're like you're taking four courses so you divide that 
+
+62
+00:03:40,220 --> 00:03:43,220
+twelve weeks by four you got three weeks full time to learn all 
+
+63
+00:03:43,223 --> 00:03:46,223
+the stuff or people working yeah you're taking the MOOC are 
+
+64
+00:03:46,226 --> 00:03:49,226
+working full time so you only have a slim about time. So we want 
+
+65
+00:03:49,229 --> 00:03:53,229
+very productive so there's a lot of things you learn in this 
+
+66
+00:03:53,233 --> 00:03:59,233
+class we need to be used this productively and in is we wrote an 
+
+67
+00:03:59,239 --> 00:04:02,239
+article about the so that's why we're gonna take some of the 
+
+68
+00:04:02,242 --> 00:04:06,242
+time of the class to learn a new programming language new 
+
+69
+00:04:06,246 --> 00:04:09,246
+framework as beating gonna get multiplied that the other reason 
+
+70
+00:04:09,249 --> 00:04:12,249
+is that's but software engineering in software engineering is 
+
+71
+00:04:12,252 --> 00:04:16,252
+lifelong learning so why but the people are taking MOOC are 
+
+72
+00:04:16,256 --> 00:04:18,256
+taking this class because it's software can musically need 
+
+73
+00:04:18,258 --> 00:04:21,258
+learning things just happen all the rest of your careers. So 
+
+74
+00:04:21,261 --> 00:04:24,261
+we'll give you the chance to do that in this class students 
+
+75
+00:04:24,264 --> 00:04:27,264
+class if you don't like learning things you think this is this a 
+
+76
+00:04:27,267 --> 00:04:31,267
+a good field for you because it what's amazing about Morris law 
+
+77
+00:04:31,271 --> 00:04:34,271
+is allows new things to happen all the time. Okay 
+
+

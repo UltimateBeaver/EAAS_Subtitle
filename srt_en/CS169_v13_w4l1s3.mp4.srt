@@ -1,0 +1,433 @@
+1
+00:00:00,000 --> 00:00:04,000
+All right. Now what we're going to do is go back, we went 
+
+2
+00:00:04,004 --> 00:00:07,004
+through Ruby and part way through rails here and ready to go 
+
+3
+00:00:07,007 --> 00:00:11,007
+back back to good old [ inaudible 00:00:08] design now. [ 
+
+4
+00:00:11,011 --> 00:00:14,011
+inaudible 00:00:10] driven design User Stories which we've 
+
+5
+00:00:14,014 --> 00:00:19,014
+talked a lot about. So why do software projects fail? Well, they 
+
+6
+00:00:19,019 --> 00:00:22,019
+don't do what customers want or the projects are late or they're 
+
+7
+00:00:22,022 --> 00:00:26,022
+over budget or their hard to maintain [ 'above' 00:00:22] or 
+
+8
+00:00:26,026 --> 00:00:29,026
+they're all of these, all of the above right? So what is it 
+
+9
+00:00:29,029 --> 00:00:32,029
+about Agile that tries to avoid these failures that are so 
+
+10
+00:00:32,032 --> 00:00:35,032
+famous? So let's do a little review of Agile. So Agile is 
+
+11
+00:00:35,035 --> 00:00:38,035
+working closely with customer to develop requirements and work 
+
+12
+00:00:38,038 --> 00:00:41,038
+with everybody involved in the project, you do these iterations 
+
+13
+00:00:41,041 --> 00:00:43,041
+that are pretty quick every week or 2 so you don't [ 'sink' 
+
+14
+00:00:43,043 --> 00:00:47,043
+00:00:43] with the customer and instead of these longer phase of 
+
+15
+00:00:47,047 --> 00:00:51,047
+the plan and development methods. And before you do the next 
+
+16
+00:00:51,051 --> 00:00:54,051
+thing, you check with the customers to make sure they're happy 
+
+17
+00:00:54,054 --> 00:00:58,054
+with what you've done so far. So you're validating, building the 
+
+18
+00:00:58,058 --> 00:01:04,058
+right thing in building this thing right. The actual iteration 
+
+19
+00:01:04,064 --> 00:01:07,064
+that corresponds to chapters of our textbook is what we're doing 
+
+20
+00:01:07,067 --> 00:01:09,067
+now and what's highlighted in yellow is what we're talking about 
+
+21
+00:01:09,069 --> 00:01:12,069
+today. So talking to the customer, behavior driven different 
+
+22
+00:01:12,072 --> 00:01:16,072
+design and then measuring velocity, we'll do all that today. So 
+
+23
+00:01:16,076 --> 00:01:20,076
+what is Behavior Driven Design? That is the idea that you ask 
+
+24
+00:01:20,080 --> 00:01:25,080
+questions about what the app is supposed to do before you start 
+
+25
+00:01:25,085 --> 00:01:28,085
+writing it and during development, so this is a different idea. 
+
+26
+00:01:28,088 --> 00:01:31,088
+Rather than you'll build it and then show it to the customer. So 
+
+27
+00:01:31,091 --> 00:01:35,091
+and it's focusing on validation versus verification. How are you 
+
+28
+00:01:35,095 --> 00:01:38,095
+going to get requirements in cooperating with the customer? 
+
+29
+00:01:38,098 --> 00:01:40,098
+We're going to use User Stories. Stories, that sounds like fun, 
+
+30
+00:01:40,100 --> 00:01:44,100
+let's write up some stories. These are these very lightweight 
+
+31
+00:01:44,104 --> 00:01:47,104
+short descriptions of what how the app's going to be used and 
+
+32
+00:01:47,107 --> 00:01:53,107
+you're going to be doing this very soon. And the BDD part of it 
+
+33
+00:01:53,113 --> 00:01:58,113
+Behavior Driven Design as opposed to implementation as you're 
+
+34
+00:01:58,118 --> 00:02:00,118
+trying to capture the behavior. You can think of it as 
+
+35
+00:02:00,000 --> 00:02:06,120
+acceptance test level or integration test level. Armando will 
+
+36
+00:02:06,126 --> 00:02:10,126
+talk about test driven design in the future segments about ... 
+
+37
+00:02:10,130 --> 00:02:13,130
+and that's more about the implementation. So what are these User 
+
+38
+00:02:13,133 --> 00:02:16,133
+Stories? What do they look like? Well they look like this, this 
+
+39
+00:02:16,136 --> 00:02:21,136
+3 by 5 card. So it's 1 to 3 sentences in just plain old English. 
+
+40
+00:02:21,141 --> 00:02:24,141
+It has to be shorten to fit in a 3 by 5 card and it's not 
+
+41
+00:02:24,144 --> 00:02:27,144
+something you write yourself, you write in conjunction with the 
+
+42
+00:02:27,147 --> 00:02:30,147
+customer. It comes from a start up company called [ inaudible 
+
+43
+00:02:30,150 --> 00:02:33,150
+00:02:30], they came up with this format which is the feature 
+
+44
+00:02:33,153 --> 00:02:40,153
+name which is at the top and then this 3 part sequence, the 
+
+45
+00:02:40,160 --> 00:02:43,160
+essay and the type of stakeholder, like our ... in this case 
+
+46
+00:02:43,163 --> 00:02:47,163
+it's I'm a movie fan but it could have been the box office 
+
+47
+00:02:47,167 --> 00:02:51,167
+operator. So essay kind of a stakeholder so that I can achieve 
+
+48
+00:02:51,171 --> 00:02:53,171
+some goal in this case so that I can share the movie with other 
+
+49
+00:02:53,173 --> 00:02:57,173
+fans. I want to do some test so I wanted to add a movie to 
+
+50
+00:02:57,177 --> 00:03:01,177
+Rotten Potatoes database. So the 3 phases can be there and they 
+
+51
+00:03:01,181 --> 00:03:04,181
+can be in any order according to [ inaudible 00:03:02] company. 
+
+52
+00:03:04,184 --> 00:03:08,184
+And basically what you're meeting with a customer and agreeing 
+
+53
+00:03:08,188 --> 00:03:11,188
+with these 3 by 5 cards is coming up with the acceptant test 
+
+54
+00:03:11,191 --> 00:03:16,191
+before you write any code. So where did these 3 by 5 cards come 
+
+55
+00:03:16,196 --> 00:03:19,196
+from? They came from the user inter- phase community and the 
+
+56
+00:03:19,199 --> 00:03:21,199
+user inter- phase community does a lot of work with dealing with 
+
+57
+00:03:21,201 --> 00:03:25,201
+people and what they found was these 3 by 5 card, how can 3 by 5 
+
+58
+00:03:25,205 --> 00:03:30,205
+card be threatening? Anybody can deal with 3 by 5 cards. When 
+
+59
+00:03:30,210 --> 00:03:33,210
+you start building code and you show that they kind of feel 
+
+60
+00:03:33,213 --> 00:03:35,213
+constrained by the code you build because they don't want you to 
+
+61
+00:03:35,215 --> 00:03:38,215
+have to throw it away, so you ... but because we want to get to 
+
+62
+00:03:38,218 --> 00:03:42,218
+what the customer really wants rather what they think they want, 
+
+63
+00:03:42,222 --> 00:03:46,222
+we want to have them involved in the brainstorming and 3 by 5 
+
+64
+00:03:46,226 --> 00:03:48,226
+cards are really easy way to do it. It's also takes almost no 
+
+65
+00:03:48,228 --> 00:03:51,228
+time to fill these out and once you get a bunch of cards, you 
+
+66
+00:03:51,231 --> 00:03:55,231
+can rearrange then, re- prioritize them, decide what you want 
+
+67
+00:03:55,235 --> 00:03:57,235
+and you can ... obviously easily threw cards away if you decide 
+
+68
+00:03:57,237 --> 00:04:01,237
+you don't like the User Stories. And then over the developments, 
+
+69
+00:04:01,241 --> 00:04:05,241
+it's easy to create these new 3 by 5 cards. Now what you write 
+
+70
+00:04:05,245 --> 00:04:08,245
+depending on which kind of stakeholder you are. So this is 2 
+
+71
+00:04:08,248 --> 00:04:13,248
+descriptions of the same feature in which we will talk about a 
+
+72
+00:04:13,253 --> 00:04:17,253
+lot which is a theater going application which is Armando worked 
+
+73
+00:04:17,257 --> 00:04:22,257
+on is community theater group. So see which of my phones are 
+
+74
+00:04:22,262 --> 00:04:24,262
+going to a show. So as a theater goer so that I can enjoy the 
+
+75
+00:04:24,264 --> 00:04:27,264
+show with my friends, I want to see which of my Facebook friends 
+
+76
+00:04:27,267 --> 00:04:30,267
+are [ 'given' 00:04:28] the show. So from the patron's 
+
+77
+00:04:30,270 --> 00:04:33,270
+perspective, as a box office manager so that I can induce the 
+
+78
+00:04:33,273 --> 00:04:36,273
+patron to buy a ticket, I want to assure which of her Facebook 
+
+79
+00:04:36,276 --> 00:04:38,276
+friend are [ 'going for show' 00:04:36]. So there's 2 different 
+
+80
+00:04:38,278 --> 00:04:41,278
+perspectives with 2 different goals. Okay, so that User Stories, 
+
+81
+00:04:41,281 --> 00:04:44,281
+now really User Stories have hundreds of these stories, so 
+
+82
+00:04:44,284 --> 00:04:48,284
+many ... it's easy to fill up 3 by 5 cards to come up with 
+
+83
+00:04:48,288 --> 00:04:51,288
+potential things that you want to do, a lot easier to do that 
+
+84
+00:04:51,291 --> 00:04:53,291
+than to build these things. So there's something that's call the 
+
+85
+00:04:53,293 --> 00:04:57,293
+backlog which those the ones I'm working on and typically even 
+
+86
+00:04:57,297 --> 00:04:59,297
+when a project will be done the first of the week she still have 
+
+87
+00:04:59,299 --> 00:05:02,299
+a bunch of 3 by 5 cards left and that's what the backlog is and 
+
+88
+00:05:02,302 --> 00:05:06,302
+we'll see that with tools to track these things. You put these 
+
+89
+00:05:06,306 --> 00:05:09,306
+things in order in the backlog as well so that when you get some 
+
+90
+00:05:09,309 --> 00:05:11,309
+time you'll take them out of the backlog and work with them. So 
+
+91
+00:05:11,311 --> 00:05:14,311
+as you do an iteration, you'll be picking things out of the 
+
+92
+00:05:14,314 --> 00:05:20,314
+backlog in priority order and you can even organize these User 
+
+93
+00:05:20,320 --> 00:05:23,320
+Stories together so you can say this is going to be next 
+
+94
+00:05:23,323 --> 00:05:27,323
+release, these stories. Now, another thing related to User 
+
+95
+00:05:27,327 --> 00:05:30,327
+Stories that's been useful to these programmer teams is what's 
+
+96
+00:05:30,330 --> 00:05:34,330
+called the Spike and what a Spike is is not a user story, not 
+
+97
+00:05:34,334 --> 00:05:37,334
+something that the customer wanted you to do, but something you 
+
+98
+00:05:37,337 --> 00:05:41,337
+need to do for projects. So Spike is this quick investigation 
+
+99
+00:05:41,341 --> 00:05:44,341
+into something that's a problem for the project, it's not a 
+
+100
+00:05:44,344 --> 00:05:48,344
+feature exactly that the customer asked for. So what we're going 
+
+101
+00:05:48,348 --> 00:05:50,348
+to do recommendation algorithms like Amazon has recommendation 
+
+102
+00:05:50,350 --> 00:05:53,350
+algorithms, if you like this book you'll like that one. Someone 
+
+103
+00:05:53,353 --> 00:05:55,353
+has to go learn more about recommendation algorithms, so you put 
+
+104
+00:05:55,355 --> 00:05:59,355
+that Spike there on the list of to do things and even if you 
+
+105
+00:05:59,359 --> 00:06:02,359
+build some code to try and figure out the algorithms that you're 
+
+106
+00:06:02,362 --> 00:06:05,362
+not part of the code development process you're just doing some 
+
+107
+00:06:05,365 --> 00:06:08,365
+exploratory investigation and just throw these stuff away when 
+
+108
+00:06:08,368 --> 00:06:13,368
+it's ready to go ahead. Okay. So that's User Stories 
+
+

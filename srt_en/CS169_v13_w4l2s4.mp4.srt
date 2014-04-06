@@ -1,0 +1,229 @@
+1
+00:00:00,000 --> 00:00:03,000
+Based on what you just heard, assume we have a table called 
+
+2
+00:00:03,003 --> 00:00:09,003
+fortune cookies. It's got the column fortune text, and which of 
+
+3
+00:00:09,009 --> 00:00:13,009
+these instance methods, if fortune cookie inherits from Active 
+
+4
+00:00:13,013 --> 00:00:16,013
+Record, which of these will not return a silly fortune using the 
+
+5
+00:00:16,016 --> 00:00:22,016
+extremely mature trick of adding “ in bed” to the fortune text? 
+
+6
+00:00:22,022 --> 00:00:27,022
+Look those over for a moment. Initial vote? Let's do an initial 
+
+7
+00:00:27,027 --> 00:00:35,027
+vote. Initial vote? Initial vote is showing all four things. 
+
+8
+00:00:35,035 --> 00:00:38,035
+This is good. Shall we do a second vote? Let's do the second 
+
+9
+00:00:38,038 --> 00:00:43,038
+vote? Second vote says? Second vote? Second vote is mostly 
+
+10
+00:00:43,043 --> 00:00:50,043
+converging on red, some yellow, some green and some smart phones 
+
+11
+00:00:50,050 --> 00:00:54,050
+with indeterminate RGB color mappings. Let's go through the 
+
+12
+00:00:54,054 --> 00:00:58,054
+answers here. Let's see what's going on. Which of these will not 
+
+13
+00:00:58,058 --> 00:01:02,058
+correctly retrieve and concatenate “ in bed” until the end of 
+
+14
+00:01:02,062 --> 00:01:07,062
+the fortune text attribute? Let's just do them in textual order 
+
+15
+00:01:07,067 --> 00:01:11,067
+here. What's happening here? We're claiming to dereference an 
+
+16
+00:01:11,071 --> 00:01:14,071
+instance variable, but the whole point of Active Record is that 
+
+17
+00:01:14,074 --> 00:01:16,074
+you're not just talking about instance variables anymore, you're 
+
+18
+00:01:16,076 --> 00:01:17,076
+talking about attributes that have a representation in the 
+
+19
+00:01:17,077 --> 00:01:22,077
+database. In this default case, fortune text will spring into 
+
+20
+00:01:22,082 --> 00:01:25,082
+existence as nil, it will not be the attribute that you thought 
+
+21
+00:01:25,085 --> 00:01:30,085
+it was, because the way Active Record manipulates its internal 
+
+22
+00:01:30,090 --> 00:01:33,090
+attribute state is not just by setting up simple Ruby instance 
+
+23
+00:01:33,093 --> 00:01:35,093
+variables. It actually has quite a bit of logic, so that when 
+
+24
+00:01:35,095 --> 00:01:37,095
+those things get saved after the database, a number of the right 
+
+25
+00:01:37,097 --> 00:01:41,097
+things will happen. The orange choice will not work, it won't do 
+
+26
+00:01:41,101 --> 00:01:45,101
+what you expect. What about the green and the red choices? If we 
+
+27
+00:01:45,105 --> 00:01:49,105
+start with the green one, if we said that these are instance 
+
+28
+00:01:49,109 --> 00:01:52,109
+methods of fortune cookie, that's fine, because that means that 
+
+29
+00:01:52,112 --> 00:01:54,112
+within an instance method of something, what is the value of 
+
+30
+00:01:54,114 --> 00:01:58,114
+self? It's just the object that receives the message. Self. 
+
+31
+00:01:58,118 --> 00:02:01,118
+fortune text is actually just an alias for fortune text all by 
+
+32
+00:02:01,121 --> 00:02:03,121
+itself. Fortune text is a method call, remember all getters are 
+
+33
+00:02:03,123 --> 00:02:06,123
+method calls. We just have to leave out ... we left out the 
+
+34
+00:02:06,126 --> 00:02:09,126
+parens here. Yes it's true, some people have said, " Looking at 
+
+35
+00:02:09,129 --> 00:02:13,129
+the red example, it's not really obvious that fortune text is a 
+
+36
+00:02:13,133 --> 00:02:15,133
+method call as opposed to being a plain old simple variable." 
+
+37
+00:02:15,135 --> 00:02:18,135
+That's true, and can you consider that a weakness of Ruby. Some 
+
+38
+00:02:18,138 --> 00:02:21,138
+people always put empty parens when it's a method call, but the 
+
+39
+00:02:21,141 --> 00:02:24,141
+way Ruby works is that if fortune text were a variable and it 
+
+40
+00:02:24,144 --> 00:02:27,144
+was a local variable that was in scope, that's the value that 
+
+41
+00:02:27,147 --> 00:02:30,147
+would get used. If there is no such local variable, it checks 
+
+42
+00:02:30,150 --> 00:02:31,150
+whether there's a method and what you meant as a method 
+
+43
+00:02:31,151 --> 00:02:34,151
+invocation. That's a potential ambiguity in the language. Some 
+
+44
+00:02:34,154 --> 00:02:39,154
+people conservatively code around it by always having the empty 
+
+45
+00:02:39,159 --> 00:02:42,159
+brackets after the method call. On the other hand, because 
+
+46
+00:02:42,162 --> 00:02:45,162
+fortune text really is ... in real life, it's an attribute of a 
+
+47
+00:02:45,165 --> 00:02:48,165
+model, that argues that you should notate it like an attribute 
+
+48
+00:02:48,168 --> 00:02:50,168
+and attributes don't have parens after them. It's a little bit 
+
+49
+00:02:50,170 --> 00:02:53,170
+of matter of taste, but syntactically, the choice number two in 
+
+50
+00:02:53,173 --> 00:02:56,173
+green and number three in red are actually exactly the same. 
+
+51
+00:02:56,176 --> 00:02:59,176
+Because when you don't have ... when you have a method call and 
+
+52
+00:02:59,179 --> 00:03:01,179
+there's no explicit receiver, the implicit receiver is always 
+
+53
+00:03:01,181 --> 00:03:06,181
+self. Good enough? Questions? Speaker 2: Two and three will both 
+
+54
+00:03:06,186 --> 00:03:09,186
+work? S. Dupont: Three what? Speaker 2: Two and three will both 
+
+55
+00:03:09,189 --> 00:03:11,189
+work? S. Dupont: Two and three will both work. One will not 
+
+56
+00:03:11,191 --> 00:03:13,191
+work, and therefore, the fourth choice is clearly wrong. The 
+
+57
+00:03:13,193 --> 00:03:14,193
+answer is number one. 
+
+

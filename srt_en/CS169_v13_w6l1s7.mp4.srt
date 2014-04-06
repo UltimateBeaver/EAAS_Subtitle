@@ -1,0 +1,609 @@
+1
+00:00:00,000 --> 00:00:04,000
+Now you have a basic sense of what I'll call the mechanics of 
+
+2
+00:00:04,004 --> 00:00:08,004
+test writing. This is really good stuff to have, the concept of 
+
+3
+00:00:08,008 --> 00:00:11,008
+a unit test, of testing just one behavior, of grouping those 
+
+4
+00:00:11,011 --> 00:00:14,011
+tests according to functionality and by context, of using mocks 
+
+5
+00:00:14,014 --> 00:00:17,014
+and stubs to really isolate the behavior under test from the 
+
+6
+00:00:17,017 --> 00:00:20,017
+collaborating classes, these are fundamental concepts and ideas 
+
+7
+00:00:20,020 --> 00:00:23,020
+about testing that you're going to use over and over. I don't 
+
+8
+00:00:23,023 --> 00:00:25,023
+care what language and framework you use, this is the same 
+
+9
+00:00:25,025 --> 00:00:28,025
+vocabulary, all of the same concepts apply. Here's another 
+
+10
+00:00:28,028 --> 00:00:31,028
+concept that applies, which is the concept of, " When are you 
+
+11
+00:00:31,031 --> 00:00:35,031
+done testing?" One way you know when you're done testing is the 
+
+12
+00:00:35,035 --> 00:00:38,035
+release date comes. That's not my favorite way of determining 
+
+13
+00:00:38,038 --> 00:00:42,038
+when testing is done. A very crude measure, which is completely 
+
+14
+00:00:42,042 --> 00:00:45,042
+static, is you could look at the number of lines of tests 
+
+15
+00:00:45,045 --> 00:00:47,045
+divided by the number of lines of code. It might surprise some 
+
+16
+00:00:47,047 --> 00:00:51,047
+of you to learn that that ratio is often greater than one, or it 
+
+17
+00:00:51,051 --> 00:00:53,051
+should be greater than one. There are more lines of test than 
+
+18
+00:00:53,053 --> 00:00:56,053
+there are lines of code. It shouldn't be that surprising right, 
+
+19
+00:00:56,056 --> 00:00:59,056
+because a given chunk of code ... first of all there's many 
+
+20
+00:00:59,059 --> 00:01:01,059
+behaviors about that chunk that you would want to test. Each 
+
+21
+00:01:01,061 --> 00:01:04,061
+behavior has its own test. Second, there is usually one way that 
+
+22
+00:01:04,064 --> 00:01:07,064
+a chunk of code can be correct, and many ways in which it can 
+
+23
+00:01:07,067 --> 00:01:10,067
+fail. You want to be testing the ways in which it can fail. You 
+
+24
+00:01:10,070 --> 00:01:12,070
+start putting these together and you realize, actually it 
+
+25
+00:01:12,072 --> 00:01:15,072
+wouldn't be surprising if there were more lines of test than 
+
+26
+00:01:15,075 --> 00:01:17,075
+lines of code. We need to exercise the code in a lot of 
+
+27
+00:01:17,077 --> 00:01:21,077
+different ways. For production systems, this number is ... it 
+
+28
+00:01:21,081 --> 00:01:25,081
+may be a factor of 10. An extreme example is a SQLite has 1000 
+
+29
+00:01:25,085 --> 00:01:28,085
+more lines of test than it does lines of code. Admittedly, a lot 
+
+30
+00:01:28,088 --> 00:01:30,088
+of that is because it has to test all these cross platform 
+
+31
+00:01:30,090 --> 00:01:33,090
+special cases. A better question instead of saying, " When are 
+
+32
+00:01:33,093 --> 00:01:35,093
+we done?" is you could say, " How thorough is my testing?" 
+
+33
+00:01:35,095 --> 00:01:37,095
+There's a few different ways that we can look at it. We won't 
+
+34
+00:01:37,097 --> 00:01:39,097
+talk about formal methods today, we're going to talk about them 
+
+35
+00:01:39,099 --> 00:01:44,099
+a little bit later. We will talk about coverage measurement 
+
+36
+00:01:44,104 --> 00:01:47,104
+which is, again, pervasive no matter which tools you use. Like 
+
+37
+00:01:47,107 --> 00:01:51,107
+all the tools in a discipline like this, we could either use it 
+
+38
+00:01:51,111 --> 00:01:54,111
+tastefully, or we could misuse it. Let's talk about measuring 
+
+39
+00:01:54,114 --> 00:01:57,114
+coverage. What does it mean to measure the test coverage of this 
+
+40
+00:01:57,117 --> 00:02:01,117
+very simple class? I've got two methods here called " fu" and " 
+
+41
+00:02:01,121 --> 00:02:04,121
+bar". As you can see, the fu method sometimes calls the bar 
+
+42
+00:02:04,124 --> 00:02:09,124
+method with different arguments. What are different statements 
+
+43
+00:02:09,129 --> 00:02:12,129
+we could make about the test coverage of this class? The most 
+
+44
+00:02:12,132 --> 00:02:16,132
+simple one you can think of is we've called every method. We 
+
+45
+00:02:16,136 --> 00:02:19,136
+called the fu method at least once, I don't know which branch of 
+
+46
+00:02:19,139 --> 00:02:22,139
+the if statement we took, but at least we called it. The code in 
+
+47
+00:02:22,142 --> 00:02:26,142
+the fu method is not totally dead code. The next level up from 
+
+48
+00:02:26,146 --> 00:02:29,146
+that is we call it from every call site. That means, for 
+
+49
+00:02:29,149 --> 00:02:33,149
+example, because we're calling bar ... whoops, the highlight is 
+
+50
+00:02:33,153 --> 00:02:37,153
+not quite right here. We need to call the bar method from both 
+
+51
+00:02:37,157 --> 00:02:39,157
+possible places, and the fu method from which it could have been 
+
+52
+00:02:39,159 --> 00:02:43,159
+called. That would be S1 level of coverage. Now we start to get 
+
+53
+00:02:43,163 --> 00:02:47,163
+more interesting with ... we execute every statement. Executing 
+
+54
+00:02:47,167 --> 00:02:49,167
+every statement is a little bit tricky, because a conditional 
+
+55
+00:02:49,169 --> 00:02:53,169
+may count as a single statement, regardless of which branch you 
+
+56
+00:02:53,173 --> 00:02:58,173
+took. C0 coverage at least starts to give you an idea of what 
+
+57
+00:02:58,178 --> 00:03:00,178
+percentage of the lines of my application were actually 
+
+58
+00:03:00,000 --> 00:03:04,180
+exercised at all by my test suite? There's a simple cov gem in 
+
+59
+00:03:04,184 --> 00:03:07,184
+Ruby that gives you this, which we are going to have you use in 
+
+60
+00:03:07,187 --> 00:03:10,187
+one of the upcoming home works. C1 is the next level up from 
+
+61
+00:03:10,190 --> 00:03:13,190
+that. That means that you took every branch in both directions. 
+
+62
+00:03:13,193 --> 00:03:17,193
+If there's an if statement, then you've got at least one test 
+
+63
+00:03:17,197 --> 00:03:20,197
+that follows each of the two paths of every if statement. You 
+
+64
+00:03:20,200 --> 00:03:22,200
+can see this is one of the reasons why we don't like it when if 
+
+65
+00:03:22,202 --> 00:03:26,202
+statements are nested, because then you quadratically multiply 
+
+66
+00:03:26,206 --> 00:03:29,206
+the number of paths. There's a modified version of that which 
+
+67
+00:03:29,209 --> 00:03:32,209
+adds decision coverage, which means that if you have a 
+
+68
+00:03:32,212 --> 00:03:35,212
+conditional that depends on more than one expression, like in 
+
+69
+00:03:35,215 --> 00:03:40,215
+this conditional, we have if Y and Z are true, C1 means that 
+
+70
+00:03:40,220 --> 00:03:44,220
+we've taken the if, once because of ... basically, we've tweaked 
+
+71
+00:03:44,224 --> 00:03:47,224
+both Y and Z and make sure that they actually both affect the 
+
+72
+00:03:47,227 --> 00:03:51,227
+outcome of the condition. It's a more granular form of condition 
+
+73
+00:03:51,231 --> 00:03:53,231
+coverage, because we're also looking at the way that the 
+
+74
+00:03:53,233 --> 00:03:56,233
+condition is evaluated and making sure that all the different 
+
+75
+00:03:56,236 --> 00:03:59,236
+ways it could be evaluated, that could lead to a difference in 
+
+76
+00:03:59,239 --> 00:04:04,239
+behavior, have all been checked. Then C2 is every code path. C2 
+
+77
+00:04:04,244 --> 00:04:08,244
+is extremely difficult to get in practice because it means that 
+
+78
+00:04:08,248 --> 00:04:11,248
+you essentially have to do enough analysis to figure out what 
+
+79
+00:04:11,251 --> 00:04:14,251
+combination of inputs and conditions would cause every possible 
+
+80
+00:04:14,254 --> 00:04:17,254
+path through the code to be touched. There is generally not 
+
+81
+00:04:17,257 --> 00:04:20,257
+agreement on how much better that is than some of the other 
+
+82
+00:04:20,260 --> 00:04:25,260
+levels like C1, especially when you combine the unit level 
+
+83
+00:04:25,265 --> 00:04:28,265
+coverage testing with other kinds of coverage. What kinds of 
+
+84
+00:04:28,268 --> 00:04:31,268
+tests can you apply this to? Pretty much you can apply it to 
+
+85
+00:04:31,271 --> 00:04:35,271
+anything. We've seen that there's a spectrum. On the one end we 
+
+86
+00:04:35,275 --> 00:04:38,275
+have model specs, where we're basically stubbing the hell out of 
+
+87
+00:04:38,278 --> 00:04:41,278
+everything. We're just testing little bits of code in isolation 
+
+88
+00:04:41,281 --> 00:04:44,281
+and trying to get down to individual behaviors for those pieces. 
+
+89
+00:04:44,284 --> 00:04:46,284
+At the other extreme, we've got things like Cucumber scenarios, 
+
+90
+00:04:46,286 --> 00:04:50,286
+which exercise the whole app but they only touch a few possible 
+
+91
+00:04:50,290 --> 00:04:54,290
+code paths. Any one cucumber scenario is going to touch a very 
+
+92
+00:04:54,294 --> 00:04:56,294
+small fraction of the total code, and exercise that fraction of 
+
+93
+00:04:56,296 --> 00:05:00,296
+code in the smallest number of possible ways. Then in between we 
+
+94
+00:05:00,000 --> 00:05:02,300
+have things like controller specs which, even though we're 
+
+95
+00:05:02,302 --> 00:05:04,302
+triggering the controller method, we know it's going to interact 
+
+96
+00:05:04,304 --> 00:05:06,304
+with the model, we know it's going to make some stuff available 
+
+97
+00:05:06,306 --> 00:05:10,306
+to view. There's some testing around whether those very simple 
+
+98
+00:05:10,310 --> 00:05:13,310
+boundaries work as well. In general, what happens at each end of 
+
+99
+00:05:13,313 --> 00:05:16,313
+the spectrum? Unit tests tend to run really fast. Cucumber 
+
+100
+00:05:16,316 --> 00:05:20,316
+scenarios, as you may have noticed, are not quite as fast. Unit 
+
+101
+00:05:20,320 --> 00:05:23,320
+tests can have very fine resolution, because you have so much 
+
+102
+00:05:23,323 --> 00:05:26,323
+control over mocking and stubbing, you can exercise paths 
+
+103
+00:05:26,326 --> 00:05:29,326
+through your code that require an unusual set of conditions to 
+
+104
+00:05:29,329 --> 00:05:32,329
+all be the case. You can set all those things up using mocks and 
+
+105
+00:05:32,332 --> 00:05:36,332
+stubs, whereas the resolution of the integration level test is 
+
+106
+00:05:36,336 --> 00:05:39,336
+pretty coarse. You're making high level statements about how the 
+
+107
+00:05:39,339 --> 00:05:41,339
+app is stimulated. That means that anything that you will want 
+
+108
+00:05:41,341 --> 00:05:44,341
+to set up in the test that would control how the test goes, 
+
+109
+00:05:44,344 --> 00:05:47,344
+you've got to be able to set that up essentially from almost a 
+
+110
+00:05:47,347 --> 00:05:50,347
+black box point of view, which is much harder to do. 
+
+111
+00:05:50,350 --> 00:05:53,350
+Consequently that means that it's easier to boost your coverage 
+
+112
+00:05:53,353 --> 00:05:56,353
+with these low level tests. If you find lines or methods that 
+
+113
+00:05:56,356 --> 00:05:59,356
+are not being exercised, because you can use mocks and stubs so 
+
+114
+00:05:59,359 --> 00:06:02,359
+carefully, you can essentially handcraft test cases that will go 
+
+115
+00:06:02,362 --> 00:06:05,362
+ahead and hit those corners, which is much harder to get right 
+
+116
+00:06:05,365 --> 00:06:10,365
+when you're doing integration- level tests. As a general rule, 
+
+117
+00:06:10,370 --> 00:06:13,370
+that means that when you're up here, you're mocking a lot. 
+
+118
+00:06:13,373 --> 00:06:16,373
+You're often mocking out the very interfaces that are between 
+
+119
+00:06:16,376 --> 00:06:18,376
+the classes. We mocked out the interface between the controller 
+
+120
+00:06:18,378 --> 00:06:21,378
+and the model class. We mocked out the interface between the 
+
+121
+00:06:21,381 --> 00:06:23,381
+controller and the view by just asking, " Did you assign this 
+
+122
+00:06:23,383 --> 00:06:27,383
+variable?" Conversely when you're down here, you're using very 
+
+123
+00:06:27,387 --> 00:06:31,387
+few mocks, so the interfaces are very important. What this 
+
+124
+00:06:31,391 --> 00:06:33,391
+really takes you to is you need to have a holistic way of 
+
+125
+00:06:33,393 --> 00:06:36,393
+thinking about tests. I don't even know if they use those words 
+
+126
+00:06:36,396 --> 00:06:39,396
+in software engineering courses back East. This is California, 
+
+127
+00:06:39,399 --> 00:06:42,399
+so we can say words like " holistic" when it comes to software. 
+
+128
+00:06:42,402 --> 00:06:46,402
+One extreme is, " I coded it, I tried a couple of requests with 
+
+129
+00:06:46,406 --> 00:06:49,406
+the browser, it works." Sadly, this is not that far from how a 
+
+130
+00:06:49,409 --> 00:06:53,409
+lot of people do their integration testing today. The other 
+
+131
+00:06:53,413 --> 00:06:56,413
+extreme is just as bad. " Until I have 100% C0 coverage and all 
+
+132
+00:06:56,416 --> 00:06:59,416
+green, then we're not ready to ship." The truth is, somewhere in 
+
+133
+00:06:59,419 --> 00:07:02,419
+between is a level where you'll feel comfortable, because the 
+
+134
+00:07:02,422 --> 00:07:04,422
+coverage has told you what parts of your code are severely 
+
+135
+00:07:04,424 --> 00:07:09,424
+under- tested or untested. Similarly, some people obsessively 
+
+136
+00:07:09,429 --> 00:07:11,429
+focus on unit tests, because you can get more detail, they're 
+
+137
+00:07:11,431 --> 00:07:14,431
+more thorough. Some people obsessively focus on integration 
+
+138
+00:07:14,434 --> 00:07:16,434
+tests because they're more like what the customer will actually 
+
+139
+00:07:16,436 --> 00:07:20,436
+do. After all, you're building this for the customer. The real 
+
+140
+00:07:20,440 --> 00:07:23,440
+opportunity is that each will find bugs that the other misses. 
+
+141
+00:07:23,443 --> 00:07:26,443
+Integration tests are more likely to find bugs across interfaces 
+
+142
+00:07:26,446 --> 00:07:29,446
+or gaps in the UI that you hadn't thought about. Unit tests are 
+
+143
+00:07:29,449 --> 00:07:32,449
+more likely to find bugs with special code passes that may be 
+
+144
+00:07:32,452 --> 00:07:35,452
+very hard to get to be exercised from the customer's point of 
+
+145
+00:07:35,455 --> 00:07:37,455
+view. When they happen, you would want to make sure that you 
+
+146
+00:07:37,457 --> 00:07:41,457
+know how your app is going to react. Given that, we can ask the 
+
+147
+00:07:41,461 --> 00:07:46,461
+question, " Which of these is poor advice for a TDD developer?" 
+
+148
+00:07:46,466 --> 00:07:49,466
+Mock and stub early and often when you're doing unit tests. Aim 
+
+149
+00:07:49,469 --> 00:07:52,469
+for high unit test coverage. Sometimes it's okay to use stubs 
+
+150
+00:07:52,472 --> 00:07:55,472
+and mocks, even in your integration tests. Unit tests give you 
+
+151
+00:07:55,475 --> 00:07:58,475
+higher confidence of overall system correctness than integration 
+
+152
+00:07:58,478 --> 00:07:59,478
+tests do. 
+
+

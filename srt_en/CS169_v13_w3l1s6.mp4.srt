@@ -1,0 +1,169 @@
+1
+00:00:00,000 --> 00:00:05,000
+In the self- check question, we ask which types of tests could 
+
+2
+00:00:05,005 --> 00:00:08,005
+be ran repeatably and independently, because we know that those 
+
+3
+00:00:08,008 --> 00:00:12,008
+are two of the attributes from the FIRST acronym that make for a 
+
+4
+00:00:12,012 --> 00:00:15,012
+good test suite. One of them was, " What if you have a code that 
+
+5
+00:00:15,015 --> 00:00:18,015
+relies on randomness like shuffling a deck of cards?" You would 
+
+6
+00:00:18,018 --> 00:00:21,018
+think that because randomness is part of what the code does, you 
+
+7
+00:00:21,021 --> 00:00:24,021
+can't test it repeatably, but in fact there's a couple of 
+
+8
+00:00:24,024 --> 00:00:26,024
+different ways to do it. One possibility in the case of 
+
+9
+00:00:26,026 --> 00:00:29,026
+something like shuffling a deck of cards is to keep track of the 
+
+10
+00:00:29,029 --> 00:00:32,029
+random number generator seed that was used when you ran the 
+
+11
+00:00:32,032 --> 00:00:35,032
+code, and to capture a particular execution order associated 
+
+12
+00:00:35,035 --> 00:00:39,035
+with that seed. The way random number generators work is if 
+
+13
+00:00:39,039 --> 00:00:42,039
+there are software or pseudo- number generator once you've 
+
+14
+00:00:42,042 --> 00:00:44,042
+established the seed value, the sequence of random numbers that 
+
+15
+00:00:44,044 --> 00:00:47,044
+comes out of the generator is deterministic. That would be one 
+
+16
+00:00:47,047 --> 00:00:51,047
+way that test of type A could in fact be ran in repeatable and 
+
+17
+00:00:51,051 --> 00:00:55,051
+independent manner. What about tests of type B, code that relies 
+
+18
+00:00:55,055 --> 00:00:58,055
+on the time of the day? Well, as we will learn when we talk more 
+
+19
+00:00:58,058 --> 00:01:02,058
+about testing, a key concept in testing is the ability to fake 
+
+20
+00:01:02,062 --> 00:01:05,062
+out the behavior of collaborator classes that are separate from 
+
+21
+00:01:05,065 --> 00:01:09,065
+the class you're testing. In example B, an example of a 
+
+22
+00:01:09,069 --> 00:01:12,069
+collaborator class would be the library that provides the time 
+
+23
+00:01:12,072 --> 00:01:15,072
+of day. What we could do is fake out that library with the so 
+
+24
+00:01:15,075 --> 00:01:19,075
+called stub that returns a known time of day. We could basically 
+
+25
+00:01:19,079 --> 00:01:21,079
+return a canned value for the time of day, and then we could 
+
+26
+00:01:21,081 --> 00:01:24,081
+test that our code does the right thing depending on what canned 
+
+27
+00:01:24,084 --> 00:01:28,084
+value is returned. Another strategy is worth mentioning for 
+
+28
+00:01:28,088 --> 00:01:32,088
+cases of type A where there's randomness involved looks at the 
+
+29
+00:01:32,092 --> 00:01:35,092
+spectral properties of the result, so if you were testing for 
+
+30
+00:01:35,095 --> 00:01:38,095
+example code to flip a fair coin, we know that a fair coin 
+
+31
+00:01:38,098 --> 00:01:41,098
+should come up heads about 50% of the time, so you could write a 
+
+32
+00:01:41,101 --> 00:01:44,101
+test suite where one of the tests flips a coin or a virtual coin 
+
+33
+00:01:44,104 --> 00:01:47,104
+a large number of times, and checks to see whether the 
+
+34
+00:01:47,107 --> 00:01:50,107
+proportion of heads and tails is within some relatively modest 
+
+35
+00:01:50,110 --> 00:01:54,110
+value of 50/ 50. The moral of the story is even if something 
+
+36
+00:01:54,114 --> 00:01:57,114
+seems none- deterministic or seems to depend on external 
+
+37
+00:01:57,117 --> 00:01:59,117
+conditions, there is usually some way you can think of to either 
+
+38
+00:01:59,119 --> 00:02:02,119
+control the conditions it depends on, or establish repeatable 
+
+39
+00:02:02,122 --> 00:02:05,122
+conditions for the purposed of testing. We'll keep coming back 
+
+40
+00:02:05,125 --> 00:02:08,125
+to this over and over again so that every time you think of a 
+
+41
+00:02:08,128 --> 00:02:10,128
+new feature you want to add to your code, you're automatically 
+
+42
+00:02:10,130 --> 00:02:13,130
+asking yourself the question, " How could I test this?" 
+
+

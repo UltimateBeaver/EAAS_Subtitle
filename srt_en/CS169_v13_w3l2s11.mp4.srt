@@ -1,0 +1,804 @@
+00:00:00,000 --> 00:00:04,000
+Now it's time to get specific. We've talked about the 
+
+2
+00:00:04,004 --> 00:00:07,004
+architecture of SaaS apps in general, we talked about Model View 
+
+3
+00:00:07,007 --> 00:00:10,007
+Controller and now it's time to start the tour of the actual 
+
+4
+00:00:10,010 --> 00:00:12,010
+Rails framework that we can start tying some of these concepts 
+
+5
+00:00:12,012 --> 00:00:18,012
+concretely to what Rails does for each of these things. If you 
+
+6
+00:00:18,018 --> 00:00:21,018
+create a new Rails app, or if you use the Rotten Potatoes app 
+
+7
+00:00:21,021 --> 00:00:24,021
+that we've created for the course and you take a look at what's 
+
+8
+00:00:24,024 --> 00:00:27,024
+in the directory, the root directory of the app, here's a bunch 
+
+9
+00:00:27,027 --> 00:00:29,027
+of stuff that you'll see. We're not going to look at everything 
+
+10
+00:00:29,029 --> 00:00:32,029
+that's in the main directory, but you'll find a Gemfile, you'll 
+
+11
+00:00:32,032 --> 00:00:34,032
+find a Rakefile, and now you're going to start seeing the 
+
+12
+00:00:34,034 --> 00:00:37,034
+directories that correspond almost exactly with the concepts 
+
+13
+00:00:37,037 --> 00:00:40,037
+we've been talking about. In terms of a little architectural 
+
+14
+00:00:40,040 --> 00:00:44,040
+diagram, which I have cleverly reproduced in miniature, there's 
+
+15
+00:00:44,044 --> 00:00:47,044
+a directory called App, which has subdirectory models, views and 
+
+16
+00:00:47,047 --> 00:00:49,047
+controllers. You could probably figure out what's in those 
+
+17
+00:00:49,049 --> 00:00:53,049
+directories based on our walkthrough of the app so far. We know 
+
+18
+00:00:53,053 --> 00:00:57,053
+that the app is organized around MVC and we know the roles that 
+
+19
+00:00:57,057 --> 00:01:00,057
+each one of those things plays. For example, given that we said 
+
+20
+00:01:00,000 --> 00:01:03,060
+each type of thing, for example a movie, has its own model, own 
+
+21
+00:01:03,063 --> 00:01:06,063
+sets of views, and its own controllers, you can imagine what you 
+
+22
+00:01:06,066 --> 00:01:11,066
+might find in these directories. If we continue our tour, we 
+
+23
+00:01:11,071 --> 00:01:14,071
+talked about using stylesheets as a way to style the 
+
+24
+00:01:14,074 --> 00:01:17,074
+presentation to the user. There's a directory called Assets in 
+
+25
+00:01:17,077 --> 00:01:19,077
+which you'll find stylesheets, you'll find a place you can put 
+
+26
+00:01:19,079 --> 00:01:23,079
+Java Script, which we're going to learn about later, and other 
+
+27
+00:01:23,083 --> 00:01:27,083
+interesting stuff. We talked about the idea that Rails has a 
+
+28
+00:01:27,087 --> 00:01:30,087
+separate routing sub system that you don't have to mix in 
+
+29
+00:01:30,090 --> 00:01:35,090
+hardwire URIs into your code, instead, you specify what actions 
+
+30
+00:01:35,095 --> 00:01:37,095
+you want to support and what resources, and Rails provides 
+
+31
+00:01:37,097 --> 00:01:40,097
+machinery for generating those URIs for you. In the Config 
+
+32
+00:01:40,100 --> 00:01:43,100
+directory, you'll find a file called routes. rb, which is how 
+
+33
+00:01:43,103 --> 00:01:47,103
+you specify what actions you want to do, and as your app starts 
+
+34
+00:01:47,107 --> 00:01:51,107
+up, the information in that file is used to automatically build 
+
+35
+00:01:51,111 --> 00:01:55,111
+those mappings at run time. There's also a directory called db 
+
+36
+00:01:55,115 --> 00:01:58,115
+for database, as we know, the database is where the models data 
+
+37
+00:01:58,118 --> 00:02:02,118
+actually lives, and one thing we're going to see very shortly 
+
+38
+00:02:02,122 --> 00:02:05,122
+when we talk about how Rails deals with databases is that you 
+
+39
+00:02:05,125 --> 00:02:08,125
+can have more than one. In particular, there's one that you use 
+
+40
+00:02:08,128 --> 00:02:10,128
+for real in the production, there's one that you do your 
+
+41
+00:02:10,130 --> 00:02:12,130
+development on and there's another one that's just for running 
+
+42
+00:02:12,132 --> 00:02:15,132
+your tests. You'll find all of those, or at least the 
+
+43
+00:02:15,135 --> 00:02:20,135
+information about how to get at them, in the db subdirectory. 
+
+44
+00:02:20,140 --> 00:02:24,140
+What about how ... does Rails act as an MVC framework? Here's a 
+
+45
+00:02:24,144 --> 00:02:27,144
+picture that we used from a long time ago, showing that your web 
+
+46
+00:02:27,147 --> 00:02:29,147
+browser goes in through the presentation tier, that's where 
+
+47
+00:02:29,149 --> 00:02:32,149
+webserver lives, it hits your Rails app and at some point, it'll 
+
+48
+00:02:32,152 --> 00:02:36,152
+probably get data from the database. Specifically what's inside 
+
+49
+00:02:36,156 --> 00:02:39,156
+your app? In the Rails world, the first thing that happens is 
+
+50
+00:02:39,159 --> 00:02:41,159
+where your incoming requests from the browser is going to hit 
+
+51
+00:02:41,161 --> 00:02:44,161
+one of the controllers and where is the controller code? It's in 
+
+52
+00:02:44,164 --> 00:02:47,164
+the Controllers directory, just where you would expect to find 
+
+53
+00:02:47,167 --> 00:02:49,167
+it. This is a theme that we're going to keep coming back to. If 
+
+54
+00:02:49,169 --> 00:02:52,169
+you do things the way that a reasonable person would expect, 
+
+55
+00:02:52,172 --> 00:02:56,172
+there's a lot of work that you don't have to do. The Rails 
+
+56
+00:02:56,176 --> 00:03:00,176
+routing subsystem is responsible for mapping the incoming URL to 
+
+57
+00:03:00,000 --> 00:03:02,180
+the right controller and the right action or for signaling an 
+
+58
+00:03:02,182 --> 00:03:06,182
+error if there is no match. The controller will probably ask the 
+
+59
+00:03:06,186 --> 00:03:09,186
+model to do some work for it, and what is a model? It's a bunch 
+
+60
+00:03:09,189 --> 00:03:11,189
+of codes somewhere in the model sub directory, appropriately 
+
+61
+00:03:11,191 --> 00:03:15,191
+enough. We know that because Rails is using active record, that 
+
+62
+00:03:15,195 --> 00:03:17,195
+means that there's a relational database, and each model has a 
+
+63
+00:03:17,197 --> 00:03:23,197
+table in that database where instances of that model start. Once 
+
+64
+00:03:23,203 --> 00:03:25,203
+the model has returned some data back to the controller, the 
+
+65
+00:03:25,205 --> 00:03:29,205
+controller can hand that off to a templating system like Haml. 
+
+66
+00:03:29,209 --> 00:03:32,209
+The views will get rendered by interpolating the data that came 
+
+67
+00:03:32,212 --> 00:03:36,212
+via the controller, that gets returned back to your browser. 
+
+68
+00:03:36,216 --> 00:03:39,216
+What are the models? As we're going to see the subclasses of 
+
+69
+00:03:39,219 --> 00:03:44,219
+active record base, the views are subclasses of action view and 
+
+70
+00:03:44,224 --> 00:03:47,224
+the controllers are subclasses of application controller. This 
+
+71
+00:03:47,227 --> 00:03:51,227
+is an example of how you use the features of a language that has 
+
+72
+00:03:51,231 --> 00:03:55,231
+class hierarchy and inheritance to support a framework. If we're 
+
+73
+00:03:55,235 --> 00:03:58,235
+saying that Active Record has common machinery that all models 
+
+74
+00:03:58,238 --> 00:04:00,238
+can use, and then there's specific machinery associated with 
+
+75
+00:04:00,000 --> 00:04:04,240
+your particular type of mode, that's exactly a case of using 
+
+76
+00:04:04,244 --> 00:04:06,244
+inheritance because we want to reuse implementation. The 
+
+77
+00:04:06,246 --> 00:04:09,246
+implementation of the common functionality of Active Record 
+
+78
+00:04:09,249 --> 00:04:12,249
+should be shared by all models, it makes sense to make models a 
+
+79
+00:04:12,252 --> 00:04:15,252
+subclass of some base model that has the functionality that's 
+
+80
+00:04:15,255 --> 00:04:18,255
+common to all of them. You can make a similar argument for views 
+
+81
+00:04:18,258 --> 00:04:22,258
+and controllers. This is a good use of inheritance. We have 
+
+82
+00:04:22,262 --> 00:04:25,262
+commonality across different kinds of things, there's a certain 
+
+83
+00:04:25,265 --> 00:04:27,265
+amount of that commonality that we want to capture, a common 
+
+84
+00:04:27,267 --> 00:04:30,267
+implementation that they all can reuse, inheritance is the way 
+
+85
+00:04:30,270 --> 00:04:34,270
+of reusing the implementation. Let's take a trip through a Rails 
+
+86
+00:04:34,274 --> 00:04:39,274
+application, a very quick one. What happens ... I'm putting some 
+
+87
+00:04:39,279 --> 00:04:43,279
+detail and text behind that diagram. We have routes that we 
+
+88
+00:04:43,283 --> 00:04:46,283
+define for our own application in routes. rb. They map the 
+
+89
+00:04:46,286 --> 00:04:50,286
+incoming request URIs to controller actions, as we saw, those 
+
+90
+00:04:50,290 --> 00:04:53,290
+controller action routes can include optional arguments, like an 
+
+91
+00:04:53,293 --> 00:04:55,293
+argument that identifies ... or a parameter that identifies a 
+
+92
+00:04:55,295 --> 00:05:00,295
+particular resource, those get extracted for you. Here's an 
+
+93
+00:05:00,000 --> 00:05:03,300
+example where we're visiting an app running on our local 
+
+94
+00:05:03,303 --> 00:05:06,303
+machine, and we're going to do get/ movie/ 3 continuing the 
+
+95
+00:05:06,306 --> 00:05:11,306
+example from the previous segment. In this case, routes. rb is 
+
+96
+00:05:11,311 --> 00:05:14,311
+going to be consulted and there will be a mapping because this 
+
+97
+00:05:14,314 --> 00:05:17,314
+is one of the default routes that Rails provides for us, saying 
+
+98
+00:05:17,317 --> 00:05:20,317
+you should be looking at the movies controller and call the show 
+
+99
+00:05:20,320 --> 00:05:22,320
+action within that controller. Where are these things going to 
+
+100
+00:05:22,322 --> 00:05:27,322
+be located? We'll show, in a moment, that convention over 
+
+101
+00:05:27,327 --> 00:05:32,327
+configuration means that if we choose to follow some default 
+
+102
+00:05:32,332 --> 00:05:34,332
+rules about how things are named and where they're located, we 
+
+103
+00:05:34,334 --> 00:05:37,334
+don't actually have to explicitly tell Rails where to look. It 
+
+104
+00:05:37,337 --> 00:05:42,337
+will basically figure it out. The controller actions can do 
+
+105
+00:05:42,342 --> 00:05:44,342
+pretty much whatever they want to get up the data, and once 
+
+106
+00:05:44,344 --> 00:05:47,344
+they're done, they can set up instance variables that will be 
+
+107
+00:05:47,347 --> 00:05:50,347
+visible to the views. This is how information is actually 
+
+108
+00:05:50,350 --> 00:05:53,350
+communicated from the controller's subsystem to the view 
+
+109
+00:05:53,353 --> 00:05:56,353
+subsystem. Any controller instance variables that are set up in 
+
+110
+00:05:56,356 --> 00:05:59,356
+the controller action automatically become visible to the view. 
+
+111
+00:05:59,359 --> 00:06:02,359
+Now you might say, and I hope you would say because you've been 
+
+112
+00:06:02,362 --> 00:06:05,362
+listening so closely, “ Wait a minute, Armando, you just said 
+
+113
+00:06:05,365 --> 00:06:09,365
+that the views are subclasses of one thing, action view, but 
+
+114
+00:06:09,369 --> 00:06:12,369
+controller are subclasses of this other thing, action 
+
+115
+00:06:12,372 --> 00:06:15,372
+controller. How is it that setting instance variables in 
+
+116
+00:06:15,375 --> 00:06:18,375
+something that is a controller could result in those instance 
+
+117
+00:06:18,378 --> 00:06:20,378
+variables becoming accessible to something in a totally 
+
+118
+00:06:20,380 --> 00:06:25,380
+different class?” That makes no sense at all and you'd be right. 
+
+119
+00:06:25,385 --> 00:06:27,385
+What Rails actually does, remember we talked about 
+
+120
+00:06:27,387 --> 00:06:30,387
+metaprogramming, Ruby allows you to write code at run time, 
+
+121
+00:06:30,390 --> 00:06:34,390
+modify classes at run time. What basically happens is action 
+
+122
+00:06:34,394 --> 00:06:37,394
+view instance is created, and new instance variable attributes 
+
+123
+00:06:37,397 --> 00:06:40,397
+are injected into it using metaprogramming. Its instance 
+
+124
+00:06:40,400 --> 00:06:43,400
+variables will match the ones that you setup in your controller 
+
+125
+00:06:43,403 --> 00:06:46,403
+method. It doesn't matter what they are, remember in Ruby we can 
+
+126
+00:06:46,406 --> 00:06:49,406
+ask any object about itself, the controller method can ask, 
+
+127
+00:06:49,409 --> 00:06:54,409
+about itself, what new instance variables did the programmer 
+
+128
+00:06:54,414 --> 00:06:57,414
+create and use in the controller method that were not already 
+
+129
+00:06:57,417 --> 00:07:00,417
+instance variables of the controller itself? For every one of 
+
+130
+00:07:00,000 --> 00:07:04,420
+those, I'm going to create a version of that variable with the 
+
+131
+00:07:04,424 --> 00:07:06,424
+same name in this other object of another class called action 
+
+132
+00:07:06,426 --> 00:07:10,426
+view. Why would you do this? Because it's easy for programmers. 
+
+133
+00:07:10,430 --> 00:07:12,430
+You set up the instance variables and then you can just use them 
+
+134
+00:07:12,432 --> 00:07:14,432
+that's the reason to do it. It makes life simpler for the 
+
+135
+00:07:14,434 --> 00:07:17,434
+programmer, and Rails and Ruby are all about simplifying your 
+
+136
+00:07:17,437 --> 00:07:20,437
+programming. The controller can set instance variables that 
+
+137
+00:07:20,440 --> 00:07:24,440
+become visible to the views and where does it find the views? As 
+
+138
+00:07:24,444 --> 00:07:27,444
+we'll see, if you have a controller action called, for example, 
+
+139
+00:07:27,447 --> 00:07:31,447
+show, which shows a movie, it'll just look in the Views 
+
+140
+00:07:31,451 --> 00:07:35,451
+subdirectory for movies and look for show. html. haml, because 
+
+141
+00:07:35,455 --> 00:07:37,455
+that's reasonable. We're going to talk a lot more about 
+
+142
+00:07:37,457 --> 00:07:41,457
+convention over configuration. Here's an example of what our 
+
+143
+00:07:41,461 --> 00:07:44,461
+controller action might look like. We get the ID of the movie 
+
+144
+00:07:44,464 --> 00:07:47,464
+that we wanted to look up, this comes from the URI, the route 
+
+145
+00:07:47,467 --> 00:07:51,467
+subsystem pulls it up for us. As we'll see, this is one of the 
+
+146
+00:07:51,471 --> 00:07:56,471
+ways that we can tell the movie model to do the R and find the 
+
+147
+00:07:56,476 --> 00:07:59,476
+database record whose ID is this, assign it to this instance 
+
+148
+00:07:59,479 --> 00:08:02,479
+variable, MV, and magically, that instance variable become 
+
+149
+00:08:02,482 --> 00:08:06,482
+available to us in the view. The view might have a little piece 
+
+150
+00:08:06,486 --> 00:08:09,486
+of stuff in it that looks like this in Haml, a list item 
+
+151
+00:08:09,489 --> 00:08:12,489
+saying, " The rating of this movie is," and an interpolation 
+
+152
+00:08:12,492 --> 00:08:15,492
+saying, " Mv. rating." Why does this work? Because MV is just a 
+
+153
+00:08:15,495 --> 00:08:18,495
+movie variable, movie has an attribute called rating and we can 
+
+154
+00:08:18,498 --> 00:08:22,498
+de- reference it. The goal is to make the code look like the way 
+
+155
+00:08:22,502 --> 00:08:24,502
+that you had expected to work. It's really to minimize the 
+
+156
+00:08:24,504 --> 00:08:28,504
+number of surprises when you're looking at the code. The Rails 
+
+157
+00:08:28,508 --> 00:08:31,508
+philosophy that under lies a lot of this, and we're going to see 
+
+158
+00:08:31,511 --> 00:08:34,511
+many examples of … a couple of flaws, one of them is convention 
+
+159
+00:08:34,514 --> 00:08:39,514
+over configuration. Basically it says you follow certain rules 
+
+160
+00:08:39,519 --> 00:08:41,519
+and in exchange, there's a lot of things that you won't have to 
+
+161
+00:08:41,521 --> 00:08:44,521
+worry about, and how to find stuff or where stuff is named. An 
+
+162
+00:08:44,524 --> 00:08:48,524
+example would be that if the movie's controller, which is ... 
+
+163
+00:08:48,528 --> 00:08:50,528
+it's a controller we defined, so it's subclass of action 
+
+164
+00:08:50,530 --> 00:08:53,530
+controller, and we wanted to find an action or a method in that 
+
+165
+00:08:53,533 --> 00:08:57,533
+controller called show, Rails will expect that that controller's 
+
+166
+00:08:57,537 --> 00:09:02,537
+subdirectory includes movies_ controller. rb. Basically the rule 
+
+167
+00:09:02,542 --> 00:09:05,542
+is, you take the name of the thing, you pluralize it and you 
+
+168
+00:09:05,545 --> 00:09:09,545
+add _ controller. It will expect that at the end of the show 
+
+169
+00:09:09,549 --> 00:09:12,549
+action, because it's going to want to render a view, that unless 
+
+170
+00:09:12,552 --> 00:09:16,552
+you say otherwise, it should look for the movie subdirectory and 
+
+171
+00:09:16,556 --> 00:09:20,556
+views and show. html. haml in that subdirectory. Again, you can 
+
+172
+00:09:20,560 --> 00:09:23,560
+override all this whenever you want, but if you override it, you 
+
+173
+00:09:23,563 --> 00:09:25,563
+end up doing more work because now you have to tell it where to 
+
+174
+00:09:25,565 --> 00:09:31,565
+actually look for these things. As you might guess, the ability 
+
+175
+00:09:31,571 --> 00:09:33,571
+to introspect on Ruby objects and ask questions about 
+
+176
+00:09:33,573 --> 00:09:36,573
+themselves, like what is my name, what is the name of this 
+
+177
+00:09:36,576 --> 00:09:39,576
+variable, what is the name of me, is how Rails is able to then 
+
+178
+00:09:39,579 --> 00:09:42,579
+look up things with the corresponding name find them in certain 
+
+179
+00:09:42,582 --> 00:09:45,582
+directories. Part of this is the Don't Repeat Yourself 
+
+180
+00:09:45,585 --> 00:09:49,585
+philosophy, or DRY. If you can figure out the names of things 
+
+181
+00:09:49,589 --> 00:09:53,589
+like files and actions and templates just by applying some 
+
+182
+00:09:53,593 --> 00:09:56,593
+simple rules to the names, then there should be no need for you 
+
+183
+00:09:56,596 --> 00:09:58,596
+to explicitly repeat that information somewhere else. That's 
+
+184
+00:09:58,598 --> 00:10:00,598
+just one more place you have to update whenever your app 
+
+185
+00:10:00,000 --> 00:10:04,600
+changes. We'll see many mechanisms not only using convention 
+
+186
+00:10:04,604 --> 00:10:07,604
+over reconfiguration to be DRY, but also to extract common 
+
+187
+00:10:07,607 --> 00:10:12,607
+functionalities that you can reuse it for many places. Both the 
+
+188
+00:10:12,612 --> 00:10:15,612
+mechanisms, the examples that we'll see, rely very heavily on 
+
+189
+00:10:15,615 --> 00:10:18,615
+Ruby Language features. This is why people will often say, " 
+
+190
+00:10:18,618 --> 00:10:20,618
+Rails is just a framework," you can do a framework just like 
+
+191
+00:10:20,620 --> 00:10:23,620
+Rails, but it would be in JAVA instead of Ruby. It's actually 
+
+192
+00:10:23,623 --> 00:10:26,623
+not that simple because a lot of the things that make Rails apps 
+
+193
+00:10:26,626 --> 00:10:29,626
+as concise as they are is the fact that you can get away with a 
+
+194
+00:10:29,629 --> 00:10:32,629
+lot of ... essentially not explicitly put in a lot of 
+
+195
+00:10:32,632 --> 00:10:35,632
+information, because you use introspection to infer the 
+
+196
+00:10:35,635 --> 00:10:38,635
+information, and you can use metaprogramming to create new 
+
+197
+00:10:38,638 --> 00:10:40,638
+objects at Runtime that look the way the way the programmer 
+
+198
+00:10:40,640 --> 00:10:43,640
+expects. If the language doesn't support that, you might think 
+
+199
+00:10:43,643 --> 00:10:45,643
+you have something like Rails, but the parts of Rails that 
+
+200
+00:10:45,645 --> 00:10:48,645
+really buy you simplicity and compactness will be largely absent 
+
+201
+00:10:48,648 --> 00:10:49,648
+from it. 
+
+

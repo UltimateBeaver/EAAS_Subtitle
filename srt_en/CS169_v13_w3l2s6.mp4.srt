@@ -1,0 +1,149 @@
+1
+00:00:00,000 --> 00:00:04,000
+Today's the day for, " Which statement is NOT true about." So, " 
+
+2
+00:00:04,004 --> 00:00:07,004
+Which statement is NOT true about RESTful routes and the 
+
+3
+00:00:07,007 --> 00:00:10,007
+resources that they refer to?" " A resource could be existing 
+
+4
+00:00:10,010 --> 00:00:14,010
+content, or it could be a request to modify something." " In a 
+
+5
+00:00:14,014 --> 00:00:17,014
+Model- View- Controller app, every route must eventually trigger 
+
+6
+00:00:17,017 --> 00:00:21,017
+some controller action." " One common set of RESTful actions 
+
+7
+00:00:21,021 --> 00:00:24,021
+that you might want to support is, CRUD actions on your models, 
+
+8
+00:00:24,024 --> 00:00:27,024
+whether they're ActiveRecord or not." And, " The route always 
+
+9
+00:00:27,027 --> 00:00:31,027
+contains one or more wildcards, like ": id", because it needs to 
+
+10
+00:00:31,031 --> 00:00:34,031
+identify the particular resource involved in that operation." So 
+
+11
+00:00:34,034 --> 00:00:39,034
+think about that for a moment. Okay, so the initial vote. Okay, 
+
+12
+00:00:39,039 --> 00:00:41,039
+initial vote. Wow, okay, the initial vote is almost 
+
+13
+00:00:41,041 --> 00:00:44,041
+overwhelmingly for blue. You guys are so smart that we're going 
+
+14
+00:00:44,044 --> 00:00:48,044
+to just review why blue is the right answer. So, why is blue the 
+
+15
+00:00:48,048 --> 00:00:51,048
+correct answer is this case? Well, we can look at the first 
+
+16
+00:00:51,051 --> 00:00:54,051
+three, and basically rule out all the other ones. A resource 
+
+17
+00:00:54,054 --> 00:00:57,054
+could be existing content, or a request to make a change to 
+
+18
+00:00:57,057 --> 00:01:00,057
+content. We've seen examples of both, so that's true. Every 
+
+19
+00:01:00,000 --> 00:01:02,060
+route must eventually trigger a controller action, that, yes, in 
+
+20
+00:01:02,062 --> 00:01:05,062
+a properly- designed Model- View- Controller app, that's the 
+
+21
+00:01:05,065 --> 00:01:08,065
+description, the job description of the controller is, " Handle 
+
+22
+00:01:08,068 --> 00:01:11,068
+the incoming requests from users." So, yes, sensibly enough, 
+
+23
+00:01:11,071 --> 00:01:14,071
+controllers must eventually be triggered when the user asks to 
+
+24
+00:01:14,074 --> 00:01:17,074
+do something. One common set of RESTful actions are, the CRUD 
+
+25
+00:01:17,077 --> 00:01:21,077
+actions on models. Absolutely. In fact, as we just showed, those 
+
+26
+00:01:21,081 --> 00:01:23,081
+are the ones for which Rails provides you, for free, routes that 
+
+27
+00:01:23,083 --> 00:01:27,083
+will already do the correct things. Which leaves only the last 
+
+28
+00:01:27,087 --> 00:01:29,087
+one, that the route always contains one or more wildcard 
+
+29
+00:01:29,089 --> 00:01:32,089
+parameters. That's only true if the action is one that could 
+
+30
+00:01:32,092 --> 00:01:36,092
+operate on a particular element of a large collection. So, one 
+
+31
+00:01:36,096 --> 00:01:39,096
+action is, " Show me information about a specific movie." In a 
+
+32
+00:01:39,099 --> 00:01:42,099
+route like that, you would need to have a parameter to say which 
+
+33
+00:01:42,102 --> 00:01:45,102
+movie it was, but, as we say, another resource could be, " Show 
+
+34
+00:01:45,105 --> 00:01:48,105
+me the whole list of movies." You don't need a particular 
+
+35
+00:01:48,108 --> 00:01:51,108
+identifier for that, you just need a constant string. So, the 
+
+36
+00:01:51,111 --> 00:01:54,111
+last choice is the one that is false, and you're all really 
+
+37
+00:01:54,114 --> 00:01:55,114
+smart, because you got it right. 
+
+

@@ -1,0 +1,153 @@
+1
+00:00:00,000 --> 00:00:07,000
+nitial vote says? Initial voting? I wonder if I should get 
+
+2
+00:00:07,007 --> 00:00:14,007
+clickers. Initial voting? Okay, good. Talk about it. This is 
+
+3
+00:00:14,014 --> 00:00:19,014
+little bit of everything. Little bit of everything. Second vote. 
+
+4
+00:00:19,019 --> 00:00:23,019
+Second vote? Second vote? Would not be a good candidate. Not be 
+
+5
+00:00:23,023 --> 00:00:27,023
+a good candidate for fixturing. Second vote says? Second vote 
+
+6
+00:00:27,027 --> 00:00:33,027
+says? You should talk more. No. Let's take a look at this. What 
+
+7
+00:00:33,033 --> 00:00:36,033
+make something a good candidate for a fixture? Remember, what 
+
+8
+00:00:36,036 --> 00:00:40,036
+would be the downside of fixtures? A downside is that you create 
+
+9
+00:00:40,040 --> 00:00:42,040
+them because there's one or a couple of tests that might want to 
+
+10
+00:00:42,042 --> 00:00:45,042
+use them, but they're there for all of the other tests, too, 
+
+11
+00:00:45,045 --> 00:00:47,045
+whether you want them or not. There's the possibility that they 
+
+12
+00:00:47,047 --> 00:00:51,047
+can end up creating dependency you don't want. What that says is 
+
+13
+00:00:51,051 --> 00:00:54,051
+if it's a piece of information that doesn't change very much and 
+
+14
+00:00:54,054 --> 00:00:56,054
+pretty much has to be there for any test to do something 
+
+15
+00:00:56,056 --> 00:01:00,056
+sensible, that's probably something that is okay to fixture. In 
+
+16
+00:01:00,000 --> 00:01:03,060
+my view, the TMDb API key is a reasonable thing to fixture, 
+
+17
+00:01:03,063 --> 00:01:06,063
+because over the course of a single run of testing or single run 
+
+18
+00:01:06,066 --> 00:01:09,066
+of the program, it won't change much. The places that might 
+
+19
+00:01:09,069 --> 00:01:12,069
+change are tested or specifically about what happens if you pass 
+
+20
+00:01:12,072 --> 00:01:15,072
+the wrong key and we're going to look at those next. Generally 
+
+21
+00:01:15,075 --> 00:01:17,075
+speaking, this is not a piece of information that changes around 
+
+22
+00:01:17,077 --> 00:01:20,077
+a lot and most tests are going to need some value for it to be 
+
+23
+00:01:20,080 --> 00:01:22,080
+in place if they get as far as the part of the code that talks 
+
+24
+00:01:22,082 --> 00:01:27,082
+to TMDb. Similarly, the applications time on settings except for 
+
+25
+00:01:27,087 --> 00:01:29,087
+if there's some part of the code that test specifically things 
+
+26
+00:01:29,089 --> 00:01:33,089
+around time zones. Time zone settings have to be there, but they 
+
+27
+00:01:33,093 --> 00:01:35,093
+don't change very much across the tests. On the other hand, 
+
+28
+00:01:35,095 --> 00:01:37,095
+movies and their ratings are central to the app. There's going 
+
+29
+00:01:37,097 --> 00:01:39,097
+to be a million tests to do a lot of different things at movies 
+
+30
+00:01:39,099 --> 00:01:42,099
+and ratings, and that's where the danger creeps in that 
+
+31
+00:01:42,102 --> 00:01:47,102
+fixturing them for one test [ kind of 00:01:44] having 
+
+32
+00:01:47,107 --> 00:01:49,107
+unforeseen consequences for other tests. My view is that things 
+
+33
+00:01:49,109 --> 00:01:52,109
+like the TMDb API key or the time zone settings, those are fine 
+
+34
+00:01:52,112 --> 00:01:55,112
+for fixturing. Movies and their ratings I would not want to 
+
+35
+00:01:55,115 --> 00:01:57,115
+fixture them, because there's just going to be too many tests 
+
+36
+00:01:57,117 --> 00:02:00,117
+that want too many different things out of that type of data, 
+
+37
+00:02:00,000 --> 00:02:02,120
+and the likelihood that the fixtures will screw up something 
+
+38
+00:02:02,122 --> 00:02:04,122
+else would creep in. Okay? 
+
+

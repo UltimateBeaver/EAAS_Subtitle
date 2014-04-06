@@ -1,0 +1,113 @@
+1
+00:00:00,000 --> 00:00:03,000
+Okay, so that's a quick overview. Let's ... pretty sure you all 
+
+2
+00:00:03,003 --> 00:00:07,003
+follow this, but let's just make sure you were paying attention. 
+
+3
+00:00:07,007 --> 00:00:10,007
+What's not true? What's false about Cucumber and Capybara? The 
+
+4
+00:00:10,010 --> 00:00:15,010
+step definitions are Ruby and are similar to method calls, while 
+
+5
+00:00:15,015 --> 00:00:19,015
+steps are in English and are similar to method definitions. A 
+
+6
+00:00:19,019 --> 00:00:23,019
+feature has one or more Scenarios, which are typically composed 
+
+7
+00:00:23,023 --> 00:00:27,023
+of 3 to 8 Steps. Steps use given for the current state, when for 
+
+8
+00:00:27,027 --> 00:00:31,027
+the actions, and then for the consequences of actions. The 
+
+9
+00:00:31,031 --> 00:00:34,031
+fourth one is Cucumber matches step definitions to scenario 
+
+10
+00:00:34,034 --> 00:00:37,034
+steps using regular expressions, and Capybara pretends to be the 
+
+11
+00:00:37,037 --> 00:00:41,037
+user that interacts with SaaS app accordingly. A lot of words in 
+
+12
+00:00:41,041 --> 00:00:48,041
+this slide. Ready, set, vote. Okay. This is actually is a 
+
+13
+00:00:48,048 --> 00:00:54,048
+mixture of the first two. I want you to talk it over and see 
+
+14
+00:00:54,054 --> 00:00:59,054
+which it is and then we'll come back. All right. Let's try 
+
+15
+00:00:59,059 --> 00:01:04,059
+voting again, see if anything change. Ready, set, vote. Orange 
+
+16
+00:01:04,064 --> 00:01:10,064
+dominates here. So the fourth one is true. Step definitions ... 
+
+17
+00:01:10,070 --> 00:01:13,070
+Cucumber matches step definitions to scenario steps using 
+
+18
+00:01:13,073 --> 00:01:17,073
+regular expressions, and Capybara pretends. The steps are given 
+
+19
+00:01:17,077 --> 00:01:20,077
+for the current, when for action, and then for consequences.  . 
+
+20
+00:01:20,080 --> 00:01:22,080
+A feature has one or more Scenarios, which are typically 
+
+21
+00:01:22,082 --> 00:01:26,082
+composed of 3 to 8 Steps. What's wrong here? What's wrong about 
+
+22
+00:01:26,086 --> 00:01:32,086
+the first one? It's almost right. Just change a couple of words. 
+
+23
+00:01:32,092 --> 00:01:38,092
+Step definitions are Ruby and are similar to method definitions. 
+
+24
+00:01:38,098 --> 00:01:42,098
+It's like here's the step you're going to use a lot and the 
+
+25
+00:01:42,102 --> 00:01:48,102
+steps are like method calls. Steps are in English but they're 
+
+26
+00:01:48,108 --> 00:01:51,108
+similar to method calls and step definitions are Ruby and are 
+
+27
+00:01:51,111 --> 00:01:54,111
+similar to method definitions. Keep that in mind. Keeps the 
+
+28
+00:01:54,114 --> 00:01:55,114
+words ... 
+
+

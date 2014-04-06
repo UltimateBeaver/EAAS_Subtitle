@@ -1,0 +1,125 @@
+1
+00:00:00,000 --> 00:00:06,000
+Index cards to the ready. Here we go, I've defined a
+
+2
+00:00:06,006 --> 00:00:10,006
+function of three arguments and my intention is that the 
+
+3
+00:00:10,010 --> 00:00:15,010
+function take a first argument which is some scalar and then the 
+
+4
+00:00:15,015 --> 00:00:19,015
+arguments that are hashes. The question which was alluded to you 
+
+5
+00:00:19,019 --> 00:00:23,019
+earlier is, which of these is not a legal call to that function? 
+
+6
+00:00:23,023 --> 00:00:27,023
+A hint is that the thing that would make a call not legal is 
+
+7
+00:00:27,027 --> 00:00:30,027
+that there is ambiguity about how the argument list ought to be 
+
+8
+00:00:30,030 --> 00:00:35,030
+parsed. Think about that for a moment. Let's do an initial vote. 
+
+9
+00:00:35,035 --> 00:00:42,035
+Ready, initial vote. Wow, you guys caught on really fast. Let's 
+
+10
+00:00:42,042 --> 00:00:47,042
+discuss it. The vote is for green and happily it's still true 
+
+11
+00:00:47,047 --> 00:00:53,047
+that you guys are really smart and here's the reason why. In all 
+
+12
+00:00:53,053 --> 00:00:57,053
+the other three examples, in this top example you can tell that 
+
+13
+00:00:57,057 --> 00:00:59,057
+here's an argument, here's an argument, it's delineated by 
+
+14
+00:00:59,059 --> 00:01:02,059
+braces and here's the third argument that just happens to have a 
+
+15
+00:01:02,062 --> 00:01:06,062
+single key value pair. That's totally fine. Likewise, here, this 
+
+16
+00:01:06,066 --> 00:01:09,066
+third choice, it's basically the same except that I've chosen to 
+
+17
+00:01:09,069 --> 00:01:15,069
+include the optional parenths around the arg list. In this last 
+
+18
+00:01:15,075 --> 00:01:18,075
+example, I've omitted the prenths but I've got braces around 
+
+19
+00:01:18,078 --> 00:01:22,078
+both the hashes. In all three legal parses, there's no question 
+
+20
+00:01:22,082 --> 00:01:26,082
+about where one hash ends and a different hash begins. Whereas 
+
+21
+00:01:26,086 --> 00:01:29,086
+in the green example, there is three key value pairs here but 
+
+22
+00:01:29,089 --> 00:01:32,089
+the function wants two hashes. There's no unambiguous way to 
+
+23
+00:01:32,092 --> 00:01:37,092
+figure out where the first hash ends and the 2nd hash begins. 
+
+24
+00:01:37,097 --> 00:01:41,097
+Again, how do you know for a specific function call, if I didn't 
+
+25
+00:01:41,101 --> 00:01:44,101
+show you the definition of foo you couldn't necessarily tell 
+
+26
+00:01:44,104 --> 00:01:47,104
+that this green one was illegal, right? If foo had been defined 
+
+27
+00:01:47,107 --> 00:01:51,107
+as a function of two arguments, the 2nd of which is a hash then 
+
+28
+00:01:51,111 --> 00:01:54,111
+this would be perfectly legal call. In some cases you have to 
+
+29
+00:01:54,114 --> 00:01:57,114
+understand or look at the functions documentation to understand 
+
+30
+00:01:57,117 --> 00:01:59,117
+what makes an illegal call and where you can get away when [ 
+
+31
+00:01:59,119 --> 00:02:00,119
+he's 00:02:00] in poetry in mode. 
+
+

@@ -1,0 +1,413 @@
+1
+00:00:00,000 --> 00:00:06,000
+A related concept to software as a service it is service 
+
+2
+00:00:06,006 --> 00:00:10,006
+oriented architecture. So sometimes in computer science people 
+
+3
+00:00:10,010 --> 00:00:15,010
+make up a term that's really hard to understand. And or so 
+
+4
+00:00:15,015 --> 00:00:18,015
+general that applies to everything and so people don't use it. 
+
+5
+00:00:18,018 --> 00:00:22,018
+So service oriented architecture is almost so general that it 
+
+6
+00:00:22,022 --> 00:00:26,022
+almost died it actually has a us a good meaning it's not 
+
+7
+00:00:26,026 --> 00:00:29,026
+everything isn't service oriented architectures so kinda 
+
+8
+00:00:29,029 --> 00:00:33,029
+question is here is there a way that you can design software so 
+
+9
+00:00:33,033 --> 00:00:36,033
+they can recombine all independent modules and create new 
+
+10
+00:00:36,036 --> 00:00:38,036
+applications out of it without doing a lot of programming that's 
+
+11
+00:00:38,038 --> 00:00:43,038
+kind of question and service oriented architectures that idea 
+
+12
+00:00:43,043 --> 00:00:47,043
+all components are designed to be independent services like you 
+
+13
+00:00:47,047 --> 00:00:50,047
+go over the internet to access them, that's the idea of service 
+
+14
+00:00:50,050 --> 00:00:54,050
+oriented architecture. So what this means that everyone sits on 
+
+15
+00:00:54,054 --> 00:00:57,054
+services if you went over the internet access it's easy to get 
+
+16
+00:00:57,057 --> 00:01:01,057
+and replace one right one of them's replaceable very easily it's 
+
+17
+00:01:01,061 --> 00:01:04,061
+not going to bring down service. And also recover mistakes in 
+
+18
+00:01:04,064 --> 00:01:07,064
+design throw things out in our put them back together it's much 
+
+19
+00:01:07,067 --> 00:01:10,067
+more flexible. So Armando I had to come up with the the name for 
+
+20
+00:01:10,070 --> 00:01:13,070
+the thing that's not service oriented architecture we think it's 
+
+21
+00:01:13,073 --> 00:01:17,073
+a software silo So it's monolithic it's behind a counterweight 
+
+22
+00:01:17,077 --> 00:01:21,077
+traditional do it there's no APIs that are visible everything's 
+
+23
+00:01:21,081 --> 00:01:24,081
+internal and it's kind of the normal way to do it we would use 
+
+24
+00:01:24,084 --> 00:01:29,084
+this you know a grain silo as the arc. So we had a hard time 
+
+25
+00:01:29,089 --> 00:01:32,089
+trying to explain this and then this thing happen while writing 
+
+26
+00:01:32,092 --> 00:01:36,092
+the book that was fortuitous so if you work at companies there's 
+
+27
+00:01:36,096 --> 00:01:40,096
+often inside a company there will be well- known people who 
+
+28
+00:01:40,100 --> 00:01:44,100
+write a lot of email flame on about how companies so screwed up 
+
+29
+00:01:44,104 --> 00:01:49,104
+we gotta do this because you know we're dummies right well there 
+
+30
+00:01:49,109 --> 00:01:52,109
+was a guy Google who used to be an amazonian value working 
+
+31
+00:01:52,112 --> 00:01:56,112
+Amazon he come the Google successful for while we had to blogs 
+
+32
+00:01:56,116 --> 00:02:00,116
+he has internal Google blogger he'd flame about everything that 
+
+33
+00:02:00,000 --> 00:02:04,120
+screwed up about Google and then he had his public library say 
+
+34
+00:02:04,124 --> 00:02:08,124
+how wonderful Google is right in our last one day probably 
+
+35
+00:02:08,128 --> 00:02:11,128
+because he was multitasking is probably you know playing with 
+
+36
+00:02:11,131 --> 00:02:16,131
+his phone that when he posted his Google flame instead of the 
+
+37
+00:02:16,136 --> 00:02:19,136
+Google blog he went to public one the public one that probably 
+
+38
+00:02:19,139 --> 00:02:23,139
+said nice things about Google that day. So Armando saw it, he 
+
+39
+00:02:23,143 --> 00:02:26,143
+figured it was in going to be up for very long, he grab it and 
+
+40
+00:02:26,146 --> 00:02:29,146
+say so that's what the the next slide gonna be and it is the 
+
+41
+00:02:29,149 --> 00:02:34,149
+best. It's the best description of sovereign servers that we've 
+
+42
+00:02:34,154 --> 00:02:37,154
+seen and so what the person said supposedly only in think he 
+
+43
+00:02:37,157 --> 00:02:41,157
+thinking internally to Google it was talking about Jeff Bezos 
+
+44
+00:02:41,161 --> 00:02:47,161
+the founder and C. E. O. of Amazon and he, the company was about 
+
+45
+00:02:47,167 --> 00:02:50,167
+seven years old time he's in there and they've been using kinda 
+
+46
+00:02:50,170 --> 00:02:53,170
+monolithic software and so you come to work Monday morning it is 
+
+47
+00:02:53,173 --> 00:02:58,173
+email from Bezos in its there seven points here, six of them he 
+
+48
+00:02:58,178 --> 00:03:02,178
+really said one this guy added so I'll tell you which ones 
+
+49
+00:03:02,182 --> 00:03:06,182
+you'll the pre Mailer says all teams will henceforth expose 
+
+50
+00:03:06,186 --> 00:03:11,186
+their data in functionality through service interface teams must 
+
+51
+00:03:11,191 --> 00:03:13,191
+communicate with each other through these interfaces there will 
+
+52
+00:03:13,193 --> 00:03:17,193
+be no other forms of media so he didn't want to leave any holes 
+
+53
+00:03:17,197 --> 00:03:20,197
+here. You gotta do that no direct linking directories on the 
+
+54
+00:03:20,200 --> 00:03:23,200
+team data store no shared model no back doors the only 
+
+55
+00:03:23,203 --> 00:03:27,203
+communication is logged via server's interface never by the way 
+
+56
+00:03:27,207 --> 00:03:29,207
+Bezos as a computer science degree from Princeton,he got a 
+
+57
+00:03:29,209 --> 00:03:32,209
+Bachelors degree so he knew some technical things and you know 
+
+58
+00:03:32,212 --> 00:03:36,212
+so these the first leaving to use he didn't really care what A. 
+
+59
+00:03:36,216 --> 00:03:41,216
+P. I. Just gotta dude you gotta you know pick your own way of 
+
+60
+00:03:41,221 --> 00:03:45,221
+doing sockets RPC really wanna do but it's gotta be and and 
+
+61
+00:03:45,225 --> 00:03:48,225
+network like interface service interface without exception must 
+
+62
+00:03:48,228 --> 00:03:52,228
+be design from the ground up to be externalise that is to say 
+
+63
+00:03:52,232 --> 00:03:56,232
+the team must plan design to be able to expose interfaces 
+
+64
+00:03:56,236 --> 00:04:01,236
+developers to the outside world. No exceptions okay well he's 
+
+65
+00:04:01,241 --> 00:04:05,241
+the CEO company you're a software engineer get the best job in 
+
+66
+00:04:05,245 --> 00:04:10,245
+the world why do I really have to do what Bezos says right well 
+
+67
+00:04:10,250 --> 00:04:14,250
+the next line clarified that anyone who doesn't do this would be 
+
+68
+00:04:14,254 --> 00:04:19,254
+fired so that's relatively clear and then the seven point was 
+
+69
+00:04:19,259 --> 00:04:23,259
+thank you have a nice day Bezos wouldn't have said the said the 
+
+70
+00:04:23,263 --> 00:04:26,263
+last thing you still at the end of the email was if you don't do 
+
+71
+00:04:26,266 --> 00:04:29,266
+this you'll be fired right so that's how we got the attention of 
+
+72
+00:04:29,269 --> 00:04:33,269
+the software engineers. And Amazon and they did transform you 
+
+73
+00:04:33,273 --> 00:04:36,273
+know pretty successful company that was using monolithic 
+
+74
+00:04:36,276 --> 00:04:40,276
+software to be using a service oriented architecture the same 
+
+75
+00:04:40,280 --> 00:04:44,280
+thing interestingly happened at Facebook it doesn't have quite a 
+
+76
+00:04:44,284 --> 00:04:49,284
+dramatic story here but three years they'd have mallets offer 
+
+77
+00:04:49,289 --> 00:04:52,289
+three years into it. They decided to go ahead and go to a 
+
+78
+00:04:52,292 --> 00:04:55,292
+service oriented architecture and if you were using Facebook at 
+
+79
+00:04:55,295 --> 00:04:59,295
+the time Reading the New York Times on your on your computer and 
+
+80
+00:04:59,299 --> 00:05:02,299
+suddenly there's some notice that other your friends are also 
+
+81
+00:05:02,302 --> 00:05:04,302
+reading that same article then you then what they did that by 
+
+82
+00:05:04,304 --> 00:05:08,304
+what was called the Facebook platform. So to make this clearer 
+
+83
+00:05:08,308 --> 00:05:11,308
+let's give an example suppose we do bookstore we'll show silo 
+
+84
+00:05:11,311 --> 00:05:16,311
+and service oriented architecture version so in this particular 
+
+85
+00:05:16,316 --> 00:05:23,316
+example and yeah works. So we have three databases reviews users 
+
+86
+00:05:23,323 --> 00:05:28,323
+in orders and so then we have these different services review 
+
+87
+00:05:28,328 --> 00:05:34,328
+subsystem has to talk to use in users user profiles just users 
+
+88
+00:05:34,334 --> 00:05:37,334
+the buying some system is that orders and users. So you build 
+
+89
+00:05:37,337 --> 00:05:41,337
+this thing is a monolithic interface internal polling and stuff 
+
+90
+00:05:41,341 --> 00:05:44,341
+like that you provide the single interface the outside the book 
+
+91
+00:05:44,344 --> 00:05:49,344
+store service people use it so that's a monolithic approach the 
+
+92
+00:05:49,349 --> 00:05:52,349
+service oriented approach has a lot of the same components but 
+
+93
+00:05:52,352 --> 00:05:57,352
+these are now services so user reviews the review service has 
+
+94
+00:05:57,357 --> 00:06:01,357
+editor and user reviews user profile are buying service and you 
+
+95
+00:06:01,361 --> 00:06:04,361
+can combine those together to get the books or service just like 
+
+96
+00:06:04,364 --> 00:06:07,364
+we had before so that's a bit more overhead paid network 
+
+97
+00:06:07,367 --> 00:06:10,367
+overhead of providing service but it works. Well what's nice 
+
+98
+00:06:10,370 --> 00:06:13,370
+about this we could easily add credit card processing that maybe 
+
+99
+00:06:13,373 --> 00:06:16,373
+wasn't there before you get that server similar self implement 
+
+100
+00:06:16,376 --> 00:06:20,376
+any trade a brand new servers favourite books that you just use 
+
+101
+00:06:20,380 --> 00:06:23,380
+these two pieces to create and tie them into a social networking 
+
+102
+00:06:23,383 --> 00:06:26,383
+and then you could your friends, book sellers. So that's the 
+
+103
+00:06:26,386 --> 00:06:28,386
+idea of service oriented architecture 
+
+

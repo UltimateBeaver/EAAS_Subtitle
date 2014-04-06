@@ -1,0 +1,85 @@
+1
+00:00:00,000 --> 00:00:06,000
+Okay, vote. Vote, vote, vote. Statements that are false ... 
+
+2
+00:00:06,006 --> 00:00:09,006
+okay, we're just going to go through it. Most people got this 
+
+3
+00:00:09,009 --> 00:00:13,009
+right. I should have guessed that a crowd that has done a fair 
+
+4
+00:00:13,013 --> 00:00:16,013
+amount of programming would certainly not buy into number 3, 
+
+5
+00:00:16,016 --> 00:00:19,016
+that testing eliminates the need to use a debugger and indeed, 
+
+6
+00:00:19,019 --> 00:00:21,019
+you're right about that. Testing does not eliminate the need to 
+
+7
+00:00:21,021 --> 00:00:25,021
+use of debugger. However, what I hope that I've persuaded you of 
+
+8
+00:00:25,025 --> 00:00:28,025
+is that it eliminates many unproductive uses of a debugger. 
+
+9
+00:00:28,028 --> 00:00:31,028
+Sometimes you really will be in a quandary as to why your simple 
+
+10
+00:00:31,031 --> 00:00:33,031
+test case and your simple code are not behaving the way you 
+
+11
+00:00:33,033 --> 00:00:35,033
+should and that's when the debugger comes out but you shouldn't 
+
+12
+00:00:35,035 --> 00:00:38,035
+be using it for most of that. Most of your actual debugging 
+
+13
+00:00:38,038 --> 00:00:40,038
+really should be in the form of writing tests that fail. That's 
+
+14
+00:00:40,040 --> 00:00:44,040
+your bug. Then you write the code that fixes the bug. As we'll 
+
+15
+00:00:44,044 --> 00:00:47,044
+see when we talk about how you close out bugs in other people's 
+
+16
+00:00:47,047 --> 00:00:50,047
+code, it's actually the same process. All of these ideas are 
+
+17
+00:00:50,050 --> 00:00:53,050
+going to come back when we do bug fixing, when we do legacy code 
+
+18
+00:00:53,053 --> 00:00:56,053
+refactoring, all this stuff, the idea of test cases that cover 
+
+19
+00:00:56,056 --> 00:00:59,056
+you knowing that that's the target of where you're going to 
+
+20
+00:00:59,059 --> 00:01:01,059
+focus your bug fixing efforts. We're going to see this over and 
+
+21
+00:01:01,061 --> 00:01:02,061
+over again. 
+
+

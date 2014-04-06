@@ -1,0 +1,77 @@
+1
+00:00:00,000 --> 00:00:06,000
+So let's try another one of these poles here. So which 
+
+2
+00:00:06,006 --> 00:00:10,006
+statements are which statement is not true about service 
+
+3
+00:00:10,010 --> 00:00:13,010
+oriented architecture. Service oriented architecture does not 
+
+4
+00:00:13,013 --> 00:00:17,013
+affect performance. Silo'd systems are likely completely down on 
+
+5
+00:00:17,017 --> 00:00:20,017
+a failure so service oriented architecture must handle partial 
+
+6
+00:00:20,020 --> 00:00:23,020
+failures. Service oriented architecture improves developer 
+
+7
+00:00:23,023 --> 00:00:27,023
+productivity primary through use. And no service oriented 
+
+8
+00:00:27,027 --> 00:00:30,027
+architecture service can name or access another service's data; 
+
+9
+00:00:30,030 --> 00:00:34,030
+it can only make requests for data through an external A.P.I. 
+
+10
+00:00:34,034 --> 00:00:44,034
+Alright. So look for couple seconds and then vote.   Okay now. 
+
+11
+00:00:44,044 --> 00:00:47,044
+Alright, everybody's orange yeah yeah that's right that's the 
+
+12
+00:00:47,047 --> 00:00:50,047
+downside of service oriented architecture effects performance. 
+
+13
+00:00:50,050 --> 00:00:54,050
+Two down side effects performance some but computers are so 
+
+14
+00:00:54,054 --> 00:00:57,054
+fast, software productivity can't be slowed. But, the fact that 
+
+15
+00:00:57,057 --> 00:01:00,057
+they could have partial failures probably a bigger problem that 
+
+16
+00:01:00,000 --> 00:01:05,060
+mounting system if it crashes, it's often air. This one pieces 
+
+17
+00:01:05,065 --> 00:01:08,065
+of it cannot work so customers might complain that this isn't 
+
+18
+00:01:08,068 --> 00:01:10,068
+even working right you can't and tell because some service works 
+
+19
+00:01:10,070 --> 00:01:11,070
+and some of it best 
+
+

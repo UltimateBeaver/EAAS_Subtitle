@@ -1,0 +1,105 @@
+1
+00:00:00,000 --> 00:00:05,000
+Here's an example for you try. Which string will not appear as
+
+2
+00:00:05,005 --> 00:00:08,005
+a result of running this code, that's assuming the code runs it 
+
+3
+00:00:08,008 --> 00:00:11,008
+all? Perhaps the code has some syntax error and won't actually 
+
+4
+00:00:11,011 --> 00:00:21,011
+run. Take a look at the code for a moment and think it over. By 
+
+5
+00:00:21,021 --> 00:00:23,021
+the way, match is a regular expression. Yeah, we got to do a 
+
+6
+00:00:23,023 --> 00:00:29,023
+first vote, I forgot. Vote. I think that's orange, right? Based 
+
+7
+00:00:29,029 --> 00:00:37,029
+on the lighting, is that orange? Since you guys are so quick, 
+
+8
+00:00:37,037 --> 00:00:40,037
+let's go talk through the answers here. What's happening in this 
+
+9
+00:00:40,040 --> 00:00:43,040
+expression? We've got an array of three things and when we call 
+
+10
+00:00:43,043 --> 00:00:45,043
+map, what is map going to do? It actually returns another 
+
+11
+00:00:45,045 --> 00:00:48,045
+collection, right? It's going to take this anonymous function 
+
+12
+00:00:48,048 --> 00:00:51,048
+and it's going to apply it to each of the elements and return a 
+
+13
+00:00:51,051 --> 00:00:54,051
+new collection with those application. What's inside the 
+
+14
+00:00:54,054 --> 00:00:57,054
+function body? It takes an element and it calls reverse on it. 
+
+15
+00:00:57,057 --> 00:01:00,057
+We've seen that string. reverse will reverse a string so what 
+
+16
+00:01:00,000 --> 00:01:05,060
+we're getting out of here is ananab, anana, isn't that cool that 
+
+17
+00:01:05,065 --> 00:01:09,065
+I picked a palindrome and naan which is another palindrome, 
+
+18
+00:01:09,069 --> 00:01:11,069
+three great foods by the way. The middle one means pineapple in 
+
+19
+00:01:11,071 --> 00:01:17,071
+Spanish. At this point, after the word end, that's where we are. 
+
+20
+00:01:17,077 --> 00:01:19,077
+We've got a new collection that has the three strings but each 
+
+21
+00:01:19,079 --> 00:01:22,079
+one of them has been reversed. Within that collection we're 
+
+22
+00:01:22,082 --> 00:01:26,082
+going to select, in other words filter for all of the ones that 
+
+23
+00:01:26,086 --> 00:01:31,086
+match a regular expression that begins with A. Ananab and anana 
+
+24
+00:01:31,091 --> 00:01:34,091
+will fit that criteria and naan does not fit that criteria so it 
+
+25
+00:01:34,094 --> 00:01:37,094
+will not appear and therefore orange is the correct answer. Well 
+
+26
+00:01:37,097 --> 00:01:37,097
+done. 
+
+

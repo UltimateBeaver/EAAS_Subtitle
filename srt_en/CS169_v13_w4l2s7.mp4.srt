@@ -1,0 +1,889 @@
+1
+00:00:00,000 --> 00:00:04,000
+After our brief detour, remember what we’ ve done so far is we 
+
+2
+00:00:04,004 --> 00:00:06,004
+talked about models and how they connect to the database. We 
+
+3
+00:00:06,006 --> 00:00:10,006
+showed how you actually create the table in the database. By the 
+
+4
+00:00:10,010 --> 00:00:13,010
+way, now you see how these two pieces go together, a migration 
+
+5
+00:00:13,013 --> 00:00:15,013
+will create the table and the table will have certain columns 
+
+6
+00:00:15,015 --> 00:00:18,015
+for the different attributes. That’ s how ActiveRecord knows at 
+
+7
+00:00:18,018 --> 00:00:21,018
+runtime what attributes you can do reference on a model. It’ s 
+
+8
+00:00:21,021 --> 00:00:25,021
+basically the column names. It essentially asks the database, “ 
+
+9
+00:00:25,025 --> 00:00:27,025
+Tell me what columns are available in this table,” and those 
+
+10
+00:00:27,027 --> 00:00:30,027
+become the getters and the setters that are available on your 
+
+11
+00:00:30,030 --> 00:00:33,030
+Ruby models. We’ ll talk a little bit more now about 
+
+12
+00:00:33,033 --> 00:00:35,033
+ActiveRecord and some of the facilities for doing the other 
+
+13
+00:00:35,035 --> 00:00:39,035
+operations. We saw the four CRUD operations. We saw C for 
+
+14
+00:00:39,039 --> 00:00:43,039
+creating. Now we’ re going to do reading, updating and deleting. 
+
+15
+00:00:43,043 --> 00:00:47,043
+How do you find things on the database? There’ s a class method 
+
+16
+00:00:47,047 --> 00:00:50,047
+that inherits from ActiveRecord base called where. Not 
+
+17
+00:00:50,050 --> 00:00:53,050
+surprisingly. It’ s meant to mimic the fact that the where 
+
+18
+00:00:53,053 --> 00:00:56,053
+keyword existence sequel. It lets you select things based on 
+
+19
+00:00:56,056 --> 00:00:59,056
+attributes. I can select a movie where its rating matches a 
+
+20
+00:00:59,059 --> 00:01:04,059
+string. I can also more effectively write more complex 
+
+21
+00:01:04,064 --> 00:01:08,064
+conditions where I substitute symbols of my choosing. These 
+
+22
+00:01:08,068 --> 00:01:12,068
+could be any symbols I want. Then I provide a hash that maps 
+
+23
+00:01:12,072 --> 00:01:15,072
+those symbols to the values that I want to match. Sometimes it’ 
+
+24
+00:01:15,075 --> 00:01:18,075
+s more clear to write a more complex query in this way because 
+
+25
+00:01:18,078 --> 00:01:21,078
+it makes clear what the intent of the query is. I have some 
+
+26
+00:01:21,081 --> 00:01:25,081
+cutoff in mind. I have some rating in mind. I’ m going to 
+
+27
+00:01:25,085 --> 00:01:28,085
+separately specify what the values of those are. This is another 
+
+28
+00:01:28,088 --> 00:01:31,088
+option for how to do it. This is a really bad idea. It’ s got 
+
+29
+00:01:31,091 --> 00:01:33,091
+security implications that we’ re going to see later in the 
+
+30
+00:01:33,093 --> 00:01:38,093
+course. In general, anytime that you’ re embedding a string into 
+
+31
+00:01:38,098 --> 00:01:42,098
+a query, you had better trust that string. If that string in any 
+
+32
+00:01:42,102 --> 00:01:44,102
+way was ever touched by a user, you must immediately assume the 
+
+33
+00:01:44,104 --> 00:01:48,104
+user is evil or at best possibly incompetent and that just 
+
+34
+00:01:48,108 --> 00:01:50,108
+jamming the string into a query like this could result in a 
+
+35
+00:01:50,110 --> 00:01:53,110
+query that is either malformed or evilly formed which is 
+
+36
+00:01:53,113 --> 00:01:56,113
+actually much worse. The reason to use things like this symbol 
+
+37
+00:01:56,116 --> 00:01:59,116
+interpolation is as you might expect, there’ s extra machinery 
+
+38
+00:01:59,119 --> 00:02:02,119
+in Rails that will go out of its way after the substitution is 
+
+39
+00:02:02,122 --> 00:02:05,122
+done to make sure that you either end up with a legal statement 
+
+40
+00:02:05,125 --> 00:02:07,125
+or at least end up with a statement that is not malicious. There 
+
+41
+00:02:07,127 --> 00:02:10,127
+are a lot of standard tricks that evil users try that is exactly 
+
+42
+00:02:10,130 --> 00:02:13,130
+aimed to people who write code like this. Rails has mechanisms 
+
+43
+00:02:13,133 --> 00:02:16,133
+that will circumvent most of those if only you choose to use 
+
+44
+00:02:16,136 --> 00:02:19,136
+them. A non- obvious thing about this though is that you can 
+
+45
+00:02:19,139 --> 00:02:22,139
+chain these things together. For example, I can initially say, “ 
+
+46
+00:02:22,142 --> 00:02:26,142
+I’ m going to define kiddie to be movies where the rating is G.” 
+
+47
+00:02:26,146 --> 00:02:31,146
+You might ask, “ When this is executed in Rails, what is the 
+
+48
+00:02:31,151 --> 00:02:34,151
+result of doing this?” What you would think is that the result 
+
+49
+00:02:34,154 --> 00:02:36,154
+is something like a collection of movies that have been 
+
+50
+00:02:36,156 --> 00:02:39,156
+extracted from the database. That’ s actually not quite true. 
+
+51
+00:02:39,159 --> 00:02:42,159
+The result is an object that if you ever do reference that will 
+
+52
+00:02:42,162 --> 00:02:45,162
+cause the database query to happen, it gets evaluated lazily. 
+
+53
+00:02:45,165 --> 00:02:50,165
+That means that I can now say there’ s also kids films and those 
+
+54
+00:02:50,170 --> 00:02:53,170
+are kiddie films where the release date is let’ s say earlier 
+
+55
+00:02:53,173 --> 00:02:57,173
+than 30 years ago. What’ s the impact of these two statements? 
+
+56
+00:02:57,177 --> 00:03:01,177
+If query evaluation were eager or if it were immediate, in other 
+
+57
+00:03:01,181 --> 00:03:03,181
+words, if the act of doing movie where actually made the 
+
+58
+00:03:03,183 --> 00:03:06,183
+database query happen, then the code that I’ ve shown here would 
+
+59
+00:03:06,186 --> 00:03:10,186
+result in two queries; one for each of the wheres. In fact, the 
+
+60
+00:03:10,190 --> 00:03:14,190
+code that I’ ve shown here doesn’ t do any queries at all. At 
+
+61
+00:03:14,194 --> 00:03:17,194
+some point, the semantics of where is that it’ s supposed to 
+
+62
+00:03:17,197 --> 00:03:20,197
+return something that quacks like a collection. Remember the 
+
+63
+00:03:20,200 --> 00:03:23,200
+Ruby concept of quacking like something. It means, it doesn’ t 
+
+64
+00:03:23,203 --> 00:03:25,203
+really matter if your collection, you just need to do the things 
+
+65
+00:03:25,205 --> 00:03:29,205
+that collections do. What do we know that collections do? One 
+
+66
+00:03:29,209 --> 00:03:31,209
+thing collections do is they respond to each. They can enumerate 
+
+67
+00:03:31,211 --> 00:03:35,211
+themselves. What’ s actually happening here, so that you 
+
+68
+00:03:35,215 --> 00:03:38,215
+understand what’ s going on under the hood is at some point, 
+
+69
+00:03:38,218 --> 00:03:40,218
+later on in the code, presumably we’ re going to say something 
+
+70
+00:03:40,220 --> 00:03:44,220
+like old_ kid_ films dot each do something. We’ re going to go 
+
+71
+00:03:44,224 --> 00:03:46,224
+through the collection and do something with each element. That’ 
+
+72
+00:03:46,226 --> 00:03:48,226
+s the time the query happens. Only the time we actually try to 
+
+73
+00:03:48,228 --> 00:03:52,228
+get the result is the time the query happens. A consequence of 
+
+74
+00:03:52,232 --> 00:03:55,232
+that is you can actually build up extremely sophisticated 
+
+75
+00:03:55,235 --> 00:03:58,235
+queries by chaining together a lot of different conditions and 
+
+76
+00:03:58,238 --> 00:04:00,238
+Rails has a fairly sophisticated optimizer that will generate 
+
+77
+00:04:00,000 --> 00:04:03,240
+good sequel. At the end of the day, only when you try to 
+
+78
+00:04:03,243 --> 00:04:06,243
+actually ask for the value of one of those objects, that’ s when 
+
+79
+00:04:06,246 --> 00:04:08,246
+the query happens and not before. It’ s a very nice feature and 
+
+80
+00:04:08,248 --> 00:04:11,248
+it’ s a part of ActiveRecord called active relation. It’ s 
+
+81
+00:04:11,251 --> 00:04:15,251
+basically a relational algebra engine that’ s built in. What are 
+
+82
+00:04:15,255 --> 00:04:18,255
+the ways can you read stuff? There’ s a collection of methods 
+
+83
+00:04:18,258 --> 00:04:22,258
+that begin with find. The simplest version is if you happen to 
+
+84
+00:04:22,262 --> 00:04:24,262
+know the primary key of something. When we talk about 
+
+85
+00:04:24,264 --> 00:04:26,264
+controllers shortly, we’ ll show some examples where you 
+
+86
+00:04:26,266 --> 00:04:29,266
+actually do know the primary key. You can just look up something 
+
+87
+00:04:29,269 --> 00:04:31,269
+by its primary key as long as you’ re willing to risk an 
+
+88
+00:04:31,271 --> 00:04:34,271
+exception if you got it wrong and it’ s not found. You could 
+
+89
+00:04:34,274 --> 00:04:37,274
+also just say find_ by_ id, remembering that ID happens to be 
+
+90
+00:04:37,277 --> 00:04:41,277
+the column name that Rails uses for the primary key which is 
+
+91
+00:04:41,281 --> 00:04:43,281
+more friendly and that it just returns nil rather than throwing 
+
+92
+00:04:43,283 --> 00:04:48,283
+an exception if that ID doesn’ t exist in the movies table. The 
+
+93
+00:04:48,288 --> 00:04:51,288
+more interesting one is attribute based finders. Remembering 
+
+94
+00:04:51,291 --> 00:04:54,291
+that we set up our movies table to have title and rating for 
+
+95
+00:04:54,294 --> 00:04:58,294
+example. We could say, find all movies by rating or find by 
+
+96
+00:04:58,298 --> 00:05:02,298
+rating a single or the first movie that matches this condition. 
+
+97
+00:05:02,302 --> 00:05:05,302
+Find_ by_ rating! which as you’ ve know dot figure out by now. 
+
+98
+00:05:05,305 --> 00:05:08,305
+We’ ll fit on exception. You’ re probably already a step ahead 
+
+99
+00:05:08,308 --> 00:05:12,308
+of me and thinking, “ Aha, I know just how that works. That code 
+
+100
+00:05:12,312 --> 00:05:14,312
+doesn’ t exist in any file. If you want to look for find_ by_ 
+
+101
+00:05:14,314 --> 00:05:17,314
+rating across all of the source code in your app, you would 
+
+102
+00:05:17,317 --> 00:05:20,317
+never find it because of course, this is being handled by method 
+
+103
+00:05:20,320 --> 00:05:24,320
+missing. You already saw an example of this, right? What’ s the 
+
+104
+00:05:24,324 --> 00:05:27,324
+rule here? You could probably write this yourself. If you’ re 
+
+105
+00:05:27,327 --> 00:05:31,327
+trying to call a method find by something and if that something 
+
+106
+00:05:31,331 --> 00:05:34,331
+happens to match the attribute name of one of the columns in 
+
+107
+00:05:34,334 --> 00:05:39,334
+your table then it gets converted into a sequel query basically 
+
+108
+00:05:39,339 --> 00:05:43,339
+isn’ t something like the where conditions. In fact, in case you 
+
+109
+00:05:43,343 --> 00:05:46,343
+are wondering, you can in fact say find by rating and title, 
+
+110
+00:05:46,346 --> 00:05:49,346
+find by release date and something. Then the rule is if it’ s 
+
+111
+00:05:49,349 --> 00:05:53,349
+find by X and Y and Z and they’ re all separated by ands and 
+
+112
+00:05:53,353 --> 00:05:56,353
+underscores and they all match attributes names, then method 
+
+113
+00:05:56,356 --> 00:06:00,356
+missing will do its thing. Again, a nice example of allowing you 
+
+114
+00:06:00,000 --> 00:06:02,360
+to do a bunch of common cases, you get them for free. It’ s not 
+
+115
+00:06:02,362 --> 00:06:05,362
+like this code exist somewhere and it’ s not being used because 
+
+116
+00:06:05,365 --> 00:06:07,365
+it’ s method missing, this only happens if you actually try to 
+
+117
+00:06:07,367 --> 00:06:09,367
+use this feature. It’ s not like you’ ve got a bunch of 
+
+118
+00:06:09,369 --> 00:06:12,369
+functions sitting around that you’ re not using. How about 
+
+119
+00:06:12,372 --> 00:06:15,372
+updating stuff? There are two ways to do it. Suppose we have 
+
+120
+00:06:15,375 --> 00:06:19,375
+already used one of the finders to grab an instance of a movie 
+
+121
+00:06:19,379 --> 00:06:21,379
+from the database. One thing we could do is we could modify the 
+
+122
+00:06:21,381 --> 00:06:24,381
+attributes in place and then we can save the object. Remember, 
+
+123
+00:06:24,384 --> 00:06:27,384
+the big difference here is between we have an in- memory copy 
+
+124
+00:06:27,387 --> 00:06:30,387
+and we have a database copy. Those copies are distinct. What 
+
+125
+00:06:30,390 --> 00:06:32,390
+ActiveRecord does is give us mechanisms to keep them in synced 
+
+126
+00:06:32,392 --> 00:06:35,392
+to tie them together. Just because we’ ve changed the release 
+
+127
+00:06:35,395 --> 00:06:38,395
+date in our in- memory copy, to update the database’ s copy, we 
+
+128
+00:06:38,398 --> 00:06:42,398
+have to explicitly save the object out again. We could also 
+
+129
+00:06:42,402 --> 00:06:45,402
+combine. There’ s a call update attributes that lets you 
+
+130
+00:06:45,405 --> 00:06:49,405
+essentially pass a hash of attributes and their new values. It 
+
+131
+00:06:49,409 --> 00:06:51,409
+operates atomically. If you try to update a bunch of attributes 
+
+132
+00:06:51,411 --> 00:06:54,411
+at once, either they all get updated correctly or none of them 
+
+133
+00:06:54,414 --> 00:06:59,414
+do. You could think of it as being transactional in that way. By 
+
+134
+00:06:59,419 --> 00:07:02,419
+the way, a nice structural thing about ActiveRecord that we’ ll 
+
+135
+00:07:02,422 --> 00:07:05,422
+see is there’ s many different ActiveRecord calls that can 
+
+136
+00:07:05,425 --> 00:07:09,425
+modify the database. At the end of the day, they all end up 
+
+137
+00:07:09,429 --> 00:07:12,429
+funneling through a single point called save. There’ s a way 
+
+138
+00:07:12,432 --> 00:07:15,432
+that Rails allows you to do extra validation checks before 
+
+139
+00:07:15,435 --> 00:07:17,435
+writing something in the database to make sure that you never 
+
+140
+00:07:17,437 --> 00:07:20,437
+write invalid data for some reason. You only have to put that 
+
+141
+00:07:20,440 --> 00:07:23,440
+check in one place because all of the other calls that modify 
+
+142
+00:07:23,443 --> 00:07:25,443
+the database eventually funnel through there. We’ ll talk about 
+
+143
+00:07:25,445 --> 00:07:30,445
+that when we talk about the more advanced Rails topics. Deleting 
+
+144
+00:07:30,450 --> 00:07:34,450
+is straightforward. What might be interesting if you haven’ t 
+
+145
+00:07:34,454 --> 00:07:37,454
+seen it before in Rails is that it’ s an instance method. You 
+
+146
+00:07:37,457 --> 00:07:40,457
+first have to be able to name the object and then you tell it to 
+
+147
+00:07:40,460 --> 00:07:43,460
+destroy itself. You could also write row sequel queries to do 
+
+148
+00:07:43,463 --> 00:07:46,463
+this but there’ s actually a very good reason why you do this. 
+
+149
+00:07:46,466 --> 00:07:49,466
+There is in fact a method called delete which really just maps 
+
+150
+00:07:49,469 --> 00:07:52,469
+to what you would do in row sequel. The reason to call destroy 
+
+151
+00:07:52,472 --> 00:07:55,472
+and the reason to call it as an instance method is again, 
+
+152
+00:07:55,475 --> 00:07:57,475
+suppose again we’ ve got the Ruby world and we got the database 
+
+153
+00:07:57,477 --> 00:08:01,477
+world. In the database world, deleting is simple. You vaporize 
+
+154
+00:08:01,481 --> 00:08:03,481
+the row. The database is done with it like it never existed. It 
+
+155
+00:08:03,483 --> 00:08:06,483
+may very well be the case in the world of your application life 
+
+156
+00:08:06,486 --> 00:08:08,486
+is more complicated. For example, suppose I have movies in 
+
+157
+00:08:08,488 --> 00:08:13,488
+reviews and suppose I delete a movie. At that point, any reviews 
+
+158
+00:08:13,493 --> 00:08:15,493
+that depended on that movie have nothing to connect to anymore. 
+
+159
+00:08:15,495 --> 00:08:19,495
+In terms of my app logic, there may be consequences to 
+
+160
+00:08:19,499 --> 00:08:21,499
+destroying an object and I want to make sure that whenever the 
+
+161
+00:08:21,501 --> 00:08:25,501
+object is destroyed, I have the chance to clean up other state. 
+
+162
+00:08:25,505 --> 00:08:28,505
+As we’ ll see, destroy allows you to type other callbacks so 
+
+163
+00:08:28,508 --> 00:08:31,508
+that when an object is destroyed, you can do various other 
+
+164
+00:08:31,511 --> 00:08:33,511
+things. It’ s a little bit like finalizing Java if you want to 
+
+165
+00:08:33,513 --> 00:08:36,513
+think of it that way. This is the reason that perhaps counter 
+
+166
+00:08:36,516 --> 00:08:39,516
+intuitively destroys an instance method. You find the thing you 
+
+167
+00:08:39,519 --> 00:08:44,519
+want to destroy and then you tell it to destroy itself. Ruby 
+
+168
+00:08:44,524 --> 00:08:48,524
+helpfully gives us the technology so that once we’ ve actually 
+
+169
+00:08:48,528 --> 00:08:51,528
+called destroy on an object, so now again, the database world, 
+
+170
+00:08:51,531 --> 00:08:53,531
+the Ruby world Now the database is working that the object is 
+
+171
+00:08:53,533 --> 00:08:56,533
+gone but we still got M. We’ ve got this data structure in Ruby. 
+
+172
+00:08:56,536 --> 00:09:00,536
+What would prevent us from trying to modify the attributes even 
+
+173
+00:09:00,000 --> 00:09:02,540
+though we know we’ ll never be able to save it again because we 
+
+174
+00:09:02,542 --> 00:09:05,542
+deleted it from the database. As it turns out, this will fail 
+
+175
+00:09:05,545 --> 00:09:08,545
+because once you’ ve destroyed an object from the database, 
+
+176
+00:09:08,548 --> 00:09:11,548
+Rails will change the way that the titles that are works to 
+
+177
+00:09:11,551 --> 00:09:14,551
+basically say, “ No, sorry you can’ t do that.” Once you’ ve 
+
+178
+00:09:14,554 --> 00:09:17,554
+destroyed an object, you might think that the setters still work 
+
+179
+00:09:17,557 --> 00:09:19,557
+but they’ ll actually raise exceptions. The object will have 
+
+180
+00:09:19,559 --> 00:09:22,559
+been frozen. Again, this works because all access to the 
+
+181
+00:09:22,562 --> 00:09:25,562
+internal state of an object is through these getters and setters 
+
+182
+00:09:25,565 --> 00:09:27,565
+and we can modify it runtime how they behave. It’ s another 
+
+183
+00:09:27,567 --> 00:09:30,567
+example of how a language feature is used in support of an 
+
+184
+00:09:30,570 --> 00:09:35,570
+obstruction. Here’ s what we’ ve learned so far about 
+
+185
+00:09:35,575 --> 00:09:38,575
+ActiveRecord which is by far the most interesting and important 
+
+186
+00:09:38,578 --> 00:09:41,578
+part of Rails. This is sort of just getting your feet wet. If 
+
+187
+00:09:41,581 --> 00:09:44,581
+you subclass from ActiveRecord Base, that’ s how you create a 
+
+188
+00:09:44,584 --> 00:09:46,584
+model. That means that you can connect a model to the database 
+
+189
+00:09:46,586 --> 00:09:49,586
+and get built- in behaviors for doing the four base of CRUD 
+
+190
+00:09:49,589 --> 00:09:53,589
+operations. Because of convention over configuration, you can 
+
+191
+00:09:53,593 --> 00:09:56,593
+deduce the name of the model, the name of the database table and 
+
+192
+00:09:56,596 --> 00:09:59,596
+the name of the code file for your model are all related by a 
+
+193
+00:09:59,599 --> 00:10:03,599
+simple set of rules. By default, ActiveRecord will give you free 
+
+194
+00:10:03,603 --> 00:10:06,603
+getters and setters that are named after the table columns. They 
+
+195
+00:10:06,606 --> 00:10:09,606
+all work the way you expect. In fact, they work a little better 
+
+196
+00:10:09,609 --> 00:10:13,609
+than the way you expect. For example, different databases like 
+
+197
+00:10:13,613 --> 00:10:15,613
+my sequel versus Postgres have different internal 
+
+198
+00:10:15,615 --> 00:10:19,615
+representations for certain types like date times. Ruby has a 
+
+199
+00:10:19,619 --> 00:10:22,619
+date time type. It has a bunch of different date time types. 
+
+200
+00:10:22,622 --> 00:10:26,622
+When you assign something to a model attribute that has a date 
+
+201
+00:10:26,626 --> 00:10:29,626
+time value in the database, one of the nice things Rails does is 
+
+202
+00:10:29,629 --> 00:10:32,629
+convert back and forth between the representations. If the 
+
+203
+00:10:32,632 --> 00:10:34,632
+database has a store as a date time, it will pars whatever the 
+
+204
+00:10:34,634 --> 00:10:38,634
+database’ s representation of date time is. What you get handed 
+
+205
+00:10:38,638 --> 00:10:40,638
+back is a Ruby date time object which has all the great date 
+
+206
+00:10:40,640 --> 00:10:44,640
+time behaviors. Conversely, when you set a new value for it, you 
+
+207
+00:10:44,644 --> 00:10:46,644
+can set the value to anything that Ruby thinks as a reasonable 
+
+208
+00:10:46,646 --> 00:10:49,646
+representation of a date and a time and Rails will make sure 
+
+209
+00:10:49,649 --> 00:10:51,649
+that it gets serialized correctly for whichever flavor of 
+
+210
+00:10:51,651 --> 00:10:54,651
+database you’ re using. The getters and setters actually do 
+
+211
+00:10:54,654 --> 00:10:58,654
+quite a bit. The thing that ties all these together is you’ ve 
+
+212
+00:10:58,658 --> 00:11:00,658
+got an object in a memory. You’ ve got a row in the database 
+
+213
+00:11:00,000 --> 00:11:03,660
+where you’ re persisting that object. Those two things are 
+
+214
+00:11:03,663 --> 00:11:06,663
+distinct. ActiveRecord is an obstruction that tries to keep them 
+
+215
+00:11:06,666 --> 00:11:08,666
+close together but it is not a perfect obstruction. There’ s 
+
+216
+00:11:08,668 --> 00:11:11,668
+going to be times when you see it leak. One of them is like we 
+
+217
+00:11:11,671 --> 00:11:14,671
+said, when you try to destroy an object, you still have the in 
+
+218
+00:11:14,674 --> 00:11:17,674
+memory copy. You can’ t make the in memory copy just go away. 
+
+219
+00:11:17,677 --> 00:11:20,677
+The best that you can do in a leaky obstruction is it will 
+
+220
+00:11:20,680 --> 00:11:22,680
+prevent you from trying to make changes to the in memory copy. 
+
+221
+00:11:22,682 --> 00:11:24,682
+It’ s kind of a rude reminder that, “ Hey, you’ ve deleted the 
+
+222
+00:11:24,684 --> 00:11:25,684
+object.” 
+
+

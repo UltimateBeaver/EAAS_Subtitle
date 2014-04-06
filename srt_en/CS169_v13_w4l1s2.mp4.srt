@@ -1,0 +1,137 @@
+1
+00:00:00,000 --> 00:00:06,000
+With that, let’ s break out our cards, and ask which may be an 
+
+2
+00:00:06,006 --> 00:00:09,006
+opinionated piece. We’ re going to ask for the SOFA guidelines; 
+
+3
+00:00:09,009 --> 00:00:13,009
+short do one thing, have few arguments, stick to one level of 
+
+4
+00:00:13,013 --> 00:00:19,013
+abstraction. Which is the most important for unit testing? What 
+
+5
+00:00:19,019 --> 00:00:24,019
+you think of these four things which one is the most important 
+
+6
+00:00:24,024 --> 00:00:28,024
+for unit testing? Why don’ t you find your cards or find your 
+
+7
+00:00:28,028 --> 00:00:34,028
+iPod and think about it for a few seconds? Will you get to vote? 
+
+8
+00:00:34,034 --> 00:00:36,034
+I’ m pretty sure were going to get to talk about this. Ready, 
+
+9
+00:00:36,036 --> 00:00:43,036
+set vote. We’ ve got lots of green and then blue and pink. Why 
+
+10
+00:00:43,043 --> 00:00:50,043
+don’ t you talk and then we’ ll give you my opinion. Let’ s try 
+
+11
+00:00:50,050 --> 00:00:56,050
+and vote as partners again. Raise up the cards and boy, there’ s 
+
+12
+00:00:56,056 --> 00:01:02,056
+a lot of votes for green here. Now this would be a terrible 
+
+13
+00:01:02,062 --> 00:01:05,062
+midterm question, because this is basically Armando’ s and my 
+
+14
+00:01:05,065 --> 00:01:07,065
+opinion and you could probably make a case for each of them, but 
+
+15
+00:01:07,067 --> 00:01:11,067
+we’ ll relay what we were thinking. How about short, which is 
+
+16
+00:01:11,071 --> 00:01:14,071
+one of the ones you didn’ t pick? Well, it could be long and as 
+
+17
+00:01:14,074 --> 00:01:17,074
+long as it straight- line code it could still be pretty easy to 
+
+18
+00:01:17,077 --> 00:01:21,077
+test. How about sticking to one level of abstraction? That idea’ 
+
+19
+00:01:21,081 --> 00:01:24,081
+s to make code easier to understand. It could be actually pretty 
+
+20
+00:01:24,084 --> 00:01:27,084
+easy to test even though it’ s hard for a human being to 
+
+21
+00:01:27,087 --> 00:01:32,087
+understand it. The last two here; doing one thing. Yeah. That 
+
+22
+00:01:32,092 --> 00:01:37,092
+probably would help with testing, but if each thing is simple, 
+
+23
+00:01:37,097 --> 00:01:41,097
+it might still be easy to test. What we were actually arguing 
+
+24
+00:01:41,101 --> 00:01:46,101
+for was few arguments, that if the arguments really matter than 
+
+25
+00:01:46,106 --> 00:01:50,106
+the more arguments, there are more test cases for you. If the 
+
+26
+00:01:50,110 --> 00:01:55,110
+arguments just kind of fit into a formula and there’ s nothing 
+
+27
+00:01:55,115 --> 00:01:58,115
+to do in a method, but calculate that formula then it wouldn’ t 
+
+28
+00:01:58,118 --> 00:02:02,118
+be so bad. I think the main thing about this question is, where 
+
+29
+00:02:02,122 --> 00:02:06,122
+you think about what matters in terms of testing. Arguing about 
+
+30
+00:02:06,126 --> 00:02:09,126
+doing one thing with few arguments, I think, in our experience, 
+
+31
+00:02:09,129 --> 00:02:12,129
+we think that arguments can be both ways, but you can certainly 
+
+32
+00:02:12,132 --> 00:02:16,132
+find example codes where it’ d be a strong case where for any of 
+
+33
+00:02:16,136 --> 00:02:18,136
+those things that was more important than the others, but in 
+
+34
+00:02:18,138 --> 00:02:20,138
+that was the kind of perspective…. 
+
+

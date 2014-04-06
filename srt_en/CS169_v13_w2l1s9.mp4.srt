@@ -1,0 +1,89 @@
+1
+00:00:00,000 --> 00:00:06,000
+Alright, with that, which expression is true regarding pair
+
+2
+00:00:06,006 --> 00:00:09,006
+programing? Pair programming is quicker, better quality, cheaper 
+
+3
+00:00:09,009 --> 00:00:13,009
+and less effort than solo programming. The driver works on tasks 
+
+4
+00:00:13,013 --> 00:00:17,013
+at hand, the observer thinks strategically about future tasks. A 
+
+5
+00:00:17,017 --> 00:00:19,017
+pair will eventually figure out who is the best driver and who 
+
+6
+00:00:19,019 --> 00:00:22,019
+is the best observer, and then stick to these roles. My 
+
+7
+00:00:22,022 --> 00:00:26,022
+favourite answer, promiscuous pairing is one long- term solution 
+
+8
+00:00:26,026 --> 00:00:33,026
+to the problem of shortage of programmers. I thought it was 
+
+9
+00:00:33,033 --> 00:00:44,033
+goodness. Ready, set, vote. There's a mix of orange and green. 
+
+10
+00:00:44,044 --> 00:00:50,044
+Talk it over and then we'll have the [ technology 00:00:47]. 
+
+11
+00:00:50,050 --> 00:00:52,050
+Talk it over and we'll vote. Let's try and vote again, ready, 
+
+12
+00:00:52,052 --> 00:00:59,052
+set, vote. Mix of green and ... it is much greener. Pair 
+
+13
+00:00:59,059 --> 00:01:02,059
+programming is quicker, better quality, cheaper and less effort. 
+
+14
+00:01:02,062 --> 00:01:04,062
+There's a study that may not be less efforts. That's why that 
+
+15
+00:01:04,064 --> 00:01:10,064
+one isn't true. The driver works on tasks at hand, the observer 
+
+16
+00:01:10,070 --> 00:01:12,070
+thinks strategically about future tasks. Second one, that's what 
+
+17
+00:01:12,072 --> 00:01:15,072
+I thought was true. It's not promiscuous pairing doesn't 
+
+18
+00:01:15,075 --> 00:01:23,075
+increase the number of programmers. Thankfully I guess. That's 
+
+19
+00:01:23,083 --> 00:01:26,083
+human nature for one person to try and drive and a person to 
+
+20
+00:01:26,086 --> 00:01:29,086
+observe. That's not how this system works. You're really 
+
+21
+00:01:29,089 --> 00:01:30,089
+supposed to go back and forth. It will be better for you and 
+
+22
+00:01:30,090 --> 00:01:32,090
+better for the [ person 00:01:31]. 
+
+

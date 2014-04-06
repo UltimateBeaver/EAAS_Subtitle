@@ -1,0 +1,792 @@
+00:00:00,000 --> 00:00:04,000
+So what have we learned from this sort of quick tour of SaaS 
+
+2
+00:00:04,004 --> 00:00:09,004
+architecture. I like stepping back to look at the big picture 
+
+3
+00:00:09,009 --> 00:00:12,009
+frequently, especially with my eyes going bad with my advanced 
+
+4
+00:00:12,012 --> 00:00:15,012
+age, but the big picture in this case is model- view- 
+
+5
+00:00:15,015 --> 00:00:17,015
+controller, right, and this is the way we are structuring our 
+
+6
+00:00:17,017 --> 00:00:20,017
+apps. It is not necessarily the way to structure all the SaaS 
+
+7
+00:00:20,020 --> 00:00:23,020
+apps, but it is the way that Rails has chosen to target because 
+
+8
+00:00:23,023 --> 00:00:26,023
+it applies to a large number of apps so all of the designed 
+
+9
+00:00:26,026 --> 00:00:29,026
+choices in the Rails very heavily favor this. If you try to 
+
+10
+00:00:29,029 --> 00:00:32,029
+write an app using Rails and it does not really follow MVC you 
+
+11
+00:00:32,032 --> 00:00:34,032
+are going to find yourself fighting many of the things Rails 
+
+12
+00:00:34,034 --> 00:00:37,034
+ties to do, and if you are working against framework, it is a 
+
+13
+00:00:37,037 --> 00:00:39,037
+sign that you are using the wrong framework, right. Your app 
+
+14
+00:00:39,039 --> 00:00:42,039
+really should be using something else. So specifically in our 
+
+15
+00:00:42,042 --> 00:00:45,042
+case we are going to use databases to store the data and very 
+
+16
+00:00:45,045 --> 00:00:47,045
+shortly we are going to talk about migrations, which is how we 
+
+17
+00:00:47,047 --> 00:00:51,047
+manage the structure, the scheme of those databases. We have a 
+
+18
+00:00:51,051 --> 00:00:55,051
+notion of CRUD operations and in the active record model used by 
+
+19
+00:00:55,055 --> 00:00:59,055
+Rails, the CRUD operations are part and parcel of each type of 
+
+20
+00:00:59,059 --> 00:01:03,059
+model. For the controller we know that we use HTTP to 
+
+21
+00:01:03,063 --> 00:01:07,063
+communicate with it. URIs ideally RESTful ones that encode a 
+
+22
+00:01:07,067 --> 00:01:09,067
+resource and the thing that we want to do to that resource, that 
+
+23
+00:01:09,069 --> 00:01:12,069
+is how we specify what is to be done. All of that occurs over 
+
+24
+00:01:12,072 --> 00:01:16,072
+the vulnerable TCP/ IP protocols and for the views we use HTML 
+
+25
+00:01:16,076 --> 00:01:20,076
+and CSS as the was we present step to the user, but we can use a 
+
+26
+00:01:20,080 --> 00:01:23,080
+templating system like HAML or ERB to combine fix markup with 
+
+27
+00:01:23,083 --> 00:01:26,083
+step that comes out of the controller, and you will see an 
+
+28
+00:01:26,086 --> 00:01:29,086
+introduction in one of the upcoming homeworks to XML and XPath, 
+
+29
+00:01:29,089 --> 00:01:33,089
+when you are not presenting HTML design for human consumption, 
+
+30
+00:01:33,093 --> 00:01:36,093
+you may very well be presenting XML design for machine 
+
+31
+00:01:36,096 --> 00:01:39,096
+consumption, and there are a number of really great tools that 
+
+32
+00:01:39,099 --> 00:01:40,099
+have evolved to allow you to write applications that both 
+
+33
+00:01:40,100 --> 00:01:44,100
+generate and consume XML that would come for example from 
+
+34
+00:01:44,104 --> 00:01:48,104
+another service in a service oriented architecture. Around 2008, 
+
+35
+00:01:48,108 --> 00:01:52,108
+there was a meme going around, and the meme basically was Rails 
+
+36
+00:01:52,112 --> 00:01:56,112
+does not scale. You cannot use Rails to build big application. 
+
+37
+00:01:56,116 --> 00:01:58,116
+Based on what you have seeing so far, you should realize that 
+
+38
+00:01:58,118 --> 00:02:02,118
+this is a content- free assertion, okay. Scalability is not a 
+
+39
+00:02:02,122 --> 00:02:04,122
+property of a framework. Scalability is an architectural 
+
+40
+00:02:04,124 --> 00:02:08,124
+concern. It speaks to, as you increase the number of users, what 
+
+41
+00:02:08,128 --> 00:02:12,128
+does it cost to increase the application’ s capacity so that you 
+
+42
+00:02:12,132 --> 00:02:15,132
+do not incur a higher cost for each one of those users. You can 
+
+43
+00:02:15,135 --> 00:02:17,135
+continue to serve the model with good performance and the cost 
+
+44
+00:02:17,137 --> 00:02:22,137
+per user to do so, does not go up roughly speaking. Now we saw 
+
+45
+00:02:22,142 --> 00:02:24,142
+that one of the choices that was made in the design of the HTTP 
+
+46
+00:02:24,144 --> 00:02:28,144
+protocol was to keep it stateless and that allows you to set up 
+
+47
+00:02:28,148 --> 00:02:31,148
+multiple copies essentially of an application server and direct 
+
+48
+00:02:31,151 --> 00:02:33,151
+incoming request to any copy that you wanted. That is sort of an 
+
+49
+00:02:33,153 --> 00:02:36,153
+obvious way, especially with cloud computing that you can add 
+
+50
+00:02:36,156 --> 00:02:40,156
+more capacity for that particular functionality. We also 
+
+51
+00:02:40,160 --> 00:02:43,160
+mentioned the traditional relational database has some pretty 
+
+52
+00:02:43,163 --> 00:02:46,163
+serious limitations in how far they will scale. We talked 
+
+53
+00:02:46,166 --> 00:02:49,166
+briefly about alternatives like sharding and partitioning that 
+
+54
+00:02:49,169 --> 00:02:52,169
+are often used to work around those limitations, but at the end 
+
+55
+00:02:52,172 --> 00:02:55,172
+of the day, relational databases do have some limits that are 
+
+56
+00:02:55,175 --> 00:02:58,175
+imposed in part by the functionality that they try to give you. 
+
+57
+00:02:58,178 --> 00:03:02,178
+So, Rails does not scale is not really true. Another statement 
+
+58
+00:03:02,182 --> 00:03:05,182
+might be relational databases have a limit in how they can scale 
+
+59
+00:03:05,185 --> 00:03:09,185
+and maybe we address that by starting to use some of the so- 
+
+60
+00:03:09,189 --> 00:03:12,189
+called no sequel solutions in conjunction with another models 
+
+61
+00:03:12,192 --> 00:03:16,192
+like DataMapper to alleviate the scaling problems in those parts 
+
+62
+00:03:16,196 --> 00:03:20,196
+of the app. We will also see the intelligent use of catching, 
+
+63
+00:03:20,200 --> 00:03:22,200
+essentially keeping a nearby copy of results that you have 
+
+64
+00:03:22,202 --> 00:03:26,202
+computed recently, can go a long way towards buying you a more 
+
+65
+00:03:26,206 --> 00:03:30,206
+mileage out of the database before you run out of scale. So, 
+
+66
+00:03:30,210 --> 00:03:33,210
+that is not to say that it is impossible to write bad code, 
+
+67
+00:03:33,213 --> 00:03:36,213
+right. Even given a good scalable database you can write bad 
+
+68
+00:03:36,216 --> 00:03:38,216
+code that will [ inaudible 03:36] the database’ s attempts to be 
+
+69
+00:03:38,218 --> 00:03:41,218
+scalable. So, I think what a lot of people said when they said 
+
+70
+00:03:41,221 --> 00:03:44,221
+Rails does not scale was Rails encourages the use of an 
+
+71
+00:03:44,224 --> 00:03:47,224
+architectural pattern, the active record design pattern in these 
+
+72
+00:03:47,227 --> 00:03:52,227
+models, which in turn requires a relational database to support 
+
+73
+00:03:52,232 --> 00:03:54,232
+some of its most advanced features and if that is what you are 
+
+74
+00:03:54,234 --> 00:03:57,234
+doing it is not in some cases pretty easier to write bad codes 
+
+75
+00:03:57,237 --> 00:04:00,237
+that will hit your scalability limit sooner than it otherwise 
+
+76
+00:04:00,000 --> 00:04:03,240
+would. In particular, if you are a novice you do not follow some 
+
+77
+00:04:03,243 --> 00:04:06,243
+of the good design patterns that we are advocating here, this 
+
+78
+00:04:06,246 --> 00:04:09,246
+could be a pitfall that you would run into, but people blame the 
+
+79
+00:04:09,249 --> 00:04:11,249
+framework right. They should have been blaming inappropriate use 
+
+80
+00:04:11,251 --> 00:04:17,251
+of the abstractions that the framework tries to provide you. Now 
+
+81
+00:04:17,257 --> 00:04:19,257
+looking back, we can look at there are these different ways to 
+
+82
+00:04:19,259 --> 00:04:22,259
+structure web apps, there are different templating systems, 
+
+83
+00:04:22,262 --> 00:04:25,262
+there are frameworks to support each of those choices but when 
+
+84
+00:04:25,265 --> 00:04:29,265
+the web became a consumer mass market thing in the mind 90s, it 
+
+85
+00:04:29,269 --> 00:04:32,269
+was the wild west, right. The biggest web severs at the time 
+
+86
+00:04:32,272 --> 00:04:34,272
+were not running in anything that looks like cloud computing 
+
+87
+00:04:34,274 --> 00:04:37,274
+today. They were running on minicomputers. If anybody is old 
+
+88
+00:04:37,277 --> 00:04:40,277
+enough to remember the Altavista search engine, the Altavista 
+
+89
+00:04:40,280 --> 00:04:45,280
+search engine ran on what my PhD adviser Erik Brewer called the 
+
+90
+00:04:45,285 --> 00:04:48,285
+forklift upgrade model which is that the way you add capacity to 
+
+91
+00:04:48,288 --> 00:04:50,288
+the app as you forklift out the old minicomputer and you 
+
+92
+00:04:50,290 --> 00:04:53,290
+forklift in a much bigger minicomputer and when there is no 
+
+93
+00:04:53,293 --> 00:04:56,293
+longer any bigger minicomputer available to buy, then that is 
+
+94
+00:04:56,296 --> 00:04:58,296
+it. That is the [ inaudible 04:56] of your capacity, right. In 
+
+95
+00:04:58,298 --> 00:05:01,298
+fact, one of the contributions that came out of UC Berkeley at 
+
+96
+00:05:01,301 --> 00:05:04,301
+the time and out of Professor Brewer’ s research group which I 
+
+97
+00:05:04,304 --> 00:05:07,304
+was very fortunate to be part of was the idea that you could 
+
+98
+00:05:07,307 --> 00:05:09,307
+think about these apps differently, you could use clusters of 
+
+99
+00:05:09,309 --> 00:05:13,309
+commodity computers to build them out and overtime that idea and 
+
+100
+00:05:13,313 --> 00:05:16,313
+the ideas about statelessness and replication and so forth that 
+
+101
+00:05:16,316 --> 00:05:19,316
+were embodied in [ inaudible 05:16] became perfect marriage, and 
+
+102
+00:05:19,319 --> 00:05:21,319
+today this is the way that substantially all well apps are 
+
+103
+00:05:21,321 --> 00:05:24,321
+designed and deployed. So I think Berkeley can rightfully claim 
+
+104
+00:05:24,324 --> 00:05:27,324
+credit of being very influential in that aspect of web 
+
+105
+00:05:27,327 --> 00:05:29,327
+development. I think the most interesting thing is that over 
+
+106
+00:05:29,329 --> 00:05:33,329
+time, and yes it is probably fair to say that some money was 
+
+107
+00:05:33,333 --> 00:05:37,333
+made by certain individuals during some time as a result of the 
+
+108
+00:05:37,337 --> 00:05:41,337
+great execution of those ideas. What I think is remarkable is 
+
+109
+00:05:41,341 --> 00:05:45,341
+that not only have the patterns, the best practice has been 
+
+110
+00:05:45,345 --> 00:05:48,345
+extracted into frameworks, right. That is something that as 
+
+111
+00:05:48,348 --> 00:05:51,348
+software people we get accustomed to. Once you enough versions 
+
+112
+00:05:51,351 --> 00:05:53,351
+of something manually, so these all have something in common, 
+
+113
+00:05:53,353 --> 00:05:56,353
+can we pull out the common parts so other people do not have to 
+
+114
+00:05:56,356 --> 00:05:59,356
+reinvent them, and in fact that is how Rails was invented. Rails 
+
+115
+00:05:59,359 --> 00:06:02,359
+was pulled out of a specific application that was built and then 
+
+116
+00:06:02,362 --> 00:06:05,362
+its author said you know this particular way of structuring 
+
+117
+00:06:05,365 --> 00:06:08,365
+model view controller apps could be used by other people. So, 
+
+118
+00:06:08,368 --> 00:06:11,368
+they pulled the Rails framework out of it really. What is 
+
+119
+00:06:11,371 --> 00:06:14,371
+interesting to me is that we are still using protocol that 
+
+120
+00:06:14,374 --> 00:06:17,374
+really dates from late 1960s. We are using a markup language 
+
+121
+00:06:17,377 --> 00:06:21,377
+whose ancestry is in the 1960s. We are using browsers whose 
+
+122
+00:06:21,381 --> 00:06:25,381
+basic architecture was developed in the 1990s, but despite all 
+
+123
+00:06:25,385 --> 00:06:29,385
+that a websever from a couple of decades ago still works, right. 
+
+124
+00:06:29,389 --> 00:06:32,389
+The amount of interoperation afforded by following these 
+
+125
+00:06:32,392 --> 00:06:35,392
+principles of separation, having protocols, understanding data 
+
+126
+00:06:35,395 --> 00:06:38,395
+serialization and deserialization, these principles are really 
+
+127
+00:06:38,398 --> 00:06:41,398
+powerful because it means that the degree of compatibility that 
+
+128
+00:06:41,401 --> 00:06:45,401
+we have across like 30 years of the Worldwide Web is truly 
+
+129
+00:06:45,405 --> 00:06:47,405
+remarkable. So that is really where I see the big value of 
+
+130
+00:06:47,407 --> 00:06:50,407
+frameworks in applications and design patterns. It does not 
+
+131
+00:06:50,410 --> 00:06:53,410
+always get the credit it deserves. Lastly, remember that 
+
+132
+00:06:53,413 --> 00:06:56,413
+architecture is about making choices among alternatives, and we 
+
+133
+00:06:56,416 --> 00:06:59,416
+have tried to show everytime we are making the choice in this 
+
+134
+00:06:59,419 --> 00:07:01,419
+course what are some alternatives that we are leaving on the 
+
+135
+00:07:01,421 --> 00:07:06,421
+table and why. So, because we are designing web apps, the web is 
+
+136
+00:07:06,426 --> 00:07:09,426
+fundamentally a client server system, but there are some systems 
+
+137
+00:07:09,429 --> 00:07:12,429
+for which a peer- to- peer architecture would make more sense. 
+
+138
+00:07:12,432 --> 00:07:14,432
+We are going to be deploying on cloud computing which has shared 
+
+139
+00:07:14,434 --> 00:07:17,434
+nothing. We have individual machines that can handle multiple 
+
+140
+00:07:17,437 --> 00:07:20,437
+copies of the application server, but there are scientific 
+
+141
+00:07:20,440 --> 00:07:23,440
+applications for example, where that organization gives you 
+
+142
+00:07:23,443 --> 00:07:26,443
+terrible performance because the applications are such that 
+
+143
+00:07:26,446 --> 00:07:28,446
+sharing is required among different machines working on 
+
+144
+00:07:28,448 --> 00:07:31,448
+different parts of the problem we are going to use model view 
+
+145
+00:07:31,451 --> 00:07:34,451
+controller because it is a natural mapping for applications that 
+
+146
+00:07:34,454 --> 00:07:36,454
+are user facing and have to manipulate data, but [ inaudible 
+
+147
+00:07:36,456 --> 00:07:39,456
+07:36] that for simpler application there are also other ways to 
+
+148
+00:07:39,459 --> 00:07:41,459
+organize them that might actually be simpler, might actually 
+
+149
+00:07:41,461 --> 00:07:45,461
+help you get your app off the ground faster. Rails has chosen to 
+
+150
+00:07:45,465 --> 00:07:48,465
+use active record because as we will see when we talk about some 
+
+151
+00:07:48,468 --> 00:07:51,468
+of the more advanced features, it makes it very easy to 
+
+152
+00:07:51,471 --> 00:07:54,471
+establish very powerful relationships across different model 
+
+153
+00:07:54,474 --> 00:07:57,474
+types and to manipulate those relationships because it takes 
+
+154
+00:07:57,477 --> 00:08:00,477
+advantage of what relational databases already let you do. 
+
+155
+00:08:00,000 --> 00:08:03,480
+However, you might be in a situation where for scalability 
+
+156
+00:08:03,483 --> 00:08:06,483
+reasons perhaps you cannot use a relational database. In that 
+
+157
+00:08:06,486 --> 00:08:08,486
+case it is nice to know that there exist other patterns like 
+
+158
+00:08:08,488 --> 00:08:12,488
+DataMapper that allow you at the expense of more complexity and 
+
+159
+00:08:12,492 --> 00:08:14,492
+giving up some functionality to be able to get around those 
+
+160
+00:08:14,494 --> 00:08:18,494
+limitations. And finally, we talked about RESTful URIs. The idea 
+
+161
+00:08:18,498 --> 00:08:21,498
+is that that the URI describes a resource and a thing to do to 
+
+162
+00:08:21,501 --> 00:08:24,501
+it. It is entirely self- contained. You might notice that there 
+
+163
+00:08:24,504 --> 00:08:27,504
+are a lot of even modern web apps out there that do not work 
+
+164
+00:08:27,507 --> 00:08:30,507
+according to this principle. The same URI does different things 
+
+165
+00:08:30,510 --> 00:08:33,510
+depending on what you did last on the application, or there is 
+
+166
+00:08:33,513 --> 00:08:36,513
+the sequence of URIs you have to follow to do something but if 
+
+167
+00:08:36,516 --> 00:08:38,516
+you try to issue any of those URIs out of sequence you just get 
+
+168
+00:08:38,518 --> 00:08:42,518
+a meaningless result. So, if you want to think about your app as 
+
+169
+00:08:42,522 --> 00:08:45,522
+a way of collecting a bunch of related services that could use 
+
+170
+00:08:45,525 --> 00:08:48,525
+in a service oriented architecture rest emerges naturally from 
+
+171
+00:08:48,528 --> 00:08:52,528
+that. So as you work on other apps outside of this course this 
+
+172
+00:08:52,532 --> 00:08:54,532
+is what you should be thinking about. What are the architectural 
+
+173
+00:08:54,534 --> 00:08:57,534
+choices that you should be making, what are the choices that you 
+
+174
+00:08:57,537 --> 00:08:59,537
+are constrained to make, either because of the technical 
+
+175
+00:08:59,539 --> 00:09:01,539
+limitations like scalability or because you have to be 
+
+176
+00:09:01,541 --> 00:09:04,541
+compatible with some existing piece of the system but should 
+
+177
+00:09:04,544 --> 00:09:07,544
+always find yourself questioning architectural choices because 
+
+178
+00:09:07,547 --> 00:09:09,547
+that is the way the software really moves forward, is to 
+
+179
+00:09:09,549 --> 00:09:11,549
+understand what is the right tool for the job at different 
+
+180
+00:09:11,551 --> 00:09:16,551
+points in the evolution of your systems. So to summarize, we 
+
+181
+00:09:16,556 --> 00:09:18,556
+have seen model view controller, a well known architectural 
+
+182
+00:09:18,558 --> 00:09:21,558
+pattern but not the only one for structuring applications that 
+
+183
+00:09:21,561 --> 00:09:26,561
+could user facing. Rails chooses to codify its structure at MVC 
+
+184
+00:09:26,566 --> 00:09:29,566
+so all of the choices it makes are designed to make it easier to 
+
+185
+00:09:29,569 --> 00:09:31,569
+do that kind of app. If you are doing non- MVC apps you will 
+
+186
+00:09:31,571 --> 00:09:35,571
+find yourself trying to work around what rails gives you, and in 
+
+187
+00:09:35,575 --> 00:09:37,575
+terms of the way that those components have implemented views 
+
+188
+00:09:37,577 --> 00:09:40,577
+are done with either HAML or embedded Ruby, it is transformed to 
+
+189
+00:09:40,580 --> 00:09:44,580
+HTML before the browser sees it. Models are stored in a 
+
+190
+00:09:44,584 --> 00:09:47,584
+relational database and active record gives you a lot of 
+
+191
+00:09:47,587 --> 00:09:50,587
+automatic support for mediating between the stored 
+
+192
+00:09:50,590 --> 00:09:52,590
+representation of a model and the database and the version that 
+
+193
+00:09:52,592 --> 00:09:56,592
+you operate on in Ruby and controllers just tie those things 
+
+194
+00:09:56,596 --> 00:09:59,596
+together by being connected to a routing subsys and that allows 
+
+195
+00:09:59,599 --> 00:10:03,599
+incoming URIs to be mapped to controller actions and allows the 
+
+196
+00:10:03,603 --> 00:10:06,603
+controller to name what views should be instantiated to return 
+
+197
+00:10:06,606 --> 00:10:09,606
+to the user, what data gets interpolated into those views and so 
+
+198
+00:10:09,609 --> 00:10:11,609
+forth. And that concludes our high- level tour. 
+
+

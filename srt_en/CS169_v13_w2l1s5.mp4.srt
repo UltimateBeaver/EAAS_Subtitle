@@ -1,0 +1,213 @@
+1
+00:00:00,000 --> 00:00:03,000
+Okay, at the end of every chapter, we have a Fallacies and
+
+2
+00:00:03,003 --> 00:00:07,003
+Pitfalls section. We do a couple of those. The idea of fallacies 
+
+3
+00:00:07,007 --> 00:00:09,007
+is it sounds right, but it's wrong and here's why it's wrong. 
+
+4
+00:00:09,009 --> 00:00:12,009
+Pitfalls are these things that are warning you, learn from our 
+
+5
+00:00:12,012 --> 00:00:15,012
+experience, and even though you're being warned, you can't help 
+
+6
+00:00:15,015 --> 00:00:20,015
+but fall into these pitfalls. So the Agile life cycle is best 
+
+7
+00:00:20,020 --> 00:00:24,020
+for software development. It's good for some things especially 
+
+8
+00:00:24,024 --> 00:00:28,024
+softwares and service. I don't think NASA should be doing this 
+
+9
+00:00:28,028 --> 00:00:31,028
+for moon shots or if you're doing something that's regulated by 
+
+10
+00:00:31,031 --> 00:00:35,031
+the law, it's not the right thing that ... For you to do. It 
+
+11
+00:00:35,035 --> 00:00:39,035
+doesn't have that flexibility that change. What we're going to 
+
+12
+00:00:39,039 --> 00:00:43,039
+do is practice Agile. One valid way to do this is you get a lot 
+
+13
+00:00:43,043 --> 00:00:45,043
+of good practices, but you're going to see the alternative like 
+
+14
+00:00:45,045 --> 00:00:48,045
+we talked about today, we're always ... Every time we bring up a 
+
+15
+00:00:48,048 --> 00:00:50,048
+topic, requirement solicitation, we're going to show you the 
+
+16
+00:00:50,050 --> 00:00:54,050
+other way to do it so you'll have a broader background. You'll 
+
+17
+00:00:54,054 --> 00:00:57,054
+deploy using Agile. You know, people ... When we talk to these 
+
+18
+00:00:57,057 --> 00:01:00,057
+companies, like you wanted to sell a couple of things that Agile 
+
+19
+00:01:00,000 --> 00:01:02,060
+is not used there. The other thing that I want to tell you is if 
+
+20
+00:01:02,062 --> 00:01:05,062
+you're going to stick to this as a profession, you're going to 
+
+21
+00:01:05,065 --> 00:01:08,065
+see new life cycles. New things are coming along every 10 or 15 
+
+22
+00:01:08,068 --> 00:01:12,068
+years, new platforms and things and it'll be a different life 
+
+23
+00:01:12,072 --> 00:01:14,072
+cycle than what we're talking in this class and you need to be 
+
+24
+00:01:14,074 --> 00:01:19,074
+able to adapt, learn new life cycles so just keep that in mind. 
+
+25
+00:01:19,079 --> 00:01:23,079
+Pitfall is ignoring the cost of software design since 
+
+26
+00:01:23,083 --> 00:01:27,083
+manufacturing cost is 0 for software. It seems like it wouldn't 
+
+27
+00:01:27,087 --> 00:01:30,087
+cost that much to remanufacture it, but you're forgetting the 
+
+28
+00:01:30,090 --> 00:01:37,090
+time for design and test when you do that. I can't help but 
+
+29
+00:01:37,097 --> 00:01:40,097
+think is this idea, well, if it's free to manufacture then it's 
+
+30
+00:01:40,100 --> 00:01:44,100
+okay to steal it is explains a lot of behavior for all kinds of 
+
+31
+00:01:44,104 --> 00:01:47,104
+piracy of things. This is an idea that no one should have to pay 
+
+32
+00:01:47,107 --> 00:01:50,107
+for development and since some of you are going to be software 
+
+33
+00:01:50,110 --> 00:01:53,110
+engineers, you should ... Before paying for software 
+
+34
+00:01:53,113 --> 00:01:58,113
+development, that that's going to pay service. Okay, so wrapping 
+
+35
+00:01:58,118 --> 00:02:02,118
+up this first chapter in this segment. This is what Armando and 
+
+36
+00:02:02,122 --> 00:02:05,122
+I called the Virtuous Triangle. I think we ... I originally 
+
+37
+00:02:05,125 --> 00:02:07,125
+called it the Golden Triangle, but we found out that that was a 
+
+38
+00:02:07,127 --> 00:02:13,127
+cocaine region. It's some kind of golden triangle. It wasn't 
+
+39
+00:02:13,133 --> 00:02:17,133
+good. Virtuous Triangle. These three things fit together 
+
+40
+00:02:17,137 --> 00:02:22,137
+synergistically here. SaaS on Cloud computing and as of the 
+
+41
+00:02:22,142 --> 00:02:25,142
+moment, how they fit together? Well, this allows the customer as 
+
+42
+00:02:25,145 --> 00:02:28,145
+you're developing it to see it immediately. You'll be dealing 
+
+43
+00:02:28,148 --> 00:02:31,148
+with your customer when you have these meetings and the customer 
+
+44
+00:02:31,151 --> 00:02:34,151
+will be trying it out and trying it. SaaS on Cloud computing in 
+
+45
+00:02:34,154 --> 00:02:40,154
+this highly productive frameworks like rails. Well, those design 
+
+46
+00:02:40,160 --> 00:02:43,160
+patterns, what kind of architecture support built in their 
+
+47
+00:02:43,163 --> 00:02:45,163
+framework that matches the needs of software, and finally, here 
+
+48
+00:02:45,165 --> 00:02:48,165
+at the bottom Agile development in these highly productive tools 
+
+49
+00:02:48,168 --> 00:02:52,168
+and frameworks. What's great about teaching this class is rather 
+
+50
+00:02:52,172 --> 00:02:55,172
+we just get hey, you should be doing this. We can give you tools 
+
+51
+00:02:55,175 --> 00:02:59,175
+to help you do this and we can see you using the tools and give 
+
+52
+00:02:59,179 --> 00:03:02,179
+you feedback on the tools. This has been a very important 
+
+53
+00:03:02,182 --> 00:03:04,182
+synergy here. 
+
+
