@@ -26,7 +26,9 @@ EAAS_Subtitle
 在校对的过程中，有以下几点需要注意：
 
 * 校对完成后，请按以下格式commit后再push
-	git commit -am “xxxx x”
+```
+git commit -am “xxxx x”
+```
 * 所有任务(对新内容的校对和对有道重翻内容的确认)请在**每周四晚12:00之前**完成
 
 任务分配
