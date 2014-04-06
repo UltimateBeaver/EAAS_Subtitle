@@ -27,7 +27,7 @@ EAAS_Subtitle
 
 * 校对完成后，请按以下格式commit后再push
 ```
-git commit -am “xxxx x”
+git commit -am “xxxx x” \\其中xxxx为校对者姓名拼音, x为一整数, 取0表示第一次校对，取1表示确认有道重翻的结果
 ```
 * 所有任务(对新内容的校对和对有道重翻内容的确认)请在**每周四晚12:00之前**完成
 
