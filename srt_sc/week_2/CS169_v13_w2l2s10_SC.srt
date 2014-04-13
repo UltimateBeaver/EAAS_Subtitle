@@ -1,0 +1,189 @@
+﻿1
+00:00:00,000 --> 00:00:04,000
+如果我定义...这里有三个储蓄帐户，
+
+2
+00:00:04,004 --> 00:00:08,004
+我用不同的余额进行了初始化。
+
+3
+00:00:08,008 --> 00:00:10,008
+假设我想把三个帐户组成数组，
+
+4
+00:00:10,010 --> 00:00:15,010
+对这个数组调用sort，会发生什么？
+
+5
+00:00:15,015 --> 00:00:17,015
+由于余额都是数字，我们知道如何比较，
+
+6
+00:00:17,017 --> 00:00:20,017
+所以这个就可行吗？如果不可行，那是不是
+
+7
+00:00:20,020 --> 00:00:24,020
+我添加一个比较方法或向sort传递比较方法
+
+8
+00:00:24,024 --> 00:00:28,024
+就可行了吗？是不是认为不可行，
+
+9
+00:00:28,028 --> 00:00:31,028
+但如果为储蓄帐户定义一个宇宙飞船操作符就可行了？
+
+10
+00:00:31,031 --> 00:00:34,031
+还是说，这个就是不可行，因为这不是basic，
+
+11
+00:00:34,034 --> 00:00:37,034
+太麻烦了，而且没有内置方式与操作符进行比较。
+
+12
+00:00:37,037 --> 00:00:39,037
+第一轮投票。问题还没读完我就已经看到有人举牌了。
+
+13
+00:00:39,039 --> 00:00:44,039
+大多数选红色的。
+
+14
+00:00:44,044 --> 00:00:49,044
+你们今天不得了啊。现在把答案过一遍。
+" It 
+
+15
+“是可行的，因为可以比较帐户余额。”
+works because the account balances get compared." Well, that's 
+
+16
+我们当然希望是这样的情况，但帐户比较
+certainly what we would like to be the case, but comparing 
+
+17
+不同于整数型比较，所以不对。
+accounts isn't the same as comparing integers, so that's not it. 
+
+18
+如果向sort传递一个比较方法，那不是Ruby的方式，
+If we pass a comparison method to sort, that's not the Ruby way, 
+
+19
+对吧？在Ruby里面，sort会对你想要排序的内容进行假定，
+right? The Ruby way is sort makes some assumptions about the 
+
+20
+尤其是它知道如何与排序对象的实例进行比较。
+thing you're trying to sort, in particular that the thing knows 
+
+21
+正确答案是：
+how to compare itself to other instances of that thing. The 
+
+22
+如果我们为储蓄帐户定义宇宙飞船操作符，
+correct answer is: If we define the spaceship operator for 
+
+23
+对了，如何定义呢？
+savings accounts ... and by the way, how would we define it? An 
+
+24
+简单的做法是，就和这个例子一样：
+easy way would just be to say, as in this example: Here's a way 
+
+25
+这是对银行帐户定义比较的办法。就是这样，结果出来了。
+to define comparisons on bank accounts. Here it is. It's coming 
+
+26
+还有两分钟。这就是对银行帐户定义比较的方式。
+now. We have two minutes left, yes. Here's the way you define 
+
+27
+我很懒，所以我只定义宇宙飞船，然后把
+comparison on bank accounts. I'm lazy, so I'm just going to 
+
+28
+[comp- pra- bowl 00:01:40]包含起来，
+define spaceship and then I'm going to include [ comp- pra- bowl 
+
+29
+免费得到其它的东西。如果你不相信，
+00:01:40] to get the other ones for free. In case you don't 
+
+30
+我会把代码拷贝和粘贴过来。
+believe me, I will copy and paste that code. I already had the 
+
+31
+我已经定义了类帐户，那么现在...记不记得
+class account defined, so now ... remember I had these accounts 
+
+32
+这些帐户余额是很高的？可以说...OK？发言人2：[ Inaudible 00:02:03]
+with high balances? I can say ... okay? Speaker 2:	[ Inaudible 
+
+33
+发言人1：千真万确。（大笑）
+00:02:03]. Speaker 1: True in so many ways. ( Laughing) What's 
+
+34
+这里传达的意思是什么？Ruby提供了很多有用的功能来
+the message here? Ruby provides a lot of useful functionality to 
+
+35
+做你想做的事。你的任务...已经变化...
+already do the work you need to do. Your job ... it's already 
+
+36
+你应该以最少的劳动
+varies in ... you need to do the least amount of new work 
+
+37
+获取需要的功能。
+possible to get the functionality you need. When you have 
+
+38
+如果你想重复使用某些行为，可以把它们放进模块里。
+behaviors you want to reuse, you can put them into a module. 
+
+39
+只要你表达清楚模块在它融入的类里会遇到什么，
+That module can be mixed into many classes as long as you make 
+
+40
+那个模块可以融入很多类。
+clear what does the module expect from the classes that you're 
+
+41
+如果你要重复使用implementation（实现），
+mixing it into. If you want to reuse implementation, then you'd 
+
+42
+那应该用传统的办法。类是有祖先的，
+use the traditional thing. Classes have ancestors, they have 
+
+43
+也有子类。和你们学JAVA的人想的相反，
+sub- classes. As we'll see, contrary to what you might think 
+
+44
+大多数时候你们想要的是第一种。
+coming from the JAVA world, remarkably often, what you want is 
+
+45
+你们不想重复使用implementation（实现），
+the first one. You don't want to reuse implementation; you want 
+
+46
+而是想定义行为并重复使用它们。
+to define behaviors and reuse them. 
+
+
+
+
+

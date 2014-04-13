@@ -1,0 +1,552 @@
+﻿1
+00:00:00,000 --> 00:00:09,000
+鸭子类型，这个很有意思。我一直在说，
+
+2
+00:00:09,009 --> 00:00:13,009
+Ruby强调的是做什么、对什么方法有反应，
+
+3
+00:00:13,013 --> 00:00:17,013
+而不是你属于什么类。那问题是，
+
+4
+00:00:17,017 --> 00:00:20,017
+你为什么要关心这个？是吧？它能怎么刺激生产力？
+
+5
+00:00:20,020 --> 00:00:24,020
+它能让你重复使用什么？
+
+6
+00:00:24,024 --> 00:00:26,024
+有些人用了一个非正式的诙谐名称来指代Ruby的这种实现——鸭子类型。
+
+7
+00:00:26,026 --> 00:00:32,026
+你可能听到过这样一种说法：
+
+8
+00:00:32,032 --> 00:00:35,032
+如果看起来像鸭子，那它走起来也像鸭子，
+
+9
+00:00:35,035 --> 00:00:37,035
+叫起来也像鸭子，你也可以像对待鸭子一样对待它。
+
+10
+00:00:37,037 --> 00:00:41,037
+我的意思是，如果你的对象对某些方法做出反应，
+
+11
+00:00:41,041 --> 00:00:45,041
+它看上去像什么，你就怎么对待它。
+
+12
+00:00:45,045 --> 00:00:49,045
+如果它对“give me each of yourself（将你的每一个成分给我）”
+
+13
+00:00:49,049 --> 00:00:52,049
+或“reverse yourself（自行反转）”做出反应，
+
+14
+00:00:52,052 --> 00:00:55,052
+讨论这些运算有意义吗？它应该是某种集合。
+
+15
+00:00:55,052 --> 00:00:58,055
+在Ruby里，如果你说什么东西叫起来像个集合，
+
+16
+00:00:58,055 --> 00:01:01,058
+那意思是“如果像内置式集数这样的正常集合
+
+17
+00:01:01,058 --> 00:01:03,000
+对面向集合的方法做出反应，
+
+18
+00:01:03,000 --> 00:01:06,064
+那么那个东西也会对大多数这样的面向集合的方法做出反应。”
+
+19
+00:01:06,067 --> 00:01:08,067
+如果你在JAVA里用到接口，你就会发现和这个有点类似，
+
+20
+00:01:08,069 --> 00:01:15,069
+但我觉得这个更容易。
+
+21
+00:01:15,076 --> 00:01:19,076
+比如说，如果我在我的列表上调用sort，那是什么意思？
+
+22
+00:01:19,080 --> 00:01:21,080
+假如我的列表就像这个整数型数组，
+
+23
+00:01:21,082 --> 00:01:25,082
+你可以想像sort在上面运算是什么意思。
+
+24
+00:01:25,086 --> 00:01:27,086
+如果是字符串列表呢？你可以想像，
+
+25
+00:01:27,088 --> 00:01:31,088
+Sort在那上面运算、
+
+26
+00:01:31,092 --> 00:01:34,092
+或是在图形码列表上、甚至是从 IO readlines得到的内容上运算，那是什么情形。
+
+27
+00:01:34,095 --> 00:01:37,095
+从IO readlines得到的是文件中的所有行，一次一行，对吧？
+
+28
+00:01:37,098 --> 00:01:42,098
+在IO readlines的情况下，我们的意思就是“Sort this file（整理本文件）”。
+
+29
+00:01:42,103 --> 00:01:45,103
+为什么会起作用呢？为了找出这个答案，我们来介绍一种新的Ruby架构，
+
+30
+00:01:45,106 --> 00:01:47,106
+它在其他语言中不会出现。
+
+31
+00:01:47,108 --> 00:01:52,108
+而在它出现的那些语言中，module（模块）这个词
+
+32
+00:01:52,113 --> 00:01:55,113
+表达的是不同的意思。在Ruby里，模块是指不属于类的方法集合。
+
+33
+00:01:55,116 --> 00:01:58,100
+它没法举例说明。
+
+34
+00:01:58,119 --> 00:02:01,119
+不存在模块的实例。
+
+35
+00:02:01,122 --> 00:02:04,200
+它其实就是一组采集了相关行为并彼此配合的方法。
+
+36
+00:02:04,200 --> 00:02:07,174
+在一些简单情况下，使用模块
+
+37
+00:02:07,203 --> 00:02:11,203
+就是采集方法，比如与通用运算集相关的方法，
+
+38
+00:02:11,207 --> 00:02:15,207
+运算可以是数学运算或本身就是数学运算的常量。
+
+39
+00:02:15,207 --> 00:02:17,200
+这都是小事。我们关注的是更有趣的应用。
+
+40
+00:02:17,200 --> 00:02:21,200
+更有趣的应用是用模块将方法与类混合。
+
+41
+00:02:21,204 --> 00:02:25,204
+这是什么意思？
+
+42
+00:02:25,208 --> 00:02:29,208
+假设，在我声明A类时，
+
+43
+00:02:29,212 --> 00:02:32,212
+我说“包含某个模块的名称”，这意思是
+
+44
+00:02:32,215 --> 00:02:36,215
+当我试着对A的实例调用方法时，如果我调用A. Foo，
+
+45
+00:02:36,219 --> 00:02:41,219
+首先它会搜索A类是否有这个方法，
+
+46
+00:02:41,224 --> 00:02:43,224
+然后搜索类包括的模块中是否有这个方法，
+
+47
+00:02:43,226 --> 00:02:45,226
+接下来它的操作我们都已经讲过了。
+
+48
+00:02:45,228 --> 00:02:48,228
+它会调用方法缺失，会指向祖先，
+
+49
+00:02:48,231 --> 00:02:50,231
+但本质上模块让你有办法说出，
+
+50
+00:02:50,233 --> 00:02:53,233
+“等等，在这个类里添加点东西，我还没整完呢。”
+
+51
+00:02:53,236 --> 00:02:57,236
+你之所以想这么做，
+
+52
+00:02:57,060 --> 00:03:00,240
+是因为这很可能经常出现，因为
+
+53
+00:03:00,243 --> 00:03:04,243
+比起类和类型来，Ruby更关心反应。
+
+54
+00:03:04,247 --> 00:03:07,247
+对模块、行为集合的定义方式
+
+55
+00:03:07,250 --> 00:03:10,250
+是可以在很多不同的类上重复使用的。在学习的过程中，
+
+56
+00:03:10,253 --> 00:03:13,253
+你肯定会吃惊的。以上一张幻灯片上的sort方法为例，
+
+57
+00:03:13,256 --> 00:03:15,256
+你认为它是定义在数组上的，
+
+58
+00:03:15,258 --> 00:03:21,258
+但事实上不是，
+
+59
+00:03:21,264 --> 00:03:23,264
+它是定义在叫做Enumerable的模块上的。
+
+60
+00:03:23,266 --> 00:03:26,266
+只要类知道如何枚举自己的元素，Enumerable模块就可以与任何类混合。
+
+61
+00:03:26,269 --> 00:03:29,269
+这个不太明显，所以我再重复一遍。
+Let me say that again, because this is a little bit
+
+62
+我们看到了不同的例子。
+non -obvious , okay? We saw these different examples of using
+
+63
+我一直在说，我们不是在强行从集合里取东西，
+each and I kept saying we are not intrusively reaching into a
+
+64
+我们在友好地跟集合说，
+collection and getting stuff, we are asking the collection
+
+65
+“作为交换，请把你的每一个元素给我。
+nicely , "Please give me back each element of yourself in turn.
+
+66
+我不管你是怎么得来的，我只想要每一个元素，
+I don't care how you get them, I just want each elements so that
+
+67
+那样我就可以操作了。”我们的意思是，
+I can do stuff to it ." Now, what we are saying is , "Well , if
+
+68
+“如果你能同意这么做，我知道
+you can do that, then there is a bunch of things that I know
+
+69
+如何免费执行一些操作。比如说，
+how to do for free . For example, if you can return
+
+70
+如果你能返回自己的每一个元素，我可以对你排序，前提是
+each  element of yourself, I can sort you ," great , provided
+
+71
+你的方法...你的集合里的东西可以被排序。
+that your methods .. . the things inside your collection are in
+
+72
+我们一会再回来讲这个。
+fact sortable . We will come to that in a moment . What else
+
+73
+你还能做什么？如果你能返回自己的每一个元素，
+could you do? If you can return every element of yourself , I
+
+74
+我可以用Select、Collect 以及那些我们见过的方法
+can test every element against some condition that was Select
+
+75
+来测试每一个元素。这是什么意思呢？
+and Collect and those methods that we saw. What does this mean
+
+76
+举了实在点的例子，这意思就是混合就像个合同。
+? As a concrete example , it means that a mix-in is like a
+
+77
+我们以Enumerable模块为例，
+contract . The module Enumerable, we are going to use it as an
+
+78
+因为它在Ruby里用得很广泛，
+example, because it's used all over the place in Ruby , it's
+
+79
+很常用。它假设，在你把模块混合进去的那个类里的目标对象
+very common. It assumes that the target object in the class you
+
+80
+知道如何对each做出反应，对吧？
+are mixing it into know how to respond to each, right ? Like I
+
+81
+正如我所说，如果你定义一个新类，比如说一个二叉树数据结构，
+said, if you define a new class , for example, a binary tree
+
+82
+你把each定义为操作该数据结构里元素的办法，
+data structure and you define each as a way to get at the
+
+83
+现在你就可以混合Enumerable模块，
+elements of that data structure, you can now mix -in Enumerable
+
+84
+就可以免费得到这些方法。
+and you will get these methods for free . It will define for you
+
+85
+它为你定义像all、any、collect、find、include、map和partition这样的谓词，
+predicates like all and any, collect , find, include , map,
+
+86
+一大堆很干净利落的谓词，
+partition ; a whole bunch of really neat stuff just because you
+
+87
+因为你同意提供each。这是一种超强大的行为。
+agreed to provide each . This is a hugely powerful behavior .
+
+88
+Enumerable也是sort在Ruby里被定义的地方，
+Enumerable is also where  Sort happens to be defined in Ruby ,
+
+89
+但sort还有其它要求，就是你的模型...
+but Sort also has another  requirement, which is that your model
+
+90
+对不起。sort还有其它要求，
+. .. sorry . Sort also has another requirement, which is that
+
+91
+就是类...集合中的元素能对
+the class .. . the elements in the collection be able to respond
+
+92
+宇宙飞船操作符（<=>）做出反应。还记得宇宙飞船操作符吗？
+to the Spaceship operator. Remember the Spaceship operator ?
+
+93
+它把所有等号操作符合成一个。
+It's kind of rolling all the equality operators into one. A
+
+94
+如果A比B小，那么A<=>B就是-1，
+Spaceship B is negative one if A is less than B. Positive one if
+
+95
+如果B比A大，那么就是+1。如果A比B小，那就是-1，
+B is greater than A. Negative one if A is less than B, positive
+
+96
+如果A比B大，那就是+1，如果A等于B，那就是0，对吧？
+one if A is greater than B and zero if they are equal , right?
+
+97
+可以想象，不管你想要什么类，
+You can imagine for whatever class you want you can define the
+
+98
+你可以定义宇宙飞船操作符，可以定义让它
+Spaceship operator. You can define it to be sorting your colors
+
+99
+按你喜欢的顺序对颜色排序。
+in your favorite order if you wanted. Now , obviously in classes
+
+100
+在Int和String这样的类中，
+like Int and String, Spaceship is already defined with the
+
+101
+显然宇宙飞船操作符已经以你能预见的语义来定义了。这里的重点是，
+semantics that you would expect . The important thing about this
+
+102
+如果你有一个集合，这个集合对each作出反应，
+is if you have a collection of things and the collection
+
+103
+而集合中的元素对宇宙飞船操作符作出反应，
+responds to each and if the elements in the collection respond
+
+104
+那你什么也不用做，排序就能完成，
+to Spaceship, then you have to do zero work to get that thing to
+
+105
+对吧？排序是什么？
+be sorted, right ? Because what is sorting? It's taking para
+
+106
+就是进行成对比较，看两个中哪个更大，
+-wise comparisons and seeing which one is greater of the two,
+
+107
+再以算法型将其重新排列。
+and in some algorithmic form put in those things back together
+
+108
+.
+.
+In fact there is another module that ships with Ruby called
+
+00:06:05,116 --> 00:06:07,116
+00:06:05,116 --> 00:06:07,116
+Comparable, which says , if you provide the Spaceship operator,
+
+00:06:07,118 --> 00:06:11,118
+00:06:07,118 --> 00:06:11,118
+which takes one argument , right? Spaceship takes one argument
+
+00:06:11,122 --> 00:06:13,122
+00:06:11,122 --> 00:06:13,122
+because there is the receiver of Spaceship and there is the
+
+00:06:13,124 --> 00:06:15,124
+00:06:13,124 --> 00:06:15,124
+thing you are comparing the receiver against. If you provide
+
+00:06:15,126 --> 00:06:20,126
+00:06:15,126 --> 00:06:20,126
+Spaceship , then I will define these other ones for you and also
+
+00:06:20,131 --> 00:06:23,131
+00:06:20,131 --> 00:06:23,131
+give you happy ones like between which tells you if one element
+
+00:06:23,134 --> 00:06:25,100
+00:06:23,134 --> 00:06:25,100
+is between two others according to sort order . What does this
+
+00:06:25,136 --> 00:06:28,100
+00:06:25,136 --> 00:06:28,100
+all mean? It means the class of objects really doesn't matter
+
+00:06:28,100 --> 00:06:31,140
+00:06:28,100 --> 00:06:31,140
+almost at all only the methods to which they respond. Let's look
+
+00:06:31,140 --> 00:06:35,100
+00:06:31,140 --> 00:06:35,100
+at a couple of concrete examples of this . Sorting a file, well
+
+00:06:35,100 --> 00:06:37,100
+00:06:35,100 --> 00:06:37,100
+, we have File. open, that's a method that returns an IO object
+
+00:06:37,100 --> 00:06:41,800
+00:06:37,100 --> 00:06:41,800
+representing an open file . IO objects actually define each.
+
+00:06:41,900 --> 00:06:45,900
+00:06:41,900 --> 00:06:45,900
+They define it as, " I am going to return each line of the file
+
+00:06:45,909 --> 00:06:49,909
+00:06:45,909 --> 00:06:49,909
+in turn. " That's a pretty sensible semantics for reading a text
+
+00:06:49,913 --> 00:06:53,913
+00:06:49,913 --> 00:06:53,913
+file . What does that mean? I can say open a file and sort it .
+
+00:06:53,917 --> 00:06:57,917
+00:06:53,917 --> 00:06:57,917
+That's it. I don't have to provide anything because the thing
+
+00:06:57,921 --> 00:06:59,921
+00:06:57,921 --> 00:06:59,921
+that I am calling sort on is a collection that responds to each
+
+00:06:59,923 --> 00:07:02,923
+00:06:59,923 --> 00:07:02,923
+. It knows how to yield every element of itself . Inside that
+
+00:07:02,926 --> 00:07:07,926
+00:07:02,926 --> 00:07:07,926
+collection what is each element? Well , it's a String, right ?
+
+00:07:07,931 --> 00:07:10,931
+00:07:07,931 --> 00:07:10,931
+It's a line of a file. Strings know how to compare themselves ,
+
+00:07:10,934 --> 00:07:12,934
+00:07:10,934 --> 00:07:12,934
+that's part of the built in String behavior. With no extra work
+
+00:07:12,936 --> 00:07:15,936
+00:07:12,936 --> 00:07:15,936
+I can reuse behaviors despite the fact that the classes are
+
+00:07:15,939 --> 00:07:19,939
+00:07:15,939 --> 00:07:19,939
+different. I can also say which lines of this file begin with a
+
+00:07:19,943 --> 00:07:22,943
+00:07:19,943 --> 00:07:22,943
+vowel , well, that's easy enough . We already know how to use
+
+00:07:22,943 --> 00:07:26,000
+00:07:22,943 --> 00:07:26,000
+Select to pass an anonymous method to something ,
+
+00:07:26,000 --> 00:07:28,000
+00:07:26,000 --> 00:07:28,000
+anonymous function . For every line of a file we are going to
+
+00:07:28,100 --> 00:07:30,500
+00:07:28,100 --> 00:07:30,500
+we are going to pick out the ones where this regular expression returns
+
+00:07:30,500 --> 00:07:35,500
+00:07:30,500 --> 00:07:35,500
+true. Again, zero additional work. We can do our own example
+
+00:07:35,500 --> 00:07:42,500
+00:07:35,500 --> 00:07:42,500
+with accounts, but before we do that, let's ask how it would be done?
+
+
+
