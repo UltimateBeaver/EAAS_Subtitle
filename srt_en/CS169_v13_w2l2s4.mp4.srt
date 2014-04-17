@@ -76,7 +76,7 @@ method name or you could use the name of the class. If we had
 
 20
 00:01:12,072 --> 00:01:16,072
-said defstring. curvy, that would have been a class method, but 
+said def string. curvy, that would have been a class method, but 
 
 21
 00:01:16,076 --> 00:01:19,076

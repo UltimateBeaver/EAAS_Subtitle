@@ -340,11 +340,11 @@ superficial reason why the first one's wrong. Sir? There's no
 
 86
 00:05:00,000 --> 00:05:04,300
-method called @ balance. There's no method called @ balance. A. 
+method called @ balance. There's no method called @ balance.  
 
 87
 00:05:04,304 --> 00:05:08,304
-b always means call method b on object a. Method names don't 
+A.b always means call method b on object A. Method names don't 
 
 88
 00:05:08,308 --> 00:05:10,308
