@@ -1,0 +1,137 @@
+1
+00:00:00,000 --> 00:00:03,000
+With all that in mind, let's ask a question about instance
+
+2
+00:00:03,003 --> 00:00:08,003
+variables and their friends. Let's hypothetically assume, and in 
+
+3
+00:00:08,008 --> 00:00:10,008
+a moment we'll show that this is not hypothetical, you could 
+
+4
+00:00:10,010 --> 00:00:13,010
+really do this, that we could add stuff to Ruby's built- in 
+
+5
+00:00:13,013 --> 00:00:17,013
+string class. Here's a super useful method called 'curvy' that 
+
+6
+00:00:17,017 --> 00:00:21,017
+basically will return true if the upper case version of the 
+
+7
+00:00:21,021 --> 00:00:25,021
+string includes, or it fails to include, any curvy 
+
+8
+00:00:25,025 --> 00:00:30,025
+characters ... fails to include any curvy characters. Don't 
+
+9
+00:00:30,030 --> 00:00:32,030
+worry too much about the functionality of curvy. What I'd like 
+
+10
+00:00:32,032 --> 00:00:36,032
+to know is, which of these is the way that you would call it? 
+
+11
+00:00:36,036 --> 00:00:40,036
+Would you call it string. curvy? Would you call it directly on a 
+
+12
+00:00:40,040 --> 00:00:47,040
+string receiver? So think about that for a moment. Initial vote. 
+
+13
+00:00:47,047 --> 00:00:52,047
+Wow, okay, lots and lots of votes for green. You guys have been 
+
+14
+00:00:52,052 --> 00:00:55,052
+doing your work in advance. I like that. So, let's understand 
+
+15
+00:00:55,055 --> 00:00:59,055
+why green is the correct answer. First of all, the way that I 
+
+16
+00:00:59,059 --> 00:01:01,059
+defined the curvy method, what kind of a method incidence is it? 
+
+17
+00:01:01,061 --> 00:01:05,061
+An instance or a class method? In our previous definition, we 
+
+18
+00:01:05,065 --> 00:01:09,065
+saw that to define a class method, you have to name it self. 
+
+19
+00:01:09,069 --> 00:01:12,069
+method name or you could use the name of the class. If we had 
+
+20
+00:01:12,072 --> 00:01:16,072
+said def string. curvy, that would have been a class method, but 
+
+21
+00:01:16,076 --> 00:01:19,076
+curvy is being defined as an instance method, so certainly the 
+
+22
+00:01:19,079 --> 00:01:21,079
+first choice is out because this is a call to a class method, 
+
+23
+00:01:21,081 --> 00:01:24,081
+right? This is a call on the receiver string and string is a 
+
+24
+00:01:24,084 --> 00:01:30,084
+class. What about these guys over here? Let's look at curvy foo. 
+
+25
+00:01:30,090 --> 00:01:34,090
+Curvy is defined as not taking any arguments, so anything like 
+
+26
+00:01:34,094 --> 00:01:37,094
+this, choice 3 or choice 4, has to be wrong because we're trying 
+
+27
+00:01:37,097 --> 00:01:41,097
+to pass an argument, but the function isn't written to take one. 
+
+28
+00:01:41,101 --> 00:01:43,101
+On the other hand, the reason that the green choice is right in 
+
+29
+00:01:43,103 --> 00:01:47,103
+this case is because when you're calling an instance method of 
+
+30
+00:01:47,107 --> 00:01:51,107
+something, the value of self in an instance method, very much 
+
+31
+00:01:51,111 --> 00:01:55,111
+like in Java, the value of this is the value of the object that 
+
+32
+00:01:55,115 --> 00:01:59,115
+received the method call. So, hopefully that clarifies it for 
+
+33
+00:01:59,119 --> 00:02:02,119
+the people who didn't get it, but most of you got it right and 
+
+34
+00:02:02,122 --> 00:02:03,122
+well done. 
+
+
