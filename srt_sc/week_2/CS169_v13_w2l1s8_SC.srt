@@ -184,11 +184,11 @@
 
 47
 00:02:40,160 --> 00:02:43,160
-他们说：“嗯，我也不知道。在这个现代时间，
+他们说：“嗯，我也不知道。在这个现代化社会，
 
 48
 00:02:43,163 --> 00:02:45,163
-有着Facebook、推特等等这些东西，这样就不会受现代时间的干扰了。
+有着Facebook、推特等等这些东西，这样就不会受现代化社会的干扰了。
 
 49
 00:02:45,165 --> 00:02:47,165
@@ -209,92 +209,89 @@
 53
 00:02:56,176 --> 00:02:58,176
 会说：“我这辈子都没工作这么辛苦过。”
- They're not 
 
 54
+00:02:58,178 --> 00:03:00,178
 他们不习惯在白天一直保持全神贯注。
-used to just concentrating all the time in the day. People go 
 
 55
+00:03:00,000 --> 00:03:04,180
 人们都在正常时间下班回家。这不是现代硅谷的管人方式，
-home at normal times. It's not the modern Silicon Valley way of 
 
 56
+00:03:04,184 --> 00:03:08,184
 那是要买晚饭的，对吧？
-managing people, which is buying dinner, right? That's the 
 
 57
+00:03:08,188 --> 00:03:11,188
 这更先进，“好吧，如果我给他们买晚饭了，他们会工作更长时间。”
-advanced, " Well, if I buy them dinner they'll work longer." I'm 
 
 58
+00:03:11,191 --> 00:03:16,191
 我是个经理，对吧？这对我来说很难……我不知道该对这个说什么。
-a manager, right? It's hard for me... I don't know what to say 
 
 59
+00:03:16,196 --> 00:03:19,196
 或许不会更花功夫，但是有些研究就是这么说的。
-about this. It may not be more effort but that's what some 
 
 60
+00:03:19,199 --> 00:03:23,199
 它还有这种交换知识得来的额外的教育收益。
-studies say. It has this added benefit of educational benefit of 
 
 61
+00:03:23,203 --> 00:03:26,203
 当两个人坐着，他们可以从彼此那里学到一些编程语法，
-transferring knowledge. When two people are sitting there you 
 
 62
+00:03:26,206 --> 00:03:30,206
 或者一些你们闻所未闻的技巧或工具。
-can learn some programming idioms from the other one or tricks 
 
 63
+00:03:30,210 --> 00:03:33,210
 或者说，某家公司，或者某个最新的技术是如何运行的。
-or tools that you hadn't heard of. Or, how this company works or 
 
 64
+00:03:33,213 --> 00:03:38,213
 事实上，正是由于这一点，一些人才做结对编程的……
-the latest technologies. In fact, because of this, some people 
 
 65
+00:03:38,218 --> 00:03:42,218
 在任何人都可以跟任何人组成结对进行工作的情况下，团队会变的。
-do pair programming... The team will swap where everybody works 
 
 66
+00:03:42,222 --> 00:03:45,222
 这就叫做无序结对。
-with everybody else to form pairs. That's called promiscuous 
 
 67
+00:03:45,225 --> 00:03:50,225
 该做的和不该做的。当你是Observer时，不该使用智能手机。
-pairing. The do's and don'ts. Don't, when you're an Observer, be 
 
 68
+00:03:50,230 --> 00:03:54,230
 它对经验不同的两人有效；你们俩都能学到东西。
-using your smartphone. It can work for people of different 
 
 69
-学东西一个非常好的方法，就是试着去教别人。
-experience; you'll both learn. A great way to learn things is to 
+00:03:54,234 --> 00:03:58,234
+学东西一个非常好的方法，就是去尝试和教别人。
 
 70
+00:03:58,238 --> 00:04:01,238
 我们中的那些……如果你想成为一名助教，
-try and teach it. Those of us who... If you want to become a 
 
 71
-那将是一个非常好的学习事物的方法，就是试着去阐述事物。
-teaching assistant, that's a great way to learn things is try 
+00:04:01,241 --> 00:04:03,241
+那将是一个非常好的学习事物的方法，就是去尝试和阐述事物。
 
 72
+00:04:03,243 --> 00:04:07,243
 频繁互换。这是……请务必频繁互换。
-and explaining it. Swap frequently. This is... Please swap 
 
 73
+00:04:07,247 --> 00:04:10,247
 在你们进行战略思考和战术思考时，可以锻炼不同的技能，
-frequently. You exercise different skills when you're thinking 
 
 74
+00:04:10,250 --> 00:04:13,250
 这么做非常好。
-tactically versus strategically and it's a good thing to do. 
-
-
 
 
