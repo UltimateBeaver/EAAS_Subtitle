@@ -60,7 +60,7 @@ ensures design reliability. The problem with that statement is
 
 16
 00:01:10,070 --> 00:01:13,070
-just because you tested everything doesn't you tested it well. 
+just because you tested everything doesn't means you tested it well. 
 
 17
 00:01:13,073 --> 00:01:16,073
