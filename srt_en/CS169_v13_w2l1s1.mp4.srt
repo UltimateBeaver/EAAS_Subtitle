@@ -4,7 +4,7 @@ Big ideas about how to develop software and ways to build
 
 2
 00:00:08,008 --> 00:00:12,008
-software and your jumped into this new exciting programming 
+software and your jumped into ruby,  this new exciting programming 
 
 3
 00:00:12,012 --> 00:00:19,012
@@ -12,7 +12,7 @@ language or not you but you need a lot of us well traditionally
 
 4
 00:00:19,019 --> 00:00:23,019
-the first thing that we had developing software recall final 
+the first thing that we had developing software we call it plan and 
 
 5
 00:00:23,023 --> 00:00:30,023
@@ -24,55 +24,55 @@ segments that there was this if that you thinking by building
 
 7
 00:00:34,034 --> 00:00:37,034
-software is the greatest down world except you know you can you 
+software is the greatest job in the world except you know you could
 
 8
 00:00:37,037 --> 00:00:42,037
-make fun by your friends and neighbours. So a a you know twenty 
+be made fun by your friends and neighbours. So about you know twenty 
 
 9
 00:00:42,042 --> 00:00:46,042
-years building software yes question can we make it is 
+years building software did he ask the question can we make it as 
 
 10
 00:00:46,046 --> 00:00:49,046
-predictable is building a bridge facility reply cat software 
+predictable as building a bridge, a civil engineering facility why can't software 
 
 11
 00:00:49,049 --> 00:00:53,049
-development is dependable is civil engineering cost and schedule 
+development as dependable as  civil engineering cost and schedule 
 
 12
 00:00:53,053 --> 00:00:58,053
-paul. And so what to do. So with its software is only like six 
+{paul}. And so what to do. So with its software is only like six 
 
 13
 00:00:58,058 --> 00:01:03,058
-years old so somebody having that how to do that. And this idea 
+years old so somebody had to invente how to do that. And this idea 
 
 14
 00:01:03,063 --> 00:01:06,063
-green engineering discipline to to software was coined in 
+bring engineering discipline to to software was coined in 
 
 15
 00:01:06,066 --> 00:01:13,066
-nineteen sixty nine and yeah it was frustrated people to start 
+nineteen sixty nine and yeah it was frustrating to people to start 
 
 16
 00:01:13,073 --> 00:01:17,073
-having disasters. So we call final document collectively will be 
+having disasters. So we call plan and document collectively will be 
 
 17
 00:01:17,077 --> 00:01:23,077
-three examples of those is before anybody starts writing go make 
+three examples of those is before anybody starts writing code make 
 
 18
 00:01:23,083 --> 00:01:26,083
-a point that's the way you build a bridge so that's what you saw 
+a plan that's the way you build a bridge so that's way you should do software. 
 
 19
 00:01:26,086 --> 00:01:31,086
-for you right detailed documentation for all phases of the plan 
+You write detailed documentation for all phases of the plan 
 
 20
 00:01:31,091 --> 00:01:34,091
@@ -80,11 +80,11 @@ a and then you measure progress against the plan is so you start
 
 21
 00:01:34,094 --> 00:01:37,094
-building softer and then if you don't have to make changes in 
+building software and then if you gonna have to make changes in 
 
 22
 00:01:37,097 --> 00:01:40,097
-the project should be making changes in the plan in the 
+the project should be making changes in the plan and the 
 
 23
 00:01:40,100 --> 00:01:44,100
@@ -100,63 +100,63 @@ engineering was first going. And the idea was to have five
 
 26
 00:01:52,112 --> 00:01:56,112
-explicit face and so rather than calling it a software 
+explicit phases and so rather than calling it a software 
 
 27
 00:01:56,116 --> 00:02:00,116
-development process also called a lights like so this waterfall 
+development process also called a lifecycle. So this waterfall 
 
 28
 00:02:00,000 --> 00:02:04,120
-property bubbles but processor life cycle first is to write 
+software development processor life cycle. First is to write 
 
 29
 00:02:04,124 --> 00:02:09,124
-requirements down in into a specification do the analysis and 
+requirements down in into a specification, do the analysis and 
 
 30
 00:02:09,129 --> 00:02:13,129
-right specification second faces architectural design the third 
+write specification second faces architectural design the third 
 
 31
 00:02:13,133 --> 00:02:17,133
-phase is building integrating the pieces together then you 
+phase is building integrating the pieces together, then you 
 
 32
 00:02:17,137 --> 00:02:22,137
-verify I never verification is making sure it does spec says and 
+verify it, remember verification is making sure it does spec says and 
 
 33
 00:02:22,142 --> 00:02:25,142
-finally movement operations and make instead. So this is the 
+finally you move into operations and maintenance phase. So this is the 
 
 34
 00:02:25,145 --> 00:02:29,145
-classic faces. And you complete one phase before you go the next 
+classic phase. And you complete one phase before you go the next 
 
 35
 00:02:29,149 --> 00:02:32,149
-one and the idea was that they found is that really found about 
+one and the idea was that they found is that the earlier you found a bug 
 
 36
 00:02:32,152 --> 00:02:36,152
-confined about architecture face it's a lot cheaper than if I 
+you find a bug in architecture phase it's a lot cheaper than you find it  
 
 37
 00:02:36,156 --> 00:02:41,156
-can verification phase. And because the last one time year's 
+in the verification phase. And because the last of long time, years 
 
 38
 00:02:41,161 --> 00:02:44,161
-distributed software projects the extensive documentation their 
+for building software projects the extensive documentation they're 
 
 39
 00:02:44,164 --> 00:02:48,164
-party so when you employees come the end they can get a speed so 
+apart so when you employees come the end they can get up to speed so 
 
 40
 00:02:48,168 --> 00:02:53,168
-it is that's story. So that first software development process 
+it is that's story. So that was first software development process 
 
 41
 00:02:53,173 --> 00:02:57,173
@@ -168,11 +168,11 @@ that somebody posted anonymously and the uses exclaimed with a
 
 43
 00:03:01,181 --> 00:03:05,181
-laugh and at time. It's just what we ask for but not what you 
+laugh and a taunt. It's just what we ask for but not what we 
 
 44
 00:03:05,185 --> 00:03:09,185
-want right so typically what happens when you dealing customers 
+want. Alright? So typically what happens when you dealing with customers 
 
 45
 00:03:09,189 --> 00:03:12,189
@@ -180,23 +180,23 @@ they don't quite know what they want. And when you build
 
 46
 00:03:12,192 --> 00:03:15,192
-something it starts to work they realise that I don't know what 
+something it starts to work they realise that's not what 
 
 47
 00:03:15,195 --> 00:03:19,195
-we want that that's idea right. So that happen in the water for 
+we want, I don't know what we want but that's not it. That's idea right. So that happen in the waterfall
 
 48
 00:03:19,199 --> 00:03:23,199
-prosody years you get issue because number and they change their 
+you take years you get there you show it to the customer they change their 
 
 49
 00:03:23,203 --> 00:03:30,203
-mind another one is from Fred brooks. And his phrase is a throw 
+mind. Another one is from Fred brooks. And his phrase is a throw 
 
 50
 00:03:30,210 --> 00:03:34,210
-the first implementation away you will anyhow. So books one my 
+the first implementation away you will anyhow. So Fread Brooks one my 
 
 51
 00:03:34,214 --> 00:03:37,214
@@ -204,11 +204,11 @@ personal heroes and we'll call him a couple of times but he won
 
 52
 00:03:37,217 --> 00:03:42,217
-the Nobel prize computer science. And is author of the things 
+the Nobel prize computer science. And is author of the famous
 
 53
 00:03:42,222 --> 00:03:46,222
-look and software can call mythical and basically what happens 
+book in software engineering called mythical manmonth and basically what happens 
 
 54
 00:03:46,226 --> 00:03:50,226
@@ -224,11 +224,11 @@ so kind of this is what the problem soft whatever life cycle is
 
 57
 00:03:57,237 --> 00:04:01,237
-they would build software customers to my and then after they 
+they would build software customers didn't like and then after they 
 
 58
 00:04:01,241 --> 00:04:06,241
-build it they realise the right will do that inspire the next of 
+build it they realise the right way to do it that inspire the next of 
 
 59
 00:04:06,246 --> 00:04:10,246
@@ -244,11 +244,11 @@ with building prototypes and iterations and prototypes. So what
 
 62
 00:04:19,259 --> 00:04:24,259
-you do is leave all document the B. U. all documents over time 
+you do is evolve a document over time 
 
 63
 00:04:24,264 --> 00:04:28,264
-to time even iteration so hip here let's look at this drawing 
+every time you do a iteration so here let's look at this drawing 
 
 64
 00:04:28,268 --> 00:04:31,268
@@ -272,11 +272,11 @@ result then the next phase is you developing verified prototype
 
 69
 00:04:48,288 --> 00:04:51,288
-verification approach that you know this is a portion would be 
+do the verification of the prototype. You know this is a portion of what you do and 
 
 70
 00:04:51,291 --> 00:04:55,291
-doing joint customers. And then you get feedback and then next 
+you show it to the customers. And then you get feedback and then next 
 
 71
 00:04:55,295 --> 00:04:59,295
@@ -316,7 +316,7 @@ them that's part of this life cycle. It's pretty easy to
 
 80
 00:05:30,330 --> 00:05:33,330
-moderate zero mother project the waterfall was supposed to be 
+monitor or it's easier to monitor the project. The waterfall was supposed to be 
 
 81
 00:05:33,333 --> 00:05:36,333
@@ -336,7 +336,7 @@ seated get idea because if yeah but that things are these
 
 85
 00:05:49,349 --> 00:05:52,349
-iterations a pretty long they could be half a year fifty years 
+iterations a pretty long they could be half a year to two years 
 
 86
 00:05:52,352 --> 00:05:55,352
@@ -372,23 +372,23 @@ in the building of prototypes it's pretty expensive. And it's it
 
 94
 00:06:21,381 --> 00:06:26,381
-it proved to be hard to me budget schedule right so that was so 
+it proved to be hard to me budget schedule purpose. So that was so 
 
 95
 00:06:26,386 --> 00:06:31,386
-waterfall spiral the third example in this is another fifteen 
+waterfall spiral. The third example in this is another fifteen 
 
 96
 00:06:31,391 --> 00:06:35,391
-years later fifteen years after a spiral introduce eft waterfall 
+years later fifteen years after a spiral and thirty years after waterfall 
 
 97
 00:06:35,395 --> 00:06:39,395
-is therefore the rational unified process. It's not rational 
+is what's called the rational unified process. It's not rational 
 
 98
 00:06:39,399 --> 00:06:42,399
-"'cause" it's the others rational rationals name that company 
+cause it's the others rational rationals name that company 
 
 99
 00:06:42,402 --> 00:06:46,402
@@ -404,11 +404,11 @@ have what they called engineering requirements you'll unique
 
 102
 00:06:52,412 --> 00:06:56,412
-across the bottom so I'll come back to the slide show you can 
+across the bottom so I'll come back to the slide show you again
 
 103
 00:06:56,416 --> 00:06:59,416
-have multiple iterations within these space builders to 
+and you can have multiple iterations within one of these phases. So there're two 
 
 104
 00:06:59,419 --> 00:07:04,419
@@ -420,15 +420,15 @@ first phase call section you come up the business case for the
 
 106
 00:07:07,427 --> 00:07:12,427
-software disrupt models more closely tied to business processes. 
+software this RUP models more closely tied to business processes. 
 
 107
 00:07:12,432 --> 00:07:15,432
-So what's the business case for building wisely because that's 
+So what's the business case for building it why should we make this investment because that's 
 
 108
 00:07:15,435 --> 00:07:18,435
-not what will be eternal just met. This is the time set the 
+what would be return in this investment. This is the time you set the 
 
 109
 00:07:18,438 --> 00:07:22,438
@@ -460,11 +460,11 @@ about the importance of architectural building software works.
 
 116
 00:07:44,464 --> 00:07:48,464
-And you build the first basic prototype that space to pastries 
+And you build the first basic prototype that's phase two. Phase three 
 
 117
 00:07:48,468 --> 00:07:51,468
-construction were you the coating and you testing for the 
+construction were you the coding and you testing for the 
 
 118
 00:07:51,471 --> 00:07:55,471
@@ -480,7 +480,7 @@ where the software running and you get customers sign off on
 
 121
 00:08:02,482 --> 00:08:07,482
-customer acceptance. So that's the four faces of right the 
+customer acceptance. So that's the four phases of right the 
 
 122
 00:08:07,487 --> 00:08:09,487
@@ -508,11 +508,11 @@ plays a bigger role in the business in inception phase in the
 
 128
 00:08:28,508 --> 00:08:32,508
-beginning collaborations can advise off deployment is currently 
+beginning collaborations can advise off deployment is kind of the opposite
 
 129
 00:08:32,512 --> 00:08:37,512
-a profile what happens at the end very last construction 
+profile what happens at the end very last construction 
 
 130
 00:08:37,517 --> 00:08:41,517
@@ -532,9 +532,9 @@ skills you need more of them different skills later. So what's
 
 134
 00:08:54,534 --> 00:09:04,534
-the what's the good in the yeah of the right model okay a the 
+the what's the good and the bad of the RUP model? okay a the 
 
-135
+135 
 00:09:04,544 --> 00:09:06,544
 drilling the business processes because you have you building 
 
@@ -576,7 +576,7 @@ the tools. There's a lot of ways to tailor it you know how many
 
 145
 00:09:40,580 --> 00:09:44,580
-phases hydrogens but also you may not result tools intensity get 
+phases{ hydrogens }but also you may not result tools intensity get 
 
 146
 00:09:44,584 --> 00:09:48,584
@@ -584,11 +584,11 @@ only for big projects causes you know expensive one that it's
 
 147
 00:09:48,588 --> 00:09:52,588
-automatically decide how one iteration within of the faces the 
+automatically decide how one iteration within of the phases the 
 
 148
 00:09:52,592 --> 00:09:55,592
-sodium experience in fact what's true about all of these 
+so it's the manager's experience in fact what's true about all of these 
 
 149
 00:09:55,595 --> 00:10:01,595
@@ -616,11 +616,11 @@ which affect the sorry. And here she's responsible for
 
 155
 00:10:21,621 --> 00:10:24,621
-estimating the cost meeting schedule again one of the we have 
+estimating the cost maintaining the schedule again one of the we have 
 
 156
 00:10:24,624 --> 00:10:28,624
-and how trio columnist that's all managers. And they have to 
+and how to over come risks that's all managers. And they have to 
 
 157
 00:10:28,628 --> 00:10:32,628
@@ -628,15 +628,15 @@ document all this in the management plan and pretty much the
 
 158
 00:10:32,632 --> 00:10:37,632
-boss gets credited success sampling if it's a over budget what 
+boss gets credited if it's success gets blamed if it's a over budget what 
 
 159
 00:10:37,637 --> 00:10:42,637
-these teams pond docking methods tend to get bigger primarily 
+these teams plan and document methods tend to get bigger primarily 
 
 160
 00:10:42,642 --> 00:10:46,642
-through expansion in another thing this thing Fred Brooks is 
+through expansion in another famous thing this thing Fred Brooks is 
 
 161
 00:10:46,646 --> 00:10:49,646
@@ -672,10 +672,10 @@ time there is work. So you can scale up to bigger groups at the
 
 169
 00:11:14,674 --> 00:11:18,674
-Kennedy not too big so that it have not to miss time mutation 
+{Kennedy not too big so that it have not	 to miss time mutation 
 
 170
 00:11:18,678 --> 00:11:20,678
-and then you still higher. 
+and then you still higher. }
 
 
