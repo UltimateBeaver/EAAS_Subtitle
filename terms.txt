@@ -1,4 +1,5 @@
 ﻿（按字母序）
+Active Record: 活动记录
 block: 代码块
 client: 客户端
 receiver: 接收者
