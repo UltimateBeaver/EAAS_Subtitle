@@ -27,7 +27,7 @@ we saw using each and when I mentioned that you actually
 
 8
 00:00:22,022 --> 00:00:25,022
-shouldn't be doing iteration in an imperative four loop kind of 
+shouldn't be doing iteration in an imperative for loop kind of 
 
 9
 00:00:25,025 --> 00:00:27,025
