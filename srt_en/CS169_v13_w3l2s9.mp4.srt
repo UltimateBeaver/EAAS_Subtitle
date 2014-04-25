@@ -526,7 +526,7 @@ always get the credit it deserves. Lastly, remember that
 architecture is about making choices among alternatives, and we 
 
 133
-00:06:56,416 --> 00:06:59,416
+`00:06:56,416 --> 00:06:59,416
 have tried to show everytime we are making the choice in this 
 
 134
