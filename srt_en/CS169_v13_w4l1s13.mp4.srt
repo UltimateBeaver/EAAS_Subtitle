@@ -444,7 +444,7 @@ guys that came up with the Kokomo; that didn’ t work very well,
 
 112
 00:06:26,386 --> 00:06:31,386
-so they came up with Kokomo to and had 17 factors. The software 
+so they came up with Kokomo two and had 17 factors. The software 
 
 113
 00:06:31,391 --> 00:06:33,391
@@ -560,7 +560,7 @@ things are taking, so you track both the actual expenditures and
 
 141
 00:08:16,496 --> 00:08:20,496
-the time for those tasks against her PERT chart. What they found 
+the time for those tasks against the PERT chart. What they found 
 
 142
 00:08:20,500 --> 00:08:22,500
