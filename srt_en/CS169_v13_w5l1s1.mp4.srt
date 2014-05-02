@@ -4,7 +4,7 @@ OK, well, we are back and we are continuing our whirlwind tour
 
 2
 00:00:05,005 --> 00:00:08,005
-of Eails. We structured our tour around the the idea that what 
+of Rails. We structured our tour around the the idea that what 
 
 3
 00:00:08,008 --> 00:00:11,008
@@ -84,7 +84,7 @@ that, what do we return or what do we render? Remember we're
 
 22
 00:01:03,063 --> 00:01:06,063
-dealing with HEDP, which is a request reply protocol. That means 
+dealing with HTTP, which is a request reply protocol. That means 
 
 23
 00:01:06,066 --> 00:01:09,066
@@ -244,11 +244,11 @@ where the form is submitted. And remember we've kept saying that
 
 62
 00:03:08,188 --> 00:03:11,188
-a route consists of both an HETP method and a URI and a D. You 
+a route consists of both an HTTP method and a URI. You 
 
 63
 00:03:11,191 --> 00:03:14,191
-see them both here. The HETP method is going to be post. And 
+see them both here. The HTTP method is going to be post. And 
 
 64
 00:03:14,194 --> 00:03:19,194
@@ -340,15 +340,15 @@ going to appear as it arrives at the browser. But looking
 
 86
 00:04:23,263 --> 00:04:30,263
-briefly at what this looks like in Hamel. And what I did here 
+briefly at what this looks like in Haml. And what I did here 
 
 87
 00:04:30,270 --> 00:04:34,270
-is, underneath each line of Hamel, I included one or more lines 
+is, underneath each line of Haml, I included one or more lines 
 
 88
 00:04:34,274 --> 00:04:37,274
-of the HTML that would be generated from that Hamel, so you can 
+of the HTML that would be generated from that Haml, so you can 
 
 89
 00:04:37,277 --> 00:04:41,277
@@ -360,7 +360,7 @@ method that we saw in the HTML form actually came from this
 
 91
 00:04:45,285 --> 00:04:49,285
-Hamel tag. This is just a Ruby method called Form Tag. It takes 
+Haml tag. This is just a Ruby method called Form Tag. It takes 
 
 92
 00:04:49,289 --> 00:04:54,289
@@ -400,7 +400,7 @@ example of the text field where the user would type in a name
 
 101
 00:05:20,320 --> 00:05:24,320
-for a new movie. What it comes from in Hamel is this text field 
+for a new movie. What it comes from in Haml is this text field 
 
 102
 00:05:24,324 --> 00:05:27,324
@@ -436,7 +436,7 @@ form tag helper is like text field. You don't have to use these.
 
 110
 00:05:48,348 --> 00:05:52,348
-You could code the raw HTML in Hamel if you wanted, but the 
+You could code the raw HTML in Haml if you wanted, but the 
 
 111
 00:05:52,352 --> 00:05:55,352
