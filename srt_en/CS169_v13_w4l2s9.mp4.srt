@@ -224,7 +224,7 @@ book sets up. It sets up a view where all of the links have the
 
 57
 00:02:43,163 --> 00:02:46,163
-ID embedded n them. We're going to show where all this comes 
+ID embedded in them. We're going to show where all this comes 
 
 58
 00:02:46,166 --> 00:02:49,166
@@ -432,11 +432,11 @@ ID is a stand- in, it's a wild card, for this part of the route,
 
 109
 00:05:44,344 --> 00:05:46,344
-the digit ' 3 ',  so that's going to be available in the [ 
+the digit ' 3 ',  so that's going to be available in the 
 
 110
 00:05:46,346 --> 00:05:49,346
-params 00:05:46] array that our 'controller action' sees. So 
+array that our 'controller action' sees. So 
 
 111
 00:05:49,349 --> 00:05:51,349
@@ -452,11 +452,11 @@ there's any wild cards embedded in that route, pull the wild
 
 114
 00:05:57,357 --> 00:06:00,357
-card parameters out. Make them available as part of the [ params 
+card parameters out. Make them available as part of the 
 
 115
 00:06:00,000 --> 00:06:05,360
-00:06:00] hash, and now we also know, from rake routes, what 
+hash, and now we also know, from rake routes, what 
 
 116
 00:06:05,365 --> 00:06:08,365
