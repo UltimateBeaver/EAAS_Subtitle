@@ -44,7 +44,7 @@ handle that, and we saw that the routing subsystem is where that
 
 12
 00:00:31,031 --> 00:00:35,031
-gets done, and there's a [ fall 00:00:32] called 'routed. rb' 
+gets done, and there's a file called 'routed. rb' 
 
 13
 00:00:35,035 --> 00:00:37,035
