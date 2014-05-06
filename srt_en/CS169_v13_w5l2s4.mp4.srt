@@ -36,7 +36,7 @@ paper. If you do a mock up of you using interface with just,
 
 10
 00:00:34,034 --> 00:00:40,034
-it's easier for you to use [ Hamel 00:00:36] to make up a screen 
+it's easier for you to use Hamel to make up a screen 
 
 11
 00:00:40,040 --> 00:00:42,040
@@ -184,11 +184,11 @@ you done. You really need a sad path as well as a happy path.
 
 47
 00:02:53,173 --> 00:02:56,173
-From a customer's perspective it's just as important as the [ 
+From a customer's perspective it's just as important as the 
 
 48
 00:02:56,176 --> 00:03:05,176
-feature 00:02:56] when I had works but when a user makes a 
+feature, when I had works but when a user makes a 
 
 49
 00:03:05,185 --> 00:03:10,185
@@ -296,7 +296,7 @@ over another pure instructions. Which statement is false about
 
 75
 00:04:46,286 --> 00:04:51,286
-Lo- FI UI and BDD? The purpose of Lo- Fi UI approach is to debug 
+Lo-FI UI and BDD? The purpose of Lo-FI UI approach is to debug 
 
 76
 00:04:51,291 --> 00:04:54,291
