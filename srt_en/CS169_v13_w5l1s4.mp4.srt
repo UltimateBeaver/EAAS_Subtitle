@@ -92,7 +92,7 @@ a couple of minutes ago. You could chose to store session data
 
 24
 00:01:18,078 --> 00:01:22,078
-in the database or store session data in a no sequel database. 
+in the database or store session data in a no SQL database. 
 
 25
 00:01:22,082 --> 00:01:25,082
