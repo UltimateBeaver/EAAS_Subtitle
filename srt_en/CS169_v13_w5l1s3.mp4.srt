@@ -92,7 +92,7 @@ need to worry about just yet, but here's the important part,
 
 24
 00:01:28,088 --> 00:01:32,088
-right? We're going to the URI/ movies with a post method, and 
+right? We're going to the URI, movies with a post method, and 
 
 25
 00:01:32,092 --> 00:01:37,092
@@ -144,7 +144,7 @@ attacks on your website. But what we're really interested in
 
 37
 00:02:11,131 --> 00:02:16,131
-here is the value of params[: movie]. Now remember I mentioned, 
+here is the value of params[:movie]. Now remember I mentioned, 
 
 38
 00:02:16,136 --> 00:02:19,136
@@ -152,11 +152,11 @@ why would you want to name your form elements with things like "
 
 39
 00:02:19,139 --> 00:02:24,139
-movie bracket title," " movie bracket rating," and so forth? The 
+movie[:title]," " movie[:rating]," and so forth? The 
 
 40
 00:02:24,144 --> 00:02:28,144
-reason is that, if you do that, the value of params[: movie] is 
+reason is that, if you do that, the value of params[:movie] is 
 
 41
 00:02:28,148 --> 00:02:32,148
@@ -236,7 +236,7 @@ configuration, since we haven't said otherwise, it's going to
 
 60
 00:03:28,208 --> 00:03:32,208
-look for a view template called create. html. hamel, and we 
+look for a view template called create. html. haml, and we 
 
 61
 00:03:32,212 --> 00:03:35,212
@@ -256,7 +256,7 @@ debugger friends soon enough. The important thing to notice
 
 65
 00:03:47,227 --> 00:03:49,227
-there is that params[: movie] is already a hash because of the 
+there is that params[:movie] is already a hash because of the 
 
 66
 00:03:49,229 --> 00:03:52,229
@@ -264,7 +264,7 @@ way we named the form field. Conveniently, that's exactly what
 
 67
 00:03:52,232 --> 00:03:57,232
-Movie create! wants to consume. So, now back to this question 
+Movie.create! wants to consume. So, now back to this question 
 
 68
 00:03:57,237 --> 00:03:59,237
@@ -416,11 +416,11 @@ will automatically be cleared out for me after that. By
 
 105
 00:05:44,344 --> 00:05:48,344
-convention, typically we use flash notice for information and 
+convention, typically we use flash[:notice] for information and 
 
 106
 00:05:48,348 --> 00:05:50,348
-flash warning for error messages, but that's purely a 
+flash[:warning] for error messages, but that's purely a 
 
 107
 00:05:50,350 --> 00:05:56,350
@@ -536,7 +536,7 @@ displaying a passive page whose only purpose in life's to say, "
 
 135
 00:07:31,451 --> 00:07:35,451
-Your change succeeded," we usually acknowledge with a message, 
+Your change succeeded". we usually acknowledge with a message, 
 
 136
 00:07:35,455 --> 00:07:37,455
@@ -584,7 +584,7 @@ put there, and by default, cookies store the entire contents of
 
 147
 00:08:10,490 --> 00:08:12,490
-the session in the flash. Now, this is an important thing to 
+the session and the flash. Now, this is an important thing to 
 
 148
 00:08:12,492 --> 00:08:15,492
