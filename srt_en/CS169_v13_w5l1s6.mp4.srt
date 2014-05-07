@@ -84,7 +84,7 @@ request to another, which is why those things have a separate
 
 22
 00:01:23,083 --> 00:01:27,083
-obstruction like the flash and session. Only this request and 
+abstraction like the flash and session. Only this request and 
 
 23
 00:01:27,087 --> 00:01:29,087
