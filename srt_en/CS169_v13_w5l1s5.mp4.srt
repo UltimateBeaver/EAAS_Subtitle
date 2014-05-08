@@ -52,7 +52,7 @@ artifact of us doing a human- facing application. If you're
 
 14
 00:00:41,041 --> 00:00:45,041
-thinking of Ron Potatoes [ ph 00:00:41] as a remote service that 
+thinking of Rotton Potatoes as a remote service that 
 
 15
 00:00:45,045 --> 00:00:47,045
@@ -60,7 +60,7 @@ manages movie information reviews, then you would think,
 
 16
 00:00:47,047 --> 00:00:51,047
-logically, creating a new movie listing is 1 action. It's, 
+logically, creating a new movie listing is one action. It's, 
 
 17
 00:00:51,051 --> 00:00:53,051
@@ -100,7 +100,7 @@ action is exactly analogous, that if I want to edit information
 
 26
 00:01:18,078 --> 00:01:21,078
-about an existing movie, I've got to do 2 things; I first have 
+about an existing movie, I've got to do two things; I first have 
 
 27
 00:01:21,081 --> 00:01:24,081
@@ -168,11 +168,11 @@ first going to grab the movie ID of which existing movie is
 
 43
 00:02:14,134 --> 00:02:19,134
-being edited, and it's going to use that to populate this ad 
+being edited, and it's going to use that to populate this
 
 44
 00:02:19,139 --> 00:02:22,139
-movie variable, so that when we first display the form, the 
+@movie variable, so that when we first display the form, the 
 
 45
 00:02:22,142 --> 00:02:24,142
@@ -192,7 +192,7 @@ updated; this is a difference, because before we were creating a
 
 49
 00:02:33,153 --> 00:02:36,153
-brand new one, and we're going to call update attributes, which 
+brand new one, and we're going to call update_attributes, which 
 
 50
 00:02:36,156 --> 00:02:40,156
@@ -236,7 +236,7 @@ again, Rails really is trying to say think about building a
 
 60
 00:03:12,192 --> 00:03:16,192
-restful app first, and then secondarily think about how you 
+RESTful app first, and then secondarily think about how you 
 
 61
 00:03:16,196 --> 00:03:19,196
@@ -244,11 +244,11 @@ would make a human- facing interface for it. During your design
 
 62
 00:03:19,199 --> 00:03:21,199
-process, you really ought to be thinking in terms of restful 
+process, you really ought to be thinking in terms of RESTful 
 
 63
 00:03:21,201 --> 00:03:24,201
-actions. One way to distinguish different kinds of restful 
+actions. One way to distinguish different kinds of RESTful 
 
 64
 00:03:24,204 --> 00:03:27,204
@@ -268,7 +268,7 @@ information. It's sort of an emerging consensus. It's no problem
 
 68
 00:03:38,218 --> 00:03:42,218
-to have different restful routes whose only distinction is which 
+to have different RESTful routes whose only distinction is which 
 
 69
 00:03:42,222 --> 00:03:45,222
@@ -296,7 +296,7 @@ put, which is what we're going to have to do with this form,
 
 75
 00:04:06,246 --> 00:04:08,246
-we're saying we want to trigger the restful action that updates, 
+we're saying we want to trigger the RESTful action that updates, 
 
 76
 00:04:08,248 --> 00:04:12,248
@@ -332,7 +332,7 @@ post into a put. It's interesting, so the effect of all this is
 
 84
 00:04:34,274 --> 00:04:38,274
-that in your controller action, you can ask which HCDP method 
+that in your controller action, you can ask which HTTP method 
 
 85
 00:04:38,278 --> 00:04:42,278
@@ -348,7 +348,7 @@ post. Again, why would you want to design Rails to support this
 
 88
 00:04:47,287 --> 00:04:51,287
-behavior; it's because you're really designing a restful service 
+behavior; it's because you're really designing a RESTful service 
 
 89
 00:04:51,291 --> 00:04:53,291
