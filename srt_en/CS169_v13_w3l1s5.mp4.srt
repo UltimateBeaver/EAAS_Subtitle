@@ -211,7 +211,7 @@ this. For example, regular expressions are a DSL for expressing
 
 54
 00:02:50,170 --> 00:02:53,170
-patterns that might match different kinds of strengths. If 
+patterns that might match different kinds of strings. If
 
 55
 00:02:53,173 --> 00:02:55,173
@@ -463,11 +463,11 @@ examples that I just looked at at lines five, nine and 12, it's
 
 117
 00:06:35,395 --> 00:06:38,395
-now trying to run them, and re- divider should be up [ inaudible 
+now trying to run them, and re- divider should be up
 
 118
 00:06:38,398 --> 00:06:42,398
-00:06:38] in their own but it's not, so the meat of the homework 
+in their own but it's not, so the meat of the homework
 
 119
 00:06:42,402 --> 00:06:44,402
