@@ -308,7 +308,7 @@ language, at which point it'll seem very natural. Understanding
 
 78
 00:04:09,249 --> 00:04:13,249
-this distinction, keeping this one simple rule in my mind, will 
+this distinction, keeping this one simple rule in mind, will 
 
 79
 00:04:13,253 --> 00:04:17,253
