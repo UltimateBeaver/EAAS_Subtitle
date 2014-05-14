@@ -16,7 +16,7 @@ Take a little bit to think about that, in case you voted, say
 
 5
 00:00:23,023 --> 00:00:28,023
-red, before. Not that I'm trying to give it away. Let's try 
+red, before. Now that I'm trying to give it away. Let's try 
 
 6
 00:00:28,028 --> 00:00:33,028
@@ -84,7 +84,7 @@ model that does that and from then on, it should be easier to
 
 22
 00:01:23,083 --> 00:01:28,083
-figure out, you can't call finding TMDb on any ... you can't 
+figure out, you can't call find_in_TMDb on any ... you can't 
 
 23
 00:01:28,088 --> 00:01:30,088
