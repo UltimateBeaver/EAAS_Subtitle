@@ -156,11 +156,11 @@ coverage. What does it mean to measure the test coverage of this
 
 40
 00:01:57,117 --> 00:02:01,117
-very simple class? I've got two methods here called " fu" and " 
+very simple class? I've got two methods here called " foo" and " 
 
 41
 00:02:01,121 --> 00:02:04,121
-bar". As you can see, the fu method sometimes calls the bar 
+bar". As you can see, the foo method sometimes calls the bar 
 
 42
 00:02:04,124 --> 00:02:09,124
@@ -176,7 +176,7 @@ simple one you can think of is we've called every method. We
 
 45
 00:02:16,136 --> 00:02:19,136
-called the fu method at least once, I don't know which branch of 
+called the foo method at least once, I don't know which branch of 
 
 46
 00:02:19,139 --> 00:02:22,139
@@ -184,7 +184,7 @@ the if statement we took, but at least we called it. The code in
 
 47
 00:02:22,142 --> 00:02:26,142
-the fu method is not totally dead code. The next level up from 
+the foo method is not totally dead code. The next level up from 
 
 48
 00:02:26,146 --> 00:02:29,146
@@ -200,7 +200,7 @@ not quite right here. We need to call the bar method from both
 
 51
 00:02:37,157 --> 00:02:39,157
-possible places, and the fu method from which it could have been 
+possible places, and the foo method from which it could have been 
 
 52
 00:02:39,159 --> 00:02:43,159
@@ -536,7 +536,7 @@ coverage has told you what parts of your code are severely
 
 135
 00:07:04,424 --> 00:07:09,424
-under- tested or untested. Similarly, some people obsessively 
+under-tested or untested. Similarly, some people obsessively 
 
 136
 00:07:09,429 --> 00:07:11,429
