@@ -236,7 +236,7 @@ powerful idea of the code we wish we had comes in. Let's
 
 60
 00:02:53,173 --> 00:02:56,173
-remember we have to add a route to config/ routes. rb. That's 
+remember we have to add a route to config/routes.rb. That's 
 
 61
 00:02:56,176 --> 00:02:59,176
