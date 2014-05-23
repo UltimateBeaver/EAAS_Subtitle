@@ -92,7 +92,7 @@ used. If it was a command line program you can just actually
 
 24
 00:01:11,071 --> 00:01:15,071
-type input at the command line for a SAS application, it's 
+type input at the command line for a SaaS application, it's 
 
 25
 00:01:15,075 --> 00:01:18,075
@@ -128,7 +128,7 @@ you'll despair because any random input will break your app
 
 33
 00:01:41,101 --> 00:01:44,101
-because it'll be brittle. DU- coverage which is for define and 
+because it'll be brittle. DU-coverage which is for define and 
 
 34
 00:01:44,104 --> 00:01:48,104
@@ -152,7 +152,7 @@ multiplicative in the number of references because if I define a
 
 39
 00:02:02,122 --> 00:02:05,122
-variable and there's three different code pass that could 
+variable and there's three different code paths that could 
 
 40
 00:02:05,125 --> 00:02:08,125
@@ -552,7 +552,7 @@ types of test will catch different errors. Here's a quick
 
 139
 00:07:01,421 --> 00:07:05,421
-question about testing. Which non- obvious statement is false? 
+question about testing. Which non-obvious statement is false? 
 
 140
 00:07:05,425 --> 00:07:08,425
